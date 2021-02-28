@@ -13,5 +13,6 @@ public class MainActivity extends AppCompatActivity {
         
         // 조원용
         // 이주영 1
+        // 김진환
     }
 }
