@@ -32,7 +32,7 @@
             android:layout_height="100dp"
             android:layout_weight="1"
             android:text="신규 처리 중"
-            android:textColor="#000"
+            android:textColor="#000000"
             android:textSize="36sp"
             app:backgroundTint="#fff" />
 
@@ -42,7 +42,7 @@
             android:layout_height="100dp"
             android:layout_weight="1"
             android:text="완료"
-            android:textColor="#000"
+            android:textColor="#000000"
             android:textSize="36sp"
             app:backgroundTint="#fff" />
 
@@ -81,7 +81,7 @@
                         android:layout_height="80dp"
                         android:ems="10"
                         android:inputType="time"
-                        android:text="20:30"
+                        android:text="21:10"
                         android:textSize="50dp" />
 
                     <TextView
@@ -92,20 +92,19 @@
                         android:textSize="50dp" />
 
                     <TextView
-                        android:id="@+id/order_pay"
-                        android:layout_width="550dp"
+                        android:id="@+id/rating"
+                        android:layout_width="match_parent"
                         android:layout_height="65dp"
-                        android:text="결제금액 27000원"
+                        android:text="평균 평점 4.5"
                         android:textSize="30sp" />
 
-                    <EditText
-                        android:id="@+id/arrive"
-                        android:layout_width="550dp"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="time"
-                        android:text="도착예상시간 40분"
+                    <TextView
+                        android:id="@+id/review"
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:text="리뷰 조회"
                         android:textSize="30sp" />
+
                 </LinearLayout>
 
                 <ImageView
@@ -146,7 +145,7 @@
                         android:layout_height="80dp"
                         android:ems="10"
                         android:inputType="time"
-                        android:text="20:28"
+                        android:text="20:45"
                         android:textSize="50dp" />
 
                     <TextView
@@ -157,19 +156,17 @@
                         android:textSize="50dp" />
 
                     <TextView
-                        android:id="@+id/order_pay1"
-                        android:layout_width="550dp"
+                        android:id="@+id/rating1"
+                        android:layout_width="match_parent"
                         android:layout_height="65dp"
-                        android:text="결제금액 16,000원"
+                        android:text="평균 평점 4.5"
                         android:textSize="30sp" />
 
-                    <EditText
-                        android:id="@+id/arrive1"
-                        android:layout_width="550dp"
+                    <TextView
+                        android:id="@+id/review1"
+                        android:layout_width="match_parent"
                         android:layout_height="65dp"
-                        android:ems="10"
-                        android:inputType="time"
-                        android:text="도착예상시간 15분"
+                        android:text="리뷰 조회"
                         android:textSize="30sp" />
 
                 </LinearLayout>
@@ -223,20 +220,19 @@
                         android:textSize="50dp" />
 
                     <TextView
-                        android:id="@+id/order_pay2"
+                        android:id="@+id/rating2"
                         android:layout_width="550dp"
                         android:layout_height="65dp"
-                        android:text="결제금액 8,000원"
+                        android:text="평균 평점 4.5"
                         android:textSize="30sp" />
 
-                    <EditText
-                        android:id="@+id/arrive2"
+                    <TextView
+                        android:id="@+id/review2"
                         android:layout_width="550dp"
                         android:layout_height="65dp"
-                        android:ems="10"
-                        android:inputType="time"
-                        android:text="도착예상시간 25분"
+                        android:text="리뷰 조회"
                         android:textSize="30sp" />
+
                 </LinearLayout>
 
                 <ImageView
@@ -254,12 +250,12 @@
 
             <Button
                 android:id="@+id/back"
-                android:layout_width="561dp"
-                android:layout_height="82dp"
+                android:layout_width="560dp"
+                android:layout_height="80dp"
                 android:text="Back"
                 android:textColor="#000"
                 android:textSize="30sp"
-                app:backgroundTint="#fff"
+                app:backgroundTint="#FFFFFF"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.501"
