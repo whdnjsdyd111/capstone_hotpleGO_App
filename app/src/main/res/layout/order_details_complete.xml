@@ -10,11 +10,11 @@
     <TextView
         android:id="@+id/order_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="주문내역"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="30sp" />
+        android:textSize="24sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,10 +63,11 @@
                     android:orientation="vertical">
 
                     <View
-                        android:id="@+id/view5"
+                        android:id="@+id/view2"
                         android:layout_width="match_parent"
                         android:layout_height="2px"
-                        android:background="#8a8a8a" />
+                        android:background="#FFFFFF"
+                        tools:background="#8a8a8a" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -79,44 +80,49 @@
                             android:orientation="vertical">
 
                             <EditText
-                                android:id="@+id/order_time2"
+                                android:id="@+id/order_time"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:ems="10"
                                 android:inputType="time"
-                                android:text="19:35"
+                                android:text="21:10"
                                 android:textSize="24sp" />
 
                             <TextView
-                                android:id="@+id/order_name2"
+                                android:id="@+id/order_name"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="순살치킨 비빔밥 1개"
+                                android:text="육회비빔밥 2개 외 1개"
+                                android:textColor="#000"
                                 android:textSize="24sp" />
 
                             <TextView
-                                android:id="@+id/rating2"
+                                android:id="@+id/rating"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="평균 평점 4.5"
+                                android:textColor="#000"
                                 android:textSize="24sp" />
 
                             <TextView
-                                android:id="@+id/review2"
+                                android:id="@+id/review"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="리뷰 조회"
+                                android:textColor="#000"
                                 android:textSize="24sp" />
 
                         </LinearLayout>
 
                         <ImageView
-                            android:id="@+id/imageView8"
+                            android:id="@+id/imageView6"
                             android:layout_width="wrap_content"
                             android:layout_height="150dp"
                             android:layout_weight="1"
                             app:srcCompat="@android:drawable/ic_notification_clear_all" />
+
                     </LinearLayout>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -154,6 +160,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="돈가스 비빔밥 2개"
+                                android:textColor="#000"
                                 android:textSize="24sp" />
 
                             <TextView
@@ -161,6 +168,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="평균 평점 4.5"
+                                android:textColor="#000"
                                 android:textSize="24sp" />
 
                             <TextView
@@ -168,6 +176,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="리뷰 조회"
+                                android:textColor="#000"
                                 android:textSize="24sp" />
 
                         </LinearLayout>
@@ -189,11 +198,10 @@
                     android:orientation="vertical">
 
                     <View
-                        android:id="@+id/view2"
+                        android:id="@+id/view5"
                         android:layout_width="match_parent"
                         android:layout_height="2px"
-                        android:background="#FFFFFF"
-                        tools:background="#8a8a8a" />
+                        android:background="#8a8a8a" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -206,51 +214,52 @@
                             android:orientation="vertical">
 
                             <EditText
-                                android:id="@+id/order_time"
+                                android:id="@+id/order_time2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:ems="10"
                                 android:inputType="time"
-                                android:text="21:10"
+                                android:text="19:35"
                                 android:textSize="24sp" />
 
                             <TextView
-                                android:id="@+id/order_name"
+                                android:id="@+id/order_name2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="육회비빔밥 2개 외 1개"
+                                android:text="순살치킨 비빔밥 1개"
+                                android:textColor="#000"
                                 android:textSize="24sp" />
 
                             <TextView
-                                android:id="@+id/rating"
+                                android:id="@+id/rating2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="평균 평점 4.5"
+                                android:textColor="#000"
                                 android:textSize="24sp" />
 
                             <TextView
-                                android:id="@+id/review"
+                                android:id="@+id/review2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="리뷰 조회"
+                                android:textColor="#000"
                                 android:textSize="24sp" />
 
                         </LinearLayout>
 
                         <ImageView
-                            android:id="@+id/imageView6"
+                            android:id="@+id/imageView8"
                             android:layout_width="wrap_content"
                             android:layout_height="150dp"
                             android:layout_weight="1"
                             app:srcCompat="@android:drawable/ic_notification_clear_all" />
-
                     </LinearLayout>
-
                 </LinearLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="100dp">
 
                     <Button
                         android:id="@+id/back"
