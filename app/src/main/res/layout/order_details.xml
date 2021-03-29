@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/order_list"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="주문내역"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="신규 처리 중"
+            android:textColor="#000"
+            android:textSize="24sp"
+            app:backgroundTint="#fff" />
+
+        <Button
+            android:id="@+id/button14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="완료"
+            android:textColor="#000"
+            android:textSize="24sp"
+            app:backgroundTint="#fff" />
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <View
+                        android:id="@+id/view2"
+                        android:layout_width="match_parent"
+                        android:layout_height="2px"
+                        android:background="#FFFFFF"
+                        tools:background="#8a8a8a" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="149dp"
+                            android:orientation="vertical">
+
+                            <EditText
+                                android:id="@+id/order_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ems="10"
+                                android:inputType="time"
+                                android:text="20:30"
+                                android:textSize="24sp" />
+
+                            <TextView
+                                android:id="@+id/order_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="육회비빔밥 2개 외 1개"
+                                android:textColor="#000"
+                                android:textSize="24sp" />
+
+                            <TextView
+                                android:id="@+id/order_pay"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="결제금액 27000원"
+                                android:textColor="#000"
+                                android:textSize="24sp" />
+
+                            <TextView
+                                android:id="@+id/arrive"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="도착예상시간 40분"
+                                android:textColor="#000"
+                                android:textSize="24sp" />
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/imageView6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="150dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@android:drawable/ic_notification_clear_all" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <View
+                        android:id="@+id/view4"
+                        android:layout_width="match_parent"
+                        android:layout_height="2px"
+                        android:background="#8a8a8a" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <EditText
+                                android:id="@+id/order_time1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ems="10"
+                                android:inputType="time"
+                                android:text="20:28"
+                                android:textSize="24sp" />
+
+                            <TextView
+                                android:id="@+id/order_name1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="돈가스 비빔밥 2개"
+                                android:textColor="#000"
+                                android:textSize="24sp" />
+
+                            <TextView
+                                android:id="@+id/order_pay1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="결제금액 16,000원"
+                                android:textColor="#000"
+                                android:textSize="24sp" />
+
+                            <TextView
+                                android:id="@+id/arrive1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="도착예상시간 40분"
+                                android:textColor="#000"
+                                android:textSize="24sp" />
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/imageView7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="150dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@android:drawable/ic_notification_clear_all" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <View
+                        android:id="@+id/view5"
+                        android:layout_width="match_parent"
+                        android:layout_height="2px"
+                        android:background="#8a8a8a" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <EditText
+                                android:id="@+id/order_time2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ems="10"
+                                android:inputType="time"
+                                android:text="19:35"
+                                android:textSize="24sp" />
+
+                            <TextView
+                                android:id="@+id/order_name2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="순살치킨 비빔밥 1개"
+                                android:textColor="#000"
+                                android:textSize="24sp" />
+
+                            <TextView
+                                android:id="@+id/order_pay2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="결제금액 8,000원"
+                                android:textColor="#000"
+                                android:textSize="24sp" />
+
+                            <TextView
+                                android:id="@+id/arrive2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="도착예상시간 40분"
+                                android:textColor="#000"
+                                android:textSize="24sp" />
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/imageView8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="150dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@android:drawable/ic_notification_clear_all" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp">
+
+                    <Button
+                        android:id="@+id/back"
+                        android:layout_width="200dp"
+                        android:layout_height="55dp"
+                        android:text="Back"
+                        android:textColor="#000"
+                        android:textSize="30sp"
+                        app:backgroundTint="#fff"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
