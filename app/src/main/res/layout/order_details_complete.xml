@@ -11,10 +11,11 @@
         android:id="@+id/order_list"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="주문내역"
+        android:text="@string/order_details"
         android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="24sp" />
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:layout_gravity="center_horizontal" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,8 +27,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="신규 처리 중"
-            android:textColor="#000000"
+            android:text="@string/New"
+            android:textColor="@color/black"
             android:textSize="24sp"
             app:backgroundTint="#fff" />
 
@@ -36,10 +37,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="완료"
-            android:textColor="#000000"
+            android:text="@string/complete"
+            android:textColor="@color/black"
             android:textSize="24sp"
-            app:backgroundTint="#fff" />
+            app:backgroundTint="#d8a2c7" />
 
     </LinearLayout>
 
@@ -66,7 +67,7 @@
                         android:id="@+id/view2"
                         android:layout_width="match_parent"
                         android:layout_height="2px"
-                        android:background="#FFFFFF"
+                        android:background="@color/white"
                         tools:background="#8a8a8a" />
 
                     <LinearLayout
@@ -92,8 +93,8 @@
                                 android:id="@+id/order_name"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="육회비빔밥 2개 외 1개"
-                                android:textColor="#000"
+                                android:text="@string/order_menu_1"
+                                android:textColor="@color/black"
                                 android:textSize="24sp" />
 
                             <TextView
@@ -101,15 +102,15 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="평균 평점 4.5"
-                                android:textColor="#000"
+                                android:textColor="@color/black"
                                 android:textSize="24sp" />
 
                             <TextView
                                 android:id="@+id/review"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="리뷰 조회"
-                                android:textColor="#000"
+                                android:text="@string/review"
+                                android:textColor="@color/black"
                                 android:textSize="24sp" />
 
                         </LinearLayout>
@@ -159,8 +160,8 @@
                                 android:id="@+id/order_name1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="돈가스 비빔밥 2개"
-                                android:textColor="#000"
+                                android:text="@string/order_menu_2"
+                                android:textColor="@color/black"
                                 android:textSize="24sp" />
 
                             <TextView
@@ -168,15 +169,15 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="평균 평점 4.5"
-                                android:textColor="#000"
+                                android:textColor="@color/black"
                                 android:textSize="24sp" />
 
                             <TextView
                                 android:id="@+id/review1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="리뷰 조회"
-                                android:textColor="#000"
+                                android:text="@string/review"
+                                android:textColor="@color/black"
                                 android:textSize="24sp" />
 
                         </LinearLayout>
@@ -226,7 +227,7 @@
                                 android:id="@+id/order_name2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="순살치킨 비빔밥 1개"
+                                android:text="@string/order_menu_3"
                                 android:textColor="#000"
                                 android:textSize="24sp" />
 
@@ -235,15 +236,15 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="평균 평점 4.5"
-                                android:textColor="#000"
+                                android:textColor="@color/black"
                                 android:textSize="24sp" />
 
                             <TextView
                                 android:id="@+id/review2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="리뷰 조회"
-                                android:textColor="#000"
+                                android:text="@string/review"
+                                android:textColor="@color/black"
                                 android:textSize="24sp" />
 
                         </LinearLayout>
@@ -259,7 +260,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp">
+                    android:layout_height="150dp">
 
                     <Button
                         android:id="@+id/back"
