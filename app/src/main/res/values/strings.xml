@@ -37,4 +37,5 @@
     <string name="order_pay_2">16,000원</string>
     <string name="order_pay_3">8,000원</string>
     <string name="review">리뷰 조회</string>
+    <string name="rating">평균 평점 4.5</string>
 </resources>
