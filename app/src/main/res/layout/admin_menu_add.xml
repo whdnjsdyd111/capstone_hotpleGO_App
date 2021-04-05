@@ -8,29 +8,38 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="40dp"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/title_menu_add"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="메뉴추가"
+            android:textAlignment="center"
+            android:textColor="#000"
+            android:textSize="24sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="85dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="84dp">
+            android:layout_height="wrap_content">
 
             <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/menu_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="32dp"
-                android:layout_marginRight="32dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.95"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/add_icon" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
@@ -46,7 +55,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="262dp"
+                android:layout_height="250dp"
                 android:orientation="vertical">
 
                 <View
@@ -57,25 +66,25 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="269dp">
+                    android:layout_height="250dp">
 
                     <EditText
-                        android:id="@+id/price_newmenu"
+                        android:id="@+id/price_new_menu"
                         android:layout_width="145dp"
                         android:layout_height="55dp"
                         android:layout_marginStart="44dp"
                         android:layout_marginLeft="44dp"
                         android:ems="10"
                         android:inputType="number"
-                        android:text="18,000원"
+                        android:text="18,000"
                         android:textSize="30sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.579" />
+                        app:layout_constraintVertical_bias="0.656" />
 
                     <TextView
-                        android:id="@+id/name_newmenu"
+                        android:id="@+id/name_new_menu"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -88,7 +97,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageButton
-                        android:id="@+id/close"
+                        android:id="@+id/del_menu"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
@@ -107,7 +116,6 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.548"
                         app:srcCompat="@drawable/no_image" />
 
                     <Button
@@ -116,9 +124,12 @@
                         android:layout_height="45dp"
                         android:layout_marginEnd="28dp"
                         android:layout_marginRight="28dp"
+                        android:backgroundTint="#d8a2c7"
                         android:text="이미지 수정"
+                        android:textColor="#000"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/imageView9"
                         app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -127,7 +138,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="268dp"
+                android:layout_height="250dp"
                 android:orientation="vertical">
 
                 <View
@@ -138,25 +149,25 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="269dp">
+                    android:layout_height="250dp">
 
                     <EditText
-                        android:id="@+id/price_newmenu1"
+                        android:id="@+id/price_new_menu1"
                         android:layout_width="140dp"
                         android:layout_height="55dp"
                         android:layout_marginStart="44dp"
                         android:layout_marginLeft="44dp"
                         android:ems="10"
                         android:inputType="number"
-                        android:text="18,000원"
+                        android:text="18,000"
                         android:textSize="30sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.598" />
+                        app:layout_constraintVertical_bias="0.656" />
 
                     <TextView
-                        android:id="@+id/name_newmenu1"
+                        android:id="@+id/name_new_menu1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -169,7 +180,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageButton
-                        android:id="@+id/close1"
+                        android:id="@+id/del_menu1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
@@ -188,7 +199,6 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.395"
                         app:srcCompat="@drawable/no_image" />
 
                     <Button
@@ -197,9 +207,12 @@
                         android:layout_height="45dp"
                         android:layout_marginEnd="28dp"
                         android:layout_marginRight="28dp"
+                        android:backgroundTint="#d8a2c7"
                         android:text="이미지 수정"
+                        android:textColor="#000"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/imageView10"
                         app:layout_constraintTop_toBottomOf="@+id/imageView10"
                         app:layout_constraintVertical_bias="0.269" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -208,7 +221,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="270dp"
+                android:layout_height="250dp"
                 android:orientation="vertical">
 
                 <View
@@ -219,25 +232,25 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="269dp">
+                    android:layout_height="250dp">
 
                     <EditText
-                        android:id="@+id/price_newmenu2"
+                        android:id="@+id/price_new_menu2"
                         android:layout_width="140dp"
                         android:layout_height="55dp"
                         android:layout_marginStart="44dp"
                         android:layout_marginLeft="44dp"
                         android:ems="10"
                         android:inputType="number"
-                        android:text="18,000원"
+                        android:text="18,000"
                         android:textSize="30sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.688" />
+                        app:layout_constraintVertical_bias="0.656" />
 
                     <TextView
-                        android:id="@+id/name_newmenu2"
+                        android:id="@+id/name_new_menu2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -250,7 +263,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageButton
-                        android:id="@+id/close2"
+                        android:id="@+id/del_menu2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
@@ -277,9 +290,12 @@
                         android:layout_height="45dp"
                         android:layout_marginEnd="28dp"
                         android:layout_marginRight="28dp"
+                        android:backgroundTint="#d8a2c7"
                         android:text="이미지 수정"
+                        android:textColor="#000"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/imageView11"
                         app:layout_constraintTop_toBottomOf="@+id/imageView11" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
