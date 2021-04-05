@@ -34,7 +34,7 @@
         android:textColor="#F6EBEB"
         android:shadowColor="#C19B9B"
         android:inputType="textEmailAddress"
-        android:hint="@string/hint_et_email"/>
+        android:hint="email"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -49,7 +49,7 @@
         android:id="@+id/etPassword"
         android:textSize="@dimen/text_medium"
         android:inputType="textPassword"
-        android:hint="@string/hint_et_pass"/>
+        android:hint="pass"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -58,7 +58,7 @@
         android:layout_width="wrap_content"
         android:id="@+id/checkboxRemember"
         android:textColor="@color/black"
-        android:text="@string/checkbox_remember"
+        android:text="Remember me"
         android:layout_gravity="center_horizontal"/>
 
         <Button
@@ -68,12 +68,12 @@
             android:layout_marginTop="2dp"
             android:layout_marginBottom="6dp"
             android:background="@drawable/login_btn2"
-            android:text="@string/btn_login"
+            android:text="Login"
             android:textColor="#7C7B7B"
             android:textColorHighlight="#FFFFFF"
             android:textColorLink="#FFFFFF"
             android:textSize="@dimen/text_medium"
-            app:backgroundTint="@color/colorPrimary"
+
             app:iconTint="#FFFFFF"
             app:rippleColor="#FFFCFC" />
 
@@ -82,7 +82,7 @@
         android:layout_width="wrap_content"
         android:id="@+id/tvRestore"
         android:textSize="@dimen/text_small"
-        android:text="@string/tv_restore"
+        android:text="forgot password?"
         android:layout_gravity="center_horizontal"
         android:textStyle="bold"
         android:linksClickable="false"
@@ -103,7 +103,7 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:id="@+id/btnFacebook"
-        android:text="@string/btn_facebook"
+        android:text="facebook"
         app:backgroundTint="#3F51B5"
         android:background="#BDCBEA"
         android:layout_marginBottom="8dp"/>
@@ -112,7 +112,7 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:id="@+id/btnGoogle"
-        android:text="@string/btn_google"
+        android:text="google"
         app:backgroundTint="#F44336"
         android:background="#dd4b39"/>
 
@@ -121,7 +121,7 @@
         android:layout_width="match_parent"
         android:layout_marginTop="8dp"
         android:id="@+id/btnNaver"
-        android:text="@string/btn_naver"
+        android:text="naver"
         app:backgroundTint="#7CCF32"
         android:background="#7CCF32"/>
 
@@ -131,7 +131,7 @@
         android:layout_marginTop="8dp"
         android:id="@+id/btnKakao"
         android:textColor="#FFFFFF"
-        android:text="@string/btn_kakao"
+        android:text="kakao"
         app:backgroundTint="#F7E600"
         android:background="#F7E600"/>
 
@@ -143,7 +143,7 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/tvRegister"
         android:textSize="@dimen/text_small"
-        android:text="@string/tv_register"
+        android:text="회원가입"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="26dp"
         android:textStyle="bold"
