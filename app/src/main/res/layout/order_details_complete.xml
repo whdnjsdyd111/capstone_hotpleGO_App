@@ -29,7 +29,7 @@
             android:text="@string/New"
             android:textColor="@color/black"
             android:textSize="24sp"
-            app:backgroundTint="#fff" />
+            app:backgroundTint="@drawable/custombutton" />
 
         <Button
             android:id="@+id/button14"
@@ -38,8 +38,7 @@
             android:layout_weight="1"
             android:text="@string/complete"
             android:textColor="@color/black"
-            android:textSize="24sp"
-            app:backgroundTint="#d8a2c7" />
+            android:textSize="24sp" />
 
     </LinearLayout>
 
@@ -49,7 +48,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
@@ -58,7 +57,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_margin="16dp"
-                app:cardCornerRadius="20dp"
+                app:cardCornerRadius="10dp"
                 app:cardElevation="8dp">
 
                 <LinearLayout
@@ -134,7 +133,7 @@
                     android:text="Back"
                     android:textColor="#000"
                     android:textSize="30sp"
-                    app:backgroundTint="#FFFFFF"
+                    app:backgroundTint="@drawable/custombutton"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.497"

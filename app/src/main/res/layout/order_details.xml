@@ -33,8 +33,7 @@
                 android:layout_weight="1"
                 android:text="@string/New"
                 android:textColor="@color/black"
-                android:textSize="24sp"
-                app:backgroundTint="#d8a2c7" />
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/button14"
@@ -44,7 +43,7 @@
                 android:text="@string/complete"
                 android:textColor="@color/black"
                 android:textSize="24sp"
-                app:backgroundTint="#fff" />
+                app:backgroundTint="@drawable/custombutton" />
 
         </LinearLayout>
 
@@ -143,7 +142,7 @@
                         android:text="Back"
                         android:textColor="@color/black"
                         android:textSize="30sp"
-                        app:backgroundTint="@color/white"
+                        app:backgroundTint="@drawable/custombutton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

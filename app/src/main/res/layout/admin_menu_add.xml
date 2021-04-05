@@ -125,7 +125,7 @@
                             android:layout_height="45dp"
                             android:layout_marginEnd="28dp"
                             android:layout_marginRight="28dp"
-                            android:backgroundTint="#d8a2c7"
+                            app:backgroundTint="@drawable/custombutton"
                             android:text="이미지 수정"
                             android:textColor="#000"
                             app:layout_constraintBottom_toBottomOf="parent"
