@@ -32,10 +32,4 @@
     <string name="order_pay">27,000원</string>
     <string name="review">리뷰 조회</string>
     <string name="rating">평균 평점 4.5</string>
-    <string name="title_activity_main">핫플GO</string>
-    <string name="title_home">title_home</string>
-    <string name="title_dashboard">title_dashboard</string>
-    <string name="title_notifications">title_notifications</string>
-    <string name="title_search">title_search</string>
-    <string name="title_MyPage">title_myPage</string>
 </resources>
