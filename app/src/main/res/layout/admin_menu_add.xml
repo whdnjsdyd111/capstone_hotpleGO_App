@@ -15,7 +15,6 @@
             android:id="@+id/title_menu_add"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_gravity="center_horizontal|center_vertical"
             android:text="메뉴추가"
             android:textAlignment="center"
             android:textColor="#000"
@@ -53,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            app:cardCornerRadius="10dp"
+            app:cardCornerRadius="20dp"
             app:cardElevation="8dp">
 
             <LinearLayout
@@ -72,7 +71,7 @@
 
                         <EditText
                             android:id="@+id/price_new_menu"
-                            android:layout_width="100dp"
+                            android:layout_width="145dp"
                             android:layout_height="55dp"
                             android:layout_marginStart="44dp"
                             android:layout_marginLeft="44dp"
@@ -122,17 +121,17 @@
 
                         <Button
                             android:id="@+id/image_edit"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="48dp"
-                            android:layout_marginRight="48dp"
+                            android:layout_width="130dp"
+                            android:layout_height="45dp"
+                            android:layout_marginEnd="28dp"
+                            android:layout_marginRight="28dp"
+                            app:backgroundTint="@drawable/custombutton"
                             android:text="이미지 수정"
                             android:textColor="#000"
-                            app:backgroundTint="@drawable/custombutton"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/imageView9"
-                            app:layout_constraintVertical_bias="0.441" />
+                            app:layout_constraintStart_toStartOf="@+id/imageView9"
+                            app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
