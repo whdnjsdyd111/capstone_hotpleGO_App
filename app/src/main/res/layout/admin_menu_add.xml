@@ -48,261 +48,98 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_margin="10dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <View
-                    android:id="@+id/view"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="2px"
-                    android:background="#c8c8c8" />
+                    android:layout_height="250dp"
+                    android:orientation="vertical">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="250dp">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp">
 
-                    <EditText
-                        android:id="@+id/price_new_menu"
-                        android:layout_width="145dp"
-                        android:layout_height="55dp"
-                        android:layout_marginStart="44dp"
-                        android:layout_marginLeft="44dp"
-                        android:ems="10"
-                        android:inputType="number"
-                        android:text="18,000"
-                        android:textSize="30sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.656" />
+                        <EditText
+                            android:id="@+id/price_new_menu"
+                            android:layout_width="145dp"
+                            android:layout_height="55dp"
+                            android:layout_marginStart="44dp"
+                            android:layout_marginLeft="44dp"
+                            android:ems="10"
+                            android:inputType="number"
+                            android:text="18,000"
+                            android:textSize="30sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.656" />
 
-                    <TextView
-                        android:id="@+id/name_new_menu"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="88dp"
-                        android:text="후라이드 치킨"
-                        android:textColor="#000"
-                        android:textSize="30sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:id="@+id/name_new_menu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="88dp"
+                            android:text="후라이드 치킨"
+                            android:textColor="#000"
+                            android:textSize="30sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                    <ImageButton
-                        android:id="@+id/del_menu"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginRight="16dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/close_icon" />
+                        <ImageButton
+                            android:id="@+id/del_menu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/close_icon" />
 
-                    <ImageView
-                        android:id="@+id/imageView9"
-                        android:layout_width="130dp"
-                        android:layout_height="85dp"
-                        android:layout_marginEnd="28dp"
-                        android:layout_marginRight="28dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/no_image" />
+                        <ImageView
+                            android:id="@+id/imageView9"
+                            android:layout_width="130dp"
+                            android:layout_height="85dp"
+                            android:layout_marginEnd="28dp"
+                            android:layout_marginRight="28dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/no_image" />
 
-                    <Button
-                        android:id="@+id/image_edit"
-                        android:layout_width="130dp"
-                        android:layout_height="45dp"
-                        android:layout_marginEnd="28dp"
-                        android:layout_marginRight="28dp"
-                        android:backgroundTint="#d8a2c7"
-                        android:text="이미지 수정"
-                        android:textColor="#000"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/imageView9"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+                        <Button
+                            android:id="@+id/image_edit"
+                            android:layout_width="130dp"
+                            android:layout_height="45dp"
+                            android:layout_marginEnd="28dp"
+                            android:layout_marginRight="28dp"
+                            android:backgroundTint="#d8a2c7"
+                            android:text="이미지 수정"
+                            android:textColor="#000"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/imageView9"
+                            app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:orientation="vertical">
-
-                <View
-                    android:id="@+id/view3"
-                    android:layout_width="match_parent"
-                    android:layout_height="2px"
-                    android:background="#c8c8c8" />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="250dp">
-
-                    <EditText
-                        android:id="@+id/price_new_menu1"
-                        android:layout_width="140dp"
-                        android:layout_height="55dp"
-                        android:layout_marginStart="44dp"
-                        android:layout_marginLeft="44dp"
-                        android:ems="10"
-                        android:inputType="number"
-                        android:text="18,000"
-                        android:textSize="30sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.656" />
-
-                    <TextView
-                        android:id="@+id/name_new_menu1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="88dp"
-                        android:text="양념 치킨"
-                        android:textColor="#000"
-                        android:textSize="30sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageButton
-                        android:id="@+id/del_menu1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginRight="16dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/close_icon" />
-
-                    <ImageView
-                        android:id="@+id/imageView10"
-                        android:layout_width="130dp"
-                        android:layout_height="85dp"
-                        android:layout_marginEnd="28dp"
-                        android:layout_marginRight="28dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/no_image" />
-
-                    <Button
-                        android:id="@+id/image_edit1"
-                        android:layout_width="130dp"
-                        android:layout_height="45dp"
-                        android:layout_marginEnd="28dp"
-                        android:layout_marginRight="28dp"
-                        android:backgroundTint="#d8a2c7"
-                        android:text="이미지 수정"
-                        android:textColor="#000"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/imageView10"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView10"
-                        app:layout_constraintVertical_bias="0.269" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:orientation="vertical">
-
-                <View
-                    android:id="@+id/view6"
-                    android:layout_width="match_parent"
-                    android:layout_height="2px"
-                    android:background="#c8c8c8" />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="250dp">
-
-                    <EditText
-                        android:id="@+id/price_new_menu2"
-                        android:layout_width="140dp"
-                        android:layout_height="55dp"
-                        android:layout_marginStart="44dp"
-                        android:layout_marginLeft="44dp"
-                        android:ems="10"
-                        android:inputType="number"
-                        android:text="18,000"
-                        android:textSize="30sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.656" />
-
-                    <TextView
-                        android:id="@+id/name_new_menu2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="88dp"
-                        android:text="반반 치킨"
-                        android:textColor="#000"
-                        android:textSize="30sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageButton
-                        android:id="@+id/del_menu2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginRight="16dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/close_icon" />
-
-                    <ImageView
-                        android:id="@+id/imageView11"
-                        android:layout_width="130dp"
-                        android:layout_height="85dp"
-                        android:layout_marginEnd="28dp"
-                        android:layout_marginRight="28dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/no_image" />
-
-                    <Button
-                        android:id="@+id/image_edit2"
-                        android:layout_width="130dp"
-                        android:layout_height="45dp"
-                        android:layout_marginEnd="28dp"
-                        android:layout_marginRight="28dp"
-                        android:backgroundTint="#d8a2c7"
-                        android:text="이미지 수정"
-                        android:textColor="#000"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/imageView11"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView11" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
+        </androidx.cardview.widget.CardView>
     </ScrollView>
 
 </LinearLayout>
