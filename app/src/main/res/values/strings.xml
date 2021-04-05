@@ -24,4 +24,12 @@
     <string name="month_avg">월 평균: </string>
     <string name="best_sales">최고 매출액: </string>
     <string name="worst_sales">최저 매출액:</string>
+    <string name="order_details">주문내역</string>
+    <string name="New">신규처리중</string>
+    <string name="complete">완료</string>
+    <string name="order_time">20:30</string>
+    <string name="order_menu">육회비빔밥 2개 외 1개</string>
+    <string name="order_pay">27,000원</string>
+    <string name="review">리뷰 조회</string>
+    <string name="rating">평균 평점 4.5</string>
 </resources>
