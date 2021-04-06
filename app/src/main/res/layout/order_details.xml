@@ -96,7 +96,7 @@
                                     android:id="@+id/order_name"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/order_menu"
+                                    android:text="@string/order_me"
                                     android:textColor="@color/black"
                                     android:textSize="24sp" />
 

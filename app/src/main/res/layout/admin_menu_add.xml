@@ -70,7 +70,7 @@
                         android:layout_height="250dp">
 
                         <EditText
-                            android:id="@+id/price_new_menu"
+                            android:id="@+id/price_new_me"
                             android:layout_width="145dp"
                             android:layout_height="55dp"
                             android:layout_marginStart="44dp"
@@ -85,7 +85,7 @@
                             app:layout_constraintVertical_bias="0.656" />
 
                         <TextView
-                            android:id="@+id/name_new_menu"
+                            android:id="@+id/name_new_me"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
@@ -98,7 +98,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageButton
-                            android:id="@+id/del_menu"
+                            android:id="@+id/del_me"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"

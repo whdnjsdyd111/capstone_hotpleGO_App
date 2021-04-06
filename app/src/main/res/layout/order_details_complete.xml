@@ -88,7 +88,7 @@
                                 android:id="@+id/order_name"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/order_menu"
+                                android:text="@string/order_me"
                                 android:textColor="@color/black"
                                 android:textSize="24sp" />
 
@@ -112,7 +112,7 @@
 
                         <ImageView
                             android:id="@+id/imageView6"
-                            android:layout_width="120dp"
+                            android:layout_width="144dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             app:srcCompat="@android:drawable/ic_notification_clear_all" />

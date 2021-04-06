@@ -86,7 +86,6 @@
                                 android:id="@+id/board_users"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:text="@string/board_user"
                                 android:textSize="15sp" />
 
                             <RatingBar
@@ -107,7 +106,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:text="@string/board_cos_name"
                             android:textSize="20sp" />
 
                         <ImageView
