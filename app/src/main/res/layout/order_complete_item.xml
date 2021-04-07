@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="10dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp">
+
+        <ImageView
+            android:id="@+id/order_complete_image"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/order_info_name"
+            android:text="@string/order_menu"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@id/order_complete_image"
+            android:layout_toEndOf="@id/order_complete_image"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/order_info_arriveTime"
+            android:text="21:10"
+            android:textSize="22sp"
+            android:textColor="@color/black"
+            android:layout_toRightOf="@id/order_complete_image"
+            android:layout_toEndOf="@id/order_complete_image"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/order_info_name" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/review"
+            android:text="리뷰 조회"
+            android:textSize="22sp"
+            android:textColor="@color/black"
+            android:layout_toRightOf="@id/order_complete_image"
+            android:layout_toEndOf="@id/order_complete_image"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/order_info_arriveTime" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/avg_rating"
+            android:text="평균평점 4.5"
+            android:textSize="22sp"
+            android:textColor="@color/black"
+            android:layout_toRightOf="@id/order_complete_image"
+            android:layout_toEndOf="@id/order_complete_image"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/review" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
