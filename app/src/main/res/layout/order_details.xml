@@ -58,7 +58,7 @@
         android:scrollbarSize="5dp"
         android:scrollbarThumbVertical="@android:color/darker_gray"
         android:scrollbars="vertical"
-        tools:listitem="@layout/order_item_list" />
+        tools:listitem="@layout/order_details_item" />
 
     <Button
         android:id="@+id/back"

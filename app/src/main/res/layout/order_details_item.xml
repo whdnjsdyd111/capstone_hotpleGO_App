@@ -15,18 +15,19 @@
 
         <ImageView
             android:id="@+id/order_image"
-            android:layout_width="85dp"
-            android:layout_height="85dp"
-            android:src="@mipmap/ic_launcher" />
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_marginTop="15dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/order_info_name"
-            android:text="@string/order_menu"
+            android:text="육회비빔밥 2개 외 1개"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:layout_toRightOf="@id/order_image"
             android:layout_toEndOf="@id/order_image"
             android:layout_marginLeft="10dp"
@@ -37,7 +38,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/order_info_pay"
             android:text="27,000원"
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:textColor="@color/black"
             android:layout_toRightOf="@id/order_image"
             android:layout_toEndOf="@id/order_image"
@@ -50,7 +51,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/order_info_time"
             android:text="20:30"
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:textColor="@color/black"
             android:layout_toRightOf="@id/order_image"
             android:layout_toEndOf="@id/order_image"
@@ -63,7 +64,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/order_info_arrive"
             android:text="예상도착시간 40분"
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:textColor="@color/black"
             android:layout_toRightOf="@id/order_image"
             android:layout_toEndOf="@id/order_image"

@@ -43,6 +43,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/order_complete_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -51,5 +52,15 @@
         android:scrollbarThumbVertical="@android:color/darker_gray"
         android:scrollbars="vertical"
         tools:listitem="@layout/order_complete_item" />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="150dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:text="Back"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:backgroundTint="@drawable/custombutton" />
 
 </LinearLayout>
