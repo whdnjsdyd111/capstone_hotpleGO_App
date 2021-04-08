@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.hotplego">
 
     <application
@@ -19,6 +20,20 @@
 
         <activity android:name=".MainActivityLogin"
             android:parentActivityName=".MainActivity"/>
+
+        <activity android:name=".MainActivitySign"
+            android:parentActivityName=".MainActivity"/>
+
+        <activity android:name=".MainActivitySearch"
+            android:parentActivityName=".MainActivity" />
+
+        <activity android:name=".SelectRegister"
+            android:parentActivityName=".MainActivity" />
+
+        <activity android:name=".MainActivitySignMg"
+            android:parentActivityName=".MainActivity" />
+
+
 
     </application>
 

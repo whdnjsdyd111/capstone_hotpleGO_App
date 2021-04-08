@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="70dp"
-    tools:context="com.example.maple.kaka.SelectRegister">
+    tools:context="com.example.hotplego.SelectRegister">
 
     <LinearLayout
         android:layout_width="match_parent"
