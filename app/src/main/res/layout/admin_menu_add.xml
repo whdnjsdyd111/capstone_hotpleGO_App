@@ -43,6 +43,11 @@
                 app:srcCompat="@drawable/add_icon" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
+    <view
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/customborder"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/admin_item_list"
@@ -53,6 +58,7 @@
         android:scrollbarSize="5dp"
         android:scrollbarThumbVertical="@android:color/darker_gray"
         android:scrollbars="vertical"
+        android:background="#7DFF00"
         tools:listitem="@layout/admin_item_add" />
 
 </LinearLayout>
