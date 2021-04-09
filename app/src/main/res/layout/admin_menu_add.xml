@@ -59,6 +59,6 @@
         android:scrollbarThumbVertical="@android:color/darker_gray"
         android:scrollbars="vertical"
         android:background="#7DFF00"
-        tools:listitem="@layout/admin_item" />
+        tools:listitem="@layout/admin_item_add" />
 
 </LinearLayout>

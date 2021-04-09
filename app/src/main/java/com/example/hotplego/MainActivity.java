@@ -21,11 +21,11 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.admin_item_list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        menuAdapter = new MenuAdapter(this, geteMenuList());
+        menuAdapter = new MenuAdapter(this, getMenuList());
         mRecyclerView.setAdapter(menuAdapter);
     }
 
-    private ArrayList<Menu> geteMenuList() {
+    private ArrayList<Menu> getMenuList() {
 
         ArrayList<Menu> menus = new ArrayList<>();
 

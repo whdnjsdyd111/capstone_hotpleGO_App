@@ -30,7 +30,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuHolder> {
     public void onBindViewHolder(@NonNull MenuHolder menuholder, int i) {
         menuholder.me_name.setText(menus.get(i).getTitle());
         menuholder.me_price.setText(menus.get(i).getPrice());
-        menuholder.me_image.setImageResource(menus.get(i).getImg());
+        menuholder.me_img.setImageResource(menus.get(i).getImg());
     }
 
     @Override
