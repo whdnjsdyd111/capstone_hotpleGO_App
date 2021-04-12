@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,30 +12,31 @@ import java.util.ArrayList;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuHolder> {
 
-    Context context;
-    ArrayList<Menu> menus;
+    Context c;
+    ArrayList<Model> models;
 
-    public MenuAdapter(Context context, ArrayList<Menu> menus) {
-        this.context = context;
-        this.menus = menus;
+    public MenuAdapter(Context c, ArrayList<Model> models) {
+        this.c = c;
+        this.models = models;
     }
 
     @NonNull
     @Override
-    public MenuHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.admin_menu_add,null);
+    public MenuHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.admin_item_add, null);
         return new MenuHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MenuHolder menuholder, int i) {
-        menuholder.me_name.setText(menus.get(i).getTitle());
-        menuholder.me_price.setText(menus.get(i).getPrice());
-        menuholder.me_img.setImageResource(menus.get(i).getImg());
+        menuholder.title.setText(models.get(i).getTitle());
+        menuholder.price.setText(models.get(i).getPrice());
+        menuholder.imgView.setImageResource(models.get(i).getImg());
     }
 
     @Override
     public int getItemCount() {
-        return menus.size();
+        return 0;
     }
 }

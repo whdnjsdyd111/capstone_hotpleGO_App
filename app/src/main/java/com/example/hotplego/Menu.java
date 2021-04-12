@@ -1,30 +1,58 @@
 package com.example.hotplego;
 
-public class Menu {
-    private String title;
-    private int price, img;
+import android.os.Bundle;
 
-    public String getTitle() {
-        return title;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+
+public class Menu extends AppCompatActivity {
+
+    RecyclerView recyclerView;
+    MenuAdapter menuAdapter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.admin_menu_add);
+
+        recyclerView = findViewById(R.id.admin_item_list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        menuAdapter = new MenuAdapter(this, getMenuList());
+        recyclerView.setAdapter(menuAdapter);
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    private ArrayList<Model> getMenuList() {
 
-    public int getPrice() {
-        return price;
-    }
+        ArrayList<Model> models = new ArrayList<>();
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
+        Model m = new Model();
+        m.setTitle("후라이드 치킨");
+        m.setPrice(27000);
+        m.setImg(R.drawable.no_image);
+        models.add(m);
 
-    public int getImg() {
-        return img;
-    }
+        m = new Model();
+        m.setTitle("간장 치킨");
+        m.setPrice(27000);
+        m.setImg(R.drawable.no_image);
+        models.add(m);
 
-    public void setImg(int img) {
-        this.img = img;
+        m = new Model();
+        m.setTitle("양념 치킨");
+        m.setPrice(27000);
+        m.setImg(R.drawable.no_image);
+        models.add(m);
+
+        m = new Model();
+        m.setTitle("반반 치킨");
+        m.setPrice(27000);
+        m.setImg(R.drawable.no_image);
+        models.add(m);
+
+        return models;
     }
 }
