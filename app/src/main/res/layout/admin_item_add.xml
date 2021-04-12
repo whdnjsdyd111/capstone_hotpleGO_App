@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="15dp"
     app:cardElevation="5dp"
     app:cardUseCompatPadding="true">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="15dp">
@@ -17,51 +17,69 @@
             android:id="@+id/image_icon"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/name_new_menu"
-            android:text="후라이드 치킨"
-            android:textSize="24sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_toRightOf="@id/image_icon"
-            android:layout_toEndOf="@id/image_icon"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp" />
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/price_new_menu"
-            android:text="27,000원"
-            android:textSize="22sp"
-            android:textColor="@color/black"
-            android:layout_toRightOf="@id/image_icon"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="12dp"
             android:layout_toEndOf="@id/image_icon"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/name_new_menu" />
+            android:layout_toRightOf="@id/image_icon"
+            android:text="후라이드 치킨"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/image_icon"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
+            android:id="@+id/price_new_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name_new_menu"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/image_icon"
+            android:layout_toRightOf="@id/image_icon"
+            android:text="27,000원"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            app:layout_constraintStart_toEndOf="@+id/image_icon"
+            app:layout_constraintTop_toBottomOf="@+id/name_new_menu" />
+
+        <TextView
+            android:id="@+id/menu_cnt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/menu_cnt"
-            android:text="메뉴 소개글"
-            android:layout_toRightOf="@id/image_icon"
+            android:layout_below="@id/price_new_menu"
+            android:layout_marginTop="40dp"
             android:layout_toEndOf="@id/image_icon"
-            android:layout_marginLeft="10dp"
-            android:textSize="18sp"
+            android:layout_toRightOf="@id/image_icon"
+            android:text="메뉴 소개글"
             android:textColor="@color/black"
-            android:layout_below="@id/price_new_menu" />
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@+id/price_new_menu"
+            tools:layout_editor_absoluteX="16dp" />
 
         <ImageButton
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_alignParentRight="true"
-            android:src="@drawable/ic_delete" />
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginRight="2dp"
+            android:src="@drawable/ic_delete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
