@@ -18,8 +18,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Menu"
-            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".Order_list"
+            android:parentActivityName=".MainActivity" />
+
     </application>
 
 </manifest>
