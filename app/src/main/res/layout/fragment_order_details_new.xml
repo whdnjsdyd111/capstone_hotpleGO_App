@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Order_details_Complete">
+    tools:context=".Order_details_New">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/order_details_com"
+        android:id="@+id/order_details_new"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#7DFF00"
-        tools:listitem="@layout/fragment_order_details_complete_item" />
+        tools:listitem="@layout/fragment_order_details_new_item" />
 </LinearLayout>
