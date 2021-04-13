@@ -1,58 +1,46 @@
 package com.example.hotplego;
 
-import android.os.Bundle;
+public class Menu {
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+    private String title, price, cnt;
+    private int img;
 
-import java.util.ArrayList;
-
-public class Menu extends AppCompatActivity {
-
-    RecyclerView recyclerView;
-    MenuAdapter menuAdapter;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.admin_menu_add);
-
-        recyclerView = findViewById(R.id.admin_item_list);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        menuAdapter = new MenuAdapter(this, getMenuList());
-        recyclerView.setAdapter(menuAdapter);
+    public Menu (String title, String price, String cnt, int img) {
+        this.title = title;
+        this.price = price;
+        this.cnt = cnt;
+        this.img  = img;
     }
 
-    private ArrayList<Model> getMenuList() {
+    public String getTitle() {
+        return title;
+    }
 
-        ArrayList<Model> models = new ArrayList<>();
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-        Model m = new Model();
-        m.setTitle("후라이드 치킨");
-        m.setPrice(27000);
-        m.setImg(R.drawable.no_image);
-        models.add(m);
+    public String getPrice() {
+        return price;
+    }
 
-        m = new Model();
-        m.setTitle("간장 치킨");
-        m.setPrice(27000);
-        m.setImg(R.drawable.no_image);
-        models.add(m);
+    public void setPrice(String price) {
+        this.price = price;
+    }
 
-        m = new Model();
-        m.setTitle("양념 치킨");
-        m.setPrice(27000);
-        m.setImg(R.drawable.no_image);
-        models.add(m);
+    public String getCnt() {
+        return cnt;
+    }
 
-        m = new Model();
-        m.setTitle("반반 치킨");
-        m.setPrice(27000);
-        m.setImg(R.drawable.no_image);
-        models.add(m);
+    public void setCnt(String cnt) {
+        this.cnt = cnt;
+    }
 
-        return models;
+    public int getImg() {
+        return img;
+    }
+
+    public void setImg(int img) {
+        this.img = img;
     }
 }

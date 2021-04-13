@@ -60,16 +60,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/price_new_menu"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="25dp"
             android:layout_toEndOf="@id/image_icon"
             android:layout_toRightOf="@id/image_icon"
-            android:text="메뉴 소개글"
+            android:text="메뉴 소개글이 없습니다"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintTop_toBottomOf="@+id/price_new_menu"
             tools:layout_editor_absoluteX="16dp" />
 
         <ImageButton
+            android:id="@+id/delete"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_alignParentRight="true"
