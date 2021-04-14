@@ -23,7 +23,7 @@
             android:layout_weight="0.03"
             android:autoSizeMaxTextSize="24dp"
             android:autoSizeMinTextSize="14dp"
-            android:backgroundTint="@color/colorPrimary"
+
             android:fontFamily="sans-serif"
             android:text="일반사용자"
             android:textColor="@android:color/white"
@@ -40,7 +40,7 @@
             android:layout_marginTop="50dp"
             android:autoSizeMaxTextSize="24dp"
             android:autoSizeMinTextSize="14dp"
-            android:backgroundTint="@color/colorPrimary"
+
             android:text="사업자"
             android:textColor="@android:color/white"
             android:textSize="24sp"
