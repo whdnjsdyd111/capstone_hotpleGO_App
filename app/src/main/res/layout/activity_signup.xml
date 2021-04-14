@@ -167,16 +167,38 @@
             android:layout_weight="180"
             android:weightSum="1400">
 
-            <Spinner
-                android:id="@+id/spinner"
-                android:prompt="@string/spinner_prompt"
-                android:background="@drawable/signup_edit"
-                android:layout_width="0dp"
-                android:layout_height="35dp"
-                android:layout_weight="1260"
-                android:textSize="15dp">
+            <RadioGroup
+                android:id="@+id/gendor_select"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
 
-            </Spinner>
+                <RadioButton
+                    android:id="@+id/male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_weight="1.02"
+                    android:checked="false"
+                    android:hint="남"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/fmale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.02"
+                    android:layout_marginLeft="80dp"
+                    android:checked="false"
+                    android:hint="여"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+            </RadioGroup>
 
         </LinearLayout>
 
