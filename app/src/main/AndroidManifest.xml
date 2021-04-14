@@ -21,6 +21,10 @@
         <activity android:name=".MenuActivity"
             android:parentActivityName=".MainActivity"/>
 
+        <activity android:name=".MenuAdd"
+            android:windowSoftInputMode="adjustResize"
+            android:parentActivityName=".MainActivity" />
+
     </application>
 
 </manifest>

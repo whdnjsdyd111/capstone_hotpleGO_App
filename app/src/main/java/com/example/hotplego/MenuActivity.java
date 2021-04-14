@@ -1,12 +1,17 @@
 package com.example.hotplego;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MenuActivity extends AppCompatActivity {
+
+    Button add_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,5 +32,14 @@ public class MenuActivity extends AppCompatActivity {
         adapter.addItem(new Menu("순살 치킨", "27000원", "순살 치킨", R.drawable.no_image));
 
         recyclerView.setAdapter(adapter);
+
+        add_btn = (Button)findViewById(R.id.menu_add_btn);
+        add_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MenuAdd.class);
+                startActivity(intent);
+            }
+        });
     }
 }

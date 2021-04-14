@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sv_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="20dp">
+
+        <ImageView
+            android:id="@+id/new_menu_img"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            android:layout_marginTop="50dp"
+            app:srcCompat="@drawable/no_image" />
+
+        <EditText
+            android:id="@+id/new_menu_name"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint = "#00DE7A"
+            android:gravity="center"
+            android:hint="메뉴명"
+            android:inputType="text"
+            android:lines="1"
+            android:textSize="24sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp" />
+
+        <LinearLayout
+            android:layout_width="275dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp">
+
+            <EditText
+                android:id="@+id/new_menu_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint = "#00DE7A"
+                android:gravity="right"
+                android:hint="가격(단위: 원)"
+                android:inputType="number"
+                android:lines="1"
+                android:maxLength="7"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:lines="1"
+                android:text="원"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/new_menu_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="등록하기"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            />
+    </LinearLayout>
+</ScrollView>
