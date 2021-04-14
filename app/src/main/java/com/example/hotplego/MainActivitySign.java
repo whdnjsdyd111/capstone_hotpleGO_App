@@ -16,12 +16,12 @@ import java.util.regex.Pattern;
 
 
 public class MainActivitySign extends Activity implements View.OnClickListener{
-    SQLiteDatabase database;
+
     EditText id, pw, pwConfirm, birth, name, phoneNum;
     String tid, tpw, tpwConfirm, tname, tbirth, tgender, tphoneNum;
     CheckBox inform_check;
     Intent intent;
-    Cursor cursor;
+
 
     boolean pwCheck, idCheck, phoneNumCheck;
 
@@ -39,15 +39,11 @@ public class MainActivitySign extends Activity implements View.OnClickListener{
         name = (EditText) findViewById(R.id.InputName);
         birth = (EditText) findViewById(R.id.InputBirth);
         phoneNum = (EditText) findViewById(R.id.PhoneNumber);
-        inform_check = (CheckBox) findViewById(R.id.inform_check); // 이용약관 및 정보 동의
-        inform_check.setOnClickListener(this);
+
 
         Button joinBtn = (Button) findViewById(R.id.Joinbtn); // 회원가입
-        Button watchBtn1 = (Button) findViewById(R.id.watch_btn1); // 이용약관 보기
-        Button watchBtn2 = (Button) findViewById(R.id.watch_btn2); // 개인정보제공 보기
+
         joinBtn.setOnClickListener(this);
-        watchBtn1.setOnClickListener(this);
-        watchBtn2.setOnClickListener(this);
 
 
 
