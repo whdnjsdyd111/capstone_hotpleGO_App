@@ -2,10 +2,10 @@ package com.example.hotplego;
 
 public class MenuData {
 
-    private String title, cnt;
-    private int img, price;
+    private String title, cnt, price;
+    private int img;
 
-    public MenuData(String title, int price, String cnt, int img) {
+    public MenuData(String title, String price, String cnt, int img) {
         this.title = title; //메뉴명
         this.price = price; //메뉴 가격
         this.cnt = cnt; //메뉴 소개
@@ -20,11 +20,11 @@ public class MenuData {
         this.title = title;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
