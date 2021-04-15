@@ -50,7 +50,7 @@
                 android:hint="메뉴명"
                 android:inputType="text"
                 android:maxLength="10"
-                android:maxLines="1"
+                android:lines="1"
                 android:textSize="20sp" />
         </RelativeLayout>
 
@@ -90,7 +90,7 @@
                 android:background="@null"
                 android:hint="가격(단위: 원)"
                 android:inputType="number"
-                android:maxlines="1"
+                android:lines="1"
                 android:maxLength="7"
                 android:textSize="20sp" />
 
@@ -133,7 +133,7 @@
                 android:background="@null"
                 android:hint="메뉴 소개"
                 android:inputType="text"
-                android:maxlines="1"
+                android:lines="1"
                 android:maxLength="100"
                 android:textSize="20sp" />
         </RelativeLayout>
