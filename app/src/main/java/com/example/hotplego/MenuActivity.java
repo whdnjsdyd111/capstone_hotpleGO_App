@@ -24,11 +24,11 @@ public class MenuActivity extends AppCompatActivity {
 
         MenuAdapter adapter = new MenuAdapter();
 
-        adapter.addItem(new MenuData("후라이드 치킨", "27000원", "후라이드 치킨 27000원", R.drawable.preview_sample_chicken01));
-        adapter.addItem(new MenuData("양념 치킨", "27000원", "양념 치킨 27000원", R.drawable.preview_sample_chicken02));
-        adapter.addItem(new MenuData("간장 치킨", "27000원", "간장 치킨 27000원", R.drawable.preview_sample_chicken03));
-        adapter.addItem(new MenuData("반반 치킨", "27000원", "반반 치킨 27000원", R.drawable.preview_sample_chicken04));
-        adapter.addItem(new MenuData("순살 치킨", "27000원", "순살 치킨 27000원", R.drawable.preview_sample_chicken05));
+        adapter.addItem(new MenuData("후라이드 치킨", 27000, "후라이드 치킨 27000원", R.drawable.preview_sample_chicken01));
+        adapter.addItem(new MenuData("양념 치킨", 27000, "양념 치킨 27000원", R.drawable.preview_sample_chicken02));
+        adapter.addItem(new MenuData("간장 치킨", 27000, "간장 치킨 27000원", R.drawable.preview_sample_chicken03));
+        adapter.addItem(new MenuData("반반 치킨", 27000, "반반 치킨 27000원", R.drawable.preview_sample_chicken04));
+        adapter.addItem(new MenuData("순살 치킨", 27000, "순살 치킨 27000원", R.drawable.preview_sample_chicken05));
 
         recyclerView.setAdapter(adapter);
 
