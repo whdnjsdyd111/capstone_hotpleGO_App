@@ -1,15 +1,15 @@
 package com.example.hotplego;
 
-public class Menu {
+public class MenuData {
 
     private String title, price, cnt;
     private int img;
 
-    public Menu (String title, String price, String cnt, int img) {
-        this.title = title;
-        this.price = price;
-        this.cnt = cnt;
-        this.img  = img;
+    public MenuData(String title, String price, String cnt, int img) {
+        this.title = title; //메뉴명
+        this.price = price; //메뉴 가격
+        this.cnt = cnt; //메뉴 소개
+        this.img  = img; // 이미지
     }
 
     public String getTitle() {
