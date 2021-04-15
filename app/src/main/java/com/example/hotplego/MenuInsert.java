@@ -1,12 +1,12 @@
 package com.example.hotplego;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.hotplego.MenuActivity;
 
 public class MenuInsert extends AppCompatActivity {
     ImageView imgView;
@@ -22,8 +22,8 @@ public class MenuInsert extends AppCompatActivity {
         menu_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
-                startActivity(intent);
+
+
             }
         });
     }

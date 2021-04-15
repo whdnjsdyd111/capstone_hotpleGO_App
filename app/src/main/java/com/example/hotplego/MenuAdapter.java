@@ -1,22 +1,22 @@
 package com.example.hotplego;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuHolder> {
-    ArrayList<MenuData> items = new ArrayList<>();
+    private ArrayList<MenuData> items;
+    public MenuAdapter(ArrayList<MenuData> items){
+        this.items = items;
+    }
 
     @NonNull
     @Override
@@ -29,37 +29,59 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MenuHolder menuHolder, int i) {
-        MenuData item = items.get(i);
-        menuHolder.setItem(item);
+        menuHolder.menu_name.setText(items.get(i).getTitle());
+        menuHolder.menu_price.setText(items.get(i).getPrice());
+        menuHolder.menu_cnt.setText(items.get(i).getCnt());
+        menuHolder.menu_img.setImageResource(items.get(i).getImg());
+
+        menuHolder.itemView.setTag(i);
+        menuHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { //아이템 클릭시 액션
+                String curName = menuHolder.menu_name.getText().toString();
+                Toast.makeText(v.getContext(), curName, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        menuHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) { //길게 눌렀을 시 액션
+                return true;
+            }
+        });
     }
 
-    public void addItem(MenuData item) {
-        items.add(item);
+    public void addItem(ArrayList<MenuData> item) { // 아이템을 한개씩 추가
+        this.items = item;
     }
 
     @Override
-    public int getItemCount() {
-        return items.size();
+    public int getItemCount() { // 어뎁터에서 관리하는 아이템 갯수 반환
+        return (null != items ? items.size(): 0);
+    }
+
+    public void remove(int i) { //아이템 삭제
+        try{
+            items.remove(i);
+            notifyItemRemoved(i);
+        } catch (IndexOutOfBoundsException ex) {
+            ex.printStackTrace();
+        }
     }
 
     public class MenuHolder extends RecyclerView.ViewHolder {
-        TextView menu_name, menu_price, menu_cnt;
-        ImageView menu_img;
+        protected ImageView menu_img;
+        protected TextView menu_name;
+        protected TextView menu_price;
+        protected TextView menu_cnt;
 
         public MenuHolder(View itemView) {
             super(itemView);
 
-            menu_name = itemView.findViewById(R.id.menu_name);
-            menu_price = itemView.findViewById(R.id.menu_price);
-            menu_cnt = itemView.findViewById(R.id.menu_cnt);
-            menu_img = itemView.findViewById(R.id.image_icon);
-        }
-
-        public void setItem(MenuData item) {
-            menu_name.setText(item.getTitle());
-            menu_price.setText(item.getPrice());
-            menu_cnt.setText(item.getCnt());
-            menu_img.setImageResource(item.getImg());
+            this.menu_name = (TextView) itemView.findViewById(R.id.menu_name);
+            this.menu_price = (TextView) itemView.findViewById(R.id.menu_price);
+            this.menu_cnt = (TextView) itemView.findViewById(R.id.menu_cnt);
+            this.menu_img = (ImageView) itemView.findViewById(R.id.image_icon);
         }
     }
 }
