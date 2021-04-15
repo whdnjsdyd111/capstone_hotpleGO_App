@@ -1,11 +1,11 @@
 package com.example.hotplego;
 
-public class Menu {
+public class MenuData {
 
     private String title, price, cnt;
     private int img;
 
-    public Menu (String title, String price, String cnt, int img) {
+    public MenuData(String title, String price, String cnt, int img) {
         this.title = title;
         this.price = price;
         this.cnt = cnt;

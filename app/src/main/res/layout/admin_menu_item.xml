@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/name_new_menu"
+            android:id="@+id/menu_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -41,10 +41,10 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/price_new_menu"
+            android:id="@+id/menu_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/name_new_menu"
+            android:layout_below="@id/menu_name"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
@@ -54,20 +54,20 @@
             android:textColor="@color/black"
             android:textSize="22sp"
             app:layout_constraintStart_toEndOf="@+id/image_icon"
-            app:layout_constraintTop_toBottomOf="@+id/name_new_menu" />
+            app:layout_constraintTop_toBottomOf="@+id/menu_name" />
 
         <TextView
             android:id="@+id/menu_cnt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/price_new_menu"
+            android:layout_below="@id/menu_price"
             android:layout_marginTop="25dp"
             android:layout_toEndOf="@id/image_icon"
             android:layout_toRightOf="@id/image_icon"
             android:text="메뉴 소개글이 없습니다"
             android:textColor="@color/black"
             android:textSize="18sp"
-            app:layout_constraintTop_toBottomOf="@+id/price_new_menu"
+            app:layout_constraintTop_toBottomOf="@+id/menu_price"
             tools:layout_editor_absoluteX="16dp" />
 
         <ImageButton

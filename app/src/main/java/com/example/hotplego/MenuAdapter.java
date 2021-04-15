@@ -1,5 +1,8 @@
 package com.example.hotplego;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +12,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuHolder> {
-    ArrayList<Menu> items = new ArrayList<Menu>();
+    ArrayList<MenuData> items = new ArrayList<>();
 
     @NonNull
     @Override
@@ -25,30 +29,17 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MenuHolder menuHolder, int i) {
-        Menu item = items.get(i);
+        MenuData item = items.get(i);
         menuHolder.setItem(item);
+    }
 
+    public void addItem(MenuData item) {
+        items.add(item);
     }
 
     @Override
     public int getItemCount() {
         return items.size();
-    }
-
-    public void addItem(Menu item) {
-        items.add(item);
-    }
-
-    public void setItems(ArrayList<Menu> items) {
-        this.items = items;
-    }
-
-    public Menu getItem(int i) {
-        return items.get(i);
-    }
-
-    public void setItem(int i, Menu item) {
-        items.set(i,item);
     }
 
     public class MenuHolder extends RecyclerView.ViewHolder {
@@ -58,18 +49,17 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuHolder> {
         public MenuHolder(View itemView) {
             super(itemView);
 
-            menu_name = itemView.findViewById(R.id.name_new_menu);
-            menu_price = itemView.findViewById(R.id.price_new_menu);
+            menu_name = itemView.findViewById(R.id.menu_name);
+            menu_price = itemView.findViewById(R.id.menu_price);
             menu_cnt = itemView.findViewById(R.id.menu_cnt);
             menu_img = itemView.findViewById(R.id.image_icon);
         }
 
-        public void setItem(Menu item) {
+        public void setItem(MenuData item) {
             menu_name.setText(item.getTitle());
             menu_price.setText(item.getPrice());
             menu_cnt.setText(item.getCnt());
             menu_img.setImageResource(item.getImg());
         }
     }
-
 }
