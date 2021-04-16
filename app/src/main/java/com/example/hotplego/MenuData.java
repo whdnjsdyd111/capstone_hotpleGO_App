@@ -2,7 +2,9 @@ package com.example.hotplego;
 
 public class MenuData {
 
-    private String title, cnt, price;
+    private String title;
+    private String cnt;
+    private String price;
     private int img;
 
     public MenuData(String title, String price, String cnt, int img) {

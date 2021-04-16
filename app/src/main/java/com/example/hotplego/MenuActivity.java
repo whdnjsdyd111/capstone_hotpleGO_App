@@ -1,10 +1,7 @@
 package com.example.hotplego;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -28,9 +25,9 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.admin_menu);
+        setContentView(R.layout.menu);
 
-        recyclerView = (RecyclerView) findViewById(R.id.admin_item_list);
+        recyclerView = (RecyclerView) findViewById(R.id.item_list);
         recyclerView.setHasFixedSize(true);
         linearLayoutManager = (LinearLayoutManager) new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager); // 리니어 레이아웃 매니저 설정

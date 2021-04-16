@@ -1,12 +1,12 @@
 package com.example.hotplego;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuHolder> {
     private ArrayList<MenuData> items;
+    Context context;
     public MenuAdapter(ArrayList<MenuData> items){
         this.items = items;
     }
@@ -22,7 +23,8 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuHolder> {
     @Override
     public MenuHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
-        View itemView = inflater.inflate(R.layout.admin_menu_item,viewGroup,false);
+        View itemView = inflater.inflate(R.layout.menu_item, viewGroup, false);
+        context=viewGroup.getContext();
 
         return new MenuHolder(itemView);
     }
@@ -35,11 +37,11 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuHolder> {
         menuHolder.menu_img.setImageResource(items.get(i).getImg());
 
         menuHolder.itemView.setTag(i);
-        menuHolder.itemView.setOnClickListener(new View.OnClickListener() {
+        menuHolder.itemView.setOnClickListener(new View.OnClickListener() { //아이템 클릭시 액션
             @Override
-            public void onClick(View v) { //아이템 클릭시 액션
-                String curName = menuHolder.menu_name.getText().toString();
-                Toast.makeText(v.getContext(), curName, Toast.LENGTH_SHORT).show();
+            public void onClick(View v) { //아이템 클릭시 편집 화면으로 이동
+                Intent intent = new Intent(context, MenuEdit.class);
+                context.startActivity(intent);
             }
         });
 
