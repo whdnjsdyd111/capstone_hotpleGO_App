@@ -72,10 +72,10 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuHolder> {
     }
 
     public class MenuHolder extends RecyclerView.ViewHolder {
-        protected ImageView menu_img;
-        protected TextView menu_name;
-        protected TextView menu_price;
-        protected TextView menu_cnt;
+        ImageView menu_img;
+        TextView menu_name;
+        TextView menu_price;
+        TextView menu_cnt;
 
         public MenuHolder(View itemView) {
             super(itemView);

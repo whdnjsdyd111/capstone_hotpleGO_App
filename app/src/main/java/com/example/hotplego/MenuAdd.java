@@ -16,19 +16,6 @@ public class MenuAdd extends AppCompatActivity {
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.menu_add);
-
-        Intent intent = getIntent();
-        String intent_name = intent.getStringExtra("name");
-        String intent_price = intent.getStringExtra("price");
-        String intent_cn = intent.getStringExtra("content");
-        int intent_img = intent.getIntExtra("img",R.drawable.no_image);
-
-        EditText et_name = (EditText) findViewById(R.id.edit_name);
-        et_name.setText(intent_name);
-        EditText et_price = (EditText) findViewById(R.id.edit_price);
-        et_price.setText(intent_price);
-        EditText et_cnt = (EditText) findViewById(R.id.edit_cnt);
-        et_cnt.setText(intent_cn);
     }
 
     @Override
@@ -51,19 +38,19 @@ public class MenuAdd extends AppCompatActivity {
             public void onClick(View v) {
                 add_item = true;
 
-                EditText et_name = (EditText) findViewById(R.id.edit_name);
-                EditText et_price = (EditText) findViewById(R.id.edit_price);
-                EditText et_cnt = (EditText) findViewById(R.id.edit_cnt);
+                EditText et_name = (EditText)findViewById(R.id.edit_name);
+                EditText et_price = (EditText)findViewById(R.id.edit_price);
+                EditText et_comment = (EditText)findViewById(R.id.edit_cnt);
 
                 String name = String.valueOf(et_name.getText());
                 String price = String.valueOf(et_price.getText());
-                String cnt = String.valueOf(et_cnt.getText());
+                String comment = String.valueOf(et_comment.getText());
 
                 //아이템 정보 전달
                 Intent intent = new Intent(MenuAdd.this, MenuActivity.class);
-                intent.putExtra("메뉴명",name);
-                intent.putExtra("가격",price);
-                intent.putExtra("메뉴소개",cnt);
+                intent.putExtra("메뉴명", name);
+                intent.putExtra("가격", price);
+                intent.putExtra("메뉴 소개글", comment);
                 startActivity(intent);
                 finish();
             }
