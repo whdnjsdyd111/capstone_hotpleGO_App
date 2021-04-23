@@ -112,18 +112,13 @@ public class MainActivitySignMg extends Activity implements View.OnClickListener
                 }
 
                 if(tgender == null){
-                    Toast.makeText(this, "성별을 선택해주세요!", Toast.LENGTH_SHORT).show();
-                    Log.d("minsu", "성별 미 선택");
+                    Toast.makeText(this, "은행을 선택해주세요!", Toast.LENGTH_SHORT).show();
+                    Log.d("minsu", "은행을 선택");
                     return;
                 }
 
-
-
-
                 else if(!tpw.equals(tpwConfirm)){
                     Toast.makeText(this, "비밀번호가 일치하지 않습니다!", Toast.LENGTH_SHORT).show();
-
-
                 }
 
                 else if(!pwCheck){
@@ -133,7 +128,6 @@ public class MainActivitySignMg extends Activity implements View.OnClickListener
 
                 else if(spaceCheck(tpw)){
                     Toast.makeText(this, "비밀번호에 공백을 사용할 수 없습니다!", Toast.LENGTH_SHORT).show();
-
                 }
 
                 else if(inform_check.isChecked() == false){

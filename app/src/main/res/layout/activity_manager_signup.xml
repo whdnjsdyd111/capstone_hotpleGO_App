@@ -48,11 +48,11 @@
                 android:layout_height="35dp"
                 android:layout_weight="1300"
                 android:textSize="15dp"
-                android:inputType="number"
+                android:inputType="text"
                 android:background="@drawable/signup_edit"
                 android:textCursorDrawable="@drawable/cursor"
                 android:singleLine="true"
-                android:maxLength="10"/>
+                android:maxLength="30"/>
         </LinearLayout>
 
 

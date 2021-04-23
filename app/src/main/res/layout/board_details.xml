@@ -48,7 +48,6 @@
                 android:id="@+id/board_user"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-
                 android:textSize="15sp" />
 
 
@@ -63,7 +62,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-
                 android:textSize="20sp" />
 
             <RatingBar
@@ -90,7 +88,6 @@
             android:id="@+id/board_text"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-
             android:textSize="18dp" />
 
         <LinearLayout
@@ -164,8 +161,7 @@
                         android:id="@+id/comment_user"
                         android:layout_width="wrap_content"
                         android:layout_height="29dp"
-                        android:layout_weight="1"
-                        />
+                        android:layout_weight="1" />
 
                     <TextView
                         android:id="@+id/comment_text"
@@ -173,8 +169,7 @@
                         android:layout_height="30dp"
                         android:layout_marginStart="5dp"
                         android:layout_marginLeft="20dp"
-                        android:layout_weight="30"
-                         />
+                        android:layout_weight="30" />
 
                     <ImageButton
                         android:id="@+id/imageButton"
