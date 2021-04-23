@@ -40,7 +40,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuHolder> {
         menuHolder.itemView.setOnClickListener(new View.OnClickListener() { //아이템 클릭시 액션
             @Override
             public void onClick(View v) { //아이템 클릭시 편집 화면으로 이동
-                Intent intent = new Intent(context, MenuEdit.class);
+                Intent intent = new Intent(context, MenuModify.class);
                 context.startActivity(intent);
             }
         });
@@ -53,7 +53,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuHolder> {
         });
     }
 
-    public void addItem(ArrayList<MenuData> item) { // 아이템을 한개씩 추가
+    public void addItem(ArrayList<MenuData> item) { // 아이템을 추가
         this.items = item;
     }
 
