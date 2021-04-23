@@ -1,6 +1,7 @@
 package com.example.hotplego;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,13 +38,12 @@ public class MenuActivity extends AppCompatActivity {
         recyclerView.setAdapter(menuAdapter);
 
         add_btn = (Button)findViewById(R.id.menu_insert_btn);
-        add_btn.setOnClickListener(new View.OnClickListener() {
+        add_btn.setOnClickListener(new View.OnClickListener() { //메뉴 추가하기 버튼 클릭 시
             @Override
             public void onClick(View v) {
-                MenuData menuData = new MenuData("메뉴명", "가격", "메뉴 소개글", R.drawable.no_image);
+                Intent intent = new Intent(getApplicationContext(), MenuAdd.class);
 
-                items.add(menuData);
-                menuAdapter.notifyDataSetChanged();
+                startActivity(intent);
             }
         });
 
