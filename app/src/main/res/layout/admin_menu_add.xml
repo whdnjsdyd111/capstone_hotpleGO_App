@@ -13,10 +13,10 @@
 
         <TextView
             android:id="@+id/title_menu_add"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="메뉴추가"
-            android:textAlignment="center"
+            android:layout_gravity="center_horizontal"
             android:textColor="#000"
             android:textSize="24sp" />
     </LinearLayout>
@@ -32,8 +32,8 @@
 
             <ImageButton
                 android:id="@+id/menu_add"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.95"
@@ -44,102 +44,15 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/admin_item_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="8dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="250dp"
-                    android:orientation="vertical">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="250dp">
-
-                        <EditText
-                            android:id="@+id/price_new_me"
-                            android:layout_width="145dp"
-                            android:layout_height="55dp"
-                            android:layout_marginStart="44dp"
-                            android:layout_marginLeft="44dp"
-                            android:ems="10"
-                            android:inputType="number"
-                            android:text="18,000"
-                            android:textSize="30sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.656" />
-
-                        <TextView
-                            android:id="@+id/name_new_me"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="88dp"
-                            android:text="후라이드 치킨"
-                            android:textColor="#000"
-                            android:textSize="30sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <ImageButton
-                            android:id="@+id/del_me"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginEnd="16dp"
-                            android:layout_marginRight="16dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/close_icon" />
-
-                        <ImageView
-                            android:id="@+id/imageView9"
-                            android:layout_width="130dp"
-                            android:layout_height="85dp"
-                            android:layout_marginEnd="28dp"
-                            android:layout_marginRight="28dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/no_image" />
-
-                        <Button
-                            android:id="@+id/image_edit"
-                            android:layout_width="130dp"
-                            android:layout_height="45dp"
-                            android:layout_marginEnd="28dp"
-                            android:layout_marginRight="28dp"
-                            app:backgroundTint="@drawable/custombutton"
-                            android:text="이미지 수정"
-                            android:textColor="#000"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="@+id/imageView9"
-                            app:layout_constraintTop_toBottomOf="@+id/imageView9" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-    </ScrollView>
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:scrollbarFadeDuration="0"
+        android:scrollbarSize="5dp"
+        android:scrollbarThumbVertical="@android:color/darker_gray"
+        android:scrollbars="vertical"
+        tools:listitem="@layout/admin_item_add" />
 
 </LinearLayout>
