@@ -9,4 +9,29 @@
         <item>5시간</item>
         <item>6시간</item>
     </string-array>
+
+    <string-array name="priority_array">
+        <item>거리별</item>
+        <item>평점별</item>
+    </string-array>
+
+    <string-array name="theme_array">
+        <item>연인코스</item>
+        <item>친구코스</item>
+        <item>혼족코스</item>
+        <item>가족코스</item>
+    </string-array>
+
+    <string-array name="num_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+
+    </string-array>
 </resources>

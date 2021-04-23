@@ -32,6 +32,7 @@
     <string name="ri_cont">예약 내용</string>
     <string name="me_name">메뉴 이름</string>
     <string name="me_price">메뉴 가격</string>
+    <string name="mbti">mbti</string>
     <string name="hashtag">해시태그</string>
     <string name="rs_me_num">메뉴 수량</string>
     <string name="break_time">임시중지시간: </string>
@@ -41,7 +42,6 @@
     <string name="best_sales">최고 매출액: </string>
     <string name="worst_sales">최저 매출액:</string>
     <string name="order_details">주문내역</string>
-    <string name="rate">평균 평점</string>
     <string name="re_cont">리뷰 내용</string>
     <string name="New">신규처리중</string>
     <string name="complete">완료</string>
@@ -49,5 +49,9 @@
     <string name="order_me">육회비빔밥 2개 외 1개</string>
     <string name="order_pay">27,000원</string>
     <string name="review">리뷰 조회</string>
-    <string name="rating">평균 평점 4.5</string>
+    <string name="re_owner_cont">업체 답변</string>
+    <string name="rating">평균 평점</string>
+    <string name="read_count">조회수</string>
+    <string name="recy_num">추천 수</string>
+    <string name="recn_num">비추 수</string>
 </resources>
