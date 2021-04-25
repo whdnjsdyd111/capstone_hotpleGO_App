@@ -13,7 +13,7 @@ public class Order_list extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.order_details_1);
+        setContentView(R.layout.order_details_tab);
 
         ActionBar ac = getSupportActionBar();
         ac.setTitle("주문 내역 조회");
