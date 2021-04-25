@@ -11,12 +11,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuHolder> {
     private ArrayList<MenuData> items;
     Context context;
     public MenuAdapter(ArrayList<MenuData> items){
         this.items = items;
+    }
+
+    private Consumer<MenuData> onMenuDataClicked;
+
+    public void setOnMenuDataClicked(Consumer<MenuData> onMenuDataClicked) {
+        this.onMenuDataClicked = onMenuDataClicked;
     }
 
     @NonNull
@@ -31,26 +38,20 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MenuHolder menuHolder, int i) {
-        menuHolder.menu_name.setText(items.get(i).getTitle());
-        menuHolder.menu_price.setText(items.get(i).getPrice());
-        menuHolder.menu_cnt.setText(items.get(i).getCnt());
-        menuHolder.menu_img.setImageResource(items.get(i).getImg());
+        MenuData menuData = items.get(i);
 
         menuHolder.itemView.setTag(i);
-        menuHolder.itemView.setOnClickListener(new View.OnClickListener() { //아이템 클릭시 액션
+        menuHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { //아이템 클릭시 편집 화면으로 이동
-                Intent intent = new Intent(context, MenuModify.class);
-                context.startActivity(intent);
+            public void onClick(View v) { //아이템 클릭 시 수정 화면으로 이동
+                if (onMenuDataClicked == null) return;
+                onMenuDataClicked.accept(menuData);
             }
         });
 
-        menuHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) { //길게 눌렀을 시 액션
-                return true;
-            }
-        });
+        menuHolder.menu_name.setText(menuData.getTitle());
+        menuHolder.menu_price.setText(menuData.getPrice());
+        menuHolder.menu_cnt.setText(menuData.getCnt());
     }
 
     public void addItem(ArrayList<MenuData> item) { // 아이템을 추가

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -16,6 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class MenuActivity extends AppCompatActivity {
+    private static final int REQUEST_CODE_ADD = 0;
+    private static final int REQUEST_CODE_MODIFY = 1;
+
     private ArrayList<MenuData> items;
     private MenuAdapter menuAdapter;
     private RecyclerView recyclerView;
@@ -31,19 +35,19 @@ public class MenuActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.item_list);
         recyclerView.setHasFixedSize(true);
         linearLayoutManager = (LinearLayoutManager) new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(linearLayoutManager); // 리니어 레이아웃 매니저 설정
+        recyclerView.setLayoutManager(linearLayoutManager);
 
         items = new ArrayList<>();
         menuAdapter = new MenuAdapter(items);
         recyclerView.setAdapter(menuAdapter);
 
         add_btn = (Button)findViewById(R.id.menu_insert_btn);
-        add_btn.setOnClickListener(new View.OnClickListener() { //메뉴 추가하기 버튼 클릭 시
+        add_btn.setOnClickListener(new View.OnClickListener() { //추가하기 버튼 클릭 시 화면 전환
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MenuAdd.class);
 
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_CODE_ADD);
             }
         });
 
@@ -55,8 +59,7 @@ public class MenuActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                AlertDialog.Builder ad= new AlertDialog.Builder(MenuActivity.this); //다이얼로그 생성
-                //아이템 삭제 여부 결정
+                AlertDialog.Builder ad= new AlertDialog.Builder(MenuActivity.this); //아이템 삭제 여부에 대한 다이얼로그 생성
                 ad.setIcon(R.mipmap.ic_launcher);
                 ad.setTitle("삭제");
                 ad.setMessage("메뉴를 삭제하시겠습니까?");
@@ -80,5 +83,37 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
         itemTouchHelper.attachToRecyclerView(recyclerView);
+
+        menuAdapter.setOnMenuDataClicked(menuData -> {
+            Intent intent = new Intent(MenuActivity.this, MenuModify.class);
+            intent.putExtra(MenuModify.PARAM_ORIGINAL, menuData);
+            startActivityForResult(intent, REQUEST_CODE_MODIFY);
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        switch (requestCode) {
+            case REQUEST_CODE_ADD:
+                if (resultCode == MenuAdd.RESULT_CODE_ADD) {
+                    MenuData newMenuData = (MenuData) data.getSerializableExtra(MenuAdd.DATA_MENU_DATA);
+                    items.add(newMenuData);
+                    menuAdapter.notifyDataSetChanged();
+                }
+                break;
+            case REQUEST_CODE_MODIFY:
+                if (resultCode == MenuModify.RESULT_CODE_SAVE) {
+                    MenuData original = (MenuData) data.getSerializableExtra(MenuModify.DATA_ORIGINAL);
+                    MenuData after = (MenuData) data.getSerializableExtra(MenuModify.DATA_AFTER);
+
+                    int position = items.indexOf(original);
+                    items.remove(position);
+                    items.add(position, after);
+                    menuAdapter.notifyDataSetChanged();
+                }
+                break;
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

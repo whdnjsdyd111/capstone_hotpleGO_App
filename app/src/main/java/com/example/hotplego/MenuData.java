@@ -1,6 +1,10 @@
 package com.example.hotplego;
 
-public class MenuData {
+import androidx.annotation.Nullable;
+
+import java.io.Serializable;
+
+public class MenuData implements Serializable {
 
     private String title;
     private String cnt;
@@ -44,5 +48,13 @@ public class MenuData {
 
     public void setImg(int img) {
         this.img = img;
+    }
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        if (obj == null) return false;
+        if (!(obj instanceof MenuData)) return false;
+        MenuData o = (MenuData) obj;
+        return title.equals(o.title) && cnt.equals(o.cnt) && price.equals(o.price) && img == o.img;
     }
 }
