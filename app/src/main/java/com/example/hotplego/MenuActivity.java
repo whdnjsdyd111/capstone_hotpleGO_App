@@ -60,7 +60,7 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 AlertDialog.Builder ad= new AlertDialog.Builder(MenuActivity.this); //아이템 삭제 여부에 대한 다이얼로그 생성
-                ad.setIcon(R.mipmap.ic_launcher);
+                ad.setIcon(R.drawable.ic_delete);
                 ad.setTitle("삭제");
                 ad.setMessage("메뉴를 삭제하시겠습니까?");
 
