@@ -23,7 +23,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuHolder> {
     private Consumer<MenuData> onMenuDataClicked;
 
     public void setOnMenuDataClicked(Consumer<MenuData> onMenuDataClicked) {
-        this.onMenuDataClicked = onMenuDataClicked;
+        this.onMenuDataClicked = onMenuDataClicked; // 아이템 클릭 가능으로 만듬
     }
 
     @NonNull

@@ -25,8 +25,6 @@ public class MenuActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
 
-    Button add_btn;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +39,7 @@ public class MenuActivity extends AppCompatActivity {
         menuAdapter = new MenuAdapter(items);
         recyclerView.setAdapter(menuAdapter);
 
-        add_btn = (Button)findViewById(R.id.menu_insert_btn);
+        Button add_btn = (Button)findViewById(R.id.menu_insert_btn);
         add_btn.setOnClickListener(new View.OnClickListener() { //추가하기 버튼 클릭 시 화면 전환
             @Override
             public void onClick(View v) {
@@ -64,7 +62,7 @@ public class MenuActivity extends AppCompatActivity {
                 ad.setTitle("삭제");
                 ad.setMessage("메뉴를 삭제하시겠습니까?");
 
-                ad.setPositiveButton("예", new DialogInterface.OnClickListener() {
+                ad.setPositiveButton("예", new DialogInterface.OnClickListener() { // 클릭 시 아이템 삭제
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         menuAdapter.remove(viewHolder.getAdapterPosition());
@@ -72,7 +70,7 @@ public class MenuActivity extends AppCompatActivity {
                         dialog.dismiss();
                     }
                 });
-                ad.setNegativeButton("아니오", new DialogInterface.OnClickListener() {
+                ad.setNegativeButton("아니오", new DialogInterface.OnClickListener() { // 클릭 시 아이템 삭제 취소
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         menuAdapter.notifyDataSetChanged();
@@ -93,23 +91,23 @@ public class MenuActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        switch (requestCode) {
+        switch (requestCode) { // 메뉴 추가 및 수정 기능
             case REQUEST_CODE_ADD:
-                if (resultCode == MenuAdd.RESULT_CODE_ADD) {
-                    MenuData newMenuData = (MenuData) data.getSerializableExtra(MenuAdd.DATA_MENU_DATA);
-                    items.add(newMenuData);
-                    menuAdapter.notifyDataSetChanged();
+                if (resultCode == MenuAdd.RESULT_CODE_ADD) { // 메뉴 추가
+                    MenuData newMenuData = (MenuData) data.getSerializableExtra(MenuAdd.DATA_MENU_DATA); // MenuAdd에서 입력했던 데이터를 전달받음
+                    items.add(newMenuData); // 메뉴 추가
+                    menuAdapter.notifyDataSetChanged(); // 갱신
                 }
                 break;
             case REQUEST_CODE_MODIFY:
-                if (resultCode == MenuModify.RESULT_CODE_SAVE) {
-                    MenuData original = (MenuData) data.getSerializableExtra(MenuModify.DATA_ORIGINAL);
-                    MenuData after = (MenuData) data.getSerializableExtra(MenuModify.DATA_AFTER);
+                if (resultCode == MenuModify.RESULT_CODE_SAVE) { // 메뉴 수정
+                    MenuData original = (MenuData) data.getSerializableExtra(MenuModify.DATA_ORIGINAL); // 기존에 있던 수정 전 메뉴
+                    MenuData after = (MenuData) data.getSerializableExtra(MenuModify.DATA_AFTER); // 수정 후 메뉴
 
                     int position = items.indexOf(original);
-                    items.remove(position);
-                    items.add(position, after);
-                    menuAdapter.notifyDataSetChanged();
+                    items.remove(position); // 기존에 있던 메뉴 삭제
+                    items.add(position, after); // 수정된 메뉴 추가
+                    menuAdapter.notifyDataSetChanged(); // 갱신
                 }
                 break;
         }
