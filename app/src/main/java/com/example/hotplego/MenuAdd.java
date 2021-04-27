@@ -17,7 +17,7 @@ import com.bumptech.glide.Glide;
 public class MenuAdd extends AppCompatActivity {
     ImageView iv;
 
-    public static final int REQUEST_CODE = 0;
+    public static final int REQUEST_GALLERY_CODE = 0;
 
     public static final int RESULT_CODE_CANCEL = 0;
     public static final int RESULT_CODE_ADD = 1;
@@ -43,7 +43,7 @@ public class MenuAdd extends AppCompatActivity {
         EditText new_price = findViewById(R.id.new_price);
         EditText new_cnt = findViewById(R.id.new_cnt);
 
-        /*저장하기 버튼 클릭 시*/
+        /*등록하기 버튼 클릭 시*/
         Button bt_submit = (Button) findViewById(R.id.menu_add_submit);
         bt_submit.setOnClickListener(new Button.OnClickListener() {
             @Override
@@ -66,10 +66,10 @@ public class MenuAdd extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent gallery = new Intent(); // 인텐트를 통해 요청코드를 보냄
-                gallery.setType(MediaStore.Images.Media.CONTENT_TYPE);
-                /*gallery.setType("image/*");*/
+//                gallery.setType(MediaStore.Images.Media.CONTENT_TYPE);
+                gallery.setType("image/*");
                 gallery.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(gallery, REQUEST_CODE);
+                startActivityForResult(gallery, REQUEST_GALLERY_CODE);
             }
         });
     }
@@ -77,14 +77,14 @@ public class MenuAdd extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+        if(requestCode == REQUEST_GALLERY_CODE && resultCode == RESULT_OK) {
             try{
                 Uri uri = data.getData();
                 Glide.with(getApplicationContext()).load(uri).into(iv); // 이미지 사진 넣기
             } catch (Exception e) {
 
             }
-        } else if(requestCode == REQUEST_CODE && resultCode == RESULT_CANCELED) { // 취소 시 호출할 행동
+        } else if(requestCode == REQUEST_GALLERY_CODE && resultCode == RESULT_CANCELED) { // 취소 시 호출할 행동
 
         }
     }

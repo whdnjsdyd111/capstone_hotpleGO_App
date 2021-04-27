@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,9 +18,12 @@ public class MenuModify extends AppCompatActivity {
     public static final String DATA_ORIGINAL = "original";
     public static final String DATA_AFTER = "after";
 
+    public static final int REQUEST_GALLERY_CODE = 0;
+
     private EditText edit_name;
     private EditText edit_price;
     private EditText edit_cnt;
+    private ImageView edit_iv;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +32,7 @@ public class MenuModify extends AppCompatActivity {
         edit_name = findViewById(R.id.edit_name);
         edit_price = findViewById(R.id.edit_price);
         edit_cnt = findViewById(R.id.edit_cnt);
+        edit_iv = findViewById(R.id.edit_img);
 
         MenuData original = (MenuData) getIntent().getSerializableExtra(PARAM_ORIGINAL);
 
