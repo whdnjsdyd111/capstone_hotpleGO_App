@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -25,6 +26,13 @@ public class CourseRecommend extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.course_recommned);
+
+        Button locationButton = (Button) findViewById(R.id.location_search_btn);
+        TextView userLocation = (TextView) findViewById(R.id.user_location);
+        Intent locationIntent = getIntent();
+
+        String location = locationIntent.getExtras().getString("location"); /*String형*/
+        userLocation.setText(location);
 
         recyclerView = findViewById(R.id.recommendRecyclerView);
         linearLayoutManager = new LinearLayoutManager(this);

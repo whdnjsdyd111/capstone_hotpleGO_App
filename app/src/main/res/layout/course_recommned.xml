@@ -41,12 +41,12 @@
             android:layout_weight="1" />
 
         <Button
-            android:id="@+id/location_here_btn"
+            android:id="@+id/location_here"
+            android:layout_marginRight="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:background="#ffffff"
-            android:text="현 위치로" />
+            android:text="현 위치"
+            app:backgroundTint="#d8a2c7" />
 
         <Button
             android:id="@+id/location_search_btn"

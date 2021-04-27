@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -24,6 +25,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private Activity activity;
     private List<CourseItem> item;
     private MainActivity ac;
+    String[] arr = {"먹거리","디저트","놀이/취미","음주","보기","걷기"};
 
     public RecyclerViewAdapter(Activity activity, List<CourseItem> item) {
         this.activity = activity;
@@ -39,11 +41,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView textOrder;
+        Spinner spinner;
+
+
 
         public ViewHolder(View itemView) {
             super(itemView);
             textOrder = (TextView) itemView.findViewById(R.id.textViewOrder);
+            spinner = (Spinner) itemView.findViewById(R.id.spinner);
 
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                    this, android.R.layout.simple_spinner_item, arr);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(adapter);
         }
     }
 
