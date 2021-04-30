@@ -1,7 +1,7 @@
 package com.example.hotplego;
 
 import android.content.Context;
-import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 import java.util.function.Consumer;
 
@@ -52,6 +53,12 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuHolder> {
         menuHolder.menu_name.setText(menuData.getTitle());
         menuHolder.menu_price.setText(menuData.getPrice());
         menuHolder.menu_cnt.setText(menuData.getCnt());
+        Uri uri = menuData.getImgUri();
+        if(uri != null) {
+            menuHolder.menu_img.setImageURI(uri);
+        } else {
+            menuHolder.menu_img.setImageResource(R.drawable.no_image);
+        }
     }
 
     public void addItem(ArrayList<MenuData> item) { // 아이템을 추가

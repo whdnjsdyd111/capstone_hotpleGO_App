@@ -1,6 +1,7 @@
 package com.example.hotplego;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,12 +19,11 @@ public class MenuModify extends AppCompatActivity {
     public static final String DATA_ORIGINAL = "original";
     public static final String DATA_AFTER = "after";
 
-    public static final int REQUEST_GALLERY_CODE = 0;
-
     private EditText edit_name;
     private EditText edit_price;
     private EditText edit_cnt;
     private ImageView edit_iv;
+    private MenuData original;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,11 +34,17 @@ public class MenuModify extends AppCompatActivity {
         edit_cnt = findViewById(R.id.edit_cnt);
         edit_iv = findViewById(R.id.edit_img);
 
-        MenuData original = (MenuData) getIntent().getSerializableExtra(PARAM_ORIGINAL);
+        original = (MenuData) getIntent().getSerializableExtra(PARAM_ORIGINAL);
 
         edit_name.setText(original.getTitle());
         edit_price.setText(original.getPrice());
         edit_cnt.setText(original.getCnt());
+        Uri uri = original.getImgUri();
+        if(uri!=null) {
+            edit_iv.setImageURI(original.getImgUri());
+        } else {
+            edit_iv.setImageResource(R.drawable.no_image);
+        }
 
         /*취소하기 버튼 눌렀을 때*/
         Button bt_back = (Button) findViewById(R.id.menu_edit_canel);
@@ -60,6 +66,7 @@ public class MenuModify extends AppCompatActivity {
                         edit_price.getText().toString(),
                         edit_cnt.getText().toString(),
                         0);
+                after.setImgUri(original.getImgUri().toString());
                 Intent intent = new Intent();
                 intent.putExtra(DATA_ORIGINAL, original);
                 intent.putExtra(DATA_AFTER, after);

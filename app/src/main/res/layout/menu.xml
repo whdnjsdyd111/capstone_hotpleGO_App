@@ -9,14 +9,14 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/item_list"
         android:layout_width="match_parent"
-        android:layout_height="793dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="#7DFF00"
         android:scrollbarFadeDuration="0"
         android:scrollbarSize="5dp"
         android:scrollbarThumbVertical="@android:color/darker_gray"
         android:scrollbars="vertical"
-        tools:listitem="@layout/menu_item" >
+        tools:listitem="@layout/menu_item">
 
     </androidx.recyclerview.widget.RecyclerView>
 
