@@ -2,18 +2,13 @@
     <string name="app_name">hotpleGO</string>
     <string name="title_home">홈으로</string>
     <string name="title_dashboard">게시판</string>
-    <string name="title_notifications">공지</string>
+    <string name="title_notifications">코스</string>
     <string name="title_search">검색</string>
     <string name="title_MyPage">마이페이지</string>
     <string name="my_point">20000원</string>
     <string name="move_position">이동 위치</string>
     <string name="move_time">이동 시간</string>
     <string name="save_point">20원</string>
-    <string name="nick">닉네임</string>
-    <string name="pw">비밀번호</string>
-    <string name="point">내 포인트</string>
-    <string name="phone">전화번호</string>
-    <string name="birth">생년월일</string>
     <string name="bd_title">게시글 제목</string>
     <string name="my_location">유저 위치</string>
     <string name="hotplace_1st">1위 핫플 장소</string>
@@ -32,7 +27,6 @@
     <string name="ri_cont">예약 내용</string>
     <string name="me_name">메뉴 이름</string>
     <string name="me_price">메뉴 가격</string>
-    <string name="mbti">mbti</string>
     <string name="hashtag">해시태그</string>
     <string name="rs_me_num">메뉴 수량</string>
     <string name="break_time">임시중지시간: </string>
@@ -52,6 +46,35 @@
     <string name="re_owner_cont">업체 답변</string>
     <string name="rating">평균 평점</string>
     <string name="read_count">조회수</string>
+    <string name="comm_num">댓글 수</string>
     <string name="recy_num">추천 수</string>
     <string name="recn_num">비추 수</string>
+    <!-- 취향 페이지 -->
+    <string name="cs_recommend">취향 설정</string>
+    <string name="close">X</string>
+    <string name="walk">걷기</string>
+    <string name="watch">보기</string>
+    <string name="play">놀기</string>
+    <string name="alcohol">음주</string>
+    <string name="dessert">디저트</string>
+    <string name="food">먹기</string>
+    <string name="up_mark">▲</string>
+    <string name="down_mark">▼</string>
+    <string name="save_taste">취향 저장</string>
+    <!-- 마이페이지 -->
+    <string name="myInfo">마이 페이지</string>
+    <string name="email">이메일</string>
+    <string name="password">패스워드 재설정</string>
+    <string name="nick">닉네임</string>
+    <string name="pw">비밀번호</string>
+    <string name="point">내 포인트</string>
+    <string name="phone">전화번호</string>
+    <string name="birth">생년월일</string>
+    <string name="mbti">MBTI</string>
+    <string name="reg_date">가입일</string>
+    <string name="update">수정</string>
+    <string name="bookmark">북마크</string>
+    <string name="zzim">찜 목록</string>
+    <!-- MBTI -->
+    <string name="selected_mbti">당신의 성격 유형을 선택하세요</string>
 </resources>

@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
+        android:gravity="center"
+        android:text="@string/mbti"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/selected"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:backgroundTint="#ffffff"
+        android:textColor="#000000"
+        android:text="@string/selected_mbti" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/ENFJ"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:backgroundTint="#FFE3FF"
+                    android:text="ENFJ\n언변능숙형\n타인의 성장을 도모하고 협동하는 사람"
+                    android:textColor="#000000" />
+
+                <Button
+                    android:id="@+id/ENTJ"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#E3E3FF"
+                    android:text="ENTJ\n지도자형\n비젼을 가지고 사람들을 잘 이끌어가는 사람"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/ESTJ"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:backgroundTint="#FFFFDE"
+                    android:text="ESTJ\n사업가형\n사무적, 실용적,현실적으로 일을 많이 하는 사람"
+                    android:textColor="#000000" />
+
+                <Button
+                    android:id="@+id/ESFJ"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#D5F6CA"
+                    android:text="ESFJ\n친선도모형\n친절과 현실감을 가지고 타인에게 봉사하는 사람"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/ENFP"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:backgroundTint="#DEDEEF"
+                    android:text="ENFP\n스파크형\n열정적으로 새로운 관계를 만드는 사람"
+                    android:textColor="#000000" />
+
+                <Button
+                    android:id="@+id/ENTP"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#DEFFFF"
+                    android:text="ENTP\n발명가형\n상상력을 가지고 새로운 것에 도전하는 사람"
+                    android:textColor="#000000" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/ESTP"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:backgroundTint="#EFDEFF"
+                    android:text="ESTP\n수완좋은 활동가형\n친구, 운동, 음식 등 다양한 활동을 선호하는 사람"
+                    android:textColor="#000000" />
+
+                <Button
+                    android:id="@+id/ESFP"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#FFE3F1"
+                    android:text="ESFP\n사교적인 유형\n분위기를 고조시키는 우호적 사람"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/INFP"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:backgroundTint="#FFEFDE"
+                    android:text="INFP\n잔다르크형\n이상적인 세상을 만들어가는 사람"
+                    android:textColor="#000000" />
+
+                <Button
+                    android:id="@+id/INTP"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#EFDEDE"
+                    android:text="INTP\n아이디어 뱅크형\n비평적인 관점을 가지고 있는 뛰어난 전략가"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/ISTP"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:backgroundTint="#FFDEDE"
+                    android:text="ISTP\n백과사전형\n논리적이고 뛰어난 적응력을 가지고 있는 사람"
+                    android:textColor="#000000" />
+
+                <Button
+                    android:id="@+id/ISFP"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#E3FFF4"
+                    android:text="ISFP\n성인군자형\n따뜻한 감성을 갖고 있는 겸손한 사람"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/INFJ"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:backgroundTint="#EFFFDE"
+                    android:text="INFJ\n예언자형\n사람과 관련된 통찰력을 가지고 있는 사람"
+                    android:textColor="#000000" />
+
+                <Button
+                    android:id="@+id/INTJ"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#D0F8C2"
+                    android:text="INTJ\n과학자형\n전체적인 부분을 조합하여 비젼을 제시하는 사람"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/ISTJ"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:backgroundTint="#E3F1F1"
+                    android:text="ISTJ\n세상의 소금형\n한번 시작한 일은 끝까지 해내는 사람"
+                    android:textColor="#000000" />
+
+                <Button
+                    android:id="@+id/ISFJ"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#FFEDF6"
+                    android:text="ISFJ\n임금 뒷편의 권력형\n성실하고 온화하며 협조를 잘하는 사람"
+                    android:textColor="#000000" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,729 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <Button
+            android:id="@+id/closeBtn"
+            style="?android:borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/close"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cs_recommend"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#8A8A8A"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/button30"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical">
+
+            <!-- 먹기 -->
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/food"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="10dp"
+                            android:text="@string/food"
+                            android:textSize="20sp"
+                            app:drawableLeftCompat="@drawable/lefteat"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/down_mark"
+                            android:textSize="20sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TableLayout
+                        android:id="@+id/food_taste"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <TableRow>
+
+                            <Button
+                                android:id="@+id/korean"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/korean"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+
+                            <Button
+                                android:id="@+id/bunsick"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/bunsick"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+
+                            <Button
+                                android:id="@+id/japanese"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/japanese"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+
+                            <Button
+                                android:id="@+id/west"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/west"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+                        </TableRow>
+
+                        <TableRow>
+
+                            <Button
+                                android:id="@+id/chinese"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/chinese"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+
+                            <Button
+                                android:id="@+id/fastfood"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/fastfood"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+
+                            <Button
+                                android:id="@+id/buffet"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/buffet"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+
+                            <Button
+                                android:id="@+id/midnight_snack"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/midnight_snack"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+                        </TableRow>
+                    </TableLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- 디저트 -->
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/dessert"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="10dp"
+                            android:text="@string/dessert"
+                            android:textSize="20sp"
+                            app:drawableLeftCompat="@drawable/leftcake"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/down_mark"
+                            android:textSize="20sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TableLayout
+                        android:id="@+id/dessert_taste"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+                        <TableRow>
+                            <Button
+                                android:id="@+id/coffee"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/coffee"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+                            <Button
+                                android:id="@+id/drink"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/drink"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+                            <Button
+                                android:id="@+id/bread"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/bread"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+                            <Button
+                                android:id="@+id/ice"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/ice"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+                        </TableRow>
+                    </TableLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- 놀기 -->
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/play"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="10dp"
+                            android:text="@string/play"
+                            android:textSize="20sp"
+                            app:drawableLeftCompat="@drawable/leftmic"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/down_mark"
+                            android:textSize="20sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TableLayout
+                        android:id="@+id/play_taste"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+                        <TableRow>
+                            <Button
+                                android:id="@+id/game"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/game"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+                            <Button
+                                android:id="@+id/escape"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/escape"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+                            <Button
+                                android:id="@+id/vr"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/vr"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+                            <Button
+                                android:id="@+id/karaoke"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/karaoke"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+                        </TableRow>
+                        <TableRow>
+                            <Button
+                                android:id="@+id/sports"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/sports"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+                            <Button
+                                android:id="@+id/shopping"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/shopping"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+                            <Button
+                                android:id="@+id/workshop"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/workshop"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+                            <Button
+                                android:id="@+id/amusementpark"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/amusementpark"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+                        </TableRow>
+                    </TableLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- 음주 -->
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/alcohol"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="10dp"
+                            android:text="@string/alcohol"
+                            android:textSize="20sp"
+                            app:drawableLeftCompat="@drawable/leftsoju"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/down_mark"
+                            android:textSize="20sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TableLayout
+                        android:id="@+id/alcohol_taste"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+                        <TableRow>
+                            <Button
+                                android:id="@+id/beer"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/beer"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+                            <Button
+                                android:id="@+id/sogue"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/sogue"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+                            <Button
+                                android:id="@+id/mackuli"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/mackuli"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+                            <Button
+                                android:id="@+id/wine"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/wine"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+                        </TableRow>
+                    </TableLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- 보기 -->
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/watch"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="10dp"
+                            android:text="@string/watch"
+                            android:textSize="20sp"
+                            app:drawableLeftCompat="@drawable/leftmovie"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/down_mark"
+                            android:textSize="20sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TableLayout
+                        android:id="@+id/watch_taste"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+                        <TableRow>
+                            <Button
+                                android:id="@+id/movie"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/movie"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+                            <Button
+                                android:id="@+id/exhibition"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/exhibition"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+                            <Button
+                                android:id="@+id/library"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/library"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+                            <Button
+                                android:id="@+id/stage"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/stage"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+                        </TableRow>
+                        <TableRow>
+                            <Button
+                                android:id="@+id/watch_sports"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/watch_sports"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+                        </TableRow>
+                    </TableLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- 걷기 -->
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/walk"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="10dp"
+                            android:text="@string/walk"
+                            android:textSize="20sp"
+                            app:drawableLeftCompat="@drawable/leftpark"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/down_mark"
+                            android:textSize="20sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TableLayout
+                        android:id="@+id/walk_taste"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+                        <TableRow>
+                            <Button
+                                android:id="@+id/themapark"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/themapark"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+                            <Button
+                                android:id="@+id/cultural_heritage"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/cultural_heritage"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+                            <Button
+                                android:id="@+id/market"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/market"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+                            <Button
+                                android:id="@+id/park"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="20dp"
+                                android:background="@drawable/park2"
+                                app:backgroundTint="@color/material_on_background_disabled"
+                                app:backgroundTintMode="add"
+                                tools:ignore="ButtonStyle" />
+                        </TableRow>
+                    </TableLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/save_taste"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FF96FF"
+        android:text="@string/save_taste"
+        android:textSize="24dp"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
