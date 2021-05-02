@@ -29,6 +29,7 @@ public class BoardFragment extends Fragment implements BoardAdapter.OnItemClickL
 
     private FragmentBoardBinding binding;
     private BoardAdapter adapter;
+    private final int BOARD_ADD = 1;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -48,6 +49,10 @@ public class BoardFragment extends Fragment implements BoardAdapter.OnItemClickL
             adapter.notifyDataSetChanged();
         });
         postRun.start();
+        binding.addBoardButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), BoardAddActivity.class);
+            startActivityForResult(intent, BOARD_ADD);
+        });
 
         return binding.getRoot();
     }

@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
 public class BoardVO {
     private String bdCode;
     private String bdTitle;

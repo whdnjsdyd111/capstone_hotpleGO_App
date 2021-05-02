@@ -32,6 +32,7 @@
         android:background="@drawable/rounded_border"
         android:ems="10"
         android:hint="ex) 위치: 동성로, 키워드: 한식 "
+        android:drawableLeft="@drawable/ic_baseline_search"
         android:inputType="textPersonName"
         android:textSize="12sp" />
 

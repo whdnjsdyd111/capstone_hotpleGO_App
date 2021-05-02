@@ -1,18 +1,28 @@
 package com.example.hotplego;
 
 import android.app.Activity;
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
+import android.provider.MediaStore;
+
+import com.android.internal.http.multipart.MultipartEntity;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.mime.HttpMultipartMode;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -23,16 +33,25 @@ import java.util.Map;
 public class PostRun extends Thread implements Runnable {
     public static final String DOMAIN = "http://172.30.1.25:8000";
     public static final String IMAGE_URL = "/hotpleImage/0000/00/00/";
+    public static final int DATA = 0;
+    public static final int IMAGES = 1;
     private String url = DOMAIN + "/android/";
-    private final Map<String, String> map;
+    private Map<String, String> map;
+    private MultipartEntityBuilder builder;
     private final Activity activity;
     private Runnable run;
     public JSONObject obj;
 
+    public PostRun(String url, Activity activity, int upload_kind) {
+        this.url += url;
+        this.activity = activity;
+        if (upload_kind == DATA) map = new HashMap<>();
+        else if (upload_kind == IMAGES) builder = MultipartEntityBuilder.create();
+    }
+
     public PostRun(String url, Activity activity) {
         this.url += url;
         this.activity = activity;
-        map = new HashMap<>();
     }
 
     public void setRunUI(Runnable run) {
@@ -40,7 +59,8 @@ public class PostRun extends Thread implements Runnable {
     }
 
     public void addData(String k, String v) {
-        map.put(k, v);
+        if (map != null) map.put(k, v);
+        if (builder != null) builder.addTextBody(k, v);
     }
 
     public void addJsonData(String k, String[] v_str, Object[] v_obj) {
@@ -52,7 +72,46 @@ public class PostRun extends Thread implements Runnable {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        map.put(k, obj.toString());
+        if (map != null) map.put(k, obj.toString());
+        if (builder != null) builder.addTextBody(k, obj.toString());
+    }
+
+    public void addImage(String k, Context ctx, Uri uri) {
+        if (builder != null) builder.addPart(k, new FileBody(new File(getPath(ctx, uri))));
+    }
+
+    @Override
+    public void run() {
+        try {
+            HttpClient http = new DefaultHttpClient();
+            HttpPost method = new HttpPost(url);
+
+            if (map != null) {
+
+                ArrayList<NameValuePair> postData = new ArrayList<>();
+
+                // post 방식으로 전달할 값들 맵 -> 데이터
+                for (Map.Entry<String, String> entry : map.entrySet()) {
+                    String k = entry.getKey();
+                    String v = entry.getValue();
+                    postData.add(new BasicNameValuePair(k, v));
+                }
+
+                // URI encoding 이 필요한 한글, 특수문자 값들 인코딩
+                UrlEncodedFormEntity request = new UrlEncodedFormEntity(postData, "utf-8");
+
+                method.setEntity(request);    // http 에 인코딩 세팅
+            } else if (builder != null) {
+                method.setEntity(builder.build());
+            }
+
+            HttpResponse response = http.execute(method); // post 방식 전달 후 response 에 저장
+            String body = EntityUtils.toString(response.getEntity());   // response text 를 String 으로 변환
+            this.obj = new JSONObject(body);  // JSON 객체로 변환
+            activity.runOnUiThread(run);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static String beforeTime(String code) {
@@ -74,31 +133,38 @@ public class PostRun extends Thread implements Runnable {
         return str;
     }
 
-    @Override
-    public void run() {
-        try {
-            HttpClient http = new DefaultHttpClient();
-            ArrayList<NameValuePair> postData = new ArrayList<>();
+    public static String getPath(Context ctx, Uri uri) {
+        String fullPath = null;
+        final String column = "_data";
+        Cursor cursor = ctx.getContentResolver().query(uri, null, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+            String document_id = cursor.getString(0);
+            if (document_id == null) {
+                for (int i=0; i < cursor.getColumnCount(); i++) {
+                    if (column.equalsIgnoreCase(cursor.getColumnName(i))) {
+                        fullPath = cursor.getString(i);
+                        break;
+                    }
+                }
+            } else {
+                document_id = document_id.substring(document_id.lastIndexOf(":") + 1);
+                cursor.close();
 
-            // post 방식으로 전달할 값들 맵 -> 데이터
-            for (Map.Entry<String, String> entry : map.entrySet()) {
-                String k = entry.getKey();
-                String v = entry.getValue();
-                postData.add(new BasicNameValuePair(k, v));
+                final String[] projection = {column};
+                try {
+                    cursor = ctx.getContentResolver().query(
+                            android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                            projection, MediaStore.Images.Media._ID + " = ? ", new String[]{document_id}, null);
+                    if (cursor != null) {
+                        cursor.moveToFirst();
+                        fullPath = cursor.getString(cursor.getColumnIndexOrThrow(column));
+                    }
+                } finally {
+                    if (cursor != null) cursor.close();
+                }
             }
-
-            // URI encoding 이 필요한 한글, 특수문자 값들 인코딩
-            UrlEncodedFormEntity request = new UrlEncodedFormEntity(postData, "utf-8");
-
-            HttpPost httpPost = new HttpPost(url);
-            httpPost.setEntity(request);    // http 에 인코딩 세팅
-            HttpResponse response = http.execute(httpPost); // post 방식 전달 후 response 에 저장
-
-            String body = EntityUtils.toString(response.getEntity());   // response text 를 String 으로 변환
-            this.obj = new JSONObject(body);  // JSON 객체로 변환
-            activity.runOnUiThread(run);
-        } catch (Exception e) {
-            e.printStackTrace();
         }
+        return fullPath;
     }
 }

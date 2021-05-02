@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">hotpleGO</string>
-    <string name="title_home">홈으로</string>
+    <string name="title_home">홈</string>
     <string name="title_dashboard">게시판</string>
     <string name="title_notifications">코스</string>
     <string name="title_search">검색</string>
@@ -77,4 +77,9 @@
     <string name="zzim">찜 목록</string>
     <!-- MBTI -->
     <string name="selected_mbti">당신의 성격 유형을 선택하세요</string>
+    <!-- 게시판 -->
+    <string name="board_bar">게시글 상세 조회</string>
+    <!-- 게시판 추가 -->
+    <string name="board_add">게시판 작성</string>
+    <string name="board_add_hint">내용을 입력해주세요</string>
 </resources>

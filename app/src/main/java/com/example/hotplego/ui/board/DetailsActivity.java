@@ -12,11 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,9 +38,8 @@ public class DetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_board);
+        setContentView(R.layout.board_add);
 
-        imageView = findViewById(R.id.select_img);
         board_title = findViewById(R.id.board_title);
         board_contents = findViewById(R.id.board_contents);
 

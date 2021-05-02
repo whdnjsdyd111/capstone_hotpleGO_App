@@ -1,9 +1,15 @@
 package com.example.hotplego;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -31,5 +37,25 @@ public class MainActivity extends AppCompatActivity  {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 //        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+                    && checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                Log.d("Permission", "권한 설정 완료");
+            } else {
+                Log.d("Permission", "권한 설정 요청");
+                ActivityCompat.requestPermissions(MainActivity.this,
+                        new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+            }
+        }
+    }
+
+    @Override public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        Log.d("Permission", "onRequestPermissionsResult");
+        if (grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+            Log.d("Permission", "Permission: " + permissions[0] + "was " + grantResults[0]);
+            Log.d("Permission", "Permission: " + permissions[1] + "was " + grantResults[1]);
+        }
     }
 }
