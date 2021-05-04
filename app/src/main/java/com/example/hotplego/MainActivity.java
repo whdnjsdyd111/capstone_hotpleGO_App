@@ -1,6 +1,7 @@
 package com.example.hotplego;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,13 +9,15 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.hotplego.domain.UserSharedPreferences;
 import com.example.hotplego.domain.UserVO;
 
 public class MainActivity extends AppCompatActivity  {
 
-    public static Button button_notice;
+    public Button button_notice;
     public static UserVO vo;
-
+    private SharedPreferences preferences;
+    Button btnLogout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,15 +28,21 @@ public class MainActivity extends AppCompatActivity  {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
+        UserSharedPreferences.getInstance().login(this);
 
         button_notice = findViewById(R.id.button_notice);
-
+        btnLogout = findViewById(R.id.btnLogout);
         button_notice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivityLogin.class);
-                startActivity(intent);
+                if (UserSharedPreferences.vo == null) {
+                    Intent intent = new Intent(getApplicationContext(), MainActivityLogin.class);
+                    startActivity(intent);
+
+                } else {
+                    Intent intent = new Intent(getApplicationContext(), MainActivityLogout.class);
+                    startActivity(intent);
+                }
             }
         });
 

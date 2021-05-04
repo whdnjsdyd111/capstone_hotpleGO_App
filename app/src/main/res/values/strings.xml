@@ -51,4 +51,7 @@
     <string name="review">리뷰 조회</string>
     <string name="rating">평균 평점 4.5</string>
     <string name="spinner_prompt">은행선택</string>
+    <string name="facebook_app_id">496241708387515</string>
+    <string name="fb_login_protocol_scheme">fb496241708387515</string>
+
 </resources>
