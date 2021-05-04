@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,9 +49,9 @@ public class MenuAdd extends AppCompatActivity {
             }
         });
 
-        EditText new_name = findViewById(R.id.new_name);
-        EditText new_price = findViewById(R.id.new_price);
-        EditText new_cnt = findViewById(R.id.new_cnt);
+        EditText new_name = findViewById(R.id.add_menu_name);
+        EditText new_price = findViewById(R.id.add_menu_price);
+        EditText new_cnt = findViewById(R.id.add_menu_cnt);
 
         /*등록하기 버튼 클릭 시*/
         Button bt_submit = (Button) findViewById(R.id.menu_add_submit);
@@ -82,9 +81,9 @@ public class MenuAdd extends AppCompatActivity {
                         new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
                 Intent gallery = new Intent(); // 인텐트를 통해 접근 코드를 보냄
                 //기기 기본 갤러리 접근
-                gallery.setType(MediaStore.Images.Media.CONTENT_TYPE);
+//                gallery.setType(MediaStore.Images.Media.CONTENT_TYPE);
                 //구글 갤러리 접근
-//                gallery.setType("image/*");
+                gallery.setType("image/*");
                 gallery.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(gallery, REQUEST_GALLERY_CODE);
             }

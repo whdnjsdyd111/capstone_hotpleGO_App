@@ -29,10 +29,10 @@ public class MenuModify extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_modify);
 
-        edit_name = findViewById(R.id.edit_name);
-        edit_price = findViewById(R.id.edit_price);
-        edit_cnt = findViewById(R.id.edit_cnt);
-        edit_iv = findViewById(R.id.edit_img);
+        edit_name = findViewById(R.id.modify_name);
+        edit_price = findViewById(R.id.modify_price);
+        edit_cnt = findViewById(R.id.modify_cnt);
+        edit_iv = findViewById(R.id.modify_img);
 
         original = (MenuData) getIntent().getSerializableExtra(PARAM_ORIGINAL);
 
@@ -47,7 +47,7 @@ public class MenuModify extends AppCompatActivity {
         }
 
         /*취소하기 버튼 눌렀을 때*/
-        Button bt_back = (Button) findViewById(R.id.menu_edit_canel);
+        Button bt_back = (Button) findViewById(R.id.menu_modify_canel);
         bt_back.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,7 +57,7 @@ public class MenuModify extends AppCompatActivity {
         });
 
         /*저장하기 버튼 눌렀을 때*/
-        Button bt_submit = (Button) findViewById(R.id.menu_edit_save);
+        Button bt_submit = (Button) findViewById(R.id.menu_modify_save);
         bt_submit.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
