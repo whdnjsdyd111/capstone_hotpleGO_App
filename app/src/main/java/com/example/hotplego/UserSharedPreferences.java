@@ -1,14 +1,15 @@
-package com.example.hotplego.domain;
+package com.example.hotplego;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.hotplego.domain.UserVO;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 public class UserSharedPreferences {
-    private static UserSharedPreferences instance = new UserSharedPreferences();
+    private static final UserSharedPreferences instance = new UserSharedPreferences();
 
     private UserSharedPreferences() { }
 
@@ -36,7 +37,7 @@ public class UserSharedPreferences {
         String user = gson.toJson(vo);
         editor.putString("user", user);
         editor.apply();
-        this.vo = vo;
+        UserSharedPreferences.vo = vo;
     }
 
     public void login(Activity activity) {
@@ -45,7 +46,6 @@ public class UserSharedPreferences {
         if (user != null) {
             Gson gson = new Gson();
             vo = gson.fromJson(user, new TypeToken<UserVO>() { }.getType());
-            this.vo = vo;
         }
     }
 }

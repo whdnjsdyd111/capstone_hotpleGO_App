@@ -1,4 +1,4 @@
-package com.example.hotplego;
+package com.example.hotplego.ui.user.common;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,6 +11,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import com.example.hotplego.PostRun;
+import com.example.hotplego.R;
 
 import org.json.JSONException;
 
@@ -124,7 +127,7 @@ public class MainActivitySign extends Activity implements View.OnClickListener{
 
                     Log.w("앱에서 보낸값", email + ", " + pw);
 
-                    PostRun pr = new PostRun("userJoin", this);
+                    PostRun pr = new PostRun("userJoin", this, PostRun.DATA);
                     pr.setRunUI(new Runnable() {
                         @Override
                         public void run() {
@@ -141,14 +144,13 @@ public class MainActivitySign extends Activity implements View.OnClickListener{
                             }
                         }
                     });
-                    pr.addData("email", email.getText().toString());
-                    pr.addData("pw", pw.getText().toString());
-                    pr.addData("phone",phoneNum.getText().toString());
-                    pr.addData("uCode", email.getText().toString());
-                    pr.addData("birth_str", birth.getText().toString());
-                    pr.addData("nick", name.getText().toString());
-                    pr.addData("gender", gender);
-
+                    pr.addData("email", email.getText().toString())
+                            .addData("pw", pw.getText().toString())
+                            .addData("phone",phoneNum.getText().toString())
+                            .addData("uCode", email.getText().toString())
+                            .addData("birth_str", birth.getText().toString())
+                            .addData("nick", name.getText().toString())
+                            .addData("gender", gender);
                     pr.start();
 
                 } catch (Exception e) {
@@ -157,7 +159,7 @@ public class MainActivitySign extends Activity implements View.OnClickListener{
                 break;
 
             case R.id.validateButton:
-                PostRun pr = new PostRun("check_email", this);
+                PostRun pr = new PostRun("check_email", this, PostRun.DATA);
                 pr.setRunUI(new Runnable() {
                     @Override
                     public void run() {

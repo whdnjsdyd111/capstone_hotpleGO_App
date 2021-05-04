@@ -31,7 +31,6 @@
                 android:textSize="@dimen/text_medium"
                 android:textColorLink="#D12C2C"
                 android:textColorHint="#CA9A9A"
-                android:textColor="#F6EBEB"
                 android:shadowColor="#C19B9B"
                 android:inputType="textEmailAddress"
                 android:hint="Email"/>

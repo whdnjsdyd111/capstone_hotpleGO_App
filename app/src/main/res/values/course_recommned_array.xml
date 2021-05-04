@@ -3,7 +3,6 @@
     <string-array name="course_recommend_array">
         <item>거리순</item>
         <item>별점순</item>
-        <item></item>
         <item>3시간</item>
         <item>4시간</item>
         <item>5시간</item>

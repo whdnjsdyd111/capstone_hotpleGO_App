@@ -1,10 +1,12 @@
-package com.example.hotplego;
+package com.example.hotplego.ui.user.common;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.hotplego.R;
 
 public class SelectRegister extends Activity implements View.OnClickListener {
     Button btnMember;

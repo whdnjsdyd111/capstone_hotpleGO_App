@@ -83,4 +83,7 @@
     <!-- 게시판 추가 -->
     <string name="board_add">게시판 작성</string>
     <string name="board_add_hint">내용을 입력해주세요</string>
+    <!-- 페이스북 api -->
+    <string name="facebook_app_id">496241708387515</string>
+    <string name="fb_login_protocol_scheme">fb496241708387515</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.hotplego;
+package com.example.hotplego.ui.user.common;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,6 +14,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.example.hotplego.R;
 
 import java.util.ArrayList;
 import java.util.List;

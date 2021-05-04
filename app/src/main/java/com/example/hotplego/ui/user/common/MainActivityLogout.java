@@ -1,4 +1,4 @@
-package com.example.hotplego;
+package com.example.hotplego.ui.user.common;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hotplego.databinding.ActivityWelcomeBinding;
-import com.example.hotplego.domain.UserSharedPreferences;
+import com.example.hotplego.UserSharedPreferences;
 
 public class MainActivityLogout extends AppCompatActivity {
     private ActivityWelcomeBinding binding;

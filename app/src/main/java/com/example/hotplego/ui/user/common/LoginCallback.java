@@ -1,4 +1,4 @@
-package com.example.hotplego;
+package com.example.hotplego.ui.user.common;
 
 import android.os.Bundle;
 import android.util.Log;

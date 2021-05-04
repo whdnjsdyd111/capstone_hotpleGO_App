@@ -1,4 +1,4 @@
-package com.example.hotplego;
+package com.example.hotplego.ui.user.common;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,7 +17,10 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.hotplego.domain.UserSharedPreferences;
+import com.example.hotplego.MainActivity;
+import com.example.hotplego.PostRun;
+import com.example.hotplego.R;
+import com.example.hotplego.UserSharedPreferences;
 import com.example.hotplego.domain.UserVO;
 import com.facebook.CallbackManager;
 import com.facebook.login.widget.LoginButton;
@@ -39,6 +42,7 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Locale;
 
 import static com.example.hotplego.R.layout;
 
@@ -82,7 +86,7 @@ public class MainActivityLogin extends AppCompatActivity implements View.OnClick
                     @Override
                     public void onSuccess(MeV2Response result) {
                         // 로그인 성공
-                        Intent intent = new Intent(MainActivityLogin.this,MainActivity.class);
+                        Intent intent = new Intent(MainActivityLogin.this, MainActivity.class);
                         intent.putExtra("name",result.getKakaoAccount().getProfile().getNickname());
                         intent.putExtra("profileImg", result.getKakaoAccount().getProfile().getProfileImageUrl());
                         intent.putExtra("email", result.getKakaoAccount().getEmail());
@@ -97,7 +101,7 @@ public class MainActivityLogin extends AppCompatActivity implements View.OnClick
             public void onSessionOpenFailed(KakaoException exception) {
 
             }
-       };
+        };
 
         Session.getCurrentSession().addCallback(mSessionCallback);
         Session.getCurrentSession().checkAndImplicitOpen();
@@ -165,22 +169,19 @@ public class MainActivityLogin extends AppCompatActivity implements View.OnClick
                     return;
                 }
 
-               Log.w("login", "로그인 하는중");
+                Log.w("login", "로그인 하는중");
                 try {
 
                     Log.w("앱에서 보낸값", id + ", " + pw);
 
-                    PostRun pr = new PostRun("login", this);
+                    PostRun pr = new PostRun("login", this, PostRun.DATA);
                     pr.setRunUI(new Runnable() {
                         @Override
                         public void run() {
                             try {
                                 String message = pr.obj.getString("message");
-                                Log.i("asd", pr.obj.toString());
                                 if(Boolean.parseBoolean(message)) {
-                                    // TODO 유저 정보 가져와서 디비에 저장하기 (디비 저장, 유저 객체 생성)
-                                    JSONArray arr = new JSONArray(pr.obj.getString("user"));
-                                    JSONObject obj = new JSONObject(arr.getJSONObject(0).toString());
+                                    JSONObject obj = new JSONObject(pr.obj.getString("user"));
                                     UserVO vo = new UserVO();
                                     vo.setUCode(obj.getString("UCode"));
                                     vo.setNick(obj.getString("nick"));
@@ -191,7 +192,7 @@ public class MainActivityLogin extends AppCompatActivity implements View.OnClick
                                     } catch (JSONException e) {}
                                     vo.setPoint(obj.getLong("point"));
                                     try {
-//                                        vo.setBirth(new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH).parse(obj.getString("birth")));
+//                                        vo.setBirth(new SimpleDateFormat("E MMM dd HH:mm:ss Z yyyy", Locale.ENGLISH).parse(obj.getString("birth")));
                                         vo.setRegDate(new Timestamp(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(obj.getString("regDate")).getTime()));
                                     } catch (ParseException e) {
                                         e.printStackTrace();
@@ -209,8 +210,8 @@ public class MainActivityLogin extends AppCompatActivity implements View.OnClick
                             }
                         }
                     });
-                    pr.addData("id", loginId.getText().toString());
-                    pr.addData("pw", loginPw.getText().toString());
+                    pr.addData("id", loginId.getText().toString())
+                            .addData("pw", loginPw.getText().toString());
                     pr.start();
                 } catch (Exception e) {
                     e.printStackTrace();

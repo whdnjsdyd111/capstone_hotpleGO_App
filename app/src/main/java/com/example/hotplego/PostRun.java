@@ -37,7 +37,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PostRun extends Thread implements Runnable {
-    public static final String DOMAIN = "http://172.26.3.39:8000";
+    public static final String DOMAIN = "http://172.30.1.25:8000";
     public static final String IMAGE_URL = "/hotpleImage/0000/00/00/";
     public static final int DATA = 0;
     public static final int IMAGES = 1;
