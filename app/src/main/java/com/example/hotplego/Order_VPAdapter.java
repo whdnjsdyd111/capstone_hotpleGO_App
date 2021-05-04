@@ -16,7 +16,7 @@ public class Order_VPAdapter extends FragmentPagerAdapter {
         super(fm);
         items = new ArrayList<Fragment>();
         items.add(new Order_details_New());
-        items.add(new Order_details_Complete());
+        items.add(new Order_details_Com());
 
         title.add("신규 처리 중");
         title.add("완료");

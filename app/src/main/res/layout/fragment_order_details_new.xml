@@ -11,10 +11,6 @@
         android:id="@+id/order_details_new"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbarSize="5dp"
-        android:scrollbars="vertical"
-        android:scrollbarFadeDuration="0"
-        android:scrollbarThumbVertical="@android:color/darker_gray"
         android:layout_weight="1"
         android:background="#7DFF00"
         tools:listitem="@layout/fragment_order_details_new_item" />

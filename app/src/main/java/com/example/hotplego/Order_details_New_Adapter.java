@@ -13,56 +13,56 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class Order_details_New_Adapter extends RecyclerView.Adapter<Order_details_New_Adapter.OrderHolder> {
-    private ArrayList<Order_details_New_Data> mData;
-    private LayoutInflater inflater;
-    private Context context;
+    private ArrayList<Order_details_New_Data> nData;
+    private LayoutInflater nIflater;
+    private Context nContext;
 
-    public Order_details_New_Adapter(ArrayList<Order_details_New_Data> items, Context context) {
-        this.context = context;
-        this.inflater = LayoutInflater.from(context);
-        this.mData = items;
+    public Order_details_New_Adapter(ArrayList<Order_details_New_Data> items, Context nContext) {
+        this.nContext = nContext;
+        this.nIflater = LayoutInflater.from(nContext);
+        this.nData = items;
     }
 
     @Override
     public void onBindViewHolder(@NonNull OrderHolder holder, final int position) {
-        Order_details_New_Data item = mData.get(position);
+        Order_details_New_Data item = nData.get(position);
         OrderHolder.setItem(item);
     }
 
     public void addItem(Order_details_New_Data item) {
-        mData.add(item);
+        nData.add(item);
     }
 
     @NonNull
     @Override
     public OrderHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.fragment_order_details_new_item, parent, false);
+        View view = nIflater.inflate(R.layout.fragment_order_details_new_item, parent, false);
         OrderHolder orderHolder = new OrderHolder(view);
         return orderHolder;
     }
 
     @Override
     public int getItemCount() {
-        return mData.size();
+        return nData.size();
     }
 
     public static class OrderHolder extends RecyclerView.ViewHolder {
-        public static TextView tv_name;
-        public static TextView tv_price;
-        public static ImageView iv_icon;
+        public static TextView New_name;
+        public static TextView New_price;
+        public static ImageView New_iv;
 
         public OrderHolder(View itemView) {
             super(itemView);
 
-            iv_icon = (ImageView) itemView.findViewById(R.id.new_menu_img);
-            tv_name = (TextView) itemView.findViewById(R.id.new_menu_name);
-            tv_price = (TextView) itemView.findViewById(R.id.new_menu_price);
+            New_iv = (ImageView) itemView.findViewById(R.id.new_menu_img);
+            New_name = (TextView) itemView.findViewById(R.id.new_menu_name);
+            New_price = (TextView) itemView.findViewById(R.id.new_menu_price);
         }
 
         public static void setItem(Order_details_New_Data item) {
-            tv_name.setText(item.getNew_menu_name());
-            tv_price.setText(item.getNew_menu_price());
-            iv_icon.setImageResource(item.getIv());
+            New_name.setText(item.getNew_menu_name());
+            New_price.setText(item.getNew_menu_price());
+            New_iv.setImageResource(item.getNew_iv());
         }
     }
 }

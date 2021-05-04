@@ -1,22 +1,22 @@
 package com.example.hotplego;
 
 public class Order_details_New_Data {
-    private int iv;
+    private int New_iv;
     private String New_menu_name;
     private String New_menu_price;
 
-    public Order_details_New_Data(int iv, String new_menu_name, String new_menu_price) {
-        this.iv = iv;
+    public Order_details_New_Data(int New_iv, String new_menu_name, String new_menu_price) {
+        this.New_iv = New_iv;
         New_menu_name = new_menu_name;
         New_menu_price = new_menu_price;
     }
 
-    public int getIv() {
-        return iv;
+    public int getNew_iv() {
+        return New_iv;
     }
 
-    public void setIv(int iv) {
-        this.iv = iv;
+    public void setNew_iv(int new_iv) {
+        this.New_iv = new_iv;
     }
 
     public String getNew_menu_name() {
