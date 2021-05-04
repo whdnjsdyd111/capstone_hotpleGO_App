@@ -118,15 +118,10 @@
             app:backgroundTint="#7CCF32"
             android:background="#7CCF32"/>
 
-        <Button
-            android:layout_height="wrap_content"
+        <com.kakao.usermgmt.LoginButton
+            android:id="@+id/btn_login"
             android:layout_width="match_parent"
-            android:layout_marginTop="8dp"
-            android:id="@+id/btnKakao"
-            android:textColor="#FFFFFF"
-            android:text="kakao"
-            app:backgroundTint="#F7E600"
-            android:background="#F7E600"/>
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

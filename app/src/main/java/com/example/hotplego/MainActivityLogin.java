@@ -1,6 +1,5 @@
 package com.example.hotplego;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
@@ -16,11 +15,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hotplego.domain.UserSharedPreferences;
 import com.example.hotplego.domain.UserVO;
 import com.facebook.CallbackManager;
 import com.facebook.login.widget.LoginButton;
+import com.kakao.auth.ISessionCallback;
+import com.kakao.auth.Session;
+import com.kakao.network.ErrorResult;
+import com.kakao.usermgmt.UserManagement;
+import com.kakao.usermgmt.callback.MeV2ResponseCallback;
+import com.kakao.usermgmt.response.MeV2Response;
+import com.kakao.util.exception.KakaoException;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,7 +42,7 @@ import java.util.Arrays;
 
 import static com.example.hotplego.R.layout;
 
-public class MainActivityLogin extends Activity implements View.OnClickListener {
+public class MainActivityLogin extends AppCompatActivity implements View.OnClickListener {
 
     Button btnLogin;
     TextView btnSignup, btnSearch;
@@ -47,13 +54,53 @@ public class MainActivityLogin extends Activity implements View.OnClickListener 
     private CallbackManager callbackManager;
     private LoginCallback mLoginCallback;
     private LoginButton login;
+    private ISessionCallback mSessionCallback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(layout.activity_login);
 
+        mSessionCallback = new ISessionCallback() {
+            @Override
+            public void onSessionOpened() {
+                // 로그인 요청
+                UserManagement.getInstance().me(new MeV2ResponseCallback() {
 
+                    @Override
+                    public void onFailure(ErrorResult errorResult) {
+                        // 로그인 실패
+                        Toast.makeText(MainActivityLogin.this, "로그인 도중 오류가 발생", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onSessionClosed(ErrorResult errorResult) {
+                        // 세션이 닫힘
+                        Toast.makeText(MainActivityLogin.this, "세션이 닫혔습니다.. 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onSuccess(MeV2Response result) {
+                        // 로그인 성공
+                        Intent intent = new Intent(MainActivityLogin.this,MainActivity.class);
+                        intent.putExtra("name",result.getKakaoAccount().getProfile().getNickname());
+                        intent.putExtra("profileImg", result.getKakaoAccount().getProfile().getProfileImageUrl());
+                        intent.putExtra("email", result.getKakaoAccount().getEmail());
+                        startActivity(intent);
+
+                        Toast.makeText(MainActivityLogin.this, "로그인 성공", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+
+            @Override
+            public void onSessionOpenFailed(KakaoException exception) {
+
+            }
+       };
+
+        Session.getCurrentSession().addCallback(mSessionCallback);
+        Session.getCurrentSession().checkAndImplicitOpen();
 
         loginId = (EditText) findViewById(R.id.etEmail);
         loginPw = (EditText) findViewById(R.id.etPassword);
@@ -72,6 +119,14 @@ public class MainActivityLogin extends Activity implements View.OnClickListener 
         login.setReadPermissions(Arrays.asList("public_profile","email"));
         login.registerCallback(callbackManager, mLoginCallback);
         getHashKey();
+    }
+
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Session.getCurrentSession().removeCallback(mSessionCallback);
     }
 
     private void getHashKey(){
@@ -176,4 +231,5 @@ public class MainActivityLogin extends Activity implements View.OnClickListener 
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode , resultCode, data);
     }
+
 }

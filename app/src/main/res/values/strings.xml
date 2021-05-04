@@ -53,5 +53,10 @@
     <string name="spinner_prompt">은행선택</string>
     <string name="facebook_app_id">496241708387515</string>
     <string name="fb_login_protocol_scheme">fb496241708387515</string>
+    <string name="re_owner_cont">업체 답변</string>
+    <string name="read_count">조회수</string>
+    <string name="recy_num">추천 수</string>
+    <string name="recn_num">비추 수</string>
+    <string name="mbti">mbti</string>
 
 </resources>

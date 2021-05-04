@@ -54,6 +54,8 @@ dependencies {
     implementation 'com.facebook.android:facebook-login:[5,6)'
     implementation 'com.google.code.gson:gson:2.4'
     implementation 'com.google.android.gms:play-services-auth:16.0.1'
+    // 카카오 로그인
+    implementation "com.kakao.sdk:usermgmt:1.27.0"
 
 
     testImplementation 'junit:junit:4.+'

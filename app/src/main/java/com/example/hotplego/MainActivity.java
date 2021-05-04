@@ -11,8 +11,11 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.hotplego.domain.UserSharedPreferences;
 import com.example.hotplego.domain.UserVO;
+import com.kakao.usermgmt.UserManagement;
+import com.kakao.usermgmt.callback.LogoutResponseCallback;
 
 public class MainActivity extends AppCompatActivity  {
+
 
     public Button button_notice;
     public static UserVO vo;
@@ -43,6 +46,19 @@ public class MainActivity extends AppCompatActivity  {
                     Intent intent = new Intent(getApplicationContext(), MainActivityLogout.class);
                     startActivity(intent);
                 }
+            }
+        });
+
+        findViewById(R.id.bn_logout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
+                    @Override
+                    public void onCompleteLogout() {
+                        // 로그아웃 성공시 수행하는 지점
+
+                    }
+                });
             }
         });
 
