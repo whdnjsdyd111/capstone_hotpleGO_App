@@ -44,7 +44,7 @@ public class MBTIActivity extends AppCompatActivity {
 
     private void initSelected() {
         // TODO 사용자 uCode + SharedPreferences 의 mbti 교체, DB 에서 조회 X
-        PostRun postRun = new PostRun("getMbti", this);
+        PostRun postRun = new PostRun("getMbti", this, PostRun.DATA);
         postRun.addData("uCode", "whdnjsdyd111@naver.com/A/");
         postRun.setRunUI(() -> {
             try {
@@ -81,8 +81,8 @@ public class MBTIActivity extends AppCompatActivity {
     private void post(String mbti) {
         // TODO 유저 정보
         PostRun postRun = new PostRun("saveMbti", this);
-        postRun.addData("uCode", "whdnjsdyd111@naver.com/A/");
-        postRun.addData("mbti", mbti);
+        postRun.addData("uCode", "whdnjsdyd111@naver.com/A/")
+                .addData("mbti", mbti);
         postRun.setRunUI(() -> {
             try {
                 String message = postRun.obj.getString("message");

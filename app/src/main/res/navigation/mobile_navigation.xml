@@ -19,9 +19,9 @@
 
     <fragment
         android:id="@+id/navigation_course"
-        android:name="com.example.hotplego.ui.user.notifications.NotificationsFragment"
+        android:name="com.example.hotplego.ui.user.course.CourseFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_course" />
 
     <fragment
         android:id="@+id/navigation_search"

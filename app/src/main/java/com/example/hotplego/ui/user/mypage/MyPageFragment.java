@@ -61,9 +61,9 @@ public class MyPageFragment extends Fragment {
         binding.updateNick.setOnClickListener(v -> {
             String nick = binding.nick.getText().toString();
             if (!nick.isEmpty()) {
-                PostRun postRun = new PostRun("changeNick", this.getActivity());
-                postRun.addData("uCode", "whdnjsdyd111@naver.com/A/");
-                postRun.addData("nick", nick);
+                PostRun postRun = new PostRun("changeNick", this.getActivity(), PostRun.DATA);
+                postRun.addData("uCode", "whdnjsdyd111@naver.com/A/")
+                        .addData("nick", nick);
                 postRun.setRunUI(new Runnable() {
                     @Override
                     public void run() {

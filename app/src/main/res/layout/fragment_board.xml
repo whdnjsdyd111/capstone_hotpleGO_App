@@ -5,53 +5,54 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_marginBottom="85dp"
-    tools:context=".ui.board.BoardActivity">
-
-    <TextView
-        android:id="@+id/board_title"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:gravity="center"
-        android:text="핫플 공유"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="85dp"
+        tools:context=".ui.board.BoardActivity">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2px"
-        android:background="#8A8A8A" />
-
-    <EditText
-        android:id="@+id/board_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="40dp"
-        android:background="@drawable/rounded_border"
-        android:ems="10"
-        android:hint="ex) 위치: 동성로, 키워드: 한식 "
-        android:inputType="textPersonName"
-        android:textSize="12sp" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/board_recyclerView"
+        <TextView
+            android:id="@+id/board_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            tools:listitem="@layout/board_item" />
-    </ScrollView>
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="핫플 공유"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-</LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="#8A8A8A" />
+
+        <EditText
+            android:id="@+id/board_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="40dp"
+            android:background="@drawable/rounded_border"
+            android:ems="10"
+            android:hint="ex) 위치: 동성로, 키워드: 한식 "
+            android:drawableLeft="@drawable/ic_search_24px"
+            android:inputType="textPersonName"
+            android:textSize="12sp" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/board_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                tools:listitem="@layout/board_item" />
+        </ScrollView>
+
+    </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addBoardButton"

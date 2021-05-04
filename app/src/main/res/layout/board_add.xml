@@ -52,7 +52,7 @@
             android:background="@drawable/customborder"
             android:hint="@string/board_add_hint"
             android:gravity="top"
-            android:inputType="text"
+            android:inputType="none"
             android:scrollbars="vertical"/>
 
         <LinearLayout

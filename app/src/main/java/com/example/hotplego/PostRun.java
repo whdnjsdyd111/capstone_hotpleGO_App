@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.util.Log;
 
 import com.android.internal.http.multipart.MultipartEntity;
 
@@ -13,8 +14,10 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.entity.mime.content.ContentBody;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
@@ -23,6 +26,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,7 +37,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PostRun extends Thread implements Runnable {
-    public static final String DOMAIN = "http://172.30.1.25:8000";
+    public static final String DOMAIN = "http://172.26.3.39:8000";
     public static final String IMAGE_URL = "/hotpleImage/0000/00/00/";
     public static final int DATA = 0;
     public static final int IMAGES = 1;
@@ -58,12 +64,13 @@ public class PostRun extends Thread implements Runnable {
         this.run = run;
     }
 
-    public void addData(String k, String v) {
+    public PostRun addData(String k, String v) {
         if (map != null) map.put(k, v);
         if (builder != null) builder.addTextBody(k, v);
+        return this;
     }
 
-    public void addJsonData(String k, String[] v_str, Object[] v_obj) {
+    public PostRun addJsonData(String k, String[] v_str, Object[] v_obj) {
         JSONObject obj = new JSONObject();
         try {
             for (int i = 0; i < v_str.length; i++) {
@@ -74,10 +81,12 @@ public class PostRun extends Thread implements Runnable {
         }
         if (map != null) map.put(k, obj.toString());
         if (builder != null) builder.addTextBody(k, obj.toString());
+        return this;
     }
 
-    public void addImage(String k, Context ctx, Uri uri) {
+    public PostRun addImage(String k, Context ctx, Uri uri) {
         if (builder != null) builder.addPart(k, new FileBody(new File(getPath(ctx, uri))));
+        return this;
     }
 
     @Override
@@ -102,6 +111,8 @@ public class PostRun extends Thread implements Runnable {
 
                 method.setEntity(request);    // http 에 인코딩 세팅
             } else if (builder != null) {
+                builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
+                builder.setCharset(StandardCharsets.UTF_8);
                 method.setEntity(builder.build());
             }
 

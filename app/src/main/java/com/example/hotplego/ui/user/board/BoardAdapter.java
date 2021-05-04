@@ -1,7 +1,5 @@
 package com.example.hotplego.ui.user.board;
 
-import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,14 +14,13 @@ import com.example.hotplego.PostRun;
 import com.example.hotplego.R;
 import com.example.hotplego.domain.BoardVO;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ItemViewHolder> {
+public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHolder> {
 
-    static class ItemViewHolder extends RecyclerView.ViewHolder {
+    public static class BoardViewHolder extends RecyclerView.ViewHolder {
         ImageView board_item_map;
         TextView board_item_title;
         TextView board_item_name;
@@ -33,7 +30,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ItemViewHold
         TextView board_item_recon;
         TextView board_item_time;
 
-        public ItemViewHolder(@NonNull View itemView) {
+        public BoardViewHolder(@NonNull View itemView) {
             super(itemView);
 
             board_item_map = itemView.findViewById(R.id.board_item_map);
@@ -90,15 +87,15 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ItemViewHold
 
     @NonNull
     @Override
-    public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BoardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.board_item, parent, false);
-        return new ItemViewHolder(view);
+        return new BoardViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BoardViewHolder holder, int position) {
         BoardVO vo = list.get(position);
-        holder.onBind(list.get(position));
+        holder.onBind(vo);
         holder.itemView.setOnClickListener(v -> {
             listener.onItemClick(v, position, vo);
         });

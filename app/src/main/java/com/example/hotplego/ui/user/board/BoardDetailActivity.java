@@ -23,7 +23,6 @@ import java.util.Date;
 public class BoardDetailActivity extends AppCompatActivity {
     private BoardDetailsBinding binding;
     private String bdCode;
-    private UserVO user;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,22 +30,10 @@ public class BoardDetailActivity extends AppCompatActivity {
         binding = BoardDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // TODO 유저 정보 SharedPreferences 로 변경
-        user = new UserVO();
-        user.setUCode("whdnjsdyd111@naver.com/A/");
-        user.setPw("argjnerjgnerntklen");
-        user.setNick("월롱");
-        user.setProfileImg("https://lh3.googleusercontent.com/a-/AOh14Gjm6G76xvDpjc6mgtYGeAlFU4erv5XYw8inNWjReg=s96-c");
-        user.setBirth(new Date());
-        user.setGender('M');
-        user.setPhone("01068480083");
-        user.setPoint(0L);
-        user.setMbti("ENFJ");
-        user.setRegDate(new Timestamp(1619423443624L));
-
         bdCode = getIntent().getStringExtra("bdCode");
-        PostRun postRun = new PostRun("getBoard", this);
-        postRun.addData("bdCode", bdCode);
+        PostRun postRun = new PostRun("getBoard", this, PostRun.DATA);
+        // TODO 유저 정보 SharedPreferences 로 변경
+        postRun.addData("bdCode", "whdnjsdyd111@naver.com/A/");
         postRun.setRunUI(() -> {
             BoardVO vo = null;
             Log.i("aaa", postRun.obj.toString());
@@ -59,8 +46,15 @@ public class BoardDetailActivity extends AppCompatActivity {
             binding.boardUser.setText(vo.getNick());
             binding.boardContents.setText(vo.getBdTitle());
             binding.boardText.setText(Html.fromHtml(vo.getBdCont(), new ImageGetterImpl(this, binding.boardText), null));
-            if (vo.getUCode().equals(user.getUCode())) binding.boardMaster.setVisibility(View.VISIBLE);
+            // TODO 유저 정보
+            if (vo.getUCode().equals("whdnjsdyd111@naver.com/A/")) binding.boardMaster.setVisibility(View.VISIBLE);
         });
         postRun.start();
+    }
+
+    @Override
+    public void onBackPressed() {
+        setResult(RESULT_OK);
+        super.onBackPressed();
     }
 }

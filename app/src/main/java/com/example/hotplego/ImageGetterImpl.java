@@ -2,15 +2,12 @@ package com.example.hotplego;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LevelListDrawable;
-import android.os.AsyncTask;
 import android.text.Html;
-import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,12 +21,12 @@ import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.request.transition.Transition;
 
 public class ImageGetterImpl implements Html.ImageGetter {
-    private Context context;
-    private TextView textView;
+    private final Context context;
+    private final View view;
 
-    public ImageGetterImpl(Context context, TextView target) {
+    public ImageGetterImpl(Context context, View target) {
         this.context = context;
-        textView = target;
+        view = target;
     }
 
     @Override
@@ -66,7 +63,7 @@ public class ImageGetterImpl implements Html.ImageGetter {
             this.drawable = drawable;
             int drawableWidth = drawable.getIntrinsicWidth();
             int drawableHeight = drawable.getIntrinsicHeight();
-            int maxWidth = textView.getMeasuredWidth();
+            int maxWidth = view.getMeasuredWidth();
             if (drawableWidth > maxWidth) {
                 int calculatedHeight = maxWidth * drawableHeight / drawableWidth;
                 drawable.setBounds(0, 0, maxWidth, calculatedHeight);
@@ -76,7 +73,8 @@ public class ImageGetterImpl implements Html.ImageGetter {
                 setBounds(0, 0, drawableWidth, drawableHeight);
             }
 
-            textView.setText(textView.getText());
+            if (view instanceof TextView) ((TextView) view).setText(((TextView) view).getText());
+            else ((EditText) view).setText(((EditText) view).getText());
         }
 
         @Override
@@ -108,7 +106,7 @@ public class ImageGetterImpl implements Html.ImageGetter {
 
         @Override
         public void getSize(@NonNull SizeReadyCallback cb) {
-            textView.post(() -> cb.onSizeReady(textView.getWidth(), textView.getHeight()));
+            view.post(() -> cb.onSizeReady(view.getWidth(), view.getHeight()));
         }
 
         @Override
