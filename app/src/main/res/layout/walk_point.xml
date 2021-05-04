@@ -8,22 +8,26 @@
         android:id="@+id/walkpoint_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="15dp"
         android:gravity="center"
         android:text="만보기 페이지"
         android:textSize="20dp"
         android:textStyle="bold" />
 
-    <ProgressBar
+    <com.dinuscxj.progressbar.CircleProgressBar
         android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
+        app:style="solid_line"
         android:layout_width="match_parent"
+        app:progress_text_size="45sp"
+        app:progress_text_color="#504B4B"
+        app:progress_stroke_width="15dp "
+        app:progress_stroke_cap="round"
+        app:progress_start_color="#9FEDED"
+        app:progress_end_color="#9F9CF3"
         android:layout_height="200dp"
-        android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginTop="50dp"
         android:layout_marginRight="50dp"
         android:layout_marginBottom="80dp" />
 

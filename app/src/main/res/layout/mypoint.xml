@@ -9,7 +9,7 @@
         android:id="@+id/mypoint_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="15dp"
         android:gravity="center"
         android:text="내 포인트 조회"

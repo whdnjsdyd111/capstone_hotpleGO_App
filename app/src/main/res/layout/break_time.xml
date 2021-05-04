@@ -9,7 +9,7 @@
         android:id="@+id/textView14"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="15dp"
         android:gravity="center"
         android:text="영업 임시 중지"
