@@ -33,7 +33,7 @@ public class BoardDetailActivity extends AppCompatActivity {
         bdCode = getIntent().getStringExtra("bdCode");
         PostRun postRun = new PostRun("getBoard", this, PostRun.DATA);
         // TODO 유저 정보 SharedPreferences 로 변경
-        postRun.addData("bdCode", "whdnjsdyd111@naver.com/A/");
+        postRun.addData("bdCode", bdCode);
         postRun.setRunUI(() -> {
             BoardVO vo = null;
             Log.i("aaa", postRun.obj.toString());
