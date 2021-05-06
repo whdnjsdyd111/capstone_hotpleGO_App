@@ -1,5 +1,6 @@
 package com.example.hotplego;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
@@ -16,7 +17,7 @@ public class Order_list extends AppCompatActivity {
         setContentView(R.layout.order_details_tab);
 
         ActionBar ac = getSupportActionBar();
-        ac.setTitle("주문 내역 조회");
+        ac.setTitle("주문 관리");
 
         ViewPager vp = findViewById(R.id.viewpager);
         Order_VPAdapter adapter = new Order_VPAdapter(getSupportFragmentManager());

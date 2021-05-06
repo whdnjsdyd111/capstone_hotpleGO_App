@@ -37,14 +37,9 @@ public class Order_details_New extends Fragment {
         return view;
     }
 
-    private void initDataset() { // 더미 데이터
+    private void initDataset() {
         items.clear();
 
         items.add(new Order_details_New_Data(R.drawable.lank_f, "통새우버거 3개 외 1개", "23400원"));
-        items.add(new Order_details_New_Data(R.drawable.lank_s, "육회비빔밥 2개 외 1개", "27000원"));
-        items.add(new Order_details_New_Data(R.drawable.lank_s, "육회비빔밥 1개 외 1개", "17900원"));
-        items.add(new Order_details_New_Data(R.drawable.lank_t, "인크레더블버거 1개 외 1개", "14000원"));
-        items.add(new Order_details_New_Data(R.drawable.lank_t, "통새우버거 2개 외 1개", "16000원"));
-        items.add(new Order_details_New_Data(R.drawable.lank_t, "치즈스틱 2개 외 1개", "22000원"));
     }
 }

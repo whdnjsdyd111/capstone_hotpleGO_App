@@ -17,20 +17,20 @@ public class Order_details_New_Adapter extends RecyclerView.Adapter<Order_detail
     private LayoutInflater nIflater;
     private Context nContext;
 
-    public Order_details_New_Adapter(ArrayList<Order_details_New_Data> items, Context nContext) {
+    public Order_details_New_Adapter(ArrayList<Order_details_New_Data> nData, Context nContext) {
         this.nContext = nContext;
         this.nIflater = LayoutInflater.from(nContext);
-        this.nData = items;
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull OrderHolder holder, final int position) {
-        Order_details_New_Data item = nData.get(position);
-        OrderHolder.setItem(item);
+        this.nData = nData;
     }
 
     public void addItem(Order_details_New_Data item) {
         nData.add(item);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull OrderHolder holder, final int position) {
+        Order_details_New_Data new_data = nData.get(position);
+        OrderHolder.setItem(new_data);
     }
 
     @NonNull

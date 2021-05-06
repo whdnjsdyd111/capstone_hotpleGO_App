@@ -45,7 +45,7 @@
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/order_manage_menu_img"
             android:layout_toRightOf="@id/order_manage_menu_img"
-            android:text="주문 개수"
+            android:text="주문 수량"
             android:textColor="@color/black"
             android:textSize="25sp" />
 

@@ -18,8 +18,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:layout_marginTop="10dp"
+        android:orientation="vertical"
         android:padding="20dp">
 
         <TextView
@@ -34,9 +34,10 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_centerInParent="true"
-            android:background="#c7c7c7"/>
+            android:background="#c7c7c7" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/details_list"
             android:layout_width="match_parent"
             android:layout_height="400dp"
             android:layout_marginBottom="20dp"
@@ -45,8 +46,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -108,8 +109,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -178,16 +179,16 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_centerInParent="true"
-            android:background="#c7c7c7"/>
+            android:background="#c7c7c7" />
 
         <TextView
             android:id="@+id/textView35"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:text="새우 알레르기가 있어요!"
-            android:textSize="20sp"
             android:textColor="@color/black"
-            android:layout_marginBottom="20dp" />
+            android:textSize="20sp" />
 
     </LinearLayout>
 </LinearLayout>
