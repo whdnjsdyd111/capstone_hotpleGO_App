@@ -86,4 +86,10 @@
     <!-- 페이스북 api -->
     <string name="facebook_app_id">496241708387515</string>
     <string name="fb_login_protocol_scheme">fb496241708387515</string>
+    <!-- 코스 프래그먼트 -->
+    <string name="course_using">이용 중</string>
+    <string name="course_making">코스 짜기</string>
+    <string name="course_used">이용 내역</string>
+    <!-- 코스 짜기 -->
+    <string name="course_add">코스 추가</string>
 </resources>

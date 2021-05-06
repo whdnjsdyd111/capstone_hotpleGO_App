@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -35,7 +36,10 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
         }
 
         public void onBind(CourseInfoVO info) {
-            index.setText("" + info.getCiIndex());
+            index.setText(String.valueOf(info.getCiIndex()));
+            index.setBackgroundTintList(ContextCompat.getColorStateList(itemView.getContext(),
+                    CourseFragment.COURSE_COLORS[info.getCiIndex() - 1]));
+            // TODO 사진 없을 때 /image/logo.jpg 대체
             if (info.getUuid() == null) Glide.with(itemView).load(PostRun.DOMAIN + "/images/logo.jpg").into(image);
             else Glide.with(itemView).load(PostRun.DOMAIN + info.getUploadPath() + info.getUuid() + "_" + info.getFileName()).into(image);
             address.setText(info.getHtAddr());

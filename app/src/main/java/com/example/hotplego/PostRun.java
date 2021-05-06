@@ -29,6 +29,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PostRun extends Thread implements Runnable {
-    public static final String DOMAIN = "http://172.30.1.25:8000";
+    public static final String DOMAIN = "http://192.168.1.32:8000";
     public static final String IMAGE_URL = "/hotpleImage/0000/00/00/";
     public static final int DATA = 0;
     public static final int IMAGES = 1;
@@ -135,13 +136,33 @@ public class PostRun extends Thread implements Runnable {
             long hour = before / 1000 / 60 / 60 % 24;
             long minute = before / 1000/ 60 % 60;
             long second = before / 1000 % 60;
-            if (hour != 0) return hour + " 시간 전";
-            if (minute != 0) return minute + " 분 전";
-            return second + "초 전";
+            if (hour > 0) {
+                str += hour + "시간 전";
+                return str;
+            } else if (minute > 0) {
+                str += minute + "분 전";
+                return str;
+            } else {
+                str += second + "초 전";
+            }
         } catch (ParseException e) {
             e.printStackTrace();
         }
         return str;
+    }
+
+    public static String toDateStr(String code) {
+        SimpleDateFormat fromFm = new SimpleDateFormat("yyMMddHHmmss");
+        SimpleDateFormat toFm = new SimpleDateFormat("yy.MM.dd HH:mm:ss");
+        String dateStr = null;
+        Date date = null;
+        try {
+            date = fromFm.parse(code.split("/")[0]);
+            dateStr = toFm.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return dateStr;
     }
 
     public static String getPath(Context ctx, Uri uri) {
