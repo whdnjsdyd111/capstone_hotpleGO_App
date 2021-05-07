@@ -34,4 +34,13 @@
         <item>9</item>
 
     </string-array>
+
+    <string-array name="bank_array">
+        <item>농협</item>
+        <item>대구</item>
+        <item>국민</item>
+        <item>씨티</item>
+        <item>신한</item>
+        <item>케이뱅크</item>
+    </string-array>
 </resources>
