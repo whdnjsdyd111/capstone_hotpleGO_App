@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.hotplego">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /><!--파일 읽기 권한-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /><!--파일 쓰기 권한-->
+    <uses-feature android:name="android.hardware.sensor.stepdetector" android:required="false" /> <!--스텝 감지 센서 권한 -->
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+
+
     <application
+        android:hardwareAccelerated="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
+        android:requestLegacyExternalStorage="true"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.HotpleGO">
         <activity
             android:name=".MainActivity">
@@ -18,23 +30,37 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivityLogin"
+        <activity android:name=".ui.board.BoardActivity"
             android:parentActivityName=".MainActivity"/>
 
-        <activity android:name=".MainActivitySign"
-            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.board.DetailsActivity"
+            android:parentActivityName=".ui.board.BoardActivity"/>
 
-        <activity android:name=".MainActivitySearch"
+        <activity android:name=".ui.board.ItemActivity"
+            android:parentActivityName=".ui.board.BoardActivity"/>
+
+        <activity android:name=".ui.board.ModifyActivity"
+            android:parentActivityName=".ui.board.DetailsActivity"/>
+
+        <activity android:name=".ui.WalkPointActivity"
             android:parentActivityName=".MainActivity" />
 
-        <activity android:name=".SelectRegister"
+        <activity android:name=".ui.OperationActivity"
             android:parentActivityName=".MainActivity" />
 
-        <activity android:name=".MainActivitySignMg"
+        <activity android:name=".ui.BreaktimeActivity"
+            android:parentActivityName=".ui.OperationActivity" />
+
+        <activity android:name=".ui.SalesadminActivity"
+            android:parentActivityName=".ui.OperationActivity" />
+
+        <activity android:name=".ui.reservation.ReservationActivity"
             android:parentActivityName=".MainActivity" />
 
+        <activity android:name=".ui.local.LocalHotpleActivity"
+            android:parentActivityName=".MainActivity" />
 
-
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
     </application>
 
 </manifest>

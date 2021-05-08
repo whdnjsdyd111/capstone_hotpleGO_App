@@ -16,20 +16,19 @@
     <string name="birth">생년월일</string>
     <string name="bd_title">게시글 제목</string>
     <string name="my_location">유저 위치</string>
-    <string name="hotplace_1st">1위 핫플 장소</string>
-    <string name="intro_1st">1위 핫플 설명</string>
-    <string name="position_1st">1위 핫플 위치</string>
-    <string name="hotplace_2st">2위 핫플 장소</string>
-    <string name="intro_2st">2위 핫플 설명</string>
-    <string name="position_2st">2위 핫플 위치</string>
+    <string name="hotplace_name">핫플 장소</string>
+    <string name="hotplace_intro">핫플 설명</string>
+    <string name="hotplace_position">핫플 위치</string>
     <string name="bd_cont">게시글 내용</string>
     <string name="com_cont">댓글 내용</string>
+    <string name="com_time">댓글 작성시간</string>
     <string name="saving_point">20p</string>
     <string name="total"><b>1,234,000원</b></string>
     <string name="sh_name">업체 이름</string>
     <string name="sh_addr">업체 주소</string>
     <string name="ri_time">예약 시간</string>
     <string name="ri_cont">예약 내용</string>
+    <string name="ri_day">예약 날짜</string>
     <string name="me_name">메뉴 이름</string>
     <string name="me_price">메뉴 가격</string>
     <string name="mbti">mbti</string>
@@ -54,4 +53,7 @@
     <string name="read_count">조회수</string>
     <string name="recy_num">추천 수</string>
     <string name="recn_num">비추 수</string>
+    <string name="spinner_prompt">은행 선택</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
