@@ -1,4 +1,4 @@
-package com.example.hotplego.ui.user.course;
+package com.example.hotplego.ui.user.course.recyclerview;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,12 +15,13 @@ import com.bumptech.glide.Glide;
 import com.example.hotplego.PostRun;
 import com.example.hotplego.R;
 import com.example.hotplego.domain.CourseInfoVO;
+import com.example.hotplego.ui.user.course.CourseFragment;
 
 import java.util.List;
 
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseViewHolder> {
 
-    public static class CourseViewHolder extends RecyclerView.ViewHolder {
+    public class CourseViewHolder extends RecyclerView.ViewHolder {
         TextView index;
         ImageView image;
         TextView address;
@@ -32,6 +33,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
             index = itemView.findViewById(R.id.course_index);
             image = itemView.findViewById(R.id.course_image);
             address = itemView.findViewById(R.id.course_address);
+            if (CourseAdapter.this.isUsed) itemView.findViewById(R.id.course_remove).setVisibility(View.GONE);
             remove = itemView.findViewById(R.id.course_remove);
         }
 
@@ -41,16 +43,24 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
                     CourseFragment.COURSE_COLORS[info.getCiIndex() - 1]));
             // TODO 사진 없을 때 /image/logo.jpg 대체
             if (info.getUuid() == null) Glide.with(itemView).load(PostRun.DOMAIN + "/images/logo.jpg").into(image);
-            else Glide.with(itemView).load(PostRun.DOMAIN + info.getUploadPath() + info.getUuid() + "_" + info.getFileName()).into(image);
+            else Glide.with(itemView).load(PostRun.getImageUrl(info.getUploadPath(), info.getUuid(), info.getFileName())).into(image);
             address.setText(info.getHtAddr());
 
         }
     }
 
     private List<CourseInfoVO> list;
+    private boolean isUsed;
 
     public void setData(List<CourseInfoVO> data) {
         list = data;
+        notifyDataSetChanged();
+    }
+
+    public CourseAdapter() {}
+    public CourseAdapter(List<CourseInfoVO> list, boolean isUsed) {
+        this.list = list;
+        this.isUsed = isUsed;
     }
 
     @NonNull

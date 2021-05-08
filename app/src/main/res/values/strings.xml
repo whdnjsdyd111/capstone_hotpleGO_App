@@ -92,4 +92,8 @@
     <string name="course_used">이용 내역</string>
     <!-- 코스 짜기 -->
     <string name="course_add">코스 추가</string>
+    <!-- 코스 디테일 -->
+    <string name="course_use">코스 이용</string>
+    <string name="course_delete">코스 삭제</string>
+    <string name="dibs">찜하기</string>
 </resources>

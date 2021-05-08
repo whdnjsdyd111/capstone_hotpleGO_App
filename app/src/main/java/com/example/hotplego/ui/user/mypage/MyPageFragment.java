@@ -51,12 +51,10 @@ public class MyPageFragment extends Fragment {
         binding.mbti.setText(user.getMbti());
         Glide.with(this).load(user.getProfileImg()).into(binding.userProfile);
         binding.mbtiPage.setOnClickListener(v -> {
-            Intent intent = new Intent(this.getContext(), MBTIActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(getContext(), MBTIActivity.class));
         });
         binding.tastePage.setOnClickListener(v -> {
-            Intent intent = new Intent(this.getContext(), TasteActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(getContext(), TasteActivity.class));
         });
         binding.updateNick.setOnClickListener(v -> {
             String nick = binding.nick.getText().toString();
@@ -82,6 +80,9 @@ public class MyPageFragment extends Fragment {
             } else {
                 Toast.makeText(MyPageFragment.this.getContext(), "닉네임을 입력해 주십시오.", Toast.LENGTH_SHORT).show();
             }
+        });
+        binding.bookmark.setOnClickListener(v -> {
+            startActivity(new Intent(getContext(), BookmarkActivity.class));
         });
 
         return binding.getRoot();

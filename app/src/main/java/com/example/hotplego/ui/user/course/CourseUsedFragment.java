@@ -1,5 +1,6 @@
 package com.example.hotplego.ui.user.course;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,20 +12,21 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.hotplego.PostRun;
-import com.example.hotplego.databinding.CourseMakingBinding;
 import com.example.hotplego.databinding.CourseUsedBinding;
 import com.example.hotplego.domain.CourseInfoVO;
 import com.example.hotplego.domain.CourseVO;
+import com.example.hotplego.ui.user.course.recyclerview.CourseInfoAdapter;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-public class CourseUsedFragment extends Fragment {
+public class CourseUsedFragment extends Fragment implements CourseInfoAdapter.OnItemClickListener {
     private CourseUsedBinding binding;
     private CourseInfoAdapter adapter;
 
@@ -36,7 +38,7 @@ public class CourseUsedFragment extends Fragment {
                              @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         binding = CourseUsedBinding.inflate(inflater, container, false);
 
-        adapter = new CourseInfoAdapter();
+        adapter = new CourseInfoAdapter(this);
         binding.courseInfoRecyclerView.setAdapter(adapter);
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
         binding.courseInfoRecyclerView.setLayoutManager(manager);
@@ -47,7 +49,6 @@ public class CourseUsedFragment extends Fragment {
                 Gson gson = new Gson();
                 adapter.setData(gson.fromJson(postRun.obj.getString("courses"), new TypeToken<List<CourseVO>>() {}.getType()),
                         gson.fromJson(postRun.obj.getString("courseInfos"), new TypeToken<Map<String, List<CourseInfoVO>>>() {}.getType()));
-                adapter.notifyDataSetChanged();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -58,5 +59,14 @@ public class CourseUsedFragment extends Fragment {
         // TODO 유저
 
         return binding.getRoot();
+    }
+
+    @Override
+    public void onItemClick(CourseVO vo, List<CourseInfoVO> list) {
+        Intent intent = new Intent(getContext(), CourseDetailActivity.class);
+        intent.putExtra("course", vo);
+        intent.putExtra("courseInfo", (Serializable) list);
+        intent.putExtra("kind", "used");
+        startActivity(intent);
     }
 }

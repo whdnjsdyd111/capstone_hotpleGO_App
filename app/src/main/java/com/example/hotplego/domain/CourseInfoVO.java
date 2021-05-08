@@ -3,10 +3,11 @@ package com.example.hotplego.domain;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Data
-public class CourseInfoVO {
+public class CourseInfoVO implements Serializable {
     // 코스 인덱스 정보
     private String csCode;
     private Long htId;

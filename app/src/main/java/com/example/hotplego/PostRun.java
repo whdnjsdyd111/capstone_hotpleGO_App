@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.MediaStore;
 import android.util.Log;
+
+import androidx.annotation.RequiresApi;
 
 import com.android.internal.http.multipart.MultipartEntity;
 
@@ -33,12 +36,15 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
+import java.util.TimeZone;
 
 public class PostRun extends Thread implements Runnable {
-    public static final String DOMAIN = "http://192.168.1.32:8000";
+    public static final String DOMAIN = "http://172.30.1.25:8000";
     public static final String IMAGE_URL = "/hotpleImage/0000/00/00/";
     public static final int DATA = 0;
     public static final int IMAGES = 1;
@@ -126,13 +132,13 @@ public class PostRun extends Thread implements Runnable {
         }
     }
 
-    public static String beforeTime(String code) {
+    public static String beforeBigTime(String code) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmss");
         String str = "";
         try {
             Date writtenTime = sdf.parse(code.split("/")[0]);
-            Date cur = new Date();
-            long before = cur.getTime() - writtenTime.getTime();
+            Log.i("code", code.split("/")[0]);
+            long before = new Date().getTime() - writtenTime.getTime();
             long hour = before / 1000 / 60 / 60 % 24;
             long minute = before / 1000/ 60 % 60;
             long second = before / 1000 % 60;
@@ -163,6 +169,10 @@ public class PostRun extends Thread implements Runnable {
             e.printStackTrace();
         }
         return dateStr;
+    }
+
+    public static String getImageUrl(String uploadPath, String uuid, String fileName) {
+        return PostRun.DOMAIN + "/hotpleImage/" + uploadPath.replaceAll("\\\\", "/") + "/" + uuid + "_" + fileName;
     }
 
     public static String getPath(Context ctx, Uri uri) {

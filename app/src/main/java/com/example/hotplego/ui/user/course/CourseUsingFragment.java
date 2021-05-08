@@ -1,13 +1,9 @@
 package com.example.hotplego.ui.user.course;
 
 import android.app.Activity;
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +20,7 @@ import com.example.hotplego.R;
 import com.example.hotplego.databinding.CourseUsingBinding;
 import com.example.hotplego.domain.CourseInfoVO;
 import com.example.hotplego.domain.CourseVO;
+import com.example.hotplego.ui.user.course.recyclerview.CourseAdapter;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.skt.Tmap.TMapData;
@@ -33,23 +30,15 @@ import com.skt.Tmap.TMapPolyLine;
 import com.skt.Tmap.TMapView;
 
 import org.json.JSONException;
-import org.xml.sax.SAXException;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
-
-import javax.xml.parsers.ParserConfigurationException;
 
 public class CourseUsingFragment extends Fragment {
 
     private CourseUsingBinding binding;
     private CourseAdapter adapter;
-    private final String with = "함께하는 인원 : ";
-    private final String num = "인원 : ";
     List<CourseInfoVO> infos = null;
     private TMapView tMapView = null;
     private final Set<TMapPolyLine> lines = new HashSet<>();
@@ -79,10 +68,9 @@ public class CourseUsingFragment extends Fragment {
             try {
                 infos = new Gson().fromJson(postRun.obj.getString("coursesInfos"), new TypeToken<List< CourseInfoVO>>() {}.getType());
                 adapter.setData(infos);
-                Log.i("ddd", "" + infos);
                 CourseVO vo = new Gson().fromJson(postRun.obj.getString("courses"), CourseVO.class);
-                binding.courseWith.setText(with + vo.getCsWith());
-                binding.courseNum.setText(num + vo.getCsNum());
+                binding.courseWith.setText("함께하는 인원 : " + vo.getCsWith());
+                binding.courseNum.setText("인원 : " + vo.getCsNum());
                 TMapData tMapData = new TMapData();
                 for (int i = 0; i < infos.size(); i++) {
                     CourseInfoVO v = infos.get(i);
@@ -100,7 +88,6 @@ public class CourseUsingFragment extends Fragment {
                                     @Override
                                     public void onFindPathData(TMapPolyLine tMapPolyLine) {
                                         lines.add(tMapPolyLine);
-                                        Log.i("line?", String.valueOf(lines.size()));
                                         if (lines.size() == infos.size() - 1) {
                                             addLines();
                                         }
@@ -113,7 +100,6 @@ public class CourseUsingFragment extends Fragment {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            adapter.notifyDataSetChanged();
         });
         postRun.start();
 
@@ -122,7 +108,6 @@ public class CourseUsingFragment extends Fragment {
 
     private void addLines() {
         for (TMapPolyLine line : lines) {
-            Log.i("distance", String.valueOf(line.getDistance()));
             distance += line.getDistance();
             tMapView.addTMapPolyLine("line", line);
         }

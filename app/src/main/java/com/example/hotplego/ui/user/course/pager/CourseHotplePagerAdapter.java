@@ -1,4 +1,4 @@
-package com.example.hotplego.ui.user.course;
+package com.example.hotplego.ui.user.course.pager;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -21,7 +21,6 @@ public class CourseHotplePagerAdapter extends FragmentStatePagerAdapter {
     public void addFrag(Fragment fragment) {
         fragmentList.add(fragment);
     }
-
 
     @NonNull
     @NotNull

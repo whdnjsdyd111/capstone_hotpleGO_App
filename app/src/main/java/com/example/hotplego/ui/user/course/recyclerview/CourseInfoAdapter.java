@@ -1,31 +1,22 @@
-package com.example.hotplego.ui.user.course;
+package com.example.hotplego.ui.user.course.recyclerview;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentContainerView;
-import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Lifecycle;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.widget.ViewPager2;
 
-import com.bumptech.glide.Glide;
 import com.example.hotplego.PostRun;
 import com.example.hotplego.R;
 import com.example.hotplego.domain.CourseInfoVO;
 import com.example.hotplego.domain.CourseVO;
+import com.example.hotplego.ui.user.course.CourseHotpleFragment;
+import com.example.hotplego.ui.user.course.pager.CourseHotplePagerAdapter;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -64,16 +55,29 @@ public class CourseInfoAdapter extends RecyclerView.Adapter<CourseInfoAdapter.Co
             for (CourseInfoVO vo : infos) {
                 adapter.addFrag(new CourseHotpleFragment(vo));
             }
+            pager.setId(++position);
+            Log.i("position", "" + position);
             pager.setAdapter(adapter);
         }
     }
 
+    public interface OnItemClickListener {
+        void onItemClick(CourseVO vo, List<CourseInfoVO> list);
+    }
+
     private List<CourseVO> list;
     private Map<String, List<CourseInfoVO>> map;
+    private static int position;
+    private OnItemClickListener  listener;
+
+    public CourseInfoAdapter(OnItemClickListener listener) {
+        this.listener = listener;
+    }
 
     public void setData(List<CourseVO> list, Map<String, List<CourseInfoVO>> map) {
         this.list = list;
         this.map = map;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -87,7 +91,11 @@ public class CourseInfoAdapter extends RecyclerView.Adapter<CourseInfoAdapter.Co
     @Override
     public void onBindViewHolder(@NonNull @NotNull CourseInfoAdapter.CourseInfoHolder holder, int position) {
         CourseVO vo = list.get(position);
-        holder.onBind(vo, map.get(vo.getCsCode()));
+        List<CourseInfoVO> vos = map.get(vo.getCsCode());
+        holder.onBind(vo, vos);
+        holder.itemView.setOnClickListener(v -> {
+            listener.onItemClick(vo, vos);
+        });
     }
 
     @Override

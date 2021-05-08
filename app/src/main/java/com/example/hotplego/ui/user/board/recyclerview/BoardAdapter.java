@@ -1,4 +1,4 @@
-package com.example.hotplego.ui.user.board;
+package com.example.hotplego.ui.user.board.recyclerview;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,7 +53,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
             String img = getImgSrc(boardData.getBdCont());
             if (img.isEmpty()) board_item_map.setImageResource(R.drawable.ic_no_image);
             else Glide.with(itemView).load(PostRun.DOMAIN + img).into(board_item_map);
-            board_item_time.setText(PostRun.beforeTime(boardData.getBdCode()));
+            board_item_time.setText(PostRun.beforeBigTime(boardData.getBdCode()));
         }
 
         private String getImgSrc(String str) {
@@ -83,6 +83,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
 
     public void setData(List<BoardVO> data) {
         list = data;
+        notifyDataSetChanged();
     }
 
     @NonNull

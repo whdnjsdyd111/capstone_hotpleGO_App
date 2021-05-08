@@ -28,8 +28,7 @@ import java.util.Date;
 
 public class BoardAddActivity extends AppCompatActivity {
     private BoardAddBinding binding;
-    private final int REQUEST_CODE_ADDED = 1;
-    private final int REQUEST_CODE_FAILURE = 2;
+    private BoardVO vo;
     private final int PICK_IMAGE = 1;
 
     @Override
@@ -37,6 +36,13 @@ public class BoardAddActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = BoardAddBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        vo = (BoardVO) getIntent().getSerializableExtra("board");
+
+        if (vo != null) {
+            binding.boardTitle.setText(vo.getBdTitle());
+            binding.boardContents.setText(Html.fromHtml(vo.getBdCont(), new ImageGetterImpl(this, binding.boardContents), null));
+        }
 
         binding.btnSubmit.setOnClickListener(v -> {
             if (binding.boardTitle.getText().toString().isEmpty()) {
@@ -46,27 +52,45 @@ public class BoardAddActivity extends AppCompatActivity {
                 Toast.makeText(this, "내용을 입력해주십시오.", Toast.LENGTH_SHORT).show();
                 return;
             }
-            BoardVO vo = new BoardVO();
-            vo.setBdTitle(binding.boardTitle.getText().toString());
-            vo.setBdCont(Html.toHtml(binding.boardContents.getText()).replaceAll(PostRun.DOMAIN, ""));
-            // TODO 유저 정보 SharedPreferences 로 변경
-            vo.setUCode("whdnjsdyd111@naver.com/A/");
-            Log.i("asd", "" + vo);
-            PostRun postRun = new PostRun("insertBoard", this, PostRun.DATA);
-            postRun.addData("board", new Gson().toJson(vo));
-            postRun.setRunUI(() -> {
-                try {
-                    if (postRun.obj.getBoolean("message")) {
-                        Toast.makeText(this, "게시글 등록 완료하였습니다.", Toast.LENGTH_SHORT).show();
-                        setResult(Activity.RESULT_OK);
-                        finish();
-                    } else Toast.makeText(this, "등록에 실패하였습니다.", Toast.LENGTH_SHORT).show();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            });
-            postRun.start();
+            if (vo == null) {
+                vo = new BoardVO();
+                vo.setBdTitle(binding.boardTitle.getText().toString());
+                vo.setBdCont(Html.toHtml(binding.boardContents.getText()).replaceAll(PostRun.DOMAIN, ""));
+                // TODO 유저 정보 SharedPreferences 로 변경
+                vo.setUCode("whdnjsdyd111@naver.com/A/");
+                PostRun postRun = new PostRun("insertBoard", this, PostRun.DATA);
+                postRun.addData("board", new Gson().toJson(vo));
+                postRun.setRunUI(() -> {
+                    try {
+                        if (postRun.obj.getBoolean("message")) {
+                            Toast.makeText(this, "게시글 등록 완료하였습니다.", Toast.LENGTH_SHORT).show();
+                            finish();
+                        } else Toast.makeText(this, "등록에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                });
+                postRun.start();
+            } else {
+                vo.setBdTitle(binding.boardTitle.getText().toString());
+                vo.setBdCont(Html.toHtml(binding.boardContents.getText()).replaceAll(PostRun.DOMAIN, ""));
+                PostRun postRun = new PostRun("updateBoard", this, PostRun.DATA);
+                postRun.setRunUI(() -> {
+                    try {
+                        if (postRun.obj.getBoolean("message")) {
+                            Toast.makeText(this, "게시글 수정 완료하였습니다.", Toast.LENGTH_SHORT).show();
+                            finish();
+                        } else Toast.makeText(this, "수정정에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                });
+                postRun.addData("board", new Gson().toJson(vo))
+                        .addData("uCode", "whdnjsdyd111@naver.com/A/") // TODO 유저 정보 SharedPreferences 로 변경
+                        .start();
+            }
         });
+
         binding.cameraButton.setOnClickListener(v -> {
             Intent intent = new Intent();
             intent.setType("image/*");

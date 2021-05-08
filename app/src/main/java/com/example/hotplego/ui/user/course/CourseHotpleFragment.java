@@ -1,6 +1,7 @@
 package com.example.hotplego.ui.user.course;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import org.jetbrains.annotations.NotNull;
 public class CourseHotpleFragment extends Fragment {
     private CourseHotpleInfoBinding binding;
     private CourseInfoVO vo;
+
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override
@@ -29,8 +31,8 @@ public class CourseHotpleFragment extends Fragment {
 
         // TODO 로컬 이미지로 대체
         if (vo.getUuid() == null) Glide.with(this).load(PostRun.DOMAIN + "/images/logo.jpg").into(binding.courseHotpleImg);
-        else Glide.with(this).load(PostRun.DOMAIN + vo.getUploadPath() + vo.getUuid() + "_" + vo.getFileName()).into(binding.courseHotpleImg);
-        binding.courseIndex.setText(String.valueOf(vo.getCiIndex()));
+        else Glide.with(this).load(PostRun.getImageUrl(vo.getUploadPath(), vo.getUuid(), vo.getFileName())).into(binding.courseHotpleImg);
+        binding.courseIndex.setText(vo.getCiIndex() + "번");
         binding.courseHotpleAddress.setText(vo.getHtAddr());
         binding.courseHotpleTitle.setText(vo.getBusnName());
 

@@ -1,4 +1,4 @@
-package com.example.hotplego.ui.user.course;
+package com.example.hotplego.ui.user.course.pager;
 
 import android.view.View;
 import android.view.ViewGroup;
