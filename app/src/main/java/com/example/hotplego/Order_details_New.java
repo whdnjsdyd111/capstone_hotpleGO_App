@@ -21,7 +21,7 @@ public class Order_details_New extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_order_details_new, viewGroup, false);
 
-        initDataset();
+        OrderSet();
 
         Context context = view.getContext();
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.order_details_new);
@@ -37,7 +37,7 @@ public class Order_details_New extends Fragment {
         return view;
     }
 
-    private void initDataset() {
+    private void OrderSet() {
         items.clear();
 
         items.add(new Order_details_New_Data(R.drawable.lank_f, "통새우버거 3개 외 1개", "23400원"));

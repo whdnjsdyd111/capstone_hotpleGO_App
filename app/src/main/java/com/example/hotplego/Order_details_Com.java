@@ -41,9 +41,5 @@ public class Order_details_Com extends Fragment {
         items.clear();
 
         items.add(new Order_details_Com_Data(R.drawable.lank_f,"인크레더블버거 1개 외 1개", "평균평점 4.7", "21:30"));
-        items.add(new Order_details_Com_Data(R.drawable.lank_s,"육회비빔밥 2개 외 1개", "평균평점 4.5", "22:35"));
-        items.add(new Order_details_Com_Data(R.drawable.lank_s,"육회비빔밥 1개 외 1개", "평균평점 4.5", "23:32"));
-        items.add(new Order_details_Com_Data(R.drawable.lank_t,"통새우버거 2개 외 1개", "평균평점 4.4", "22:18"));
-        items.add(new Order_details_Com_Data(R.drawable.lank_t,"치즈스틱 2개 외 1개", "평균평점 4.4", "21:26"));
     }
 }

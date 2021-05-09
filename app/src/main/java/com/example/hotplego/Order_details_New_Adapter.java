@@ -1,6 +1,7 @@
 package com.example.hotplego;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,15 @@ public class Order_details_New_Adapter extends RecyclerView.Adapter<Order_detail
     public void onBindViewHolder(@NonNull OrderHolder holder, final int position) {
         Order_details_New_Data new_data = nData.get(position);
         OrderHolder.setItem(new_data);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), Order_Management_details.class);
+                intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @NonNull
