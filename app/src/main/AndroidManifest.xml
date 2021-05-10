@@ -20,6 +20,8 @@
 
         <activity android:name=".Order_list"
             android:parentActivityName=".MainActivity" />
+        <activity android:name=".Order_Management_details"
+            android:parentActivityName=".Order_list"/>
 
     </application>
 
