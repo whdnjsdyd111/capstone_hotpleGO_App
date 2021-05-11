@@ -44,7 +44,8 @@ import java.util.Map;
 import java.util.TimeZone;
 
 public class PostRun extends Thread implements Runnable {
-    public static final String DOMAIN = "http://172.30.1.25:8000";
+//    public static final String DOMAIN = "http://172.30.1.25:8000";
+    public static final String DOMAIN = "http://192.168.1.32:8000";
     public static final String IMAGE_URL = "/hotpleImage/0000/00/00/";
     public static final int DATA = 0;
     public static final int IMAGES = 1;
@@ -137,7 +138,6 @@ public class PostRun extends Thread implements Runnable {
         String str = "";
         try {
             Date writtenTime = sdf.parse(code.split("/")[0]);
-            Log.i("code", code.split("/")[0]);
             long before = new Date().getTime() - writtenTime.getTime();
             long hour = before / 1000 / 60 / 60 % 24;
             long minute = before / 1000/ 60 % 60;
@@ -169,6 +169,13 @@ public class PostRun extends Thread implements Runnable {
             e.printStackTrace();
         }
         return dateStr;
+    }
+
+    public static String timestampToStr(Timestamp time) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yy.MM.dd HH:mm:ss");
+        String str = null;
+        str = sdf.format(time);
+        return str;
     }
 
     public static String getImageUrl(String uploadPath, String uuid, String fileName) {

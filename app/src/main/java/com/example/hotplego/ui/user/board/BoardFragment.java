@@ -33,6 +33,8 @@ public class BoardFragment extends Fragment implements BoardAdapter.OnItemClickL
         binding = FragmentBoardBinding.inflate(inflater, container, false);
 
         adapter = new BoardAdapter(this);
+        binding.boardRecyclerView.setFocusable(true);
+        binding.boardRecyclerView.setDescendantFocusability(ViewGroup.FOCUS_BEFORE_DESCENDANTS);
         binding.boardRecyclerView.setAdapter(adapter);
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
         binding.boardRecyclerView.setLayoutManager(manager);
@@ -49,7 +51,6 @@ public class BoardFragment extends Fragment implements BoardAdapter.OnItemClickL
                 }
             }
         });
-        loadView();
         return binding.getRoot();
     }
 

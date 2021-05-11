@@ -1,96 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:id="@+id/comment"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="horizontal">
+
+    <View
+        android:id="@+id/reply_mark"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/board_reply_mark"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:visibility="gone"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_weight="1"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/com_profile"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/ic_account_circle_24px" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/com_profile"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/ic_account_circle_24px" />
+
+                <TextView
+                    android:id="@+id/nick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nick"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/com_reco"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#ffffff"
+                    android:drawableLeft="@drawable/thumb_up"
+                    android:gravity="center"
+                    android:text="@string/recy_num"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/com_nonReco"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#ffffff"
+                    android:drawableLeft="@drawable/thumb_down"
+                    android:gravity="center"
+                    android:text="@string/recn_num" />
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/nick"
-                android:layout_width="wrap_content"
+                android:id="@+id/com_cont"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/nick"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/com_cont"
                 android:textColor="#000000"
-                android:textSize="16sp" />
+                android:textSize="20sp" />
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/com_reco"
-                android:layout_width="100dp"
+            <TextView
+                android:id="@+id/com_time"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#ffffff"
-                android:drawableLeft="@drawable/thumb_up"
-                android:gravity="center"
-                android:text="@string/recy_num"/>
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="작성 시간" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/com_nonReco"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#ffffff"
-                android:drawableLeft="@drawable/thumb_down"
-                android:gravity="center"
-                android:text="@string/recn_num" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/reply_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="답글 쓰기"
+                    android:minHeight="35dp"
+                    android:textColor="#000000"
+                    android:background="@drawable/buttom_custom"/>
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/com_cont"
+        <LinearLayout
+            android:id="@+id/reply"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:text="@string/com_cont"
-            android:textColor="#000000"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/com_time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:text="작성 시간" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/reply"
-                android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:visibility="gone">
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="답글 쓰기"
-                android:minHeight="35dp"
-                android:textColor="#000000"
-                android:background="@drawable/buttom_custom"/>
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/customborder"
+                android:orientation="vertical">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/reply_write"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:background="@drawable/none_stroke"
+                        android:hint="댓글을 작성하세요"
+                        android:inputType="none"
+                        android:textSize="12sp" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp">
+                        <ImageButton
+                            android:id="@+id/comm_upload"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:background="@drawable/outline_photo_camera_24"
+                            android:layout_alignParentLeft="true" />
+                        <Button
+                            android:id="@+id/comm_submit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="end"
+                            android:background="@drawable/custombutton"
+                            app:backgroundTint="@color/green_700"
+                            android:text="@string/submit"
+                            android:layout_alignParentRight="true" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_margin="10dp"
+            android:background="#8A8A8A" />
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:layout_margin="10dp"
-        android:background="#8A8A8A" />
 </LinearLayout>

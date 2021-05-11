@@ -41,6 +41,10 @@ public class BoardDetailActivity extends AppCompatActivity {
     private BoardVO vo;
     private BoardCommentAdapter adapter;
     private boolean bookmark = false;
+    private int PICK_IMAGE = 1;
+    public static int reply_toggle = 0;
+    public static final int COMMMENT = 0;
+    public static final int REPLY = 1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,9 +54,7 @@ public class BoardDetailActivity extends AppCompatActivity {
 
         adapter = new BoardCommentAdapter();
         binding.commentRecyclerView.setAdapter(adapter);
-        LinearLayoutManager manager = new LinearLayoutManager(getApplicationContext());
-        binding.commentRecyclerView.setLayoutManager(manager);
-        loadView();
+        binding.commentRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
         binding.bookmark.setOnClickListener(v -> {
             PostRun mark = new PostRun("bookmark", this, PostRun.DATA);
@@ -103,6 +105,32 @@ public class BoardDetailActivity extends AppCompatActivity {
             intent.putExtra("board", vo);
             startActivity(intent);
         });
+
+        binding.cameraButton.setOnClickListener(v -> {
+            Intent intent = new Intent();
+            intent.setType("image/*");
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            startActivityForResult(intent, PICK_IMAGE);
+            reply_toggle = BoardDetailActivity.COMMMENT;
+        });
+
+        binding.commSubmit.setOnClickListener(v -> {
+            PostRun postRun = new PostRun("com_submit", this, PostRun.DATA);
+            postRun.setRunUI(() -> {
+                try {
+                    if (postRun.obj.getBoolean("message")) loadView();
+                    else Toast.makeText(this, "등록에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            });
+            postRun.addData("bdCode", vo.getBdCode())
+                    .addData("uCode", "whdnjsdyd111@naver.com/A/") // TODO 유저 정보 SharedPreferences 로 변경
+                    .addData("comCont", Html.toHtml(binding.commWrite.getText()).replaceAll(PostRun.DOMAIN, ""))
+                    .start();
+        });
+
+        loadView();
     }
 
     private void bookmarkToggle(boolean isMark) {
@@ -113,7 +141,7 @@ public class BoardDetailActivity extends AppCompatActivity {
         }
     }
 
-    private void loadView() {
+    public void loadView() {
         PostRun postRun = new PostRun("getBoard", this, PostRun.DATA);
         postRun.setRunUI(() -> {
             try {
@@ -127,7 +155,6 @@ public class BoardDetailActivity extends AppCompatActivity {
                 if (vo.getUCode().equals("whdnjsdyd111@naver.com/A/")) binding.boardMaster.setVisibility(View.VISIBLE);
                 bookmark = postRun.obj.getBoolean("bookmark");
                 bookmarkToggle(bookmark);
-
                 adapter.setData(gson.fromJson(postRun.obj.getString("comment"), new TypeToken<List<CommentVO>>() {}.getType()),
                         gson.fromJson(postRun.obj.getString("comReco"), new TypeToken<Map<String, String>>() {}.getType()),
                         this);
@@ -141,8 +168,31 @@ public class BoardDetailActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        loadView();
-        super.onResume();
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE) {
+            if (resultCode == RESULT_OK) {
+                PostRun postRun = new PostRun("upload", this, PostRun.IMAGES);
+                postRun.addImage("upload", getApplicationContext(), data.getData());
+                postRun.setRunUI(() -> {
+                    try {
+                        if (reply_toggle == BoardDetailActivity.COMMMENT) {
+                            binding.commWrite.append(Html.fromHtml("<img src='" + PostRun.DOMAIN + postRun.obj.getString("file") + "' /><br/>",
+                                    new ImageGetterImpl(getApplicationContext(), binding.commWrite), null));
+                        } else if (reply_toggle == BoardDetailActivity.REPLY) {
+                            Log.i("toggle", String.valueOf(reply_toggle));
+                            Log.i("reply", "" + adapter.com_reply);
+                            adapter.com_reply.append(Html.fromHtml("<img src='" + PostRun.DOMAIN + postRun.obj.getString("file") + "' /><br/>",
+                                    new ImageGetterImpl(getApplicationContext(), adapter.com_reply), null));
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
+                postRun.start();
+            } else {
+                Toast.makeText(this, "이미지를 선택하지 않았습니다.", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }

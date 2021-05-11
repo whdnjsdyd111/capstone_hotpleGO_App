@@ -3,7 +3,7 @@
     <string name="title_home">홈</string>
     <string name="title_dashboard">게시판</string>
     <string name="title_notifications">코스</string>
-    <string name="title_search">검색</string>
+    <string name="title_reservation">예약</string>
     <string name="title_MyPage">마이페이지</string>
     <string name="my_point">20000원</string>
     <string name="move_position">이동 위치</string>
@@ -80,6 +80,7 @@
     <!-- 게시판 -->
     <string name="board_bar">게시글 상세 조회</string>
     <string name="delete">삭제</string>
+    <string name="submit">작성</string>
     <!-- 게시판 추가 -->
     <string name="board_add">게시판 작성</string>
     <string name="board_add_hint">내용을 입력해주세요</string>
@@ -96,4 +97,18 @@
     <string name="course_use">코스 이용</string>
     <string name="course_delete">코스 삭제</string>
     <string name="dibs">찜하기</string>
+    <!-- 예약 -->
+    <string name="hotplace_name">핫플 장소</string>
+    <string name="hotplace_intro">핫플 설명</string>
+    <string name="hotplace_position">핫플 위치</string>
+    <string name="proceeding">진행 중인 장소</string>
+    <string name="completed">완료된 장소</string>
+    <string name="watch_detail">상세보기</string>
+    <string name="watch_review">리뷰보기</string>
+    <string name="cancel">환불처리</string>
+    <!-- 예약 상세보기 -->
+    <string name="res_history">주문 내역</string>
+    <string name="price">가격</string>
+    <string name="count">수량</string>
+    <string name="total_price">총 가격</string>
 </resources>

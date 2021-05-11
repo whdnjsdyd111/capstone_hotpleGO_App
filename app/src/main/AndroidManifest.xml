@@ -28,7 +28,7 @@
         <activity android:name=".ui.user.mypage.MBTIActivity" />
         <activity android:name=".ui.user.mypage.BookmarkActivity" />
 
-        <activity android:name=".ui.user.board.BoardDetailActivity" />
+        <activity android:name=".ui.user.board.BoardDetailActivity"/>
         <activity android:name=".ui.user.board.BoardAddActivity" />
 
         <activity android:name=".ui.user.common.MainActivityLogin" />

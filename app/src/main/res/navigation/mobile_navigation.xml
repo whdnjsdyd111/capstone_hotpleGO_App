@@ -24,10 +24,10 @@
         tools:layout="@layout/fragment_course" />
 
     <fragment
-        android:id="@+id/navigation_search"
-        android:name="com.example.hotplego.ui.user.search.SearchFragment"
-        android:label="@string/title_search"
-        tools:layout="@layout/fragment_search" />
+        android:id="@+id/navigation_reservation"
+        android:name="com.example.hotplego.ui.user.reservation.ReservationFragment"
+        android:label="@string/title_reservation"
+        tools:layout="@layout/fragment_reservation" />
 
     <fragment
         android:id="@+id/navigation_myPage"

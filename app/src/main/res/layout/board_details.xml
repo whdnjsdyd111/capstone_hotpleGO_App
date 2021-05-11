@@ -77,18 +77,11 @@
 
                 </LinearLayout>
 
-                <ScrollView
+                <TextView
+                    android:id="@+id/board_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/button_stroke"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:id="@+id/board_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="18dp" />
-                </ScrollView>
+                    android:textSize="18dp" />
 
                 <LinearLayout
                     android:layout_width="180dp"
@@ -137,17 +130,15 @@
                             app:backgroundTint="@android:color/holo_red_light" />
                     </LinearLayout>
                 </LinearLayout>
-
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="167dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="0dp"
                     android:layout_marginRight="20dp"
@@ -155,78 +146,54 @@
                     android:background="@drawable/customborder"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/board_comment"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="댓글" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/comment_user"
-                            android:layout_width="wrap_content"
-                            android:layout_height="29dp"
-                            android:layout_weight="1"
-                            android:text="@string/nick"/>
-
-                        <TextView
-                            android:id="@+id/comment_text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="30dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginLeft="20dp"
-                            android:layout_weight="30" />
-
-                        <ImageButton
-                            android:id="@+id/imageButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="30dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_weight="1"
-                            android:src="@android:drawable/ic_menu_edit" />
-
-
-                    </LinearLayout>
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <EditText
-                            android:id="@+id/b_comment_w"
-                            android:layout_width="wrap_content"
-                            android:layout_height="30dp"
+                            android:id="@+id/comm_write"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="bottom"
-                            android:layout_weight="1"
-                            android:background="@drawable/rounded_border"
-                            android:ems="10"
+                            android:background="@drawable/none_stroke"
                             android:hint="댓글을 작성하세요"
-                            android:inputType="textPersonName"
+                            android:inputType="none"
                             android:textSize="12sp" />
-
-                        <Button
-                            android:id="@+id/b_button_send"
-                            android:layout_width="60dp"
-                            android:layout_height="35dp"
-                            android:layout_gravity="bottom"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginLeft="5dp"
-                            android:text="전송" />
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp">
+                            <ImageButton
+                                android:id="@+id/cameraButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:background="@drawable/outline_photo_camera_24"
+                                android:layout_alignParentLeft="true" />
+                            <Button
+                                android:id="@+id/comm_submit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_gravity="end"
+                                android:background="@drawable/custombutton"
+                                app:backgroundTint="@color/green_700"
+                                android:text="@string/submit"
+                                android:layout_alignParentRight="true" />
+                        </RelativeLayout>
                     </LinearLayout>
                 </LinearLayout>
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/comment_recyclerView"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:listitem="@layout/board_comment_item"/>
+                    android:layout_height="wrap_content">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/comment_recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:listitem="@layout/board_comment_item"/>
+                </RelativeLayout>
             </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

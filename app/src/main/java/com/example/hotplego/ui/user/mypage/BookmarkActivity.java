@@ -35,8 +35,6 @@ public class BookmarkActivity extends AppCompatActivity implements BoardAdapter.
         binding.boardRecyclerView.setAdapter(adapter);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         binding.boardRecyclerView.setLayoutManager(manager);
-
-        loadView();
     }
 
     private void loadView() {

@@ -80,7 +80,7 @@ public class BoardAddActivity extends AppCompatActivity {
                         if (postRun.obj.getBoolean("message")) {
                             Toast.makeText(this, "게시글 수정 완료하였습니다.", Toast.LENGTH_SHORT).show();
                             finish();
-                        } else Toast.makeText(this, "수정정에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                        } else Toast.makeText(this, "수정에 실패하였습니다.", Toast.LENGTH_SHORT).show();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
