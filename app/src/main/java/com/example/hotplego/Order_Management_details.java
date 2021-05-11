@@ -2,6 +2,7 @@ package com.example.hotplego;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,7 +14,10 @@ public class Order_Management_details extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_management);
 
-        RecyclerView recyclerView =findViewById(R.id.details_list);
+        ActionBar ac = getSupportActionBar();
+        ac.setTitle("주문 상세");
+
+        RecyclerView recyclerView = findViewById(R.id.details_list);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
 

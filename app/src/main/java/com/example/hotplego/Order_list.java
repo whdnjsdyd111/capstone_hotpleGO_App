@@ -1,6 +1,5 @@
 package com.example.hotplego;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
