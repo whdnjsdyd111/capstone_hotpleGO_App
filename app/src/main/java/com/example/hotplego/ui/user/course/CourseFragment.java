@@ -9,12 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.hotplego.R;
-import com.example.hotplego.databinding.FragmentCourseBinding;
+import com.example.hotplego.databinding.UserCourseBinding;
 import com.example.hotplego.ui.user.course.pager.CoursePagerAdapter;
 
 public class CourseFragment extends Fragment {
 
-    private FragmentCourseBinding binding;
+    private UserCourseBinding binding;
     private CoursePagerAdapter adapter;
     public static final Integer[] COURSE_COLORS = {
             R.color.purple_200,
@@ -34,7 +34,7 @@ public class CourseFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentCourseBinding.inflate(inflater, container, false);
+        binding = UserCourseBinding.inflate(inflater, container, false);
 
         adapter = new CoursePagerAdapter(getActivity().getSupportFragmentManager());
         adapter.addFrag(new CourseUsingFragment());

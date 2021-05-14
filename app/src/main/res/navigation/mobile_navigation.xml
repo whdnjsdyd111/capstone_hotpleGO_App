@@ -9,29 +9,29 @@
         android:id="@+id/navigation_home"
         android:name="com.example.hotplego.ui.user.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/user_home" />
 
     <fragment
         android:id="@+id/navigation_board"
         android:name="com.example.hotplego.ui.user.board.BoardFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_board" />
+        tools:layout="@layout/user_board" />
 
     <fragment
         android:id="@+id/navigation_course"
         android:name="com.example.hotplego.ui.user.course.CourseFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_course" />
+        tools:layout="@layout/user_course" />
 
     <fragment
         android:id="@+id/navigation_reservation"
         android:name="com.example.hotplego.ui.user.reservation.ReservationFragment"
         android:label="@string/title_reservation"
-        tools:layout="@layout/fragment_reservation" />
+        tools:layout="@layout/user_reservation" />
 
     <fragment
         android:id="@+id/navigation_myPage"
         android:name="com.example.hotplego.ui.user.mypage.MyPageFragment"
         android:label="@string/title_MyPage"
-        tools:layout="@layout/fragment_mypage" />
+        tools:layout="@layout/user_mypage" />
 </navigation>

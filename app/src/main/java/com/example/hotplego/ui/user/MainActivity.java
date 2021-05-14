@@ -1,4 +1,4 @@
-package com.example.hotplego;
+package com.example.hotplego.ui.user;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -15,6 +15,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.hotplego.R;
 import com.example.hotplego.domain.UserVO;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

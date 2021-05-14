@@ -173,7 +173,6 @@ public class BoardDetailActivity extends AppCompatActivity {
         if (requestCode == PICK_IMAGE) {
             if (resultCode == RESULT_OK) {
                 PostRun postRun = new PostRun("upload", this, PostRun.IMAGES);
-                postRun.addImage("upload", getApplicationContext(), data.getData());
                 postRun.setRunUI(() -> {
                     try {
                         if (reply_toggle == BoardDetailActivity.COMMMENT) {
@@ -189,7 +188,7 @@ public class BoardDetailActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 });
-                postRun.start();
+                postRun.addImage("upload", getApplicationContext(), data.getData()).start();
             } else {
                 Toast.makeText(this, "이미지를 선택하지 않았습니다.", Toast.LENGTH_SHORT).show();
             }

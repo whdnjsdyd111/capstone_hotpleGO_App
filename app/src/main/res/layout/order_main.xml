@@ -12,16 +12,12 @@
         app:tabIndicatorColor="@android:color/black">
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab_Item1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="신규 처리 중" />
+            android:layout_height="wrap_content" />
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab_Item2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="완료" />
+            android:layout_height="wrap_content" />
 
     </com.google.android.material.tabs.TabLayout>
 

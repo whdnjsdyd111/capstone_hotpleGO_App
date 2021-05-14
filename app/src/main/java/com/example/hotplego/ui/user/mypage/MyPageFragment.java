@@ -12,8 +12,9 @@ import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.example.hotplego.PostRun;
-import com.example.hotplego.databinding.FragmentMypageBinding;
+import com.example.hotplego.databinding.UserMypageBinding;
 import com.example.hotplego.domain.UserVO;
+import com.example.hotplego.ui.manager.MainActivity;
 
 import org.json.JSONException;
 
@@ -23,17 +24,17 @@ import java.util.Date;
 
 public class MyPageFragment extends Fragment {
 
-    private FragmentMypageBinding binding;
+    private UserMypageBinding binding;
 
     UserVO user;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentMypageBinding.inflate(inflater, container, false);
+        binding = UserMypageBinding.inflate(inflater, container, false);
 
         user = new UserVO();
-        user.setUCode("whdnjsdyd111@naver.com/A/");
+        user.setUCode("whdnjsdyd111@naver.com/M/");
         user.setPw("argjnerjgnerntklen");
         user.setNick("월롱");
         user.setProfileImg("https://lh3.googleusercontent.com/a-/AOh14Gjm6G76xvDpjc6mgtYGeAlFU4erv5XYw8inNWjReg=s96-c");
@@ -81,9 +82,14 @@ public class MyPageFragment extends Fragment {
                 Toast.makeText(MyPageFragment.this.getContext(), "닉네임을 입력해 주십시오.", Toast.LENGTH_SHORT).show();
             }
         });
+
         binding.bookmark.setOnClickListener(v -> {
             startActivity(new Intent(getContext(), BookmarkActivity.class));
         });
+
+        if (user.getUCode().split("/")[1].equals("M")) binding.managerMode.setVisibility(View.VISIBLE);
+
+        binding.managerIn.setOnClickListener(v -> startActivity(new Intent(getActivity(), MainActivity.class)));
 
         return binding.getRoot();
     }

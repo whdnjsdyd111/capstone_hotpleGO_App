@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.hotplego.PostRun;
-import com.example.hotplego.databinding.FragmentBoardBinding;
+import com.example.hotplego.databinding.UserBoardBinding;
 import com.example.hotplego.domain.BoardVO;
 import com.example.hotplego.ui.user.board.recyclerview.BoardAdapter;
 import com.google.gson.Gson;
@@ -23,14 +23,14 @@ import java.util.List;
 
 public class BoardFragment extends Fragment implements BoardAdapter.OnItemClickListener {
 
-    private FragmentBoardBinding binding;
+    private UserBoardBinding binding;
     private BoardAdapter adapter;
     private final int BOARD_ADD = 1;
     private String keyword = "";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentBoardBinding.inflate(inflater, container, false);
+        binding = UserBoardBinding.inflate(inflater, container, false);
 
         adapter = new BoardAdapter(this);
         binding.boardRecyclerView.setFocusable(true);

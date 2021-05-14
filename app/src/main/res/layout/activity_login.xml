@@ -3,7 +3,7 @@
 <RelativeLayout android:focusableInTouchMode="true"
     android:focusable="true"
     android:padding="@dimen/padding_sides"
-    tools:context=".MainActivity"
+    tools:context=".ui.user.MainActivity"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"

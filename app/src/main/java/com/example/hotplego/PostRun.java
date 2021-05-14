@@ -16,6 +16,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.HttpMultipartMode;
@@ -45,7 +46,7 @@ import java.util.TimeZone;
 
 public class PostRun extends Thread implements Runnable {
 //    public static final String DOMAIN = "http://172.30.1.25:8000";
-    public static final String DOMAIN = "http://192.168.1.32:8000";
+    public static final String DOMAIN = "http://192.168.1.15:8000";
     public static final String IMAGE_URL = "/hotpleImage/0000/00/00/";
     public static final int DATA = 0;
     public static final int IMAGES = 1;
@@ -74,7 +75,7 @@ public class PostRun extends Thread implements Runnable {
 
     public PostRun addData(String k, String v) {
         if (map != null) map.put(k, v);
-        if (builder != null) builder.addTextBody(k, v);
+        if (builder != null) builder.addTextBody(k, v, ContentType.APPLICATION_JSON);
         return this;
     }
 
@@ -120,7 +121,7 @@ public class PostRun extends Thread implements Runnable {
                 method.setEntity(request);    // http 에 인코딩 세팅
             } else if (builder != null) {
                 builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
-                builder.setCharset(StandardCharsets.UTF_8);
+                builder.setCharset(Charset.forName("UTF-8"));
                 method.setEntity(builder.build());
             }
 

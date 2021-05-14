@@ -76,7 +76,7 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
                 <TextView
-                    android:id="@+id/textView23"
+                    android:id="@+id/menu_cnt_left"
                     android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -221,7 +221,7 @@
                 android:layout_marginRight="10dp"
                 android:background="#8A8A8A" />
             <TextView
-                android:id="@+id/textView26"
+                android:id="@+id/menu_cateory_left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

@@ -11,7 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.hotplego.PostRun;
 import com.example.hotplego.R;
-import com.example.hotplego.databinding.FragmentReservationBinding;
+import com.example.hotplego.databinding.UserReservationBinding;
 import com.example.hotplego.domain.ReservationAllVO;
 import com.example.hotplego.domain.ReservationHotpleVO;
 import com.google.gson.Gson;
@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ReservationFragment extends Fragment {
-    private FragmentReservationBinding binding;
+    private UserReservationBinding binding;
     private final int PROCEEDING = 1;
     private final int COMPLETED = 2;
     Fragment proceeding;
@@ -33,7 +33,7 @@ public class ReservationFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentReservationBinding.inflate(inflater, container, false);
+        binding = UserReservationBinding.inflate(inflater, container, false);
 
         binding.proceeding.setOnClickListener(v -> fragmentView(PROCEEDING));
         binding.completed.setOnClickListener(v -> fragmentView(COMPLETED));

@@ -86,7 +86,7 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
                     menu.setGravity(View.TEXT_ALIGNMENT_GRAVITY);
 
                     TextView price = new TextView(itemView.getContext());
-                    price.setText(new DecimalFormat("##,###").format(all.getMePrice()));
+                    price.setText(new DecimalFormat("###,###,###").format(all.getMePrice()));
                     price.setLayoutParams(new TableRow.LayoutParams(
                             TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1F));
                     price.setGravity(View.TEXT_ALIGNMENT_GRAVITY);
@@ -102,7 +102,7 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
                     table.addView(row, 1);
                     sum += all.getMePrice();
                 }
-                ((TextView) table.findViewById(R.id.total_price)).setText(new DecimalFormat("##,###").format(sum));
+                ((TextView) table.findViewById(R.id.total_price)).setText(new DecimalFormat("###,###,###").format(sum));
                 builder.setView(table);
                 builder.show();
             });

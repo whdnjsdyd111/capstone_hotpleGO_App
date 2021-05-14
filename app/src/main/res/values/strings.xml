@@ -21,14 +21,6 @@
     <string name="com_cont">댓글 내용</string>
     <string name="saving_point">20p</string>
     <string name="total"><b>1,234,000원</b></string>
-    <string name="sh_name">업체 이름</string>
-    <string name="sh_addr">업체 주소</string>
-    <string name="ri_time">예약 시간</string>
-    <string name="ri_cont">예약 내용</string>
-    <string name="me_name">메뉴 이름</string>
-    <string name="me_price">메뉴 가격</string>
-    <string name="hashtag">해시태그</string>
-    <string name="rs_me_num">메뉴 수량</string>
     <string name="break_time">임시중지시간: </string>
     <string name="best_month">최고 매출월: </string>
     <string name="worst_month">최저 매출월: </string>
@@ -111,4 +103,18 @@
     <string name="price">가격</string>
     <string name="count">수량</string>
     <string name="total_price">총 가격</string>
+    <!-- 운영자 메뉴 -->
+    <string name="manage_sale">매출 관리</string>
+    <string name="manage_menu">메뉴 관리</string>
+    <string name="manage">영업 관리</string>
+    <string name="manage_hotple">업체 관리</string>
+    <!-- 메뉴 -->
+    <string name="sh_name">업체 이름</string>
+    <string name="sh_addr">업체 주소</string>
+    <string name="ri_time">예약 시간</string>
+    <string name="ri_cont">예약 내용</string>
+    <string name="me_name">메뉴 이름</string>
+    <string name="me_price">메뉴 가격</string>
+    <string name="hashtag">해시태그</string>
+    <string name="rs_me_num">메뉴 수량</string>
 </resources>

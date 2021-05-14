@@ -17,13 +17,15 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.hotplego.MainActivity;
+import com.example.hotplego.domain.HotpleVO;
+import com.example.hotplego.ui.user.MainActivity;
 import com.example.hotplego.PostRun;
 import com.example.hotplego.R;
 import com.example.hotplego.UserSharedPreferences;
 import com.example.hotplego.domain.UserVO;
 import com.facebook.CallbackManager;
 import com.facebook.login.widget.LoginButton;
+import com.google.gson.Gson;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
@@ -32,7 +34,6 @@ import com.kakao.usermgmt.callback.MeV2ResponseCallback;
 import com.kakao.usermgmt.response.MeV2Response;
 import com.kakao.util.exception.KakaoException;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -42,7 +43,6 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Locale;
 
 import static com.example.hotplego.R.layout;
 
@@ -182,25 +182,26 @@ public class MainActivityLogin extends AppCompatActivity implements View.OnClick
                                 String message = pr.obj.getString("message");
                                 if(Boolean.parseBoolean(message)) {
                                     JSONObject obj = new JSONObject(pr.obj.getString("user"));
-                                    UserVO vo = new UserVO();
-                                    vo.setUCode(obj.getString("UCode"));
-                                    vo.setNick(obj.getString("nick"));
-                                    vo.setGender(obj.getString("gender").charAt(0));
-                                    vo.setPhone(obj.getString("phone"));
+                                    UserVO user = new UserVO();
+                                    user.setUCode(obj.getString("UCode"));
+                                    user.setNick(obj.getString("nick"));
+                                    user.setGender(obj.getString("gender").charAt(0));
+                                    user.setPhone(obj.getString("phone"));
                                     try {
-                                        vo.setProfileImg(obj.getString("profileImg"));
+                                        user.setProfileImg(obj.getString("profileImg"));
                                     } catch (JSONException e) {}
-                                    vo.setPoint(obj.getLong("point"));
+                                    user.setPoint(obj.getLong("point"));
                                     try {
 //                                        vo.setBirth(new SimpleDateFormat("E MMM dd HH:mm:ss Z yyyy", Locale.ENGLISH).parse(obj.getString("birth")));
-                                        vo.setRegDate(new Timestamp(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(obj.getString("regDate")).getTime()));
+                                        user.setRegDate(new Timestamp(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(obj.getString("regDate")).getTime()));
                                     } catch (ParseException e) {
                                         e.printStackTrace();
                                     }
-
-                                    UserSharedPreferences.getInstance().login(MainActivityLogin.this, vo);
+                                    HotpleVO hotple = null;
+                                    if (pr.obj.getString("hotple") != null) hotple = new Gson().fromJson(pr.obj.getString("hotple"), HotpleVO.class);
+                                    UserSharedPreferences.getInstance().login(MainActivityLogin.this, user, hotple);
                                     Toast.makeText(MainActivityLogin.this, "로그인 성공하였습니다.", Toast.LENGTH_SHORT).show();
-                                    Log.i("users", vo.toString());
+                                    Log.i("users", user.toString());
                                     finish();
                                 } else {
                                     Toast.makeText(MainActivityLogin.this, message, Toast.LENGTH_SHORT).show();
