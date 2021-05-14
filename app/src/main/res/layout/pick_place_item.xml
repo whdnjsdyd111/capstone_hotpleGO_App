@@ -7,12 +7,12 @@
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
+        android:layout_width="115dp"
+        android:layout_height="115dp"
         android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
         app:srcCompat="@android:drawable/ic_menu_report_image" />
 
     <LinearLayout
@@ -20,9 +20,25 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="10dp"
         android:layout_marginBottom="20dp"
         android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/pick_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="21-04-02 14:05:15"
+                android:gravity="right"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"/>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,7 +48,7 @@
             <TextView
                 android:id="@+id/textView36"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -40,9 +56,9 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/textView37"
+                android:id="@+id/place_name"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="업체 이름"
                 android:textSize="24sp" />
@@ -56,7 +72,7 @@
             <TextView
                 android:id="@+id/textView40"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -64,9 +80,9 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/textView41"
+                android:id="@+id/place_address"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="업체 주소"
                 android:textSize="24sp" />
@@ -80,7 +96,7 @@
             <TextView
                 android:id="@+id/textView38"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -89,13 +105,15 @@
 
             <RatingBar
                 style="?android:attr/ratingBarStyleIndicator"
+                android:id="@+id/place_rating"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:isIndicator="false"
                 android:numStars="5"
                 android:rating="0"
                 android:stepSize="1" />
 
         </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>
