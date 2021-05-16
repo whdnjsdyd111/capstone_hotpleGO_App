@@ -46,4 +46,64 @@
         <item>씨티</item>
         <item>케이뱅크</item>
     </string-array>
+    
+    <string-array name="category">
+        <item>먹거리</item>
+        <item>디저트</item>
+        <item>놀이/취미</item>
+        <item>음주</item>
+        <item>보기</item>
+        <item>걷기</item>
+    </string-array>
+
+    <string-array name="food">
+        <item>한식</item>
+        <item>일식</item>
+        <item>중식</item>
+        <item>양식</item>
+        <item>분식</item>
+        <item>패스트푸트</item>
+        <item>뷔페</item>
+    </string-array>
+    
+    <string-array name="dessert">
+        <item>커피</item>
+        <item>차/음료</item>
+        <item>베이커리</item>
+        <item>빙수</item>
+    </string-array>
+
+    <string-array name="play">
+        <item>게임</item>
+        <item>방탈출</item>
+        <item>VR</item>
+        <item>노래방</item>
+        <item>스포츠</item>
+        <item>쇼핑</item>
+        <item>만들기</item>
+        <item>놀이공원</item>
+    </string-array>
+
+    <string-array name="alcohol">
+        <item>맥주</item>
+        <item>소주</item>
+        <item>막걸리</item>
+        <item>칵테일/와인</item>
+    </string-array>
+
+    <string-array name="watch">
+        <item>영화</item>
+        <item>전시회</item>
+        <item>책</item>
+        <item>공연</item>
+        <item>스포츠</item>
+    </string-array>
+
+    <string-array name="walk">
+        <item>테마</item>
+        <item>문화재</item>
+        <item>풍경</item>
+        <item>시장</item>
+        <item>공원</item>
+    </string-array>
 </resources>
