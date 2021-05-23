@@ -77,8 +77,6 @@ public class PlacePickFragment extends Fragment {
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
 
-    // 아이템 클릭 시 상세 페이지로 이동
     private void onPlaceItemClick(PickData pickData) {
-        startActivity(new Intent(requireContext(), PickDetailsActivity.class));
     }
 }
