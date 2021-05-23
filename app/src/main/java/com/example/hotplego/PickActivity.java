@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.hotplego.pick.CoursePickFragment;
-import com.example.hotplego.pick.PlacePickFragment;
+import com.example.hotplego.ui.pick.CoursePickFragment;
+import com.example.hotplego.ui.pick.PlacePickFragment;
 
 public class PickActivity extends AppCompatActivity {
 

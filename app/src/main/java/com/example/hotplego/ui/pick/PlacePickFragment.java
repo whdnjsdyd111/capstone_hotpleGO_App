@@ -1,8 +1,7 @@
-package com.example.hotplego.pick;
+package com.example.hotplego.ui.pick;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +18,6 @@ import com.example.hotplego.PickData;
 import com.example.hotplego.PickDetailsActivity;
 import com.example.hotplego.R;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,8 +40,8 @@ public class PlacePickFragment extends Fragment {
 
     public PlacePickFragment() { }
 
-    public static PlacePickFragment newInstance() {
-        return new PlacePickFragment();
+    public static Fragment newInstance() {
+        return new com.example.hotplego.ui.pick.PlacePickFragment();
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.example.hotplego.pick;
+package com.example.hotplego.ui.pick;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -41,8 +41,8 @@ public class CoursePickFragment extends Fragment {
 
     public CoursePickFragment() {}
 
-    public static CoursePickFragment newInstance() {
-        return new CoursePickFragment();
+    public static com.example.hotplego.ui.pick.CoursePickFragment newInstance() {
+        return new com.example.hotplego.ui.pick.CoursePickFragment();
     }
 
     @Override
