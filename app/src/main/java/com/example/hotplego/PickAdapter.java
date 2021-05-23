@@ -10,16 +10,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class PickAdapter extends RecyclerView.Adapter<PickAdapter.PickHolder> {
-    TextView pick_place_time;
-    TextView pick_place_name;
-    TextView pick_place_address;
-    RatingBar pick_place_rating;
-    ImageView pick_place_img;
 
-    private ArrayList<PickData> pickData = new ArrayList<>();
+    private final List<PickData> pickData;
+    private final OnPickDataClickListener onPickDataClickListener;
+
+    public PickAdapter(List<PickData> pickData, OnPickDataClickListener onPickDataClickListener) {
+        this.pickData = pickData;
+        this.onPickDataClickListener = onPickDataClickListener;
+    }
 
     @NonNull
     @Override
@@ -29,6 +30,7 @@ public class PickAdapter extends RecyclerView.Adapter<PickAdapter.PickHolder> {
 
         return new PickHolder(itemView);
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull PickHolder pickHolder, int position) {
@@ -41,11 +43,13 @@ public class PickAdapter extends RecyclerView.Adapter<PickAdapter.PickHolder> {
         return pickData.size();
     }
 
-    public void addItem(PickData data) {
-        pickData.add(data);
-    }
-
     class PickHolder extends RecyclerView.ViewHolder {
+        private final TextView pick_place_time;
+        private final TextView pick_place_name;
+        private final TextView pick_place_address;
+        private final RatingBar pick_place_rating;
+        private final ImageView pick_place_img;
+
         public PickHolder (@NonNull View itemView) {
             super(itemView);
 
@@ -62,6 +66,12 @@ public class PickAdapter extends RecyclerView.Adapter<PickAdapter.PickHolder> {
             pick_place_address.setText(pickData.getPlace_address());
             pick_place_img.setImageResource(pickData.getPlace_img());
             pick_place_rating.setRating(pickData.getPlace_rating());
+
+            itemView.setOnClickListener(v -> onPickDataClickListener.onPickDataClick(pickData));
         }
+    }
+
+    public interface OnPickDataClickListener {
+        void onPickDataClick(PickData data);
     }
 }

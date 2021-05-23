@@ -2,39 +2,46 @@ package com.example.hotplego;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
+
+import com.example.hotplego.pick.CoursePickFragment;
+import com.example.hotplego.pick.PlacePickFragment;
 
 public class PickActivity extends AppCompatActivity {
-    PickAdapter ad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pick_list);
 
-        init();
-        initData();
-    }
+        // ViewPager를 이용해 장소별/코스별 목록 표시
+        ViewPager2 viewPager = findViewById(R.id.viewPager);
+        FragmentStateAdapter fragmentStateAdapter = new FragmentStateAdapter(this) {
+            @Override
+            public int getItemCount() {
+                return 2;
+            }
 
-    private void init() {
-        RecyclerView recyclerView = findViewById(R.id.pick_list);
+            @NonNull
+            @Override
+            public Fragment createFragment(int position) {
+                if (position == 0) {
+                    return PlacePickFragment.newInstance();
+                } else {
+                    return CoursePickFragment.newInstance();
+                }
+            }
+        };
+        viewPager.setAdapter(fragmentStateAdapter);
+        viewPager.setCurrentItem(0);
+        viewPager.setUserInputEnabled(false);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-
-        ad = new PickAdapter();
-        recyclerView.setAdapter(ad);
-    }
-
-    private void initData() {
-        ad.addItem(new PickData("yy-mm-dd hh:mm:ss", "핫플장소명A", "핫플주소G", 5.0f, R.drawable.point));
-        ad.addItem(new PickData("yy-mm-dd hh:mm:15", "핫플장소명B", "핫플주소H", 4.5f, R.drawable.point));
-        ad.addItem(new PickData("yy-mm-dd hh:03:15", "핫플장소명C", "핫플주소I", 4.0f, R.drawable.point));
-        ad.addItem(new PickData("yy-mm-dd 15:03:15", "핫플장소명D", "핫플주소J", 3.5f, R.drawable.point));
-        ad.addItem(new PickData("yy-mm-02 15:03:15", "핫플장소명E", "핫플주소K", 3.0f, R.drawable.point));
-        ad.addItem(new PickData("yy-04-02 15:03:15", "핫플장소명F", "핫플주소L", 2.5f, R.drawable.point));
-        ad.addItem(new PickData("21-04-02 15:03:15", "핫플장소명G", "핫플주소M", 2.0f, R.drawable.point));
+        // 각 버튼이 눌렸을 때 적절한 화면 표시
+        findViewById(R.id.place_btn).setOnClickListener(v -> viewPager.setCurrentItem(0));
+        findViewById(R.id.course_btn).setOnClickListener(v -> viewPager.setCurrentItem(1));
     }
 }
