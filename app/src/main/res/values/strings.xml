@@ -35,11 +35,10 @@
     <string name="hashtag">해시태그</string>
     <string name="rs_me_num">메뉴 수량</string>
     <string name="break_time">임시중지시간: </string>
-    <string name="best_month">최고 매출월: </string>
-    <string name="worst_month">최저 매출월: </string>
-    <string name="month_avg">월 평균: </string>
-    <string name="best_sales">최고 매출액: </string>
-    <string name="worst_sales">최저 매출액:</string>
+    <string name="avg_sales">평균 매출 </string>
+    <string name="best_sales">최고 매출액 </string>
+    <string name="worst_sales">최저 매출액</string>
+    <string name="totla_sales">총 매출</string>
     <string name="order_details">주문내역</string>
     <string name="re_cont">리뷰 내용</string>
     <string name="New">신규처리중</string>
