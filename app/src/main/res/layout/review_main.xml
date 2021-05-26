@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ui.ReviewActivity">
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
@@ -49,7 +50,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/rating"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        android:textColor="#000000"/>
 
                     <RatingBar
                         style="?android:attr/ratingBarStyleSmall"
@@ -62,8 +64,8 @@
                         android:stepSize="1" />
                 </LinearLayout>
 
-                <com.github.mikephil.charting.charts.BarChart
-                    android:id="@+id/lineChart"
+                <com.github.mikephil.charting.charts.HorizontalBarChart
+                    android:id="@+id/BarChart"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp" />
@@ -92,6 +94,7 @@
         android:background="#8A8A8A" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/re_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
