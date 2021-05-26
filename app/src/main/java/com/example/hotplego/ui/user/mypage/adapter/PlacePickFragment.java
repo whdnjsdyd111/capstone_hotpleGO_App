@@ -1,6 +1,5 @@
-package com.example.hotplego.ui.pick;
+package com.example.hotplego.ui.user.mypage.adapter;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,27 +12,28 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.hotplego.PickAdapter;
 import com.example.hotplego.PickData;
-import com.example.hotplego.PickDetailsActivity;
 import com.example.hotplego.R;
+import com.example.hotplego.domain.HotpleVO;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
 // 장소별 목록을 보여주는 프래그먼트
 public class PlacePickFragment extends Fragment {
     // 장소 데이터
-    private static final List<PickData> placePickData = new ArrayList<>();
+    private static final List<HotpleVO> placePickData = new ArrayList<>();
 
     static {
-        placePickData.add(new PickData("yy-mm-dd hh:mm:ss", "핫플장소명A", "핫플주소G", 5.0f, R.drawable.point));
-        placePickData.add(new PickData("yy-mm-dd hh:mm:15", "핫플장소명B", "핫플주소H", 4.5f, R.drawable.point));
-        placePickData.add(new PickData("yy-mm-dd hh:03:15", "핫플장소명C", "핫플주소I", 4.0f, R.drawable.point));
-        placePickData.add(new PickData("yy-mm-dd 15:03:15", "핫플장소명D", "핫플주소J", 3.5f, R.drawable.point));
-        placePickData.add(new PickData("yy-mm-02 15:03:15", "핫플장소명E", "핫플주소K", 3.0f, R.drawable.point));
-        placePickData.add(new PickData("yy-04-02 15:03:15", "핫플장소명F", "핫플주소L", 2.5f, R.drawable.point));
-        placePickData.add(new PickData("21-04-02 15:03:15", "핫플장소명G", "핫플주소M", 2.0f, R.drawable.point));
+        HotpleVO vo = new HotpleVO();
+        vo.setPickTime(new Timestamp(System.nanoTime()));
+        vo.setBusnName("가게1");
+        vo.setHtAddr("대구광역시");
+        vo.setGoGrd(5.0);
+        placePickData.add(vo);
+        placePickData.add(vo);
+        placePickData.add(vo);
     }
 
     private final PickAdapter pickAdapter = new PickAdapter(placePickData, this::onPlaceItemClick);
@@ -41,7 +41,7 @@ public class PlacePickFragment extends Fragment {
     public PlacePickFragment() { }
 
     public static Fragment newInstance() {
-        return new com.example.hotplego.ui.pick.PlacePickFragment();
+        return new PlacePickFragment();
     }
 
     @Override
@@ -77,6 +77,6 @@ public class PlacePickFragment extends Fragment {
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
 
-    private void onPlaceItemClick(PickData pickData) {
+    private void onPlaceItemClick(HotpleVO pickData) {
     }
 }

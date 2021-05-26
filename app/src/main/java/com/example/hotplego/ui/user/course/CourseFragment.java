@@ -38,8 +38,8 @@ public class CourseFragment extends Fragment {
 
         adapter = new CoursePagerAdapter(getActivity().getSupportFragmentManager());
         adapter.addFrag(new CourseUsingFragment());
-        adapter.addFrag(new CourseMakingFragment());
-        adapter.addFrag(new CourseUsedFragment());
+        adapter.addFrag(CoursesFragment.newInstance("myCourse"));
+        adapter.addFrag(CoursesFragment.newInstance("usedCourse"));
 
         binding.pager.setAdapter(adapter);
         binding.tabLayout.setupWithViewPager(binding.pager);

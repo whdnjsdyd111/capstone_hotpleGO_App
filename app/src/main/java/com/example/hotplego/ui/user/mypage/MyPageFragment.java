@@ -87,6 +87,10 @@ public class MyPageFragment extends Fragment {
             startActivity(new Intent(getContext(), BookmarkActivity.class));
         });
 
+        binding.dibs.setOnClickListener(v -> {
+            startActivity(new Intent(getContext(), PickActivity.class));
+        });
+
         if (user.getUCode().split("/")[1].equals("M")) binding.managerMode.setVisibility(View.VISIBLE);
 
         binding.managerIn.setOnClickListener(v -> startActivity(new Intent(getActivity(), MainActivity.class)));

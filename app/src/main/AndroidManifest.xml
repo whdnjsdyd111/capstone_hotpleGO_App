@@ -27,6 +27,7 @@
         <activity android:name=".ui.user.mypage.TasteActivity" />
         <activity android:name=".ui.user.mypage.MBTIActivity" />
         <activity android:name=".ui.user.mypage.BookmarkActivity" />
+        <activity android:name=".ui.user.mypage.PickActivity" />
 
         <activity android:name=".ui.user.board.BoardDetailActivity"/>
         <activity android:name=".ui.user.board.BoardAddActivity" />
@@ -45,6 +46,8 @@
         <activity android:name=".ui.manager.menu.MenuInfo" />
 
         <activity android:name=".ui.manager.order.OrderDetail" />
+
+        <activity android:name=".ui.manager.hotple.JusoPopupActivity" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

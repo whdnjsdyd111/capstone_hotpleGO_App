@@ -45,6 +45,12 @@ public class HotpleFragment extends Fragment {
     private Uri uri;
 
     private final int PICK_IMAGE = 1;
+    private final int ADDRESS_RESULT = 2;
+
+    private String address;
+    private String zip;
+    private Double lat;
+    private Double lng;
 
     @Nullable
     @org.jetbrains.annotations.Nullable
@@ -121,6 +127,8 @@ public class HotpleFragment extends Fragment {
             vo.setHtZip(Long.parseLong(binding.hotpleZip.getText().toString()));
             vo.setHtCont(binding.hotpleCont.getText().toString());
             vo.setHtTel(binding.managerPhone.getText().toString());
+            vo.setHtLng(lng);
+            vo.setHtLat(lat);
             int big = cate_big.getSelectedItemPosition() * 10;
             int small = cate_small.getSelectedItemPosition();
             vo.setCategory((long) (big + small));
@@ -134,6 +142,10 @@ public class HotpleFragment extends Fragment {
             postRun.addData("hotple", new Gson().toJson(vo));
             if (uri != null) postRun.addImage("upload", getContext(), uri);
             postRun.start();
+        });
+
+        binding.jusoPopup.setOnClickListener(v -> {
+            startActivityForResult(new Intent(getContext(), JusoPopupActivity.class), 2);
         });
 
         return binding.getRoot();
@@ -164,11 +176,15 @@ public class HotpleFragment extends Fragment {
                 binding.hotpleZip.setText(String.valueOf(hotple.getHtZip()));
                 binding.hotpleCont.setText(hotple.getHtCont());
                 binding.managerPhone.setText(hotple.getHtTel());
+                lat = hotple.getHtLat();
+                lng = hotple.getHtLng();
 
                 int selected = hotple.getCategory().intValue();
                 cate_big.setSelection(selected / 10);
                 initSpinner(cate_big.getSelectedItem().toString());
                 cate_small.setSelection(selected % 10);
+
+                if (address != null && zip != null) result();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -223,6 +239,20 @@ public class HotpleFragment extends Fragment {
             } else {
                 Toast.makeText(getActivity(), "이미지를 선택하지 않았습니다.", Toast.LENGTH_SHORT).show();
             }
+        } else if (requestCode == ADDRESS_RESULT) {
+            if (resultCode == Activity.RESULT_OK) {
+                address = data.getStringExtra("address");
+                zip = data.getStringExtra("zip");
+                lng = Double.valueOf(data.getStringExtra("lng"));
+                lat = Double.valueOf(data.getStringExtra("lat"));
+                binding.hotpleAddrDetail.setVisibility(View.GONE);
+                binding.hotpleAddrDetailEdit.setVisibility(View.VISIBLE);
+            }
         }
+    }
+
+    private void result() {
+        binding.hotpleAddress.setText(address);
+        binding.hotpleZip.setText(zip);
     }
 }

@@ -26,9 +26,20 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-public class CourseUsedFragment extends Fragment implements CourseInfoAdapter.OnItemClickListener {
+public class CoursesFragment extends Fragment implements CourseInfoAdapter.OnItemClickListener {
     private CourseUsedBinding binding;
     private CourseInfoAdapter adapter;
+    private String kind;
+
+    public CoursesFragment() {}
+
+    public CoursesFragment(String kind) {
+        this.kind = kind;
+    }
+
+    public static Fragment newInstance(String kind) {
+        return new CoursesFragment(kind);
+    }
 
     @Nullable
     @org.jetbrains.annotations.Nullable
@@ -53,7 +64,7 @@ public class CourseUsedFragment extends Fragment implements CourseInfoAdapter.On
                 e.printStackTrace();
             }
         });
-        postRun.addData("kind", "usedCourse")
+        postRun.addData("kind", kind)
                 .addData("uCode", "whdnjsdyd111@naver.com/A/")
                 .start();
         // TODO 유저
@@ -66,7 +77,7 @@ public class CourseUsedFragment extends Fragment implements CourseInfoAdapter.On
         Intent intent = new Intent(getContext(), CourseDetailActivity.class);
         intent.putExtra("course", vo);
         intent.putExtra("courseInfo", (Serializable) list);
-        intent.putExtra("kind", "used");
+        intent.putExtra("kind", kind);
         startActivity(intent);
     }
 }

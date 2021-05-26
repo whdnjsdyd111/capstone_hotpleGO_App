@@ -35,7 +35,7 @@ public class CourseDetailActivity extends AppCompatActivity {
         List<CourseInfoVO> list = (List<CourseInfoVO>) getIntent().getSerializableExtra("courseInfo");
         String kind = getIntent().getStringExtra("kind");
 
-        if (kind.equals("making")) binding.onlyMaking.setVisibility(View.VISIBLE);
+        if (kind.equals("myCourse")) binding.onlyMaking.setVisibility(View.VISIBLE);
         else binding.onlyUsed.setVisibility(View.VISIBLE);
 
         binding.courseWith.setText("함께하는 인원 : " + vo.getCsWith());
