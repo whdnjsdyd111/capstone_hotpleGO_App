@@ -17,10 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PickActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".PickDetailsActivity"
-            android:parentActivityName=".PickActivity"/>
+        <activity android:name=".ui.manager.management.Management"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

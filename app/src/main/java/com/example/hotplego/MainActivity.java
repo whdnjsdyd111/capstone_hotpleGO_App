@@ -7,6 +7,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.hotplego.ui.manager.management.Management;
+
 public class MainActivity extends AppCompatActivity {
 
     Button button_notice;
@@ -21,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         button_notice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PickActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Management.class);
                 startActivity(intent);
             }
         });

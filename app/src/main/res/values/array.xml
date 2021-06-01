@@ -9,4 +9,9 @@
         <item>5시간</item>
         <item>6시간</item>
     </string-array>
+
+    <string-array name="week">
+        <item>평일</item>
+        <item>주말</item>
+    </string-array>
 </resources>
