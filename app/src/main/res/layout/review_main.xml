@@ -11,21 +11,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
         android:text="리뷰"
-        android:textSize="20dp"
+        android:textSize="24sp"
         android:textStyle="bold"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2px"
-        android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:background="#8A8A8A" />
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,65 +36,57 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/textView30"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/rating"
-                        android:textSize="20sp"
+                        android:layout_gravity="center"
+                        android:textSize="28sp"
+                        android:layout_marginBottom="5dp"
                         android:textColor="#000000"/>
 
                     <RatingBar
-                        style="?android:attr/ratingBarStyleSmall"
+                        style="?android:attr/ratingBarStyleIndicator"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:layout_gravity="center"
+                        android:progressTint="#FFA914"
                         android:isIndicator="false"
                         android:numStars="5"
                         android:rating="0"
                         android:stepSize="1" />
-                </LinearLayout>
-
-                <com.github.mikephil.charting.charts.HorizontalBarChart
-                    android:id="@+id/BarChart"
-                    android:layout_width="250dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp" />
 
             </LinearLayout>
 
-            <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/lineChart2"
+
+            <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="wrap_content">
+            <view
+                android:id="@+id/lineChart2"
+                class="im.dacer.androidcharts.LineView"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp" >
 
-            </com.github.mikephil.charting.charts.LineChart>
+            </view>
 
+            </HorizontalScrollView>
 
         </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2px"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="#8A8A8A" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/re_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         tools:listitem="@layout/review_item" />
