@@ -49,6 +49,8 @@
 
         <activity android:name=".ui.manager.hotple.JusoPopupActivity" />
 
+        <activity android:name=".ui.manager.management.Management"/>
+
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id"/>
