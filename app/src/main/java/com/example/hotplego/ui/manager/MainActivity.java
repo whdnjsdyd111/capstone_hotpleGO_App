@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import com.example.hotplego.R;
 import com.example.hotplego.databinding.ManagerActivityBinding;
 import com.example.hotplego.ui.manager.hotple.HotpleFragment;
+import com.example.hotplego.ui.manager.management.Management;
 import com.example.hotplego.ui.manager.menu.MenuFragment;
 import com.example.hotplego.ui.manager.order.OrderFragment;
 
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFrag(new Fragment());
         adapter.addFrag(new OrderFragment());
         adapter.addFrag(new MenuFragment());
-        adapter.addFrag(new Fragment());
+        adapter.addFrag(new Management());
         adapter.addFrag(new HotpleFragment());
 
         binding.pager.setAdapter(adapter);

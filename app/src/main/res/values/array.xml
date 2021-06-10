@@ -106,4 +106,9 @@
         <item>시장</item>
         <item>공원</item>
     </string-array>
+
+    <string-array name="week">
+        <item>평일</item>
+        <item>주말</item>
+    </string-array>
 </resources>
