@@ -109,6 +109,7 @@
 
     <string-array name="week">
         <item>평일</item>
-        <item>주말</item>
+        <item>토요일</item>
+        <item>일요일</item>
     </string-array>
 </resources>

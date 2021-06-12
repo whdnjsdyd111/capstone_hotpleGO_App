@@ -28,6 +28,7 @@ public class ReservationFragment extends Fragment {
     private UserReservationBinding binding;
     private final int PROCEEDING = 1;
     private final int COMPLETED = 2;
+    private int selected = 1;
     Fragment proceeding;
     Fragment completed;
 
@@ -54,7 +55,7 @@ public class ReservationFragment extends Fragment {
                         postRun.obj.getString("reservations"), new TypeToken<Map<String, List<ReservationAllVO>>>() {}.getType());
                 this.proceeding = new ReservationInfoFragment(proceeding, true);
                 this.completed = new ReservationInfoFragment(completed, false);
-                fragmentView(PROCEEDING);
+                fragmentView(selected);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -71,17 +72,23 @@ public class ReservationFragment extends Fragment {
 
     private void fragmentView(int fragment) {
 
+        selected = fragment;
+
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
 
         switch (fragment) {
             case 1:
-                transaction.replace(R.id.fragment_container, proceeding);
-                transaction.commit();
+                if (proceeding != null) {
+                    transaction.replace(R.id.fragment_container, proceeding);
+                    transaction.commit();
+                }
                 break;
 
             case 2:
-                transaction.replace(R.id.fragment_container, completed);
-                transaction.commit();
+                if (completed != null) {
+                    transaction.replace(R.id.fragment_container, completed);
+                    transaction.commit();
+                }
                 break;
         }
     }

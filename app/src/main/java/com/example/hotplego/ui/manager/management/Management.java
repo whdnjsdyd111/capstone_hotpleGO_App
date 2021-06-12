@@ -12,13 +12,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.hotplego.R;
-import com.example.hotplego.ui.manager.management.fragment.management_weekday;
-import com.example.hotplego.ui.manager.management.fragment.management_weekend;
+import com.example.hotplego.ui.manager.management.fragment.ManagementTime;
 
 public class Management extends Fragment {
 
     Fragment weekday;
-    Fragment weekend;
+    Fragment sunday;
+    Fragment saturday;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -27,8 +27,9 @@ public class Management extends Fragment {
 
         Spinner spinner = (Spinner) v.findViewById(R.id.management_spinner);
 
-        weekday = new management_weekday();
-        weekend = new management_weekend();
+        weekday = new ManagementTime("평일");
+        sunday = new ManagementTime("토요일");
+        saturday = new ManagementTime("일요일");
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(spinner.getContext(),
                 R.layout.management_tv, getResources().getStringArray(R.array.week));
@@ -47,13 +48,17 @@ public class Management extends Fragment {
 
         return v;
     }
+
     private void initSpinner(String selected) {
         switch (selected) {
             case "평일":
                 setFragment(weekday);
                 break;
-            case "주말":
-                setFragment(weekend);
+            case "토요일":
+                setFragment(saturday);
+                break;
+            case "일요일":
+                setFragment(sunday);
         }
     }
 

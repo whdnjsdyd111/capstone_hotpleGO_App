@@ -1,5 +1,6 @@
-package com.example.hotplego.ui;
+package com.example.hotplego.ui.user.home.adapter;
 
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,16 +10,25 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.example.hotplego.PostRun;
 import com.example.hotplego.R;
+import com.example.hotplego.domain.HotpleVO;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     ImageView search_item_img;
     TextView search_item_name;
     TextView search_item_rating;
 
-    private ArrayList<SearchData> listData = new ArrayList<>();
+    private List<HotpleVO> list = null;
+    private Activity activity;
+
+    public SearchAdapter(Activity activity) {
+        this.activity = activity;
+    }
 
     @NonNull
     @Override
@@ -30,16 +40,16 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ((ViewHolderSearch)holder).onBind(listData.get(position));
+        ((ViewHolderSearch)holder).onBind(list.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return listData.size();
+        return list == null ? 0 : list.size();
     }
 
-    public void addItem(SearchData data) {
-        listData.add(data);
+    public void addItem(List<HotpleVO> list) {
+        this.list = list;
         notifyDataSetChanged();
     }
 
@@ -53,10 +63,13 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             search_item_rating = itemView.findViewById(R.id.search_textView2);
         }
 
-        public void onBind(SearchData searchData) {
-             search_item_img.setImageResource(searchData.getImg());
-             search_item_name.setText(searchData.getName());
-             search_item_rating.setText(searchData.getRating());
+        public void onBind(HotpleVO hotple) {
+            if (hotple.getHtImg() != null) Glide.with(itemView).load(PostRun.getImageUrl(
+                    hotple.getUploadPath(), hotple.getHtImg(), hotple.getFileName())).into(search_item_img);
+            else if (hotple.getGoImg() != null) Glide.with(itemView).load(hotple.getGoImg()).into(search_item_img);
+            else Glide.with(itemView).load(PostRun.DOMAIN + "/images/logo.jpg").into(search_item_img);
+             search_item_name.setText(hotple.getBusnName());
+             search_item_rating.setText(String.valueOf(hotple.getGoGrd()));
         }
     }
 }

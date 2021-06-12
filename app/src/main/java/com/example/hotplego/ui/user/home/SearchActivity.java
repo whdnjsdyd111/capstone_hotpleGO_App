@@ -1,51 +1,80 @@
-package com.example.hotplego;
+package com.example.hotplego.ui.user.home;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Rect;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.LinearLayout;
 
+import com.example.hotplego.GpsTracker;
+import com.example.hotplego.PostRun;
 import com.example.hotplego.R;
-import com.example.hotplego.ui.SearchAdapter;
-import com.example.hotplego.ui.SearchData;
-import com.example.hotplego.ui.board.BoardData;
+import com.example.hotplego.TMapSetting;
+import com.example.hotplego.domain.HotpleVO;
+import com.example.hotplego.ui.user.home.adapter.SearchAdapter;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.skt.Tmap.TMapView;
+
+import org.json.JSONException;
+
+import java.util.List;
 
 public class SearchActivity extends AppCompatActivity {
-    SearchAdapter adapter;
+    private SearchAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_hotple);
         init();
-        initDataset();
-        getData();
-
-
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void init() {
+        adapter = new SearchAdapter(this);
+        TMapView tMapView = new TMapView(getApplicationContext());
+        TMapSetting tMapSetting = new TMapSetting(tMapView, this);
+
+        GpsTracker gps = new GpsTracker(getApplicationContext());
+        PostRun postRun = new PostRun("search_hotple", this, PostRun.DATA);
+        postRun.setRunUI(() -> {
+            try {
+                List<HotpleVO> list = new Gson().fromJson(postRun.obj.getString("hotples"),
+                        new TypeToken<List<HotpleVO>>() {}.getType());
+                adapter.addItem(list);
+                tMapSetting.hotpleMark(list);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        });
+        postRun.addData("keyword", getIntent().getStringExtra("keyword"))
+                .addData("lat", String.valueOf(gps.getLatitude()))
+                .addData("lng", String.valueOf(gps.getLongitude()))
+                .start();
+
+        ((LinearLayout)findViewById(R.id.search_map)).addView(tMapView);
+        tMapView.setTMapPoint(gps.getLatitude(), gps.getLongitude());
+        tMapView.setZoomLevel(14);
+
         RecyclerView recyclerView = findViewById(R.id.recycler_search);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2);
         recyclerView.setLayoutManager(gridLayoutManager);
 
-        adapter = new SearchAdapter();
+
         recyclerView.setAdapter(adapter);
 
         recyclerView.addItemDecoration(new HotpleItemDecoration(this));
 
-    }
-
-    private void getData() {
     }
 
     public class HotpleItemDecoration extends RecyclerView.ItemDecoration{
@@ -59,7 +88,6 @@ public class SearchActivity extends AppCompatActivity {
 
         private int dpToPx(Context context, int dp) {
             return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics());
-
         }
 
         @Override
@@ -88,15 +116,5 @@ public class SearchActivity extends AppCompatActivity {
                 outRect.right = size10;
             }
         }
-
-    }
-
-
-    private void initDataset() {
-        adapter.addItem(new SearchData(R.drawable.board, "상호명", "5.0"));
-        adapter.addItem(new SearchData(R.drawable.board, "상호명", "5.0"));
-        adapter.addItem(new SearchData(R.drawable.board, "상호명", "5.0"));
-        adapter.addItem(new SearchData(R.drawable.board, "상호명", "5.0"));
-        adapter.addItem(new SearchData(R.drawable.board, "상호명", "5.0"));
     }
 }

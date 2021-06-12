@@ -41,9 +41,10 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
             index.setText(String.valueOf(info.getCiIndex()));
             index.setBackgroundTintList(ContextCompat.getColorStateList(itemView.getContext(),
                     CourseFragment.COURSE_COLORS[info.getCiIndex() - 1]));
-            // TODO 사진 없을 때 /image/logo.jpg 대체
-            if (info.getUuid() == null) Glide.with(itemView).load(PostRun.DOMAIN + "/images/logo.jpg").into(image);
-            else Glide.with(itemView).load(PostRun.getImageUrl(info.getUploadPath(), info.getUuid(), info.getFileName())).into(image);
+            if (info.getUuid() != null) Glide.with(itemView).load(PostRun.getImageUrl(info.getUploadPath(), info.getUuid(), info.getFileName())).into(image);
+            else if (info.getGoImg() != null) Glide.with(itemView).load(info.getGoImg()).into(image);
+            else Glide.with(itemView).load(PostRun.DOMAIN + "/images/logo.jpg").into(image);
+
             address.setText(info.getHtAddr());
 
         }

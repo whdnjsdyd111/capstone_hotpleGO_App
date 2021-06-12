@@ -1,4 +1,4 @@
-package com.example.hotplego.ui.local;
+package com.example.hotplego;
 
 import android.Manifest;
 import android.app.Service;
@@ -17,9 +17,9 @@ import androidx.core.content.ContextCompat;
 
 public class GpsTracker extends Service implements LocationListener {
     private final Context mContext;
-    Location location;
-    double latitude;
-    double longitude;
+    private Location location;
+    private double latitude;
+    private double longitude;
 
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10;
     private static final long MIN_TIME_BW_UPDATES = 1000 * 60 * 1;

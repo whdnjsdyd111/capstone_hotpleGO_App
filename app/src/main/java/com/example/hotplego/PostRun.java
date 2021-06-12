@@ -46,7 +46,8 @@ import java.util.TimeZone;
 
 public class PostRun extends Thread implements Runnable {
 //    public static final String DOMAIN = "http://172.30.1.25:8000";
-    public static final String DOMAIN = "http://192.168.1.46:8000";
+    public static final String DOMAIN = "http://3.13.167.35:8000";
+//    public static final String DOMAIN = "http://192.168.1.35:8000";
     public static final String IMAGE_URL = "/hotpleImage/0000/00/00/";
     public static final int DATA = 0;
     public static final int IMAGES = 1;
@@ -216,5 +217,21 @@ public class PostRun extends Thread implements Runnable {
             }
         }
         return fullPath;
+    }
+
+    public static String AddDate(Date date, int year, int month, int day) throws Exception {
+        SimpleDateFormat dtFormat = new SimpleDateFormat("yyyyMMdd");
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.YEAR, year);
+        cal.add(Calendar.MONTH, month);
+        cal.add(Calendar.DATE, day);
+        return dtFormat.format(cal.getTime());
+    }
+
+    public static String toTime(String str) {
+        StringBuilder stringBuilder = new StringBuilder(str);
+        stringBuilder.insert(2, ":");
+        return stringBuilder.toString();
     }
 }

@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.hotplego.PickData;
 import com.example.hotplego.R;
 import com.example.hotplego.domain.HotpleVO;
 

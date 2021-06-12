@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.hotplego.PickData;
 import com.example.hotplego.R;
 import com.example.hotplego.domain.HotpleVO;
 

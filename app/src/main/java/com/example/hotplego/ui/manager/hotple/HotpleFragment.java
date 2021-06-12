@@ -98,7 +98,7 @@ public class HotpleFragment extends Fragment {
                     else Toast.makeText(getActivity(), "다시 시도해주십시오.", Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) { e.printStackTrace(); }
             });
-            postRun.addData("uCode", "whdnjsdyd1111@naver.com/M/")
+            postRun.addData("uCode", "whdnjsdyd@naver.com/M/")
                     .addData("account", binding.managerAccount.getText().toString())
                     .addData("bank", binding.managerBank.getSelectedItem().toString())
                     .start();

@@ -13,6 +13,7 @@ import com.example.hotplego.ui.manager.hotple.HotpleFragment;
 import com.example.hotplego.ui.manager.management.Management;
 import com.example.hotplego.ui.manager.menu.MenuFragment;
 import com.example.hotplego.ui.manager.order.OrderFragment;
+import com.example.hotplego.ui.manager.sale.SalesFragment;
 
 public class MainActivity extends AppCompatActivity {
     private ManagerActivityBinding binding;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new ManagerPagerAdapter(this.getSupportFragmentManager());
 
-        adapter.addFrag(new Fragment());
+        adapter.addFrag(new SalesFragment());
         adapter.addFrag(new OrderFragment());
         adapter.addFrag(new MenuFragment());
         adapter.addFrag(new Management());

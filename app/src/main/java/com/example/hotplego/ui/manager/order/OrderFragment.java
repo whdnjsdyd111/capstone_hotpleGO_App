@@ -74,7 +74,7 @@ public class OrderFragment extends Fragment {
                 e.printStackTrace();
             }
         });
-        postRun.addData("uCode", "whdnjsdyd1111@naver.com/M/")
+        postRun.addData("uCode", "whdnjsdyd@naver.com/M/")
                 .start();
     }
 

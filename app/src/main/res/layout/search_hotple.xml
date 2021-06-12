@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="SearchActivity" >
+    tools:context=".ui.user.home.SearchActivity" >
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -30,6 +30,12 @@
             app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
     </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/search_map"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:orientation="vertical" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_search"
