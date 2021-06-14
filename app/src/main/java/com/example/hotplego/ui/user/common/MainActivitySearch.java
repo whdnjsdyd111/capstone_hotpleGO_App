@@ -25,7 +25,7 @@ public class MainActivitySearch extends Activity {
 
         searchId = (EditText) findViewById(R.id.SearchId); // 비밀번호 찾기의 아이디 입력 란
         searchNamePw = (EditText) findViewById(R.id.SearchNamePw); // 비밀번호 찾기의 이름 입력 란
-        searchBirthPw = (EditText) findViewById(R.id.SearchBirthPw); // 비밀번호 찾기의 생년월일 입력 란
+        /*searchBirthPw = (EditText) findViewById(R.id.SearchBirthPw); // 비밀번호 찾기의 생년월일 입력 란*/
 
         Button searchPwbtn = (Button) findViewById(R.id.SearchPwbtn); // 비밀번호 찾기 버튼
 
