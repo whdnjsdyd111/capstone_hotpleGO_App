@@ -79,6 +79,7 @@ public class TMapSetting {
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void hotpleMark(List<HotpleVO> list) {
+        tMapView.removeAllMarkerItem();
         for (HotpleVO vo : list) {
             TMapPoint point = new TMapPoint(vo.getHtLat(), vo.getHtLng());
             points.add(point);
@@ -86,6 +87,7 @@ public class TMapSetting {
             marker.setTMapPoint(point);
             marker.setIcon(createViewToBitmap(CATECORY[vo.getCategory().intValue() / 10]));
             markers.add(marker);
+            marker.setCalloutTitle(vo.getBusnName());
             tMapView.addMarkerItem(String.valueOf(vo.getHtId()), marker);
         }
     }

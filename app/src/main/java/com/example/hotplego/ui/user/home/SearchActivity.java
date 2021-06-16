@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,33 +19,42 @@ import com.example.hotplego.GpsTracker;
 import com.example.hotplego.PostRun;
 import com.example.hotplego.R;
 import com.example.hotplego.TMapSetting;
+import com.example.hotplego.databinding.SearchHotpleBinding;
 import com.example.hotplego.domain.HotpleVO;
 import com.example.hotplego.ui.user.home.adapter.SearchAdapter;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.skt.Tmap.TMapPoint;
 import com.skt.Tmap.TMapView;
 
 import org.json.JSONException;
 
 import java.util.List;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity implements SearchAdapter.OnItemClickListener {
     private SearchAdapter adapter;
+    private TMapView tMapView = null;
+    private TMapSetting tMapSetting = null;
+    private GpsTracker gps = null;
+    private SearchHotpleBinding binding = null;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.search_hotple);
+        binding = SearchHotpleBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        adapter = new SearchAdapter(this, this);
+        tMapView = new TMapView(getApplicationContext());
+        tMapSetting = new TMapSetting(tMapView, this);
+        gps = new GpsTracker(getApplicationContext());
+
         init();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    private void init() {
-        adapter = new SearchAdapter(this);
-        TMapView tMapView = new TMapView(getApplicationContext());
-        TMapSetting tMapSetting = new TMapSetting(tMapView, this);
-
-        GpsTracker gps = new GpsTracker(getApplicationContext());
+    private void getHotples(double lat, double lng) {
         PostRun postRun = new PostRun("search_hotple", this, PostRun.DATA);
         postRun.setRunUI(() -> {
             try {
@@ -57,24 +67,38 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
         postRun.addData("keyword", getIntent().getStringExtra("keyword"))
-                .addData("lat", String.valueOf(gps.getLatitude()))
-                .addData("lng", String.valueOf(gps.getLongitude()))
+                .addData("lat", String.valueOf(lat))
+                .addData("lng", String.valueOf(lng))
                 .start();
+    }
 
-        ((LinearLayout)findViewById(R.id.search_map)).addView(tMapView);
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void setMyLocation() {
+        getHotples(gps.getLatitude(), gps.getLongitude());
         tMapView.setTMapPoint(gps.getLatitude(), gps.getLongitude());
         tMapView.setZoomLevel(14);
+    }
 
-        RecyclerView recyclerView = findViewById(R.id.recycler_search);
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void init() {
+        binding.searchMap.addView(tMapView);
+
+        binding.myLocation.setOnClickListener(v -> setMyLocation());
+
+        binding.setLocation.setOnClickListener(v -> {
+            TMapPoint point = tMapView.getCenterPoint();
+            getHotples(point.getLatitude(), point.getLongitude());
+            tMapView.setZoomLevel(14);
+        });
+
+        setMyLocation();
+
+        RecyclerView recyclerView = binding.recyclerSearch;
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2);
         recyclerView.setLayoutManager(gridLayoutManager);
-
-
         recyclerView.setAdapter(adapter);
-
         recyclerView.addItemDecoration(new HotpleItemDecoration(this));
-
     }
 
     public class HotpleItemDecoration extends RecyclerView.ItemDecoration{
@@ -116,5 +140,12 @@ public class SearchActivity extends AppCompatActivity {
                 outRect.right = size10;
             }
         }
+    }
+
+    @Override
+    public void onItemClick(HotpleVO vo) {
+        Intent intent = new Intent(this, HotpleActivity.class);
+        intent.putExtra("hotple", vo);
+        startActivity(intent);
     }
 }

@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="30dp"
     android:orientation="vertical"
-    tools:context=".ui.ReviewActivity">
+    tools:context=".ui.user.home.ReviewFragment">
 
 
     <ImageView
@@ -18,15 +18,15 @@
         android:src="@drawable/ic_account_circle_24px"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:context=".ui.ReviewActivity" />
+        tools:context=".ui.user.home.ReviewFragment" />
 
     <TextView
         android:id="@+id/user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:text="@string/nick"
         android:textColor="#000000"
         android:textSize="20sp"
@@ -38,38 +38,39 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="5dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="9dp"
         android:text="날짜"
         android:textColor="#000000"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.93"
-        app:layout_constraintStart_toEndOf="@+id/user_name"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/user_profile"
+        app:layout_constraintTop_toBottomOf="@+id/user_name" />
 
     <RatingBar
         android:id="@+id/ratingBar"
         style="?android:attr/ratingBarStyleIndicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:isIndicator="false"
+        android:layout_marginTop="11dp"
+        android:isIndicator="true"
         android:numStars="5"
         android:progressTint="#FFA914"
         android:rating="0"
         android:stepSize="1"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/review_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toEndOf="@+id/user_profile"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.419" />
+        app:layout_constraintTop_toBottomOf="@+id/review_date"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/review_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="60dp"
         android:layout_marginBottom="20dp"
         android:layout_marginRight="20dp"
         android:text="@string/re_cont"
@@ -79,5 +80,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user_profile" />
 
+    <TextView
+        android:id="@+id/review_own_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:textSize="22sp"
+        android:text="사장 답변"
+        android:textColor="#000000"
+        android:background="@color/gray_200"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/review_content"
+        tools:layout_editor_absoluteX="161dp"
+        android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

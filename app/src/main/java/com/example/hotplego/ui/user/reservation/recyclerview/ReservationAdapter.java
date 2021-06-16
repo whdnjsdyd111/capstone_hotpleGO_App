@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.hotplego.PostRun;
 import com.example.hotplego.R;
+import com.example.hotplego.UserSharedPreferences;
 import com.example.hotplego.domain.ReservationAllVO;
 import com.example.hotplego.domain.ReservationHotpleVO;
 import com.example.hotplego.domain.ReviewVO;
@@ -172,7 +173,6 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
         this.isProceed = isProceed;
         this.activity = activity;
     }
-
     @NonNull
     @NotNull
     @Override

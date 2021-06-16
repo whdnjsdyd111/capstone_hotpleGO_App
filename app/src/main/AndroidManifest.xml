@@ -28,6 +28,7 @@
         </activity>
         <activity android:name=".ui.user.home.SearchActivity" />
         <activity android:name=".ui.user.common.MainSocialSub" />
+        <activity android:name=".ui.user.home.HotpleActivity" />
 
         <activity android:name=".ui.user.mypage.TasteActivity" />
         <activity android:name=".ui.user.mypage.MBTIActivity" />

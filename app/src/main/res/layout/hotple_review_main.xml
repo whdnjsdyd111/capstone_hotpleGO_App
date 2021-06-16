@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ui.user.home.ReviewFragment">
+
+    <com.github.mikephil.charting.charts.HorizontalBarChart
+        android:id="@+id/lineChart2"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp" >
+    </com.github.mikephil.charting.charts.HorizontalBarChart>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/re_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        tools:listitem="@layout/hotple_review_item"
+        android:nestedScrollingEnabled="false"/>
+
+
+</LinearLayout>

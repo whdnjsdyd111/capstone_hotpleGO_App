@@ -14,6 +14,7 @@ import com.example.hotplego.PostRun;
 import com.example.hotplego.R;
 import com.example.hotplego.domain.MenuVO;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder> {
@@ -35,7 +36,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
 
         public void onBind(MenuVO menu) {
             menu_name.setText(menu.getMeName());
-            menu_price.setText(String.valueOf(menu.getMePrice()));
+            menu_price.setText(new DecimalFormat("###,###,###").format(menu.getMePrice()));
             menu_cnt.setText(menu.getMeIntr());
             if (menu.getUuid() != null) Glide.with(itemView).load(PostRun.getImageUrl(menu.getUploadPath(),
                     menu.getUuid(), menu.getFileName())).into(menu_img);
@@ -43,7 +44,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     }
 
     public interface OnItemClickListener {
-        void onItemClick(MenuVO vo);
+        void onItemClick(MenuVO vo, int position);
     }
 
     private List<MenuVO> list;
@@ -74,7 +75,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         MenuVO vo = list.get(position);
         holder.onBind(vo);
         holder.itemView.setOnClickListener(v -> {
-            listener.onItemClick(vo);
+            listener.onItemClick(vo, position);
         });
     }
 

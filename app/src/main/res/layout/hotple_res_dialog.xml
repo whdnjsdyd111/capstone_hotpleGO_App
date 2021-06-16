@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="예약"
+        android:textSize="24sp"
+        android:paddingLeft="16dp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/gray_200" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="예약 인원" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <ImageButton
+                android:id="@+id/remove_num"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/minus_circle"
+                android:layout_weight="1"
+                android:background="#00000000" />
+            <TextView
+                android:id="@+id/person"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="0" />
+            <ImageButton
+                android:id="@+id/add_num"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/add_circle"
+                android:background="#00000000" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:text="예약 확인"
+        android:gravity="center" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/check_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/hotple_res_check">
+
+    </androidx.recyclerview.widget.RecyclerView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:text="총합 : 100,000"
+        android:layout_marginBottom="15dp"/>
+    <EditText
+        android:id="@+id/require"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/edittext_border"
+        android:padding="10dp"
+        android:hint="요구사항" />
+    <EditText
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/edittext_border"
+        android:padding="10dp"
+        android:hint="날짜" />
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/edittext_border"
+        android:padding="10dp"
+        android:hint="실명" />
+</LinearLayout>

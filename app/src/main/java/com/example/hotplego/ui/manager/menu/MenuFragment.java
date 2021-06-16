@@ -106,7 +106,7 @@ public class MenuFragment extends Fragment implements MenuAdapter.OnItemClickLis
     }
 
     @Override
-    public void onItemClick(MenuVO vo) {
+    public void onItemClick(MenuVO vo, int position) {
         Intent intent = new Intent(getContext(), MenuInfo.class);
         intent.putExtra("menu", vo);
         startActivity(intent);

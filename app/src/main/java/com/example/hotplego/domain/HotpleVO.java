@@ -1,11 +1,12 @@
 package com.example.hotplego.domain;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 import lombok.Data;
 
 @Data
-public class HotpleVO {
+public class HotpleVO implements Serializable {
     private Long htId;
     private String busnNum;
     private String goId;

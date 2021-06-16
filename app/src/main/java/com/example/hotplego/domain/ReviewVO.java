@@ -9,5 +9,5 @@ public class ReviewVO {
     private String rvCont;
     private String rvOwnCont;
     private String rvImg;
-    private String uCode;
+    private String UCode;
 }

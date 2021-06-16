@@ -14,6 +14,8 @@ import com.bumptech.glide.Glide;
 import com.example.hotplego.PostRun;
 import com.example.hotplego.R;
 import com.example.hotplego.domain.HotpleVO;
+import com.example.hotplego.domain.MenuVO;
+import com.example.hotplego.ui.manager.menu.recyclerview.MenuAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +27,15 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     private List<HotpleVO> list = null;
     private Activity activity;
+    private OnItemClickListener listen;
 
-    public SearchAdapter(Activity activity) {
+    public interface OnItemClickListener {
+        void onItemClick(HotpleVO vo);
+    }
+
+    public SearchAdapter(Activity activity, OnItemClickListener listen) {
         this.activity = activity;
+        this.listen = listen;
     }
 
     @NonNull
@@ -40,7 +48,11 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ((ViewHolderSearch)holder).onBind(list.get(position));
+        HotpleVO vo = list.get(position);
+        ((ViewHolderSearch)holder).onBind(vo);
+        holder.itemView.setOnClickListener(v -> {
+            listen.onItemClick(vo);
+        });
     }
 
     @Override

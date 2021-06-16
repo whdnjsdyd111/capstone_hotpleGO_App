@@ -92,7 +92,7 @@
     <string name="hotplace_name">핫플 장소</string>
     <string name="hotplace_intro">핫플 설명</string>
     <string name="hotplace_position">핫플 위치</string>
-    <string name="proceeding">진행 중인 장소</string>
+    <string name="proceeding">진행중 장소</string>
     <string name="completed">완료된 장소</string>
     <string name="watch_detail">상세보기</string>
     <string name="watch_review">리뷰보기</string>
@@ -116,4 +116,7 @@
     <string name="me_price">메뉴 가격</string>
     <string name="hashtag">해시태그</string>
     <string name="rs_me_num">메뉴 수량</string>
+    <!-- -->
+    <string name="myLocation">내 위치 보기</string>
+    <string name="setLocation">현재 위치 설정</string>
 </resources>
