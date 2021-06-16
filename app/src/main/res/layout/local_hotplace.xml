@@ -49,6 +49,7 @@
                 app:backgroundTint="#6E6A6A"
                 android:visibility="gone"/>
         </androidx.appcompat.widget.Toolbar>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
@@ -115,4 +116,16 @@
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-    </LinearLayout>
+
+    <Button
+        android:id="@+id/kakao_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/google_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+</LinearLayout>

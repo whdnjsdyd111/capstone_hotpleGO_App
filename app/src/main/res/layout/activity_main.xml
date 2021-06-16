@@ -35,14 +35,4 @@
             app:backgroundTint="#6E6A6A"/>
     </androidx.appcompat.widget.Toolbar>
 
-    <Button
-        android:id="@+id/bn_logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="로그아웃"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.534"
-        app:layout_constraintStart_toStartOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

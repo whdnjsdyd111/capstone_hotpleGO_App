@@ -21,20 +21,35 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
-import com.example.hotplego.databinding.LocalHotplaceBinding;
 import com.example.hotplego.GpsTracker;
-import com.example.hotplego.ui.user.MainActivity;
 import com.example.hotplego.UserSharedPreferences;
+import com.example.hotplego.databinding.LocalHotplaceBinding;
+import com.example.hotplego.ui.user.MainActivity;
 import com.example.hotplego.ui.user.common.MainActivityLogin;
 import com.example.hotplego.ui.user.common.MainActivityLogout;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
 public class HomeFragment extends Fragment {
+
+    private FirebaseAuth firebaseAuth;
+    GoogleSignInClient mGoogleSignInClient;
+    private GoogleApiClient mGoogleApiClient;
+
 
     private LocalHotplaceBinding binding;
     private GpsTracker gpsTracker;
@@ -46,6 +61,15 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         binding = LocalHotplaceBinding.inflate(inflater, container, false);
 
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(getActivity().getApplicationContext(), gso);
+
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getActivity().getApplicationContext());
+
         Toolbar myToolbar = binding.toolbar;
         ((MainActivity) this.getActivity()).setSupportActionBar(myToolbar);
         ((MainActivity) this.getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -56,6 +80,7 @@ public class HomeFragment extends Fragment {
         }
 
         UserSharedPreferences.getInstance().login(this.getActivity());
+
 
         binding.buttonNotice.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,15 +107,30 @@ public class HomeFragment extends Fragment {
             return true;
         });
 
-        binding.bnLogout.setOnClickListener(new View.OnClickListener() {
+        binding.kakaoLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
+
+                    @Override
+                    public void onNotSignedUp() {
+                        super.onNotSignedUp();
+                        System.out.println("회원이 아닙니다.");
+                    }
+
                     @Override
                     public void onCompleteLogout() {
                         // 로그아웃 성공시 수행하는 지점
+                        Toast.makeText(getContext(),"로그아웃 성공",Toast.LENGTH_SHORT).show();
                     }
                 });
+            }
+        });
+
+        binding.googleLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signOut();
             }
         });
 
@@ -104,6 +144,16 @@ public class HomeFragment extends Fragment {
         Log.i("주소", getCurrentAddress(latitude, longitude));
 
         return binding.getRoot();
+    }
+
+    private void signOut() {
+        firebaseAuth.signOut();
+        mGoogleSignInClient.signOut().addOnCompleteListener(getActivity(), new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull @NotNull Task<Void> task) {
+                        Toast.makeText(getActivity().getApplicationContext(),"로그아웃 성공",Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     public boolean checkLocationServicesStatus() {

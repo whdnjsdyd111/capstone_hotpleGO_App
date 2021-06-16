@@ -1,3 +1,4 @@
+
 package com.example.hotplego.ui.user.common;
 
 import android.app.Application;
@@ -14,11 +15,13 @@ public class KakaoApplication extends Application {
     private static volatile KakaoApplication instance = null;
 
     private static class KakaoSDKAdapter extends KakaoAdapter {
-        /**
+
+/**
          * Session Config에 대해서는 default값들이 존재한다.
          * 필요한 상황에서만 override해서 사용하면 됨.
          * @return Session의 설정값.
          */
+
         // 카카오 로그인 세션을 불러올 때의 설정값을 설정하는 부분.
         public ISessionConfig getSessionConfig() {
 
@@ -26,11 +29,13 @@ public class KakaoApplication extends Application {
                 @Override
                 public AuthType[] getAuthTypes() {
                     return new AuthType[] {AuthType.KAKAO_LOGIN_ALL};
-                    /*로그인을 하는 방식을 지정하는 부분. AuthType로는 다음 네 가지 방식이 있다.
-                    KAKAO_TALK: 카카오톡으로 로그인, KAKAO_STORY: 카카오스토리로 로그인, KAKAO_ACCOUNT: 웹뷰를 통한 로그인,
-                    KAKAO_TALK_EXCLUDE_NATIVE_LOGIN: 카카오톡으로만 로그인+계정 없으면 계정생성 버튼 제공
-                    KAKAO_LOGIN_ALL: 모든 로그인방식 사용 가능. 정확히는, 카카오톡이나 카카오스토리가 있으면 그 쪽으로 로그인 기능을 제공하고, 둘 다 없으면 웹뷰를 통한 로그인을 제공한다.
-                     */
+
+                    // 로그인을 하는 방식을 지정하는 부분. AuthType로는 다음 네 가지 방식이 있다.
+                    // KAKAO_TALK: 카카오톡으로 로그인, KAKAO_STORY: 카카오스토리로 로그인, KAKAO_ACCOUNT: 웹뷰를 통한 로그인,
+                    // KAKAO_TALK_EXCLUDE_NATIVE_LOGIN: 카카오톡으로만 로그인+계정 없으면 계정생성 버튼 제공
+                    // KAKAO_LOGIN_ALL: 모든 로그인방식 사용 가능. 정확히는, 카카오톡이나 카카오스토리가 있으면 그 쪽으로 로그인 기능을 제공하고, 둘 다 없으면 웹뷰를 통한 로그인을 제공한다.
+
+
 
                 }
 
@@ -95,3 +100,4 @@ public class KakaoApplication extends Application {
         instance = null;
     }
 }
+

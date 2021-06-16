@@ -92,30 +92,14 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/ll1">
 
-        <com.facebook.login.widget.LoginButton
-            android:id="@+id/btnFacebook"
-            android:layout_width="339dp"
-            android:layout_height="70dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="10dp" />
 
-        <Button
-            android:layout_height="wrap_content"
+        <com.google.android.gms.common.SignInButton
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/btnGoogle"
-            android:text="google"
-            app:backgroundTint="#F44336"
-            android:background="#dd4b39"/>
+            android:layout_below="@id/text" />
 
-        <Button
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_marginTop="8dp"
-            android:id="@+id/btnNaver"
-            android:text="naver"
-            app:backgroundTint="#7CCF32"
-            android:background="#7CCF32"/>
+
 
         <com.kakao.usermgmt.LoginButton
             android:id="@+id/btn_login"
