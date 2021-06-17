@@ -46,13 +46,11 @@ import java.util.Locale;
 public class HomeFragment extends Fragment {
 
     private FirebaseAuth firebaseAuth;
-    GoogleSignInClient mGoogleSignInClient;
-    private GoogleApiClient mGoogleApiClient;
+    private GoogleSignInClient mGoogleSignInClient;
 
 
     private LocalHotplaceBinding binding;
     private GpsTracker gpsTracker;
-    private SharedPreferences preferences;
 
     private static final int GPS_ENABLE_REQUEST_CODE = 2001;
 
@@ -90,10 +88,34 @@ public class HomeFragment extends Fragment {
                     startActivity(intent);
             }
         });
-//
-//        binding.bnLogout.setOnClickListener(v -> {
-//            String socialType = UserSharedPreferences.user.getUCode().split()
-//        });
+
+        binding.bnLogout.setOnClickListener(v -> {
+            String code[] = UserSharedPreferences.user.getUCode().split("/");
+            if (code.length == 3) {
+                if (code[2].equals("KA")) {
+                    UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
+
+                        @Override
+                        public void onNotSignedUp() {
+                            super.onNotSignedUp();
+                            Toast.makeText(getContext(), "로그인한 상태가 아닙니다.", Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onCompleteLogout() {
+                            Toast.makeText(getContext(),"로그아웃하였습니다.",Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } else if (code[2].equals("GO")) {
+                    signOut();
+                }
+            }
+            UserSharedPreferences.getInstance().logout(getActivity());
+            if (UserSharedPreferences.user == null) {
+                binding.bnLogout.setVisibility(View.GONE);
+                binding.buttonNotice.setVisibility(View.VISIBLE);
+            }
+        });
 
         binding.hotpleSearch.setOnKeyListener((v, code, e) -> {
             if (code == KeyEvent.KEYCODE_ENTER && e.getAction() == KeyEvent.ACTION_UP) {
@@ -104,33 +126,6 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
             return true;
-        });
-
-        binding.kakaoLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
-
-                    @Override
-                    public void onNotSignedUp() {
-                        super.onNotSignedUp();
-                        System.out.println("회원이 아닙니다.");
-                    }
-
-                    @Override
-                    public void onCompleteLogout() {
-                        // 로그아웃 성공시 수행하는 지점
-                        Toast.makeText(getContext(),"로그아웃 성공",Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        });
-
-        binding.googleLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signOut();
-            }
         });
 
         gpsTracker = new GpsTracker(getContext());
@@ -235,5 +230,17 @@ public class HomeFragment extends Fragment {
         Address address = addresses.get(0);
         return address.getAdminArea() + "  " + address.getLocality() + "  " + address.getThoroughfare();
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (UserSharedPreferences.user != null) {
+            binding.bnLogout.setVisibility(View.VISIBLE);
+            binding.buttonNotice.setVisibility(View.GONE);
+        } else {
+            binding.bnLogout.setVisibility(View.GONE);
+            binding.buttonNotice.setVisibility(View.VISIBLE);
+        }
     }
 }

@@ -219,7 +219,6 @@ public class MainActivityLogin extends AppCompatActivity implements View.OnClick
         loginId = (EditText) findViewById(R.id.etEmail);
         loginPw = (EditText) findViewById(R.id.etPassword);
         btnLogin = (Button) findViewById(R.id.btnLogin);
-        kakaoLogout = (Button) findViewById(R.id.kakao_logout);
         btnSignup = (TextView) findViewById(R.id.tvRegister);
         btnSearch = (TextView) findViewById(R.id.tvRestore);
 

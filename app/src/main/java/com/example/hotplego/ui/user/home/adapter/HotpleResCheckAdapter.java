@@ -35,6 +35,7 @@ public class HotpleResCheckAdapter extends RecyclerView.Adapter<HotpleResCheckAd
             orderName.setText(order.getMenu().getMeName());
             orderPrice.setText(String.valueOf(order.getMenu().getMePrice() * order.getNum()));
             orderNum.setText(String.valueOf(order.getNum()));
+            if (order.getNum() == 0) itemView.setVisibility(View.GONE);
         }
     }
 

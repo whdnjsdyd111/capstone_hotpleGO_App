@@ -1,6 +1,7 @@
 package com.example.hotplego.ui.user.home;
 
 import android.app.AlertDialog;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,15 +13,18 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hotplego.PostRun;
 import com.example.hotplego.R;
+import com.example.hotplego.UserSharedPreferences;
 import com.example.hotplego.databinding.HotpleMenuMainBinding;
 import com.example.hotplego.domain.MenuVO;
 import com.example.hotplego.domain.ReservationAllVO;
@@ -31,6 +35,7 @@ import com.example.hotplego.ui.user.home.adapter.MenuOrder;
 import com.example.hotplego.ui.user.reservation.ReservationInfoFragment;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.iamport.sdk.data.sdk.IamPortApprove;
 import com.iamport.sdk.data.sdk.IamPortRequest;
 import com.iamport.sdk.data.sdk.PayMethod;
 import com.iamport.sdk.domain.core.Iamport;
@@ -41,6 +46,7 @@ import org.json.JSONException;
 import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import kotlin.Unit;
 
@@ -58,6 +64,7 @@ public class MenuFragment extends Fragment implements MenuAdapter.OnItemClickLis
         this.htId = htId;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override
@@ -74,23 +81,23 @@ public class MenuFragment extends Fragment implements MenuAdapter.OnItemClickLis
 
         Iamport.INSTANCE.init(this);
 
-//        binding.reservation.setOnClickListener(v -> {
-////            IamportClient client = new IamportClient("3158229450476427", "0ZhM3lMpwifNyac3fGOR92EXeV26EAyEAPrDbd3Hwiu4tH8JnWAwZetdawjP7RtHHVlS9oAFH4KaLTT9");
-//            IamPortRequest request = IamPortRequest.builder().pg("kakaopay").pay_method(PayMethod.card).escrow(true)
-//                    .name("안드로이드 주문").merchant_uid("m_" + new Date().getTime()).amount("3000").buyer_name("조원용").build();
-//
-//            Iamport.INSTANCE.payment("imp81208754", request,
-//                    iamPortApprove -> { return Unit.INSTANCE; },
-//                    iamPortResponse -> { return Unit.INSTANCE; });
-//        });
-
         binding.reservation.setOnClickListener(v -> {
+            List<MenuOrder> orders = resAdapter.getData().stream().filter(vo -> vo.getNum() > 0).collect(Collectors.toList());
+            if (orders.size() == 0) {
+                Toast.makeText(getContext(), "메뉴를 선택해주세요.", Toast.LENGTH_SHORT).show();
+                return;
+            }
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            AlertDialog ad = builder.create();
             LayoutInflater layoutInflater = LayoutInflater.from(getContext());
             LinearLayout layout = (LinearLayout) layoutInflater.inflate(R.layout.hotple_res_dialog, null);
             ImageButton add = layout.findViewById(R.id.add_num);
             ImageButton minus = layout.findViewById(R.id.remove_num);
             TextView person = layout.findViewById(R.id.person);
+            Button btn = layout.findViewById(R.id.reservation_btn);
+            TextView require = layout.findViewById(R.id.require);
+            TextView date = layout.findViewById(R.id.date);
+            TextView name = layout.findViewById(R.id.name);
             add.setOnClickListener(e -> {
                 int num = Integer.parseInt(person.getText().toString());
                 person.setText(String.valueOf(num + 1));
@@ -98,8 +105,70 @@ public class MenuFragment extends Fragment implements MenuAdapter.OnItemClickLis
             minus.setOnClickListener(e -> {
                 int num = Integer.parseInt(person.getText().toString());
                 if (num > 0) {
-                    person.setText(String.valueOf(num + 1));
+                    person.setText(String.valueOf(num - 1));
                 }
+            });
+            btn.setOnClickListener(e -> {
+                if (require.getText().toString().isEmpty() || date.getText().toString().isEmpty() || name.getText().toString().isEmpty()) {
+                    Toast.makeText(getContext(), "모두 작성해주십시오.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (Integer.parseInt(person.getText().toString()) == 0) {
+                    Toast.makeText(getContext(), "인원 수를 제대로 작성해주십시오.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                int sum = 0;
+                String order_name = "";
+
+                if (orders.size() > 1) {
+                    for (MenuOrder order : orders) {
+                        sum += order.getMenu().getMePrice();
+                    }
+                    order_name += orders.get(0).getMenu().getMeName() + " 외 " + (orders.size() - 1) + "개";
+                } else {
+                    MenuOrder order = resAdapter.getData().get(0);
+                    sum += order.getMenu().getMePrice();
+                    order_name += order.getMenu().getMeName();
+                }
+
+                String mCode = "m_" + new Date().getTime();
+
+                IamPortRequest request = IamPortRequest.builder().pg("kakaopay").pay_method(PayMethod.card).escrow(true)
+                        .name(order_name).merchant_uid(mCode).amount(String.valueOf(sum)).buyer_name(name.getText().toString()).build();
+
+                Iamport.INSTANCE.payment("imp81208754", request,
+                        iamPortApprove -> {
+                            Toast.makeText(getContext(), "예약 실패 또는 취소하였습니다.", Toast.LENGTH_SHORT).show();
+                            return Unit.INSTANCE;
+                        },
+                        iamPortResponse -> {
+                            if (iamPortResponse.getImp_success()) {
+                                PostRun postRun = new PostRun("res_order", getActivity(), PostRun.DATA);
+                                postRun.setRunUI(() -> {
+                                    try {
+                                        if (Boolean.parseBoolean(postRun.obj.getString("message")))
+                                            Toast.makeText(getContext(), "예약 완료하였습니다.", Toast.LENGTH_SHORT).show();
+                                        else {
+
+                                        }
+                                    } catch (JSONException ex) {
+                                        ex.printStackTrace();
+                                    }
+                                });
+                                postRun.addData("menuOrders", new Gson().toJson(orders))
+                                        .addData("riTime", date.getText().toString())
+                                        .addData("riPerson", person.getText().toString())
+                                        .addData("riOdNum", mCode)
+                                        .addData("riCont", require.getText().toString())
+                                        .addData("uCode", UserSharedPreferences.user.getUCode())
+                                        .start();
+                            }
+                            return Unit.INSTANCE;
+                        });
+
+                ad.dismiss();
             });
 
             RecyclerView recyclerView = layout.findViewById(R.id.check_recyclerview);
@@ -107,8 +176,8 @@ public class MenuFragment extends Fragment implements MenuAdapter.OnItemClickLis
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             recyclerView.setAdapter(adapter);
 
-            builder.setView(layout);
-            builder.show();
+            ad.setView(layout);
+            ad.show();
         });
 
         return binding.getRoot();

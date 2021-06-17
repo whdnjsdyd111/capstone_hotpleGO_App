@@ -96,4 +96,10 @@
         android:background="@drawable/edittext_border"
         android:padding="10dp"
         android:hint="실명" />
+    <Button
+        android:id="@+id/reservation_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="예약하기"
+        android:backgroundTint="@color/green_700" />
 </LinearLayout>
