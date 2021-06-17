@@ -43,7 +43,6 @@
         <activity android:name=".ui.user.common.MainActivitySearch" />
         <activity android:name=".ui.user.common.SelectRegister" />
         <activity android:name=".ui.user.common.MainActivitySignMg" />
-        <activity android:name=".ui.user.common.MainActivityLogout" />
 
         <activity android:name=".ui.user.course.CourseDetailActivity" />
 

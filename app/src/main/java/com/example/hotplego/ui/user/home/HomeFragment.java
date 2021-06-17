@@ -26,7 +26,6 @@ import com.example.hotplego.UserSharedPreferences;
 import com.example.hotplego.databinding.LocalHotplaceBinding;
 import com.example.hotplego.ui.user.MainActivity;
 import com.example.hotplego.ui.user.common.MainActivityLogin;
-import com.example.hotplego.ui.user.common.MainActivityLogout;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -81,20 +80,20 @@ public class HomeFragment extends Fragment {
 
         UserSharedPreferences.getInstance().login(this.getActivity());
 
+        if (UserSharedPreferences.user == null) binding.buttonNotice.setVisibility(View.VISIBLE);
+        else binding.bnLogout.setVisibility(View.VISIBLE);
 
         binding.buttonNotice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (UserSharedPreferences.user == null) {
                     Intent intent = new Intent(getContext(), MainActivityLogin.class);
                     startActivity(intent);
-
-                } else {
-                    Intent intent = new Intent(getContext(), MainActivityLogout.class);
-                    startActivity(intent);
-                }
             }
         });
+//
+//        binding.bnLogout.setOnClickListener(v -> {
+//            String socialType = UserSharedPreferences.user.getUCode().split()
+//        });
 
         binding.hotpleSearch.setOnKeyListener((v, code, e) -> {
             if (code == KeyEvent.KEYCODE_ENTER && e.getAction() == KeyEvent.ACTION_UP) {

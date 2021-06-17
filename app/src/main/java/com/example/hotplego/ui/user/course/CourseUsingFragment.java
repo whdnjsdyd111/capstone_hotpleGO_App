@@ -56,7 +56,7 @@ public class CourseUsingFragment extends Fragment {
         tMapView.setSKTMapApiKey("l7xxcd9bdd0942b542fd8c7be931fc11a3b4");
         binding.tmapUsing.addView(tMapView);
 
-        adapter = new CourseAdapter();
+        adapter = new CourseAdapter(getActivity());
         binding.courseRecyclerView.setAdapter(adapter);
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
         binding.courseRecyclerView.setLayoutManager(manager);

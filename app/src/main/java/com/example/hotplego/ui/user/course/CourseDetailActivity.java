@@ -40,7 +40,7 @@ public class CourseDetailActivity extends AppCompatActivity {
 
         binding.courseWith.setText("함께하는 인원 : " + vo.getCsWith());
         binding.courseNum.setText("인원 : " + vo.getCsNum());
-        adapter = new CourseAdapter(list, kind.equals("used"));
+        adapter = new CourseAdapter(list, kind.equals("used"), this);
         binding.courseRecyclerView.setAdapter(adapter);
         LinearLayoutManager manager = new LinearLayoutManager(getApplicationContext());
         binding.courseRecyclerView.setLayoutManager(manager);

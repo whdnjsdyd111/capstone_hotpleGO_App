@@ -1,5 +1,6 @@
 package com.example.hotplego.ui.user.course.recyclerview;
 
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,8 @@ import com.example.hotplego.R;
 import com.example.hotplego.domain.CourseInfoVO;
 import com.example.hotplego.ui.user.course.CourseFragment;
 
+import org.json.JSONException;
+
 import java.util.List;
 
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseViewHolder> {
@@ -25,7 +28,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
         TextView index;
         ImageView image;
         TextView address;
-        Button remove;
+        public Button remove;
 
         public CourseViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -46,22 +49,25 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
             else Glide.with(itemView).load(PostRun.DOMAIN + "/images/logo.jpg").into(image);
 
             address.setText(info.getHtAddr());
-
         }
     }
 
     private List<CourseInfoVO> list;
     private boolean isUsed;
+    private Activity activity;
 
     public void setData(List<CourseInfoVO> data) {
         list = data;
         notifyDataSetChanged();
     }
 
-    public CourseAdapter() {}
-    public CourseAdapter(List<CourseInfoVO> list, boolean isUsed) {
+    public CourseAdapter(Activity activity) {
+        this.activity = activity;
+    }
+    public CourseAdapter(List<CourseInfoVO> list, boolean isUsed, Activity activity) {
         this.list = list;
         this.isUsed = isUsed;
+        this.activity = activity;
     }
 
     @NonNull
@@ -75,6 +81,22 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
     public void onBindViewHolder(@NonNull CourseViewHolder holder, int position) {
         CourseInfoVO vo = list.get(position);
         holder.onBind(vo);
+        holder.remove.setOnClickListener(v -> {
+            PostRun postRun = new PostRun("delete-hotple-in-course", activity, PostRun.DATA);
+            postRun.setRunUI(() -> {
+                try {
+                    if (Boolean.parseBoolean(postRun.obj.getString("message"))) {
+                        list.remove(position);
+                        notifyDataSetChanged();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            });
+            postRun.addData("csCode", vo.getCsCode())
+                    .addData("htId", String.valueOf(vo.getHtId()))
+                    .start();
+        });
     }
 
     @Override

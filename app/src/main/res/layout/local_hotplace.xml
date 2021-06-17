@@ -30,23 +30,22 @@
 
             <Button
                 android:id="@+id/button_notice"
-                android:layout_width="28dp"
-                android:layout_height="25dp"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
                 android:layout_gravity="right"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/ic_notifications_black_24dp"
-                android:stateListAnimator="@null"
-                app:backgroundTint="#6E6A6A"/>
+                android:backgroundTint="@color/blue_200"
+                android:text="로그인"
+                android:visibility="gone"/>
 
             <Button
                 android:id="@+id/bn_logout"
-                android:layout_width="28dp"
-                android:layout_height="25dp"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
                 android:layout_gravity="right"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/ic_notifications_black_24dp"
-                android:stateListAnimator="@null"
-                app:backgroundTint="#6E6A6A"
+                android:backgroundTint="@color/gray_700"
+                android:text="로그아웃"
                 android:visibility="gone"/>
         </androidx.appcompat.widget.Toolbar>
 

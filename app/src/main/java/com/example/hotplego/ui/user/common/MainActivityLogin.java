@@ -306,10 +306,10 @@ public class MainActivityLogin extends AppCompatActivity implements View.OnClick
                                     } catch (ParseException e) {
                                         e.printStackTrace();
                                     }
-                                    HotpleVO hotple = null;
-                                    if (pr.obj.getString("hotple") != null)
-                                        hotple = new Gson().fromJson(pr.obj.getString("hotple"), HotpleVO.class);
-                                    UserSharedPreferences.getInstance().login(MainActivityLogin.this, user, hotple);
+//                                    HotpleVO hotple = null;
+//                                    if (pr.obj.getString("hotple") != null)
+//                                        hotple = new Gson().fromJson(pr.obj.getString("hotple"), HotpleVO.class);
+                                    UserSharedPreferences.getInstance().login(MainActivityLogin.this, user, null);
                                     Toast.makeText(MainActivityLogin.this, "로그인 성공하였습니다.", Toast.LENGTH_SHORT).show();
                                     Log.i("users", user.toString());
                                     finish();

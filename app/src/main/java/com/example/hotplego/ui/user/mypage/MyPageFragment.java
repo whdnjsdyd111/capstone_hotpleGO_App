@@ -38,7 +38,7 @@ public class MyPageFragment extends Fragment {
         binding.uCode.setText(user.getUCode().split("/")[0]);
         binding.regDate.setText(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date(user.getRegDate().getTime())));
         binding.nick.setText(user.getNick());
-        binding.birth.setText(new SimpleDateFormat("yyyy-MM-dd").format(user.getBirth()));
+//        binding.birth.setText(new SimpleDateFormat("yyyy-MM-dd").format(user.getBirth()));
         binding.mbti.setText(user.getMbti());
         Glide.with(this).load(user.getProfileImg()).into(binding.userProfile);
         binding.mbtiPage.setOnClickListener(v -> {
