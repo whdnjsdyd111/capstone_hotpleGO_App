@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hotplego.PostRun;
 import com.example.hotplego.R;
+import com.example.hotplego.UserSharedPreferences;
 import com.example.hotplego.databinding.MenuMainBinding;
 import com.example.hotplego.domain.MenuVO;
 import com.example.hotplego.ui.manager.menu.recyclerview.MenuAdapter;
@@ -95,7 +95,7 @@ public class MenuFragment extends Fragment implements MenuAdapter.OnItemClickLis
                 e.printStackTrace();
             }
         });
-        postRun.addData("uCode", "whdnjsdyd@naver.com/M/")
+        postRun.addData("uCode", UserSharedPreferences.user.getUCode())
                 .start();
     }
 

@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.hotplego.PostRun;
+import com.example.hotplego.UserSharedPreferences;
 import com.example.hotplego.databinding.CourseUsedBinding;
 import com.example.hotplego.domain.CourseInfoVO;
 import com.example.hotplego.domain.CourseVO;
@@ -65,7 +66,7 @@ public class CoursesFragment extends Fragment implements CourseInfoAdapter.OnIte
             }
         });
         postRun.addData("kind", kind)
-                .addData("uCode", "whdnjsdyd111@naver.com/A/")
+                .addData("uCode", UserSharedPreferences.user.getUCode())
                 .start();
         // TODO 유저
 

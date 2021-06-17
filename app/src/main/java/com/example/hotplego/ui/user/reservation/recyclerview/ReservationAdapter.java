@@ -1,6 +1,5 @@
 package com.example.hotplego.ui.user.reservation.recyclerview;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -28,14 +27,12 @@ import com.example.hotplego.domain.ReservationHotpleVO;
 import com.example.hotplego.domain.ReviewVO;
 import com.example.hotplego.ui.user.reservation.ReservationInfoFragment;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 
 import java.text.DecimalFormat;
 import java.util.List;
-import java.util.Map;
 
 public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.ReservationViewHolder> {
 
@@ -159,7 +156,7 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
             postRun.addData("riCode", vo.getRiCode())
                     .addData("rvRating", String.valueOf((int) rating.getRating()))
                     .addData("rvCont", review.getText().toString())
-                    .addData("uCode", "whdnjsdyd111@naver.com/A/")
+                    .addData("uCode", UserSharedPreferences.user.getUCode())
                     .start();
         }
     }

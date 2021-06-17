@@ -27,6 +27,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.hotplego.ImageGetterImpl;
 import com.example.hotplego.PostRun;
 import com.example.hotplego.R;
+import com.example.hotplego.UserSharedPreferences;
 import com.example.hotplego.domain.CommentVO;
 import com.example.hotplego.ui.user.board.BoardDetailActivity;
 
@@ -114,7 +115,7 @@ public class BoardCommentAdapter extends RecyclerView.Adapter<BoardCommentAdapte
                     }
                 });
                 postRun.addData("bdCode", vo.getBdCode())
-                        .addData("uCode", "whdnjsdyd111@naver.com/A/") // TODO 유저 정보 SharedPreferences 로 변경
+                        .addData("uCode", UserSharedPreferences.user.getUCode()) // TODO 유저 정보 SharedPreferences 로 변경
                         .addData("comCont", Html.toHtml(com_reply.getText()).replaceAll(PostRun.DOMAIN, ""))
                         .addData("replyCode", vo.getReplyCode() == null ? vo.getComCode() : vo.getReplyCode())
                         .start();
@@ -158,7 +159,7 @@ public class BoardCommentAdapter extends RecyclerView.Adapter<BoardCommentAdapte
                 }
             });
             postRun.addData("comCode", comCode)
-                    .addData("uCode", "whdnjsdyd111@naver.com/A/")
+                    .addData("uCode", UserSharedPreferences.user.getUCode())
                     .addData("reco", String.valueOf(reco != null && reco.equals("Y")))
                     .addData("nonReco", String.valueOf(reco != null && reco.equals("N")))
                     .start();

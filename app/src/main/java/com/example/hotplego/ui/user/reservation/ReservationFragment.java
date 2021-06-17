@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.hotplego.PostRun;
 import com.example.hotplego.R;
+import com.example.hotplego.UserSharedPreferences;
 import com.example.hotplego.databinding.UserReservationBinding;
 import com.example.hotplego.domain.ReservationAllVO;
 import com.example.hotplego.domain.ReservationHotpleVO;
@@ -60,7 +61,7 @@ public class ReservationFragment extends Fragment {
                 e.printStackTrace();
             }
         });
-        postRun.addData("uCode", "whdnjsdyd111@naver.com/A/").start();
+        postRun.addData("uCode", UserSharedPreferences.user.getUCode()).start();
 
         return binding.getRoot();
     }

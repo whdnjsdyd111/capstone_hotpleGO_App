@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.hotplego.PostRun;
 import com.example.hotplego.R;
+import com.example.hotplego.UserSharedPreferences;
 import com.example.hotplego.databinding.CourseUsingBinding;
 import com.example.hotplego.domain.CourseInfoVO;
 import com.example.hotplego.domain.CourseVO;
@@ -62,7 +63,7 @@ public class CourseUsingFragment extends Fragment {
 
         PostRun postRun = new PostRun("myCourse", getActivity(), PostRun.DATA);
         postRun.addData("kind", "usingCourse")
-                .addData("uCode", "whdnjsdyd111@naver.com/A/");
+                .addData("uCode", UserSharedPreferences.user.getUCode());
         // TODO 유저
         postRun.setRunUI(() -> {
             try {

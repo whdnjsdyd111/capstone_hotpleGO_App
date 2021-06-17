@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.hotplego.PostRun;
-import com.example.hotplego.R;
+import com.example.hotplego.UserSharedPreferences;
 import com.example.hotplego.databinding.FragmentManagementWeekdayBinding;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -64,7 +64,7 @@ public class ManagementTime extends Fragment {
                 e.printStackTrace();
             }
         });
-        postRun.addData("uCode", "whdnjsdyd@naver.com/M/");
+        postRun.addData("uCode", UserSharedPreferences.user.getUCode());
         postRun.start();
 
         binding.save.setOnClickListener(v -> {
@@ -81,7 +81,7 @@ public class ManagementTime extends Fragment {
                     .addData("woet", binding.worktimeEnd.getText().toString())
                     .addData("wbst", binding.breaktimeStart.getText().toString())
                     .addData("wbet", binding.breaktimeEnd.getText().toString())
-                    .addData("uCode", "whdnjsdyd@naver.com/M/") // TODO
+                    .addData("uCode", UserSharedPreferences.user.getUCode()) // TODO
                     .addData("kind", kind)
                     .start();
         });

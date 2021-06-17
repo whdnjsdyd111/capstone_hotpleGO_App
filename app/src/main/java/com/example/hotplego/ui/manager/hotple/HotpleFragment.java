@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,16 +20,15 @@ import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
 import com.example.hotplego.PostRun;
 import com.example.hotplego.R;
+import com.example.hotplego.UserSharedPreferences;
 import com.example.hotplego.databinding.ManagerHotpleBinding;
 import com.example.hotplego.domain.HotpleVO;
 import com.example.hotplego.domain.ManagerVO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
-import org.w3c.dom.Text;
 
 public class HotpleFragment extends Fragment {
     private ManagerHotpleBinding binding;
@@ -98,7 +95,7 @@ public class HotpleFragment extends Fragment {
                     else Toast.makeText(getActivity(), "다시 시도해주십시오.", Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) { e.printStackTrace(); }
             });
-            postRun.addData("uCode", "whdnjsdyd@naver.com/M/")
+            postRun.addData("uCode", UserSharedPreferences.user.getUCode())
                     .addData("account", binding.managerAccount.getText().toString())
                     .addData("bank", binding.managerBank.getSelectedItem().toString())
                     .start();
@@ -112,7 +109,7 @@ public class HotpleFragment extends Fragment {
                     else Toast.makeText(getActivity(), "다시 시도해주십시오.", Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) { e.printStackTrace(); }
             });
-            postRun.addData("uCode", "whdnjsdyd1111@naver.com/M/")
+            postRun.addData("uCode", UserSharedPreferences.user.getUCode())
                     .addData("nick", binding.managerNick.getText().toString())
                     .start();
         });
@@ -189,7 +186,7 @@ public class HotpleFragment extends Fragment {
                 e.printStackTrace();
             }
         });
-        postRun.addData("uCode", "whdnjsdyd@naver.com/M/")
+        postRun.addData("uCode", UserSharedPreferences.user.getUCode())
                 .start();
     }
 

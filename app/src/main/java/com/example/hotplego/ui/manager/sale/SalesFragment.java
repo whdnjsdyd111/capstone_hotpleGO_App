@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.hotplego.PostRun;
 import com.example.hotplego.R;
+import com.example.hotplego.UserSharedPreferences;
 import com.example.hotplego.domain.ReservationAllVO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -21,7 +22,6 @@ import com.google.gson.reflect.TypeToken;
 import org.json.JSONException;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,7 +57,7 @@ public class SalesFragment extends Fragment {
         }
 
         PostRun postRun = new PostRun("sales", getActivity(), PostRun.DATA);
-        postRun.addData("uCode", "whdnjsdyd@naver.com/M/"); // TODO
+        postRun.addData("uCode", UserSharedPreferences.user.getUCode()); // TODO
         postRun.setRunUI(() -> {
             try {
                 Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss.S").create();

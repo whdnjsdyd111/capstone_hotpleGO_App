@@ -3,6 +3,7 @@ package com.example.hotplego.ui.user.board;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -21,6 +23,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.hotplego.ImageGetterImpl;
 import com.example.hotplego.PostRun;
 import com.example.hotplego.R;
+import com.example.hotplego.UserSharedPreferences;
 import com.example.hotplego.databinding.BoardDetailsBinding;
 import com.example.hotplego.domain.BoardVO;
 import com.example.hotplego.domain.CommentVO;
@@ -69,7 +72,7 @@ public class BoardDetailActivity extends AppCompatActivity {
                 }
             });
             mark.addData("bookmark", String.valueOf(bookmark))
-                    .addData("uCode", "whdnjsdyd111@naver.com/A/")
+                    .addData("uCode", UserSharedPreferences.user.getUCode())
                     .addData("bdCode", vo.getBdCode())
                     .start();
         });
@@ -92,7 +95,7 @@ public class BoardDetailActivity extends AppCompatActivity {
                         }
                     });
                     delete.addData("bdCode", vo.getBdCode())
-                            .addData("uCode", "whdnjsdyd111@naver.com/A/")
+                            .addData("uCode", UserSharedPreferences.user.getUCode())
                             .start();
                 }
             });
@@ -125,7 +128,7 @@ public class BoardDetailActivity extends AppCompatActivity {
                 }
             });
             postRun.addData("bdCode", vo.getBdCode())
-                    .addData("uCode", "whdnjsdyd111@naver.com/A/") // TODO 유저 정보 SharedPreferences 로 변경
+                    .addData("uCode", UserSharedPreferences.user.getUCode()) // TODO 유저 정보 SharedPreferences 로 변경
                     .addData("comCont", Html.toHtml(binding.commWrite.getText()).replaceAll(PostRun.DOMAIN, ""))
                     .start();
         });
@@ -133,6 +136,7 @@ public class BoardDetailActivity extends AppCompatActivity {
         loadView();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void bookmarkToggle(boolean isMark) {
         if (isMark) {
             binding.bookmark.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.red_500));
@@ -152,7 +156,7 @@ public class BoardDetailActivity extends AppCompatActivity {
                 binding.boardContents.setText(vo.getBdTitle());
                 binding.boardText.setText(Html.fromHtml(vo.getBdCont(), new ImageGetterImpl(this, binding.boardText), null));
                 // TODO 유저 정보
-                if (vo.getUCode().equals("whdnjsdyd111@naver.com/A/")) binding.boardMaster.setVisibility(View.VISIBLE);
+                if (vo.getUCode().equals(UserSharedPreferences.user.getUCode())) binding.boardMaster.setVisibility(View.VISIBLE);
                 bookmark = postRun.obj.getBoolean("bookmark");
                 bookmarkToggle(bookmark);
                 adapter.setData(gson.fromJson(postRun.obj.getString("comment"), new TypeToken<List<CommentVO>>() {}.getType()),
@@ -163,7 +167,7 @@ public class BoardDetailActivity extends AppCompatActivity {
             }
         });
         // TODO 유저 정보 SharedPreferences 로 변경
-        postRun.addData("bdCode", getIntent().getStringExtra("bdCode")).addData("uCode", "whdnjsdyd111@naver.com/A/");
+        postRun.addData("bdCode", getIntent().getStringExtra("bdCode")).addData("uCode", UserSharedPreferences.user.getUCode());
         postRun.start();
     }
 

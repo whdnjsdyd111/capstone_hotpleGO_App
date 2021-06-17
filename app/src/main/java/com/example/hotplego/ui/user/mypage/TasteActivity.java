@@ -1,6 +1,7 @@
 package com.example.hotplego.ui.user.mypage;
 
 import android.content.res.ColorStateList;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,10 +10,12 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hotplego.PostRun;
 import com.example.hotplego.R;
+import com.example.hotplego.UserSharedPreferences;
 import com.example.hotplego.databinding.MypageTasteBinding;
 
 import org.json.JSONArray;
@@ -81,7 +84,7 @@ public class TasteActivity extends AppCompatActivity {
         // postRun 으로 해당 사용자의 취향 가져옴
         selected = new HashSet<>();
         PostRun postRun = new PostRun("getTaste", this, PostRun.DATA);
-        postRun.addData("uCode", "whdnjsdyd111@naver.com/A/"); // TODO 현재 로그인된 아이디 가져오기
+        postRun.addData("uCode", UserSharedPreferences.user.getUCode()); // TODO 현재 로그인된 아이디 가져오기
         postRun.setRunUI(() ->{
             try {
                 Log.i("result", postRun.obj.get("tastes").toString());
@@ -100,6 +103,7 @@ public class TasteActivity extends AppCompatActivity {
         postRun.start();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -138,7 +142,7 @@ public class TasteActivity extends AppCompatActivity {
             PostRun postRun = new PostRun("saveTaste", this);
             JSONObject jsonObject = new JSONObject();
             // TODO 로그인된 아이디
-            postRun.addData("uCode", "whdnjsdyd111@naver.com/A/")
+            postRun.addData("uCode", UserSharedPreferences.user.getUCode())
                     .addJsonData("tastes", new String[] {"tastes"}, new Object[] { selected });
             postRun.setRunUI(() -> {
                 try {

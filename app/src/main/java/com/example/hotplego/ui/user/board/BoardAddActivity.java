@@ -1,30 +1,21 @@
 package com.example.hotplego.ui.user.board;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
-import android.text.Spanned;
-import android.text.SpannedString;
-import android.util.Log;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bumptech.glide.Glide;
 import com.example.hotplego.ImageGetterImpl;
 import com.example.hotplego.PostRun;
+import com.example.hotplego.UserSharedPreferences;
 import com.example.hotplego.databinding.BoardAddBinding;
 import com.example.hotplego.domain.BoardVO;
-import com.example.hotplego.domain.UserVO;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
-
-import java.sql.Timestamp;
-import java.util.Date;
 
 public class BoardAddActivity extends AppCompatActivity {
     private BoardAddBinding binding;
@@ -57,7 +48,7 @@ public class BoardAddActivity extends AppCompatActivity {
                 vo.setBdTitle(binding.boardTitle.getText().toString());
                 vo.setBdCont(Html.toHtml(binding.boardContents.getText()).replaceAll(PostRun.DOMAIN, ""));
                 // TODO 유저 정보 SharedPreferences 로 변경
-                vo.setUCode("whdnjsdyd111@naver.com/A/");
+                vo.setUCode(UserSharedPreferences.user.getUCode());
                 PostRun postRun = new PostRun("insertBoard", this, PostRun.DATA);
                 postRun.addData("board", new Gson().toJson(vo));
                 postRun.setRunUI(() -> {
@@ -86,7 +77,7 @@ public class BoardAddActivity extends AppCompatActivity {
                     }
                 });
                 postRun.addData("board", new Gson().toJson(vo))
-                        .addData("uCode", "whdnjsdyd111@naver.com/A/") // TODO 유저 정보 SharedPreferences 로 변경
+                        .addData("uCode", UserSharedPreferences.user.getUCode()) // TODO 유저 정보 SharedPreferences 로 변경
                         .start();
             }
         });

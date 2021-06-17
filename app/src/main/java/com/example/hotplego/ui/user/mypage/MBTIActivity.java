@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hotplego.PostRun;
 import com.example.hotplego.R;
+import com.example.hotplego.UserSharedPreferences;
 import com.example.hotplego.databinding.MypageMbtiBinding;
 
 import org.json.JSONException;
@@ -45,7 +46,7 @@ public class MBTIActivity extends AppCompatActivity {
     private void initSelected() {
         // TODO 사용자 uCode + SharedPreferences 의 mbti 교체, DB 에서 조회 X
         PostRun postRun = new PostRun("getMbti", this, PostRun.DATA);
-        postRun.addData("uCode", "whdnjsdyd111@naver.com/A/");
+        postRun.addData("uCode", UserSharedPreferences.user.getUCode());
         postRun.setRunUI(() -> {
             try {
                 selected = postRun.obj.getString("mbti");
@@ -81,7 +82,7 @@ public class MBTIActivity extends AppCompatActivity {
     private void post(String mbti) {
         // TODO 유저 정보
         PostRun postRun = new PostRun("saveMbti", this);
-        postRun.addData("uCode", "whdnjsdyd111@naver.com/A/")
+        postRun.addData("uCode", UserSharedPreferences.user.getUCode())
                 .addData("mbti", mbti);
         postRun.setRunUI(() -> {
             try {

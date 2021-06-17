@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.hotplego.PostRun;
-import com.example.hotplego.R;
+import com.example.hotplego.UserSharedPreferences;
 import com.example.hotplego.databinding.OrderMainBinding;
 import com.example.hotplego.domain.ReservationAllVO;
 import com.example.hotplego.domain.ReviewVO;
@@ -24,7 +24,6 @@ import org.json.JSONException;
 
 import java.sql.Timestamp;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -74,7 +73,7 @@ public class OrderFragment extends Fragment {
                 e.printStackTrace();
             }
         });
-        postRun.addData("uCode", "whdnjsdyd@naver.com/M/")
+        postRun.addData("uCode", UserSharedPreferences.user.getUCode())
                 .start();
     }
 

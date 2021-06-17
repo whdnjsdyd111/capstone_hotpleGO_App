@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import com.example.hotplego.domain.HotpleVO;
 import com.example.hotplego.domain.UserVO;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 public class UserSharedPreferences {
     private static final UserSharedPreferences instance = new UserSharedPreferences();
@@ -22,7 +21,6 @@ public class UserSharedPreferences {
     public static HotpleVO hotple;
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
-
 
     public void logout(Activity activity) {
         preferences = activity.getSharedPreferences("user", Context.MODE_PRIVATE);

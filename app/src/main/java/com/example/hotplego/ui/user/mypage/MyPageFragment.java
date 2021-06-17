@@ -12,13 +12,13 @@ import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.example.hotplego.PostRun;
+import com.example.hotplego.UserSharedPreferences;
 import com.example.hotplego.databinding.UserMypageBinding;
 import com.example.hotplego.domain.UserVO;
 import com.example.hotplego.ui.manager.MainActivity;
 
 import org.json.JSONException;
 
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -33,17 +33,7 @@ public class MyPageFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         binding = UserMypageBinding.inflate(inflater, container, false);
 
-        user = new UserVO();
-        user.setUCode("whdnjsdyd111@naver.com/M/");
-        user.setPw("argjnerjgnerntklen");
-        user.setNick("월롱");
-        user.setProfileImg("https://lh3.googleusercontent.com/a-/AOh14Gjm6G76xvDpjc6mgtYGeAlFU4erv5XYw8inNWjReg=s96-c");
-        user.setBirth(new Date());
-        user.setGender('M');
-        user.setPhone("01068480083");
-        user.setPoint(0L);
-        user.setMbti("ENFJ");
-        user.setRegDate(new Timestamp(1619423443624L));
+        user = UserSharedPreferences.user;
 
         binding.uCode.setText(user.getUCode().split("/")[0]);
         binding.regDate.setText(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date(user.getRegDate().getTime())));
@@ -61,7 +51,7 @@ public class MyPageFragment extends Fragment {
             String nick = binding.nick.getText().toString();
             if (!nick.isEmpty()) {
                 PostRun postRun = new PostRun("changeNick", this.getActivity(), PostRun.DATA);
-                postRun.addData("uCode", "whdnjsdyd111@naver.com/A/")
+                postRun.addData("uCode", UserSharedPreferences.user.getUCode())
                         .addData("nick", nick);
                 postRun.setRunUI(new Runnable() {
                     @Override

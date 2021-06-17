@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.hotplego.PostRun;
+import com.example.hotplego.UserSharedPreferences;
 import com.example.hotplego.databinding.MypageBookmarkBinding;
 import com.example.hotplego.domain.BoardVO;
 import com.example.hotplego.ui.user.board.recyclerview.BoardAdapter;
@@ -47,7 +48,7 @@ public class BookmarkActivity extends AppCompatActivity implements BoardAdapter.
             }
             System.gc();
         });
-        postRun.addData("uCode", "whdnjsdyd111@naver.com/A/").start();
+        postRun.addData("uCode", UserSharedPreferences.user.getUCode()).start();
         // TODO 유저
     }
 
