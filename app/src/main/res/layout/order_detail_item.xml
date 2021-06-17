@@ -5,12 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="15dp"
-    android:padding="15dp"
     android:foreground="?android:attr/selectableItemBackground"
     android:focusable="true"
     android:clickable="true"
-    app:cardCornerRadius="20dp">
+    android:layout_marginBottom="12dp"
+    android:layout_marginRight="12dp"
+    android:background="@color/white"
+    android:elevation="5dp"
+    android:padding="15dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -29,10 +31,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="12dp"
             android:layout_toEndOf="@id/order_manage_menu_img"
             android:layout_toRightOf="@id/order_manage_menu_img"
             android:text="주문 메뉴"
+            android:fontFamily="@font/elandfont"
             android:textColor="@color/black"
             android:textSize="25sp" />
 
@@ -42,10 +45,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/order_manage_menu_name"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="12dp"
             android:layout_toEndOf="@id/order_manage_menu_img"
             android:layout_toRightOf="@id/order_manage_menu_img"
             android:text="주문 수량"
+            android:fontFamily="@font/elandfont"
             android:textColor="@color/black"
             android:textSize="25sp" />
 
@@ -55,10 +59,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/order_manage_menu_num"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="12dp"
             android:layout_toEndOf="@id/order_manage_menu_img"
             android:layout_toRightOf="@id/order_manage_menu_img"
             android:text="금액"
+            android:fontFamily="@font/elandfont"
             android:textColor="@color/black"
             android:textSize="25sp" />
 

@@ -5,7 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/custombutton"
+    android:layout_marginBottom="12dp"
+    android:layout_marginRight="12dp"
+    android:background="@color/white"
+    android:elevation="5dp"
+    android:padding="15dp"
     android:orientation="vertical">
 
 
@@ -35,7 +39,8 @@
         android:layout_gravity="center"
         android:text="@string/sh_name"
         android:textColor="#000000"
-        android:textSize="24sp" />
+        android:fontFamily="@font/elandfont"
+        android:textSize="26sp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -50,8 +55,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="구글 평점: "
+            android:fontFamily="@font/elandfont"
             android:textColor="#000000"
-            android:textSize="20sp" />
+            android:textSize="22sp" />
 
         <TextView
             android:id="@+id/search_textView2"
@@ -59,8 +65,8 @@
             android:layout_height="wrap_content"
             android:text="@string/rating"
             android:textColor="#FFAC07"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textSize="22sp"
+            android:fontFamily="@font/elandfontbold" />
     </LinearLayout>
 
 </LinearLayout>

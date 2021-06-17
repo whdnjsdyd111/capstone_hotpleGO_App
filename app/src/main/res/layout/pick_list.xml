@@ -12,20 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
         android:text="찜 목록"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="#8A8A8A" />
+        android:textColor="#393939"
+        android:textSize="28sp"
+        android:fontFamily="@font/elandfont"/>
 
     <com.google.android.material.button.MaterialButtonToggleGroup
         android:id="@+id/toggleButton"
@@ -43,8 +35,9 @@
             android:layout_height="65dp"
             android:layout_weight="1"
             android:text="장소별"
+            android:fontFamily="@font/elandfont"
             android:textColor="#000000"
-            android:textSize="17sp" />
+            android:textSize="22sp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/course_btn"
@@ -53,8 +46,9 @@
             android:layout_height="65dp"
             android:layout_weight="1"
             android:text="코스별"
+            android:fontFamily="@font/elandfont"
             android:textColor="#000000"
-            android:textSize="17sp" />
+            android:textSize="22sp" />
 
     </com.google.android.material.button.MaterialButtonToggleGroup>
 

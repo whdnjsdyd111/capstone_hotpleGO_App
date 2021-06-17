@@ -3,63 +3,69 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/mypoint_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="15dp"
-        android:gravity="center"
-        android:text="내 포인트 조회"
-        android:textSize="20dp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/mypoint_title_mini"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:gravity="center"
-        android:text="현재 포인트"
-        android:textSize="22sp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/mypoint_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:textColor="#393939"
+            android:fontFamily="@font/elandfont"
+            android:text="포인트 조회"
+            android:textSize="28dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            app:srcCompat="@drawable/point" />
+        android:paddingTop="20dp"
+        android:paddingBottom="30dp"
+        android:background="@drawable/gradientbutton3"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="40dp"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/my_point"
+            android:id="@+id/mypoint_title_mini"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:textSize="20sp"
-            android:textColor="#000000"
-            android:text="@string/my_point"/>
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/elandfontbold"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/white"
+            android:text="현재 포인트"
+            android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/my_point"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/elandfontbold"
+                android:text="@string/my_point"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2px"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="5dp"
-        android:background="#8A8A8A" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/point_recyclerView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/mypoint_item" />
+        android:layout_height="wrap_content"
+        android:background="@drawable/customview4"
+        android:padding="20dp"
+        android:elevation="5dp"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/point_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/mypoint_item" />
+    </LinearLayout>
+
 </LinearLayout>

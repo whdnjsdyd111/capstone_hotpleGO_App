@@ -4,6 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:layout_marginRight="12dp"
+    android:background="@color/white"
+    android:elevation="5dp"
+    android:padding="15dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -35,6 +40,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -42,8 +48,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="업체명: "
-                    android:textSize="20sp"/>
+                    android:text="업체명 : "
+                    android:textColor="#393939"
+                    android:fontFamily="@font/elandfont"
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/pick_details_name"
@@ -51,12 +59,15 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="업체명을 입력해주세요"
-                    android:textSize="20sp"/>
+                    android:fontFamily="@font/elandfont"
+                    android:textColor="#393939"
+                    android:textSize="18sp"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -64,16 +75,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="위치: "
-                    android:textSize="20sp"/>
+                    android:text="위치 : "
+                    android:textColor="#393939"
+                    android:fontFamily="@font/elandfont"
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/pick_details_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textColor="#393939"
                     android:text="주소를 입력해주세요"
-                    android:textSize="20sp"/>
+                    android:fontFamily="@font/elandfont"
+                    android:textSize="18sp"/>
             </LinearLayout>
         </LinearLayout>
 

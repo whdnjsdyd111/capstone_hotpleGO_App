@@ -11,6 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:background="#7DFF00"
+        android:background="#90F4F4F4"
         tools:listitem="@layout/order_item" />
 </LinearLayout>

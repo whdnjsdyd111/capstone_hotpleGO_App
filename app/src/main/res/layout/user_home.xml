@@ -22,7 +22,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="HotpleGo"
-            android:textSize="20sp"
+            android:textSize="28sp"
+            android:textColor="#393939"
+            android:fontFamily="@font/elandfont"
             app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
         <Button
@@ -36,11 +38,16 @@
             app:backgroundTint="#6E6A6A"/>
     </androidx.appcompat.widget.Toolbar>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bn_logout"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:text="로그아웃"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/gradientbutton3"
+        android:fontFamily="@font/elandfontbold"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.534"

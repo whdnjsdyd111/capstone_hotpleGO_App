@@ -36,6 +36,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="찜한 시간"
+                android:fontFamily="@font/elandfont"
+                android:textSize="18sp"
+                android:textColor="#000000"
                 android:gravity="right"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"/>
@@ -53,7 +56,9 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:text="장소명: "
+                android:text="장소명 : "
+                android:textColor="#393939"
+                android:fontFamily="@font/elandfont"
                 android:textSize="24sp" />
 
             <TextView
@@ -61,6 +66,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textColor="#393939"
+                android:fontFamily="@font/elandfont"
                 android:text="업체 이름"
                 android:textSize="24sp" />
         </LinearLayout>
@@ -68,6 +75,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal">
 
             <TextView
@@ -77,15 +85,19 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:text="위치: "
+                android:fontFamily="@font/elandfont"
+                android:textColor="#393939"
+                android:text="위치 : "
                 android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/place_address"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:fontFamily="@font/elandfont"
                 android:layout_weight="1"
                 android:text="업체 주소"
+                android:textColor="#393939"
                 android:textSize="24sp" />
         </LinearLayout>
 
@@ -99,9 +111,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
+                android:fontFamily="@font/elandfont"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:text="별점: "
+                android:text="별점 : "
+                android:textColor="#393939"
+                android:gravity="center"
                 android:textSize="24sp" />
 
             <RatingBar

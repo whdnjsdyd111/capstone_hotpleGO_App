@@ -18,13 +18,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
-        <Button
+        <ImageButton
             android:id="@+id/closeBtn"
             style="?android:borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/close"
-            android:textColor="#000000"
+            android:src="@drawable/ic_baseline_close_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -32,11 +31,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/titlename"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/cs_recommend"
-            android:textSize="24sp"
-            android:textStyle="bold"
+            android:textSize="28sp"
+            android:fontFamily="@font/elandfont"
+            android:textColor="#393939"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -44,17 +45,6 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#8A8A8A"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="0.0" />
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -66,8 +56,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/titlename"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="NotSibling">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -104,7 +95,10 @@
                             android:layout_height="wrap_content"
                             android:drawablePadding="10dp"
                             android:text="@string/food"
-                            android:textSize="20sp"
+                            android:fontFamily="@font/elandfont"
+                            android:textSize="23sp"
+                            android:padding="10dp"
+                            android:textColor="#393939"
                             app:drawableLeftCompat="@drawable/lefteat"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -114,6 +108,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginRight="8dp"
                             android:text="@string/down_mark"
                             android:textSize="20sp"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -245,7 +241,10 @@
                             android:layout_height="wrap_content"
                             android:drawablePadding="10dp"
                             android:text="@string/dessert"
-                            android:textSize="20sp"
+                            android:fontFamily="@font/elandfont"
+                            android:textSize="23sp"
+                            android:padding="10dp"
+                            android:textColor="#393939"
                             app:drawableLeftCompat="@drawable/leftcake"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -257,6 +256,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/down_mark"
                             android:textSize="20sp"
+                            android:layout_marginRight="8dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="1.0"
@@ -330,12 +330,16 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:drawablePadding="10dp"
+                            android:fontFamily="@font/elandfont"
+                            android:padding="10dp"
                             android:text="@string/play"
-                            android:textSize="20sp"
+                            android:textColor="#393939"
+                            android:textSize="23sp"
                             app:drawableLeftCompat="@drawable/leftmic"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -346,6 +350,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/down_mark"
                             android:textSize="20sp"
+                            android:layout_marginRight="8dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="1.0"
@@ -461,7 +466,10 @@
                             android:layout_height="wrap_content"
                             android:drawablePadding="10dp"
                             android:text="@string/alcohol"
-                            android:textSize="20sp"
+                            android:fontFamily="@font/elandfont"
+                            android:textSize="23sp"
+                            android:padding="10dp"
+                            android:textColor="#393939"
                             app:drawableLeftCompat="@drawable/leftsoju"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -472,6 +480,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/down_mark"
                             android:textSize="20sp"
+                            android:layout_marginRight="8dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="1.0"
@@ -549,7 +558,10 @@
                             android:layout_height="wrap_content"
                             android:drawablePadding="10dp"
                             android:text="@string/watch"
-                            android:textSize="20sp"
+                            android:fontFamily="@font/elandfont"
+                            android:textSize="23sp"
+                            android:padding="10dp"
+                            android:textColor="#393939"
                             app:drawableLeftCompat="@drawable/leftmovie"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -560,6 +572,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/down_mark"
                             android:textSize="20sp"
+                            android:layout_marginRight="8dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="1.0"
@@ -648,7 +661,10 @@
                             android:layout_height="wrap_content"
                             android:drawablePadding="10dp"
                             android:text="@string/walk"
-                            android:textSize="20sp"
+                            android:fontFamily="@font/elandfont"
+                            android:textSize="23sp"
+                            android:padding="10dp"
+                            android:textColor="#393939"
                             app:drawableLeftCompat="@drawable/leftpark"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -659,6 +675,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/down_mark"
                             android:textSize="20sp"
+                            android:layout_marginRight="8dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="1.0"
@@ -715,13 +732,18 @@
         </LinearLayout>
     </ScrollView>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/save_taste"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#FF96FF"
+        android:background="@drawable/gradientbutton3"
         android:text="@string/save_taste"
-        android:textSize="24dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="28sp"
+        android:fontFamily="@font/elandfontbold"
+        android:textColor="@color/white"
         app:layout_constraintVertical_bias="1.0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

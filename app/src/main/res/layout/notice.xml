@@ -5,32 +5,16 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        android:id="@id/toolbar"
-        layout="@layout/activity_main"
-        android:layout_width="1080px"
-        android:layout_height="110px"
-        android:layout_marginBottom="10dp" />
-
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="15dp"
         android:gravity="center"
+        android:fontFamily="@font/elandfont"
+        android:textColor="#393939"
         android:text="알림"
-        android:textSize="20dp"
-        android:textStyle="bold" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2px"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="#8A8A8A" />
+        android:textSize="28dp" />
 
 
     <com.google.android.material.button.MaterialButtonToggleGroup
@@ -38,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="10dp"
         app:singleSelection="true">
 
@@ -49,8 +33,9 @@
             android:layout_height="65dp"
             android:layout_weight="1"
             android:text="핫플공유"
+            android:fontFamily="@font/elandfont"
             android:textColor="#000000"
-            android:textSize="17dp" />
+            android:textSize="20dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button17"
@@ -59,14 +44,16 @@
             android:layout_height="65dp"
             android:layout_weight="1"
             android:text="공지"
+            android:fontFamily="@font/elandfont"
             android:textColor="#000000"
-            android:textSize="17dp" />
+            android:textSize="20dp" />
 
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -84,7 +71,7 @@
                     android:layout_height="80dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="170dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="20dp"
                     android:src="@drawable/ic_notifications_black_24dp"
                     tools:ignore="VectorDrawableCompat" />
 
@@ -94,8 +81,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="새로운 알림이 없어요"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/elandfontbold"
+                    android:textSize="24dp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

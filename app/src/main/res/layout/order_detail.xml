@@ -5,8 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -15,9 +13,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:textColor="#393939"
             android:text="주문 상세 내역"
-            android:textColor="@color/black"
-            android:textSize="24sp" />
+            android:fontFamily="@font/elandfont"
+            android:textSize="28sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,19 +30,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="주문 메뉴"
-                android:textColor="@color/black"
+                android:textColor="#393939"
+                android:fontFamily="@font/elandfont"
                 android:textSize="22sp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_centerInParent="true"
+                android:layout_marginTop="5dp"
                 android:background="#c7c7c7" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/details_list"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="20dp"
                 tools:listitem="@layout/order_detail_item" />
 
@@ -63,6 +66,7 @@
                         android:layout_weight="1"
                         android:text="예약 인원"
                         android:textColor="@color/black"
+                        android:fontFamily="@font/elandfont"
                         android:textSize="22sp" />
 
                     <TextView
@@ -72,13 +76,16 @@
                         android:layout_weight="1"
                         android:gravity="right"
                         android:text="2"
+                        android:fontFamily="@font/elandfont"
                         android:textColor="@color/black"
                         android:textSize="22sp" />
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_centerInParent="true"
                     android:background="#c7c7c7" />
 
@@ -92,6 +99,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="합계 금액"
+                        android:fontFamily="@font/elandfont"
                         android:textColor="@color/black"
                         android:textSize="22sp" />
 
@@ -100,6 +108,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:fontFamily="@font/elandfont"
                         android:gravity="right"
                         android:text="23,400"
                         android:textColor="@color/black"
@@ -124,6 +133,7 @@
                         android:layout_weight="1"
                         android:text="주문 시간"
                         android:textColor="@color/black"
+                        android:fontFamily="@font/elandfont"
                         android:textSize="22sp" />
 
                     <TextView
@@ -132,6 +142,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="21.03.26 20:30:11"
+                        android:fontFamily="@font/elandfont"
                         android:textColor="@color/black"
                         android:textSize="22sp" />
                 </LinearLayout>
@@ -139,6 +150,8 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_centerInParent="true"
                     android:background="#c7c7c7" />
 
@@ -153,6 +166,7 @@
                         android:layout_weight="1"
                         android:text="예약 시간"
                         android:textColor="@color/black"
+                        android:fontFamily="@font/elandfont"
                         android:textSize="22sp" />
 
                     <TextView
@@ -161,32 +175,42 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="21.04.02 13:35:30"
+                        android:fontFamily="@font/elandfont"
                         android:textColor="@color/black"
                         android:textSize="22sp" />
                 </LinearLayout>
             </LinearLayout>
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="요청사항"
-                android:textColor="@color/black"
-                android:textSize="22sp" />
+                android:layout_marginBottom="12dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/white"
+                android:elevation="5dp"
+                android:padding="15dp"
+                android:orientation="vertical">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_centerInParent="true"
-                android:background="#c7c7c7" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/elandfontbold"
+                    android:text="요청사항"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="22sp" />
 
-            <TextView
-                android:id="@+id/details_req"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:text="새우 알레르기가 있어요!"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/details_req"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/elandfontbold"
+                    android:text="새우 알레르기가 있어요!"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

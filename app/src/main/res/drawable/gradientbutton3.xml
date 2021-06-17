@@ -1,0 +1,17 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <gradient
+        android:angle="90"
+        android:startColor="#DFFD79A4"
+        android:endColor="#C4FFA2CA" />
+    <size
+        android:width="56dp"
+        android:height="56dp" />
+
+    <corners
+        android:topLeftRadius="20dp"
+        android:topRightRadius="20dp"
+        android:bottomLeftRadius="20dp"
+        android:bottomRightRadius="20dp"  /> // 선 휘는각도
+
+</shape>

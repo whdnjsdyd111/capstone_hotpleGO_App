@@ -1,0 +1,7 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <solid android:color="#FF97B9" /> //배경색
+
+    <corners android:radius="10dp" />// 선 휘는각도
+
+</shape>

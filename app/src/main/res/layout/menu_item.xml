@@ -31,6 +31,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:text="가격"
+            android:fontFamily="@font/elandfont"
             android:textSize="22sp"
             app:layout_constraintStart_toEndOf="@+id/image_icon"
             app:layout_constraintTop_toBottomOf="@+id/menu_cateory_left" />
@@ -45,9 +46,9 @@
             android:layout_toEndOf="@id/image_icon"
             android:layout_toRightOf="@id/image_icon"
             android:text="메뉴명"
+            android:fontFamily="@font/elandfont"
             android:textColor="@color/black"
             android:textSize="24sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/menu_cateory_left"
@@ -61,6 +62,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="12dp"
             android:text="메뉴명"
+            android:fontFamily="@font/elandfont"
             android:textSize="24sp"
             app:layout_constraintStart_toEndOf="@+id/image_icon"
             app:layout_constraintTop_toTopOf="parent" />
@@ -76,6 +78,7 @@
             android:layout_toEndOf="@id/image_icon"
             android:layout_toRightOf="@id/image_icon"
             android:text="가격"
+            android:fontFamily="@font/elandfont"
             android:textColor="@color/black"
             android:textSize="22sp"
             app:layout_constraintStart_toEndOf="@+id/textView24"
@@ -91,7 +94,8 @@
             android:layout_toRightOf="@id/image_icon"
             android:text="메뉴 소개글이 없습니다"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="20sp"
+            android:fontFamily="@font/elandfont"
             app:layout_constraintTop_toBottomOf="@+id/menu_price"
             tools:layout_editor_absoluteX="16dp" />
 

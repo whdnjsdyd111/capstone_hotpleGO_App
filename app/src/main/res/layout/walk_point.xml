@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#90F4F4F4"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,95 +13,99 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="15dp"
         android:gravity="center"
-        android:text="만보기 페이지"
-        android:textSize="20dp"
-        android:textStyle="bold" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2px"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="#8A8A8A" />
-
-    <com.dinuscxj.progressbar.CircleProgressBar
-        android:id="@+id/progressBar"
-        app:style="solid_line"
-        android:layout_width="match_parent"
-        android:max="1000"
-        app:progress_text_size="45sp"
-        app:progress_text_color="#504B4B"
-        app:progress_stroke_width="15dp "
-        app:progress_stroke_cap="round"
-        app:progress_start_color="#9FEDED"
-        app:progress_end_color="#9F9CF3"
-        android:layout_height="200dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="80dp" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/custombox">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:text="오늘 모은 포인트: " />
-
-        <TextView
-            android:id="@+id/textViewwalk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="0p"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+        android:text="만보기 적립"
+        android:textColor="#393939"
+        android:fontFamily="@font/elandfont"
+        android:textSize="28dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="20dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:background="@drawable/customview"
+        android:backgroundTint="@color/white"
+        android:layout_margin="30dp"
+        android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button6"
+        <com.dinuscxj.progressbar.CircleProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="80dp"
+            android:max="1000"
+            app:progress_end_color="#F39CF2"
+            app:progress_start_color="#ED9F9F"
+            app:progress_stroke_cap="round"
+            app:progress_stroke_width="15dp "
+            app:progress_text_color="#000000"
+            app:progress_text_size="45sp"
+            app:style="solid_line" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:text="코스 끝내기"
-            android:minHeight="40dp"
-            android:background="@drawable/custombutton" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="40dp">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button7"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/elandfontbold"
+                android:text="현재 포인트: "
+                android:textColor="#000000"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/textViewwalk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/elandfontbold"
+                android:text="0p"
+                android:textColor="#FF73B4"
+                android:textSize="25sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="50dp"
             android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:text="+30분"
-            android:minHeight="40dp"
-            android:background="@drawable/custombutton" />
+            android:orientation="horizontal">
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="30dp"
+                android:layout_weight="1"
+                android:background="@drawable/custombutton"
+                android:minHeight="50dp"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:text="코스 끝내기" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/custombutton"
+                android:minHeight="50dp"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:text="+30분" />
+
+        </LinearLayout>
     </LinearLayout>
+
 </LinearLayout>

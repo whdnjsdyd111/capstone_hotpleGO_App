@@ -11,18 +11,23 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="15dp"
         android:gravity="center"
+        android:fontFamily="@font/elandfont"
         android:text="@string/mbti"
-        android:textSize="20dp"
-        android:textStyle="bold"/>
+        android:textSize="28dp"
+        android:textColor="#393939"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/selected"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginLeft="20dp"
+        android:padding="20dp"
         android:backgroundTint="#ffffff"
-        android:textColor="#000000"
+        android:textColor="#FF7C8B"
+        android:textSize="24sp"
+        android:fontFamily="@font/elandfont"
         android:text="@string/selected_mbti" />
 
     <ScrollView
@@ -47,6 +52,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:backgroundTint="#FFE3FF"
+                    android:textSize="16sp"
                     android:text="ENFJ\n언변능숙형\n타인의 성장을 도모하고 협동하는 사람"
                     android:textColor="#000000" />
 
@@ -55,7 +61,8 @@
                     android:layout_width="190dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#E3E3FF"
-                    android:text="ENTJ\n지도자형\n비젼을 가지고 사람들을 잘 이끌어가는 사람"
+                    android:textSize="16sp"
+                    android:text="ENTJ\n지도자형\n비젼을 가지고 사람들을 이끌어가는 사람"
                     android:textColor="#000000" />
             </LinearLayout>
 
@@ -72,7 +79,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:backgroundTint="#FFFFDE"
-                    android:text="ESTJ\n사업가형\n사무적, 실용적,현실적으로 일을 많이 하는 사람"
+                    android:textSize="16sp"
+                    android:text="ESTJ\n사업가형\n사무적, 현실적으로 일을 많이 하는 사람"
                     android:textColor="#000000" />
 
                 <Button
@@ -80,7 +88,8 @@
                     android:layout_width="190dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#D5F6CA"
-                    android:text="ESFJ\n친선도모형\n친절과 현실감을 가지고 타인에게 봉사하는 사람"
+                    android:textSize="16sp"
+                    android:text="ESFJ\n친선도모형\n친절과 현실감으로 타인에게 봉사하는 사람"
                     android:textColor="#000000" />
             </LinearLayout>
 
@@ -97,6 +106,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:backgroundTint="#DEDEEF"
+                    android:textSize="16sp"
                     android:text="ENFP\n스파크형\n열정적으로 새로운 관계를 만드는 사람"
                     android:textColor="#000000" />
 
@@ -105,7 +115,8 @@
                     android:layout_width="190dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#DEFFFF"
-                    android:text="ENTP\n발명가형\n상상력을 가지고 새로운 것에 도전하는 사람"
+                    android:textSize="16sp"
+                    android:text="ENTP\n발명가형\n상상력을 갖고 새로운 것에 도전하는 사람"
                     android:textColor="#000000" />
 
             </LinearLayout>
@@ -123,7 +134,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:backgroundTint="#EFDEFF"
-                    android:text="ESTP\n수완좋은 활동가형\n친구, 운동, 음식 등 다양한 활동을 선호하는 사람"
+                    android:textSize="16sp"
+                    android:text="ESTP\n수완좋은 활동가형\n친구, 운동 등 다양한 활동을 선호하는 사람"
                     android:textColor="#000000" />
 
                 <Button
@@ -131,6 +143,7 @@
                     android:layout_width="190dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#FFE3F1"
+                    android:textSize="16sp"
                     android:text="ESFP\n사교적인 유형\n분위기를 고조시키는 우호적 사람"
                     android:textColor="#000000" />
             </LinearLayout>
@@ -148,6 +161,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:backgroundTint="#FFEFDE"
+                    android:textSize="16sp"
                     android:text="INFP\n잔다르크형\n이상적인 세상을 만들어가는 사람"
                     android:textColor="#000000" />
 
@@ -156,7 +170,8 @@
                     android:layout_width="190dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#EFDEDE"
-                    android:text="INTP\n아이디어 뱅크형\n비평적인 관점을 가지고 있는 뛰어난 전략가"
+                    android:textSize="16sp"
+                    android:text="INTP\n아이디어 뱅크형\n비평적인 관점을 갖고 있는 뛰어난 전략가"
                     android:textColor="#000000" />
             </LinearLayout>
 
@@ -173,7 +188,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:backgroundTint="#FFDEDE"
-                    android:text="ISTP\n백과사전형\n논리적이고 뛰어난 적응력을 가지고 있는 사람"
+                    android:textSize="16sp"
+                    android:text="ISTP\n백과사전형\n논리적이며 적응력이 뛰어난 사람"
                     android:textColor="#000000" />
 
                 <Button
@@ -181,6 +197,7 @@
                     android:layout_width="190dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#E3FFF4"
+                    android:textSize="16sp"
                     android:text="ISFP\n성인군자형\n따뜻한 감성을 갖고 있는 겸손한 사람"
                     android:textColor="#000000" />
             </LinearLayout>
@@ -199,6 +216,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:backgroundTint="#EFFFDE"
+                    android:textSize="16sp"
                     android:text="INFJ\n예언자형\n사람과 관련된 통찰력을 가지고 있는 사람"
                     android:textColor="#000000" />
 
@@ -207,7 +225,8 @@
                     android:layout_width="190dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#D0F8C2"
-                    android:text="INTJ\n과학자형\n전체적인 부분을 조합하여 비젼을 제시하는 사람"
+                    android:textSize="16sp"
+                    android:text="INTJ\n과학자형\n전체적 부분을 조합, 비전을 제시하는 사람"
                     android:textColor="#000000" />
             </LinearLayout>
 
@@ -224,6 +243,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:backgroundTint="#E3F1F1"
+                    android:textSize="16sp"
                     android:text="ISTJ\n세상의 소금형\n한번 시작한 일은 끝까지 해내는 사람"
                     android:textColor="#000000" />
 
@@ -232,6 +252,7 @@
                     android:layout_width="190dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#FFEDF6"
+                    android:textSize="16sp"
                     android:text="ISFJ\n임금 뒷편의 권력형\n성실하고 온화하며 협조를 잘하는 사람"
                     android:textColor="#000000" />
             </LinearLayout>

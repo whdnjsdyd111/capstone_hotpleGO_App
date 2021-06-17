@@ -11,14 +11,17 @@
     <color name="blue_200">#5AD2FF</color>
     <color name="blue_500">#28A0FF</color>
     <color name="blue_700">#0000FF</color>
+    <color name="red_100">#FDF6FB</color>
     <color name="red_200">#FFB6C1</color>
     <color name="red_500">#FF5675</color>
     <color name="red_700">#CD1039</color>
     <color name="yellow_200">#FFDC3C</color>
     <color name="yellow_500">#FFD700</color>
+    <color name="gray_100">#F1F1F1</color>
     <color name="gray_200">#dcdcdc</color>
     <color name="gray_500">#aaaaaa</color>
     <color name="gray_700">#464646</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="pink">#FF84CE</color>
 </resources>

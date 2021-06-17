@@ -13,16 +13,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="30dp"
         android:gravity="center"
         android:text="북마크"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:fontFamily="@font/elandfont"
+        android:textSize="28sp"
+        android:textColor="#393939" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2px"
-        android:background="#8A8A8A" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
