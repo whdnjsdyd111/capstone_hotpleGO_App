@@ -1,7 +1,9 @@
 package com.example.hotplego.ui.user.home;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -41,6 +43,13 @@ public class HotpleActivity extends AppCompatActivity {
         binding.info.setOnClickListener(v -> fragmentView(INFO));
         binding.menu.setOnClickListener(v -> fragmentView(MENU));
 
+        binding.call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse(""));
+                startActivity(intent);
+            }
+        });
         binding.address.setText(vo.getHtAddr());
         binding.name.setText(vo.getBusnName());
         if (vo.getHtImg() != null) Glide.with(binding.hotpleImg).load(PostRun.getImageUrl(vo.getUploadPath(), vo.getHtImg(), vo.getFileName())).into(binding.hotpleImg);
