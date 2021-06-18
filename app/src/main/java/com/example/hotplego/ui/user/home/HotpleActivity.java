@@ -46,10 +46,9 @@ public class HotpleActivity extends AppCompatActivity {
         binding.call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:01075667311"));
+                intent.setData(Uri.parse("tel:"));
                 startActivity(intent);
             }
         });
