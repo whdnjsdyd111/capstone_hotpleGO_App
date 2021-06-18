@@ -40,7 +40,6 @@ public class HotpleFragment extends Fragment {
     private ArrayAdapter<String> cate_big_adapter;
     private ArrayAdapter<String> cate_small_adapter;
     private Uri uri;
-
     private final int PICK_IMAGE = 1;
     private final int ADDRESS_RESULT = 2;
 
@@ -54,6 +53,8 @@ public class HotpleFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         binding = ManagerHotpleBinding.inflate(inflater, container, false);
+
+
 
         hotple_img = binding.hotpleImg;
         hotple_img.setOnClickListener(v -> {
