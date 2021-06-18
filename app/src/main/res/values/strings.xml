@@ -88,6 +88,7 @@
     <string name="course_use">코스 이용</string>
     <string name="course_delete">코스 삭제</string>
     <string name="dibs">찜하기</string>
+    <string name="dibs_delete">찜 삭제하기</string>
     <!-- 예약 -->
     <string name="hotplace_name">핫플 장소</string>
     <string name="hotplace_intro">핫플 설명</string>

@@ -55,6 +55,19 @@ public class CoursesFragment extends Fragment implements CourseInfoAdapter.OnIte
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
         binding.courseInfoRecyclerView.setLayoutManager(manager);
 
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onItemClick(CourseVO vo, List<CourseInfoVO> list) {
+        Intent intent = new Intent(getContext(), CourseDetailActivity.class);
+        intent.putExtra("course", vo);
+        intent.putExtra("courseInfo", (Serializable) list);
+        intent.putExtra("kind", kind);
+        startActivity(intent);
+    }
+
+    public void initView() {
         PostRun postRun = new PostRun("myCourse", getActivity(), PostRun.DATA);
         postRun.setRunUI(() -> {
             try {
@@ -68,17 +81,11 @@ public class CoursesFragment extends Fragment implements CourseInfoAdapter.OnIte
         postRun.addData("kind", kind)
                 .addData("uCode", UserSharedPreferences.user.getUCode())
                 .start();
-        // TODO 유저
-
-        return binding.getRoot();
     }
 
     @Override
-    public void onItemClick(CourseVO vo, List<CourseInfoVO> list) {
-        Intent intent = new Intent(getContext(), CourseDetailActivity.class);
-        intent.putExtra("course", vo);
-        intent.putExtra("courseInfo", (Serializable) list);
-        intent.putExtra("kind", kind);
-        startActivity(intent);
+    public void onResume() {
+        initView();
+        super.onResume();
     }
 }

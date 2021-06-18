@@ -1,5 +1,6 @@
 package com.example.hotplego.ui.user.course;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,7 +21,9 @@ import org.jetbrains.annotations.NotNull;
 public class CourseHotpleFragment extends Fragment {
     private CourseHotpleInfoBinding binding;
     private CourseInfoVO vo;
+    private String kind;
 
+    @SuppressLint("SetTextI18n")
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override

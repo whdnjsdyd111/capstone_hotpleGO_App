@@ -61,12 +61,21 @@
                 tools:listitem="@layout/course_item"/>
         </ScrollView>
         <LinearLayout
-            android:id="@+id/only_making"
+            android:id="@+id/no_dibs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:visibility="gone">
             <Button
+                android:id="@+id/dibs"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="10dp"
+                android:backgroundTint="@color/teal_200"
+                android:text="@string/dibs"/>
+            <Button
+                android:id="@+id/use_course"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -74,6 +83,7 @@
                 android:backgroundTint="@color/green_700"
                 android:text="@string/course_use"/>
             <Button
+                android:id="@+id/delete_course"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -82,19 +92,19 @@
                 android:text="@string/course_delete"/>
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/only_used"
+            android:id="@+id/is_dibs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:visibility="gone">
             <Button
+                android:id="@+id/delete_dibs"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginHorizontal="10dp"
                 android:backgroundTint="@color/teal_200"
-                android:text="@string/dibs"/>
+                android:text="@string/dibs_delete"/>
         </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>

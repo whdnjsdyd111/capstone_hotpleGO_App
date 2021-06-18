@@ -2,15 +2,19 @@ package com.example.hotplego.ui.user.course;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -45,31 +49,114 @@ public class CourseUsingFragment extends Fragment {
     private final Set<TMapPolyLine> lines = new HashSet<>();
     private double distance = 0;
 
-
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = CourseUsingBinding.inflate(inflater, container, false);
-
-        tMapView = new TMapView(getActivity().getApplicationContext());
-
-        tMapView.setSKTMapApiKey("l7xxcd9bdd0942b542fd8c7be931fc11a3b4");
-        binding.tmapUsing.addView(tMapView);
 
         adapter = new CourseAdapter(getActivity());
         binding.courseRecyclerView.setAdapter(adapter);
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
         binding.courseRecyclerView.setLayoutManager(manager);
 
+        binding.courseComplete.setOnClickListener(v -> {
+            if (infos != null) {
+                PostRun postRun = new PostRun("complete-course", getActivity(), PostRun.DATA);
+                postRun.setRunUI(() -> {
+                    try {
+                        if (Boolean.parseBoolean(postRun.obj.getString("message"))) {
+                            Toast.makeText(getContext(), "코스를 완료하였습니다.", Toast.LENGTH_SHORT).show();
+                            initView();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                });
+                postRun.addData("csCode", infos.get(0).getCsCode())
+                        .start();
+            }
+        });
+
+        binding.dropCourse.setOnClickListener(v -> {
+            if (infos != null) {
+                PostRun postRun = new PostRun("return-course", getActivity(), PostRun.DATA);
+                postRun.setRunUI(() -> {
+                    try {
+                        if (Boolean.parseBoolean(postRun.obj.getString("message"))) {
+                            Toast.makeText(getActivity(), "코스를 내렸습니다.", Toast.LENGTH_SHORT).show();
+                            initView();
+                        } else {
+                            Toast.makeText(getActivity(), "다시 시도해주십시오.", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                });
+                postRun.addData("csCode", infos.get(0).getCsCode())
+                        .start();
+            }
+        });
+
+        binding.deleteCourse.setOnClickListener(v -> {
+            if (infos != null) {
+                PostRun postRun = new PostRun("delete-course", getActivity(), PostRun.DATA);
+                postRun.setRunUI(() -> {
+                    try {
+                        if (Boolean.parseBoolean(postRun.obj.getString("message"))) {
+                            Toast.makeText(getActivity(), "코스를 삭제하였습니다.", Toast.LENGTH_SHORT).show();
+                            initView();
+                        } else {
+                            Toast.makeText(getActivity(), "다시 시도해주십시오.", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                });
+                postRun.addData("csCode", infos.get(0).getCsCode())
+                        .start();
+            }
+        });
+
+        return binding.getRoot();
+    }
+
+    private void addLines() {
+        for (TMapPolyLine line : lines) {
+            distance += line.getDistance();
+            tMapView.addTMapPolyLine("line", line);
+        }
+    }
+
+    private void initMap() {
+        tMapView = new TMapView(getActivity().getApplicationContext());
+        tMapView.setSKTMapApiKey("l7xxcd9bdd0942b542fd8c7be931fc11a3b4");
+        binding.tmapUsing.addView(tMapView);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void initView() {
+        initMap();
+        binding.courseWith.setText("");
+        binding.courseNum.setText("");
+        binding.courseDistance.setText("");
         PostRun postRun = new PostRun("myCourse", getActivity(), PostRun.DATA);
-        postRun.addData("kind", "usingCourse")
-                .addData("uCode", UserSharedPreferences.user.getUCode());
         // TODO 유저
         postRun.setRunUI(() -> {
             try {
+                if (!postRun.obj.has("courses")) {
+                    binding.pleaseUse.setVisibility(View.VISIBLE);
+                    binding.recyclerScroll.setVisibility(View.GONE);
+                    binding.noCourse.setVisibility(View.GONE);
+                    return;
+                } else {
+                    binding.pleaseUse.setVisibility(View.GONE);
+                    binding.recyclerScroll.setVisibility(View.VISIBLE);
+                    binding.noCourse.setVisibility(View.VISIBLE);
+                }
+                CourseVO vo = new Gson().fromJson(postRun.obj.getString("courses"), CourseVO.class);
                 infos = new Gson().fromJson(postRun.obj.getString("coursesInfos"), new TypeToken<List< CourseInfoVO>>() {}.getType());
                 adapter.setData(infos);
-                CourseVO vo = new Gson().fromJson(postRun.obj.getString("courses"), CourseVO.class);
                 binding.courseWith.setText("함께하는 인원 : " + vo.getCsWith());
                 binding.courseNum.setText("인원 : " + vo.getCsNum());
                 TMapData tMapData = new TMapData();
@@ -102,18 +189,21 @@ public class CourseUsingFragment extends Fragment {
                 e.printStackTrace();
             }
         });
-        postRun.start();
 
-        return binding.getRoot();
+        postRun.addData("kind", "usingCourse")
+                .addData("uCode", UserSharedPreferences.user.getUCode())
+                .start();
     }
 
-    private void addLines() {
-        for (TMapPolyLine line : lines) {
-            distance += line.getDistance();
-            tMapView.addTMapPolyLine("line", line);
-        }
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @Override
+    public void onResume() {
+        initView();
+        Log.i("유징 코스", "onResume");
+        super.onResume();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private Bitmap createViewToBitmap(String index, int color) {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         View view = getLayoutInflater().inflate(R.layout.course_index, null);

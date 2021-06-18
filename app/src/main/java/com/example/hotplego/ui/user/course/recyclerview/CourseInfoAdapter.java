@@ -1,5 +1,6 @@
 package com.example.hotplego.ui.user.course.recyclerview;
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +26,7 @@ import java.util.Map;
 
 public class CourseInfoAdapter extends RecyclerView.Adapter<CourseInfoAdapter.CourseInfoHolder> {
 
-    public static class CourseInfoHolder extends RecyclerView.ViewHolder {
+    public class CourseInfoHolder extends RecyclerView.ViewHolder {
 
         TextView time;
         TextView title;
@@ -46,6 +47,7 @@ public class CourseInfoAdapter extends RecyclerView.Adapter<CourseInfoAdapter.Co
             adapter = new CourseHotplePagerAdapter(((AppCompatActivity) itemView.getContext()).getSupportFragmentManager());
         }
 
+        @SuppressLint("SetTextI18n")
         public void onBind(CourseVO info, List<CourseInfoVO> infos) {
             time.setText(PostRun.toDateStr(info.getCsCode()));
             title.setText(info.getCsTitle());

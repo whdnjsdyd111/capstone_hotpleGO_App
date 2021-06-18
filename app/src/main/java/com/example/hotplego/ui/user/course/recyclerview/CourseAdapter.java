@@ -1,6 +1,7 @@
 package com.example.hotplego.ui.user.course.recyclerview;
 
 import android.app.Activity;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,10 +38,14 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
             index = itemView.findViewById(R.id.course_index);
             image = itemView.findViewById(R.id.course_image);
             address = itemView.findViewById(R.id.course_address);
-            if (CourseAdapter.this.isUsed) itemView.findViewById(R.id.course_remove).setVisibility(View.GONE);
+            String kind = CourseAdapter.this.kind;
+            if (kind != null && (kind.equals("usedCourse") || kind.equals("dibs"))) {
+                itemView.findViewById(R.id.course_remove).setVisibility(View.GONE);
+            }
             remove = itemView.findViewById(R.id.course_remove);
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         public void onBind(CourseInfoVO info) {
             index.setText(String.valueOf(info.getCiIndex()));
             index.setBackgroundTintList(ContextCompat.getColorStateList(itemView.getContext(),
@@ -53,8 +59,8 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
     }
 
     private List<CourseInfoVO> list;
-    private boolean isUsed;
     private Activity activity;
+    private String kind;
 
     public void setData(List<CourseInfoVO> data) {
         list = data;
@@ -64,9 +70,9 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
     public CourseAdapter(Activity activity) {
         this.activity = activity;
     }
-    public CourseAdapter(List<CourseInfoVO> list, boolean isUsed, Activity activity) {
+    public CourseAdapter(List<CourseInfoVO> list, String kind, Activity activity) {
         this.list = list;
-        this.isUsed = isUsed;
+        this.kind = kind;
         this.activity = activity;
     }
 
