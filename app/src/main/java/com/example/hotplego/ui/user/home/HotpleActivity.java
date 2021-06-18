@@ -50,6 +50,7 @@ public class HotpleActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         binding.address.setText(vo.getHtAddr());
         binding.name.setText(vo.getBusnName());
         if (vo.getHtImg() != null) Glide.with(binding.hotpleImg).load(PostRun.getImageUrl(vo.getUploadPath(), vo.getHtImg(), vo.getFileName())).into(binding.hotpleImg);
