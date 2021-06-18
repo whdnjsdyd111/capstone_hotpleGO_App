@@ -1,9 +1,14 @@
 package com.example.hotplego.ui.user.home;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -11,6 +16,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
 import com.example.hotplego.PostRun;
+import com.example.hotplego.R;
+import com.example.hotplego.UserSharedPreferences;
 import com.example.hotplego.databinding.HotpleMainBinding;
 import com.example.hotplego.domain.HotpleVO;
 import com.example.hotplego.domain.ReviewVO;
@@ -27,6 +34,7 @@ public class HotpleActivity extends AppCompatActivity {
     private final int REVIEW = 2;
     private final int MENU = 3;
     private int selected = 1;
+    private Boolean isPick = null;
     Fragment review;
     Fragment info;
     Fragment menu;
@@ -43,10 +51,34 @@ public class HotpleActivity extends AppCompatActivity {
         binding.info.setOnClickListener(v -> fragmentView(INFO));
         binding.menu.setOnClickListener(v -> fragmentView(MENU));
 
+        binding.dibs.setOnClickListener(v -> {
+            if (isPick != null) {
+                PostRun postRun = new PostRun(isPick ? "pick-delete" : "pick-hotple", this, PostRun.DATA);
+                postRun.setRunUI(() -> {
+                    try {
+                        if (Boolean.parseBoolean(postRun.obj.getString("message"))) {
+                            Toast.makeText(this, isPick ? "찜 삭제하였습니다." : "찜 완료하였습니다.", Toast.LENGTH_SHORT).show();
+                            isPick = !isPick;
+                            changeDibs();
+                        } else {
+                            Toast.makeText(this, "다시 시도해주십시오.", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                });
+                postRun.addData("uCode", UserSharedPreferences.user.getUCode())
+                        .addData("htId", String.valueOf(vo.getHtId()))
+                        .start();
+            }
+        });
+
         binding.call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse(""));
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + vo.getHtTel()));
                 startActivity(intent);
             }
         });
@@ -60,7 +92,9 @@ public class HotpleActivity extends AppCompatActivity {
         PostRun postRun = new PostRun("hotpleReviews", this, PostRun.DATA);
         postRun.setRunUI(() -> {
             try {
-                List<ReviewVO> list = new Gson().fromJson(postRun.obj.getString("reviews"), new TypeToken<List<ReviewVO>>() {}.getType());
+                Gson gson = new Gson();
+                List<ReviewVO> list = gson.fromJson(postRun.obj.getString("reviews"), new TypeToken<List<ReviewVO>>() {}.getType());
+                if (postRun.obj.has("pick")) isPick = gson.fromJson(postRun.obj.getString("pick"), new TypeToken<Boolean>() {}.getType());
                 review = new ReviewFragment(list);
                 info = new InfoFragment(vo.getHtId());
                 menu = new MenuFragment(vo.getHtId());
@@ -76,12 +110,26 @@ public class HotpleActivity extends AppCompatActivity {
                 } else {
                     binding.avgReview.setRating(vo.getGoGrd() != null ? vo.getGoGrd().floatValue() : 0f);
                 }
+
+                changeDibs();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         });
-        postRun.addData("htId", String.valueOf(vo.getHtId()))
-                .start();
+        postRun.addData("htId", String.valueOf(vo.getHtId()));
+
+        if (UserSharedPreferences.user != null) {
+            postRun.addData("uCode", UserSharedPreferences.user.getUCode())
+                    .start();
+        } else {
+            postRun.start();
+        }
+    }
+
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private void changeDibs() {
+        Drawable img = getApplicationContext().getResources().getDrawable(isPick != null && isPick ? R.drawable.leftheart_on : R.drawable.leftheart_off);
+        binding.dibs.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
     }
 
     private void fragmentView(int fragment) {
