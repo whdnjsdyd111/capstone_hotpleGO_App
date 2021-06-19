@@ -37,7 +37,7 @@ public class PickAdapter extends RecyclerView.Adapter<PickAdapter.PickHolder> {
         }
 
         public void setItem(HotpleVO vo) {
-            pick_place_time.setText(vo.getPickTime().toString());
+            if (vo.getPickTime() != null) pick_place_time.setText(vo.getPickTime().toString());
             pick_place_name.setText(vo.getBusnName());
             pick_place_address.setText(vo.getHtAddr());
             if (vo.getHtImg() != null) Glide.with(pick_place_img).load(PostRun.getImageUrl(vo.getUploadPath(), vo.getHtImg(), vo.getFileName())).into(pick_place_img);

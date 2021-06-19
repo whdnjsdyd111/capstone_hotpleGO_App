@@ -20,9 +20,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.hotplego.GpsTracker;
 import com.example.hotplego.PostRun;
+import com.example.hotplego.R;
 import com.example.hotplego.UserSharedPreferences;
 import com.example.hotplego.databinding.LocalHotplaceBinding;
 import com.example.hotplego.domain.HotpleVO;
@@ -57,6 +59,13 @@ public class HomeFragment extends Fragment {
     private GoogleSignInClient mGoogleSignInClient;
     private LocalHotplaceBinding binding;
     private GpsTracker gpsTracker;
+    Fragment hotples;
+    Fragment courses;
+    Fragment mbti;
+    private final int MBTI = 1;
+    private final int COURSE = 3;
+    private final int HOTPLE = 2;
+    private int selected = 2;
 
     private static final int GPS_ENABLE_REQUEST_CODE = 2001;
 
@@ -86,6 +95,10 @@ public class HomeFragment extends Fragment {
 
         if (UserSharedPreferences.user == null) binding.buttonNotice.setVisibility(View.VISIBLE);
         else binding.bnLogout.setVisibility(View.VISIBLE);
+
+        binding.mbti.setOnClickListener(v -> fragmentView(MBTI));
+        binding.hotplace.setOnClickListener(v -> fragmentView(HOTPLE));
+        binding.course.setOnClickListener(v -> fragmentView(COURSE));
 
         binding.buttonNotice.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,8 +168,10 @@ public class HomeFragment extends Fragment {
                 Gson gson = new Gson();
                 List<HotpleVO> filteredHotple = gson.fromJson(postRun.obj.getString("hotples"), new TypeToken<List<HotpleVO>>() {}.getType());
                 Map<String, List<HotpleVO>> filteredCourse = gson.fromJson(postRun.obj.getString("courses"), new TypeToken<Map<String, List<HotpleVO>>>() {}.getType());
-                Log.i("핫플", filteredHotple.toString());
+
                 Log.i("코스들", filteredCourse.toString());
+                hotples = new HotpleRecoFragment(filteredHotple);
+                fragmentView(selected);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -271,5 +286,34 @@ public class HomeFragment extends Fragment {
             binding.buttonNotice.setVisibility(View.VISIBLE);
         }
         initView();
+    }
+
+    private void fragmentView(int fragment) {
+
+        selected = fragment;
+
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+
+        switch (fragment) {
+            case 1:
+                if (mbti != null) {
+                    transaction.replace(R.id.fragment_container, mbti);
+                    transaction.commit();
+                }
+                break;
+
+            case 2:
+                if (hotples != null) {
+                    transaction.replace(R.id.fragment_container, hotples);
+                    transaction.commit();
+                }
+                break;
+
+            case 3:
+                if (courses != null) {
+                    transaction.replace(R.id.fragment_container, courses);
+                    transaction.commit();
+                }
+        }
     }
 }
