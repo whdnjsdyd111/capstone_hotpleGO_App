@@ -22,8 +22,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.example.hotplego.GpsTracker;
+import com.example.hotplego.PostRun;
 import com.example.hotplego.UserSharedPreferences;
 import com.example.hotplego.databinding.LocalHotplaceBinding;
+import com.example.hotplego.domain.HotpleVO;
 import com.example.hotplego.ui.user.MainActivity;
 import com.example.hotplego.ui.user.common.MainActivityLogin;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -34,21 +36,25 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class HomeFragment extends Fragment {
 
     private FirebaseAuth firebaseAuth;
     private GoogleSignInClient mGoogleSignInClient;
-
-
     private LocalHotplaceBinding binding;
     private GpsTracker gpsTracker;
 
@@ -137,7 +143,29 @@ public class HomeFragment extends Fragment {
         Log.i("lng", "" + longitude);
         Log.i("주소", getCurrentAddress(latitude, longitude));
 
+
+
         return binding.getRoot();
+    }
+
+    private void initView() {
+        PostRun postRun = new PostRun("around", getActivity(), PostRun.DATA);
+        postRun.setRunUI(() -> {
+            try {
+                Gson gson = new Gson();
+                List<HotpleVO> filteredHotple = gson.fromJson(postRun.obj.getString("hotples"), new TypeToken<List<HotpleVO>>() {}.getType());
+                Map<String, List<HotpleVO>> filteredCourse = gson.fromJson(postRun.obj.getString("courses"), new TypeToken<Map<String, List<HotpleVO>>>() {}.getType());
+                Log.i("핫플", filteredHotple.toString());
+                Log.i("코스들", filteredCourse.toString());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        });
+
+        if (UserSharedPreferences.user != null)
+            postRun.addData("uCode", UserSharedPreferences.user.getUCode()).addData("mbti", UserSharedPreferences.user.getMbti());
+
+        postRun.start();
     }
 
     private void signOut() {
@@ -242,5 +270,6 @@ public class HomeFragment extends Fragment {
             binding.bnLogout.setVisibility(View.GONE);
             binding.buttonNotice.setVisibility(View.VISIBLE);
         }
+        initView();
     }
 }
