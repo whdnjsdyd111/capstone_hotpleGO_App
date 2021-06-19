@@ -2,6 +2,7 @@ package com.example.hotplego.ui.user.mypage;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,14 +34,8 @@ public class MyPageFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         binding = UserMypageBinding.inflate(inflater, container, false);
 
-        user = UserSharedPreferences.user;
+        initView();
 
-        binding.uCode.setText(user.getUCode().split("/")[0]);
-        binding.regDate.setText(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date(user.getRegDate().getTime())));
-        binding.nick.setText(user.getNick());
-//        binding.birth.setText(new SimpleDateFormat("yyyy-MM-dd").format(user.getBirth()));
-        binding.mbti.setText(user.getMbti());
-        Glide.with(this).load(user.getProfileImg()).into(binding.userProfile);
         binding.mbtiPage.setOnClickListener(v -> {
             startActivity(new Intent(getContext(), MBTIActivity.class));
         });
@@ -59,7 +54,8 @@ public class MyPageFragment extends Fragment {
                         try {
                             int status = postRun.obj.getInt("status");
                             if (status == 200) {
-                                // TODO SharedPreferences 의 유저 정보 갱신
+                                UserSharedPreferences.user.setNick(nick);
+                                UserSharedPreferences.getInstance().update(getActivity());
                             }
                             Toast.makeText(MyPageFragment.this.getContext(), postRun.obj.getString("message"), Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
@@ -86,5 +82,23 @@ public class MyPageFragment extends Fragment {
         binding.managerIn.setOnClickListener(v -> startActivity(new Intent(getActivity(), MainActivity.class)));
 
         return binding.getRoot();
+    }
+
+    @Override
+    public void onResume() {
+        initView();
+        super.onResume();
+    }
+
+    private void initView() {
+        user = UserSharedPreferences.user;
+
+        binding.uCode.setText(user.getUCode().split("/")[0]);
+        binding.regDate.setText(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date(user.getRegDate().getTime())));
+        binding.nick.setText(user.getNick());
+//        binding.birth.setText(new SimpleDateFormat("yyyy-MM-dd").format(user.getBirth()));
+        Log.i("유저", user.toString());
+        binding.mbti.setText(user.getMbti());
+        Glide.with(this).load(user.getProfileImg()).into(binding.userProfile);
     }
 }

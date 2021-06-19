@@ -294,6 +294,7 @@ public class MainActivityLogin extends AppCompatActivity implements View.OnClick
                                     user.setNick(obj.getString("nick"));
                                     user.setGender(obj.getString("gender").charAt(0));
                                     user.setPhone(obj.getString("phone"));
+                                    user.setMbti(obj.getString("mbti"));
                                     try {
                                         user.setProfileImg(obj.getString("profileImg"));
                                     } catch (JSONException e) {

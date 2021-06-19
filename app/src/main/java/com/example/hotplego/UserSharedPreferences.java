@@ -40,6 +40,15 @@ public class UserSharedPreferences {
         UserSharedPreferences.user = user;
     }
 
+    public void update(Activity activity) {
+        preferences = activity.getSharedPreferences("user", Context.MODE_PRIVATE);
+        editor = preferences.edit();
+        Gson gson = new Gson();
+        editor.putString("user", gson.toJson(user));
+        if (hotple != null) editor.putString("hotple", gson.toJson(hotple));
+        editor.apply();
+    }
+
     public void login(Activity activity) {
         preferences = activity.getSharedPreferences("user", Context.MODE_PRIVATE);
         String user = preferences.getString("user", null);

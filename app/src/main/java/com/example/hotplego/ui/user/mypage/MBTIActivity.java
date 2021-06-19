@@ -81,7 +81,7 @@ public class MBTIActivity extends AppCompatActivity {
 
     private void post(String mbti) {
         // TODO 유저 정보
-        PostRun postRun = new PostRun("saveMbti", this);
+        PostRun postRun = new PostRun("saveMbti", this, PostRun.DATA);
         postRun.addData("uCode", UserSharedPreferences.user.getUCode())
                 .addData("mbti", mbti);
         postRun.setRunUI(() -> {
@@ -91,6 +91,8 @@ public class MBTIActivity extends AppCompatActivity {
                     // TODO SharedPreferences 갱신
                     binding.selected.setText(MBTIActivity.this.message + mbti);
                     message += "로 수정하였습니다.";
+                    UserSharedPreferences.user.setMbti(mbti);
+                    UserSharedPreferences.getInstance().update(this);
                 }
                 Toast.makeText(MBTIActivity.this, message, Toast.LENGTH_SHORT).show();
                 selected = mbti;
