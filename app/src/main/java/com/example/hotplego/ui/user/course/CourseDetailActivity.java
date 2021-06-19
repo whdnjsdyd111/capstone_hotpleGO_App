@@ -1,14 +1,17 @@
 package com.example.hotplego.ui.user.course;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.hotplego.PostRun;
+import com.example.hotplego.TMapSetting;
 import com.example.hotplego.UserSharedPreferences;
 import com.example.hotplego.databinding.CourseDetailBinding;
 import com.example.hotplego.domain.CourseInfoVO;
@@ -20,11 +23,15 @@ import org.json.JSONException;
 
 import java.util.List;
 
-public class CourseDetailActivity extends AppCompatActivity {
+public class CourseDetailActivity extends AppCompatActivity implements CourseAdapter.InitData {
 
     private CourseDetailBinding binding;
     private CourseAdapter adapter;
+    private TMapView tMapView = null;
+    private TMapSetting tMapSetting = null;
+    List<CourseInfoVO> list = null;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,12 +40,11 @@ public class CourseDetailActivity extends AppCompatActivity {
 
         TMapView tMapView = new TMapView(getApplicationContext());
 
-        tMapView.setSKTMapApiKey("l7xxcd9bdd0942b542fd8c7be931fc11a3b4");
-        binding.tmapUsing.addView(tMapView);
-
         CourseVO vo = (CourseVO) getIntent().getSerializableExtra("course");
-        List<CourseInfoVO> list = (List<CourseInfoVO>) getIntent().getSerializableExtra("courseInfo");
+        list = (List<CourseInfoVO>) getIntent().getSerializableExtra("courseInfo");
         String kind = getIntent().getStringExtra("kind");
+
+        initView();
 
         if (kind.equals("dibs")) binding.isDibs.setVisibility(View.VISIBLE);
         else binding.noDibs.setVisibility(View.VISIBLE);
@@ -50,7 +56,7 @@ public class CourseDetailActivity extends AppCompatActivity {
 
         binding.courseWith.setText("함께하는 인원 : " + vo.getCsWith());
         binding.courseNum.setText("인원 : " + vo.getCsNum());
-        adapter = new CourseAdapter(list, kind, this);
+        adapter = new CourseAdapter(list, kind, this, this);
         binding.courseRecyclerView.setAdapter(adapter);
         LinearLayoutManager manager = new LinearLayoutManager(getApplicationContext());
         binding.courseRecyclerView.setLayoutManager(manager);
@@ -128,5 +134,16 @@ public class CourseDetailActivity extends AppCompatActivity {
                     .addData("uCode", UserSharedPreferences.user.getUCode())
                     .start();
         });
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @Override
+    public void initView() {
+        tMapView = new TMapView(getApplicationContext());
+        tMapSetting = new TMapSetting(tMapView, this);
+        binding.tmapUsing.addView(tMapView);
+        if (list.size() == 1) tMapSetting.drawPath1(list);
+        else if (list.size() == 2) tMapSetting.drawPath2(binding.courseDistance, list);
+        else tMapSetting.drawPath(binding.courseDistance, list);
     }
 }

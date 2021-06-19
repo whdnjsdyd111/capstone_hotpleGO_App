@@ -23,6 +23,7 @@ import com.example.hotplego.ui.user.course.CourseFragment;
 import org.json.JSONException;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseViewHolder> {
 
@@ -59,21 +60,28 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
     }
 
     private List<CourseInfoVO> list;
-    private Activity activity;
+    private final InitData init;
+    private final Activity activity;
     private String kind;
+
+    public interface InitData {
+        void initView();
+    }
 
     public void setData(List<CourseInfoVO> data) {
         list = data;
         notifyDataSetChanged();
     }
 
-    public CourseAdapter(Activity activity) {
+    public CourseAdapter(Activity activity, InitData init) {
         this.activity = activity;
+        this.init = init;
     }
-    public CourseAdapter(List<CourseInfoVO> list, String kind, Activity activity) {
+    public CourseAdapter(List<CourseInfoVO> list, String kind, Activity activity, InitData init) {
         this.list = list;
         this.kind = kind;
         this.activity = activity;
+        this.init = init;
     }
 
     @NonNull
@@ -83,6 +91,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
         return new CourseViewHolder(view);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onBindViewHolder(@NonNull CourseViewHolder holder, int position) {
         CourseInfoVO vo = list.get(position);
@@ -94,6 +103,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
                     if (Boolean.parseBoolean(postRun.obj.getString("message"))) {
                         list.remove(position);
                         notifyDataSetChanged();
+                        init.initView();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

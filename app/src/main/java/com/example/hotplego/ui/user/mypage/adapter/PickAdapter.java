@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.example.hotplego.PostRun;
 import com.example.hotplego.R;
 import com.example.hotplego.domain.HotpleVO;
 
@@ -38,9 +40,10 @@ public class PickAdapter extends RecyclerView.Adapter<PickAdapter.PickHolder> {
             pick_place_time.setText(vo.getPickTime().toString());
             pick_place_name.setText(vo.getBusnName());
             pick_place_address.setText(vo.getHtAddr());
-            pick_place_img.setImageResource(R.drawable.point);
-            pick_place_rating.setRating(vo.getGoGrd().floatValue());
-
+            if (vo.getHtImg() != null) Glide.with(pick_place_img).load(PostRun.getImageUrl(vo.getUploadPath(), vo.getHtImg(), vo.getFileName())).into(pick_place_img);
+            else if (vo.getGoImg() != null) Glide.with(pick_place_img).load(vo.getGoImg()).into(pick_place_img);
+            else Glide.with(pick_place_img).load(PostRun.DOMAIN + "/images/logo.jpg").into(pick_place_img);
+            pick_place_rating.setRating(vo.getGoGrd() == null ? 0f : vo.getGoGrd().floatValue());
             itemView.setOnClickListener(v -> onPickDataClickListener.onPickDataClick(vo));
         }
     }

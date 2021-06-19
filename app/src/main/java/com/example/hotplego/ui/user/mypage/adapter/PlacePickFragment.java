@@ -1,9 +1,11 @@
 package com.example.hotplego.ui.user.mypage.adapter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,30 +14,28 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hotplego.PostRun;
 import com.example.hotplego.R;
+import com.example.hotplego.UserSharedPreferences;
+import com.example.hotplego.databinding.FragmentPickPlaceBinding;
 import com.example.hotplego.domain.HotpleVO;
+import com.example.hotplego.ui.user.home.HotpleActivity;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONException;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-// 장소별 목록을 보여주는 프래그먼트
 public class PlacePickFragment extends Fragment {
-    // 장소 데이터
-    private static final List<HotpleVO> placePickData = new ArrayList<>();
 
-    static {
-        HotpleVO vo = new HotpleVO();
-        vo.setPickTime(new Timestamp(System.nanoTime()));
-        vo.setBusnName("가게1");
-        vo.setHtAddr("대구광역시");
-        vo.setGoGrd(5.0);
-        placePickData.add(vo);
-        placePickData.add(vo);
-        placePickData.add(vo);
-    }
-
-    private final PickAdapter pickAdapter = new PickAdapter(placePickData, this::onPlaceItemClick);
+    private List<HotpleVO> picks = null;
+    private FragmentPickPlaceBinding binding;
+    private RecyclerView recyclerView;
+    private PickAdapter pickAdapter = null;
 
     public PlacePickFragment() { }
 
@@ -46,16 +46,9 @@ public class PlacePickFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_pick_place, container, false);
-    }
+        binding = FragmentPickPlaceBinding.inflate(inflater, container, false);
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        RecyclerView recyclerView = view.findViewById(R.id.pick_list);
-        recyclerView.setAdapter(pickAdapter);
-
+        recyclerView = binding.pickList;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext());
         recyclerView.setLayoutManager(linearLayoutManager);
 
@@ -69,13 +62,54 @@ public class PlacePickFragment extends Fragment {
             @Override
             public void onSwiped(@NonNull  RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
-                placePickData.remove(position);
-                pickAdapter.notifyDataSetChanged();
+                PostRun postRun = new PostRun("pick-delete", getActivity(), PostRun.DATA);
+                postRun.setRunUI(() -> {
+                    try {
+                        if (Boolean.parseBoolean(postRun.obj.getString("message"))) {
+                            picks.remove(position);
+                            pickAdapter.notifyDataSetChanged();
+                            Toast.makeText(getContext(), "찜 삭제 완료하였습니다.", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getContext(), "다시 시도해주십시오.", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                });
+                postRun.addData("uCode", UserSharedPreferences.user.getUCode())
+                        .addData("htId", String.valueOf(picks.get(position).getHtId()))
+                        .start();
             }
         });
         itemTouchHelper.attachToRecyclerView(recyclerView);
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onResume() {
+        initView();
+        super.onResume();
+    }
+
+    private void initView() {
+        PostRun postRun = new PostRun("pick-list", getActivity(), PostRun.DATA);
+        postRun.setRunUI(() -> {
+            try {
+                Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss.SSS").create();
+                picks = gson.fromJson(postRun.obj.getString("picks"), new TypeToken<List<HotpleVO>>() {}.getType());
+                pickAdapter = new PickAdapter(picks, this::onPlaceItemClick);
+                recyclerView.setAdapter(pickAdapter);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        });
+        postRun.addData("uCode", UserSharedPreferences.user.getUCode())
+                .start();
     }
 
     private void onPlaceItemClick(HotpleVO pickData) {
+        Intent intent = new Intent(getContext(), HotpleActivity.class);
+        intent.putExtra("hotple", pickData);
+        startActivity(intent);
     }
 }
