@@ -117,17 +117,17 @@ public class SalesFragment extends Fragment {
         switch (fragment) {
             case 1:
                 transaction.replace(R.id.fragment_container, allFrag);
-                transaction.commit();
+                transaction.commitAllowingStateLoss();
                 break;
 
             case 2:
                 transaction.replace(R.id.fragment_container, monthFrag);
-                transaction.commit();
+                transaction.commitAllowingStateLoss();
                 break;
 
             case 3:
                 transaction.replace(R.id.fragment_container, weekFrag);
-                transaction.commit();
+                transaction.commitAllowingStateLoss();
                 break;
         }
 

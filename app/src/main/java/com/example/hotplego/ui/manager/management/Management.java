@@ -65,6 +65,6 @@ public class Management extends Fragment {
     public void setFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frame, fragment);
-        fragmentTransaction.commit();
+        fragmentTransaction.commitAllowingStateLoss();
     }
 }

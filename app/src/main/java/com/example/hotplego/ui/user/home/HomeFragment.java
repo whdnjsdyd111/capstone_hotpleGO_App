@@ -292,27 +292,27 @@ public class HomeFragment extends Fragment {
 
         selected = fragment;
 
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
 
         switch (fragment) {
             case 1:
                 if (mbti != null) {
                     transaction.replace(R.id.fragment_container, mbti);
-                    transaction.commit();
+                    transaction.commitAllowingStateLoss();
                 }
                 break;
 
             case 2:
                 if (hotples != null) {
                     transaction.replace(R.id.fragment_container, hotples);
-                    transaction.commit();
+                    transaction.commitAllowingStateLoss();
                 }
                 break;
 
             case 3:
                 if (courses != null) {
                     transaction.replace(R.id.fragment_container, courses);
-                    transaction.commit();
+                    transaction.commitAllowingStateLoss();
                 }
         }
     }

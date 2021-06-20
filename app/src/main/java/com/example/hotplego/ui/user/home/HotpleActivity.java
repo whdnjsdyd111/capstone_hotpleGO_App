@@ -4,13 +4,22 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.app.AlertDialog;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -19,6 +28,7 @@ import com.example.hotplego.PostRun;
 import com.example.hotplego.R;
 import com.example.hotplego.UserSharedPreferences;
 import com.example.hotplego.databinding.HotpleMainBinding;
+import com.example.hotplego.domain.CourseVO;
 import com.example.hotplego.domain.HotpleVO;
 import com.example.hotplego.domain.ReviewVO;
 import com.google.gson.Gson;
@@ -39,6 +49,8 @@ public class HotpleActivity extends AppCompatActivity {
     Fragment info;
     Fragment menu;
 
+    @SuppressLint("ResourceAsColor")
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,14 +85,65 @@ public class HotpleActivity extends AppCompatActivity {
             }
         });
 
-        binding.call.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        binding.call.setOnClickListener(v -> {
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_DIAL);
                 intent.setData(Uri.parse("tel:" + vo.getHtTel()));
                 startActivity(intent);
-            }
+        });
+
+        binding.addCourse.setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(HotpleActivity.this);
+            AlertDialog dialog = builder.create();
+            LayoutInflater inflater = LayoutInflater.from(HotpleActivity.this);
+            LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.empty_linear, null);
+            PostRun postRun = new PostRun("course_cn", this, PostRun.DATA);
+            postRun.setRunUI(() -> {
+                try {
+                    List<CourseVO> course = new Gson().fromJson(postRun.obj.getString("courses"),
+                            new TypeToken<List<CourseVO>>() {}.getType());
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                    params.topMargin = 10;
+                    params.bottomMargin = 10;
+                    course.forEach(co -> {
+                        TextView textView = new TextView(getApplicationContext());
+                        textView.setBackgroundTintList(ContextCompat.getColorStateList(HotpleActivity.this, R.color.red_500));
+                        textView.setBackgroundColor(R.color.red_500);
+
+                        textView.setLayoutParams(params);
+                        textView.setPadding(10, 10, 10, 10);
+                        textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+                        textView.setText(co.getCsTitle());
+                        layout.addView(textView);
+
+                        textView.setOnClickListener(e -> {
+                            PostRun pr = new PostRun("add-in-course", HotpleActivity.this, PostRun.DATA);
+                            pr.setRunUI(() -> {
+                                try {
+                                    if (Boolean.parseBoolean(pr.obj.getString("message"))) {
+                                        Toast.makeText(this, "해당 코스에 추가하였습니다.", Toast.LENGTH_SHORT).show();
+                                        dialog.dismiss();
+                                    } else {
+                                        Toast.makeText(this, "코스에 이미 존재하거나 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                                    }
+                                } catch (JSONException e1) {
+                                    e1.printStackTrace();
+                                }
+                            });
+                            pr.addData("csCode", co.getCsCode())
+                                    .addData("htId", String.valueOf(vo.getHtId()))
+                                    .start();
+                        });
+                    });
+                    dialog.setView(layout);
+                    dialog.show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            });
+            postRun.addData("uCode", UserSharedPreferences.user.getUCode())
+                    .start();
         });
 
         binding.address.setText(vo.getHtAddr());

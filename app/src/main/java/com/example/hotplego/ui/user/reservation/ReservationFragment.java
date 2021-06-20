@@ -81,14 +81,14 @@ public class ReservationFragment extends Fragment {
             case 1:
                 if (proceeding != null) {
                     transaction.replace(R.id.fragment_container, proceeding);
-                    transaction.commit();
+                    transaction.commitAllowingStateLoss();
                 }
                 break;
 
             case 2:
                 if (completed != null) {
                     transaction.replace(R.id.fragment_container, completed);
-                    transaction.commit();
+                    transaction.commitAllowingStateLoss();
                 }
                 break;
         }
