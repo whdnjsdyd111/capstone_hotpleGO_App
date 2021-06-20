@@ -3,10 +3,18 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/tmap_using"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginHorizontal="10dp"
+        android:orientation="vertical" />
     <TableLayout
+        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TableRow
+            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
@@ -17,6 +25,7 @@
                 android:textSize="16dp"
                 android:text="주소" />
             <TextView
+                android:id="@+id/adress"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -25,94 +34,7 @@
                 android:text="대구 광역시 북구 복현로 35" />
         </TableRow>
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="영업시간"
-                android:gravity="center"/>
-            <TableLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="일요일 시작" />
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="11:15 ~ 19:00" />
-                </TableRow>
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="일요일 시작" />
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="11:15 ~ 19:00" />
-                </TableRow>
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="일요일 시작" />
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="11:15 ~ 19:00" />
-                </TableRow>
-            </TableLayout>
-        </TableRow>
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="정기 휴무" />
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="매주 일요일" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="대구 광역시 북구 복현로 35" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="대구 광역시 북구 복현로 35" />
-            </LinearLayout>
-        </TableRow>
-        <TableRow
+            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
@@ -122,6 +44,7 @@
                 android:gravity="center"
                 android:text="연락처" />
             <TextView
+                android:id="@+id/tel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -129,6 +52,7 @@
                 android:text="010-6848-0083" />
         </TableRow>
         <TableRow
+            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
@@ -138,11 +62,47 @@
                 android:gravity="center"
                 android:text="상세설명" />
             <TextView
+                android:id="@+id/description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="맛있는 신전 떡볶이입니다." />
+        </TableRow>
+        <TableRow
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="영업시간"
+                android:gravity="center"/>
+            <TableLayout
+                android:id="@+id/open_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+            </TableLayout>
+        </TableRow>
+        <TableRow
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="정기 휴무" />
+            <LinearLayout
+                android:id="@+id/open_holyday"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+            </LinearLayout>
         </TableRow>
     </TableLayout>
 </LinearLayout>

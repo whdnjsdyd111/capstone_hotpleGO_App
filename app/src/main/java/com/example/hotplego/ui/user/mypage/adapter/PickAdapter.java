@@ -74,7 +74,7 @@ public class PickAdapter extends RecyclerView.Adapter<PickAdapter.PickHolder> {
 
     @Override
     public int getItemCount() {
-        return pickData.size();
+        return pickData == null ? 0 : pickData.size();
     }
 
     public interface OnPickDataClickListener {

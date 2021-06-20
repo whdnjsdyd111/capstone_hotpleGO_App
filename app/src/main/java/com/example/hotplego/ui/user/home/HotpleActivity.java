@@ -159,7 +159,7 @@ public class HotpleActivity extends AppCompatActivity {
                 List<ReviewVO> list = gson.fromJson(postRun.obj.getString("reviews"), new TypeToken<List<ReviewVO>>() {}.getType());
                 if (postRun.obj.has("pick")) isPick = gson.fromJson(postRun.obj.getString("pick"), new TypeToken<Boolean>() {}.getType());
                 review = new ReviewFragment(list);
-                info = new InfoFragment(vo.getHtId());
+                info = new InfoFragment(vo);
                 menu = new MenuFragment(vo.getHtId());
                 fragmentView(selected);
 
@@ -204,21 +204,21 @@ public class HotpleActivity extends AppCompatActivity {
             case REVIEW:
                 if (review != null) {
                     transaction.replace(binding.hotpleInfos.getId(), review);
-                    transaction.commit();
+                    transaction.commitAllowingStateLoss();
                 }
                 break;
 
             case INFO:
                 if (info != null) {
                     transaction.replace(binding.hotpleInfos.getId(), info);
-                    transaction.commit();
+                    transaction.commitAllowingStateLoss();
                 }
                 break;
 
             case MENU:
                 if (menu != null) {
                     transaction.replace(binding.hotpleInfos.getId(), menu);
-                    transaction.commit();
+                    transaction.commitAllowingStateLoss();
                 }
                 break;
         }
