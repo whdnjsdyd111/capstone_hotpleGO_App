@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginTop="20dp"
     android:orientation="vertical">
 
     <TextView
@@ -12,32 +11,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="20dp"
         android:gravity="center"
         android:text="@string/board_bar"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2px"
-        android:background="#8A8A8A" />
+        android:textSize="28sp"
+        android:fontFamily="@font/elandfont"
+        android:textColor="#393939"/>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/customborder"
+                android:layout_margin="10dp"
+                android:background="@color/white"
+                android:elevation="2dp"
+                android:padding="15dp"
                 android:baselineAligned="true"
                 android:orientation="vertical">
 
@@ -55,16 +51,17 @@
                         android:id="@+id/board_user"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
                         android:text="@string/nick"
                         android:textSize="16sp" />
-
 
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/board_contents"
@@ -72,22 +69,24 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
                         android:text="@string/bd_cont"
                         android:textSize="20sp" />
 
+                    <TextView
+                        android:id="@+id/board_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:textSize="20sp" />
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/board_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="18dp" />
 
                 <LinearLayout
-                    android:layout_width="180dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginTop="5dp"
                     android:layout_gravity="right"
+                    android:layout_marginTop="5dp"
                     android:gravity="right"
                     android:orientation="horizontal">
 
@@ -130,68 +129,73 @@
                             app:backgroundTint="@android:color/holo_red_light" />
                     </LinearLayout>
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="5"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/comm_write"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/customview4"
+                        android:elevation="4dp"
+                        android:hint="댓글을 작성하세요"
+                        android:inputType="none"
+                        android:padding="10dp"
+                        android:textSize="18sp" />
+
+                    <ImageButton
+                            android:id="@+id/cameraButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/outline_photo_camera_24" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/comm_submit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/gradientbutton4"
+                            android:fontFamily="@font/elandfontbold"
+                            android:minHeight="40dp"
+                            android:text="@string/submit"
+                            android:textColor="#fff"
+                            android:textSize="18sp" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@color/white"
+                android:elevation="2dp"
+                android:padding="15dp"
                 android:orientation="vertical">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:background="@drawable/customborder"
-                    android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <EditText
-                            android:id="@+id/comm_write"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="bottom"
-                            android:background="@drawable/none_stroke"
-                            android:hint="댓글을 작성하세요"
-                            android:inputType="none"
-                            android:textSize="12sp" />
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp">
-                            <ImageButton
-                                android:id="@+id/cameraButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentStart="true"
-                                android:background="@drawable/outline_photo_camera_24"
-                                android:layout_alignParentLeft="true" />
-                            <Button
-                                android:id="@+id/comm_submit"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:layout_gravity="end"
-                                android:background="@drawable/custombutton"
-                                app:backgroundTint="@color/green_700"
-                                android:text="@string/submit"
-                                android:layout_alignParentRight="true" />
-                        </RelativeLayout>
-                    </LinearLayout>
-                </LinearLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/comment_recyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        tools:listitem="@layout/board_comment_item"/>
+                        tools:listitem="@layout/board_comment_item" />
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>

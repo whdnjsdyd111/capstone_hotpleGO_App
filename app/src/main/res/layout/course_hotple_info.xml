@@ -21,6 +21,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
+            android:fontFamily="@font/elandfont"
+            android:textSize="20sp"
             android:textColor="@color/black"
             android:text="1번째" />
         <TextView
@@ -29,6 +31,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
+            android:fontFamily="@font/elandfont"
+            android:textSize="20sp"
             android:textColor="@color/black"
             android:text="북구 복현 2동 539-110" />
         <TextView
@@ -37,6 +41,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
+            android:fontFamily="@font/elandfont"
+            android:textSize="20sp"
             android:textColor="@color/black"
             android:text="교촌치킨 복현 2호점" />
     </LinearLayout>

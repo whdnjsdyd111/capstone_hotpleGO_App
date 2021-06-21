@@ -53,28 +53,25 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <Button
-
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="44dp"
             android:layout_marginTop="35dp"
             android:layout_marginBottom="6dp"
-            android:background="@drawable/login_btn2"
+            android:background="@drawable/customview3"
             android:text="Login"
-            android:textColor="#7C7B7B"
+            android:fontFamily="@font/elandfontbold"
+            android:textColor="#fff"
             android:textColorHighlight="#FFFFFF"
             android:textColorLink="#FFFFFF"
-            android:textSize="@dimen/text_medium"
-
-            app:iconTint="#FFFFFF"
-            app:rippleColor="#FFFCFC" />
+            android:textSize="22sp" />
 
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/tvRestore"
-            android:textSize="@dimen/text_small"
+            android:textSize="20sp"
             android:text="forget password"
             android:layout_gravity="center_horizontal"
             android:textStyle="bold"
@@ -129,8 +126,9 @@
         android:layout_width="wrap_content"
         android:layout_centerHorizontal="true"
         android:id="@+id/tvRegister"
-        android:textSize="@dimen/text_small"
+        android:textSize="24sp"
         android:text="회원가입"
+        android:fontFamily="@font/elandfont"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="26dp"
         android:textStyle="bold"

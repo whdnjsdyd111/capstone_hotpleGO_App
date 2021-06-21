@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
-    android:background="#FFFFFF"
+    android:background="@drawable/gradientview4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -18,9 +18,8 @@
             android:text="회원가입"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="26dp"
-
-            />
+            android:textSize="28sp"
+            android:fontFamily="@font/elandfont" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -258,11 +257,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="300">
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/watch_btn1"
                     android:text="보기"
-                    android:textSize="10dp"
-
+                    android:textSize="14sp"
+                    android:fontFamily="@font/elandfontbold"
+                    android:textColor="#fff"
+                    android:background="@drawable/gradientbutton4"
                     android:layout_width="50dp"
                     android:layout_height="25dp" />
 
@@ -299,11 +300,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="300">
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/watch_btn2"
                     android:text="보기"
-                    android:textSize="10dp"
-
+                    android:textSize="14sp"
+                    android:fontFamily="@font/elandfontbold"
+                    android:textColor="#fff"
+                    android:background="@drawable/gradientbutton4"
                     android:layout_width="50dp"
                     android:layout_height="25dp" />
 
@@ -321,14 +324,16 @@
         android:layout_weight="300"
         android:weightSum="1440">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/Joinbtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1300"
-            android:background="@drawable/btn_signup"
+            android:background="@drawable/gradientbutton3"
+            android:textSize="24sp"
             android:text="회원가입"
-            android:textColor="#535353" />
+            android:fontFamily="@font/elandfontbold"
+            android:textColor="#fff" />
 
     </LinearLayout>
 

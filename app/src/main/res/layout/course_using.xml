@@ -23,26 +23,28 @@
             android:id="@+id/course_with"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="20dp"
+            android:fontFamily="@font/elandfont"
+            android:textSize="22sp"
+            android:textColor="#393939" />
         <TextView
             android:id="@+id/course_num"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="20dp"
+            android:textSize="22sp"
+            android:textColor="#393939" />
         <TextView
             android:id="@+id/course_distance"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="3.312km"
+            android:textSize="22sp"
+            android:textColor="#393939"
             android:layout_marginLeft="20dp"/>
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#8A8A8A"
-        android:layout_marginTop="10dp"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -51,6 +53,7 @@
             android:id="@+id/course_recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             tools:listitem="@layout/course_item"/>

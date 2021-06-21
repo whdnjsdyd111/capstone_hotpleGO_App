@@ -12,6 +12,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:text="영업 시간"
+        android:fontFamily="@font/elandfont"
+        android:textColor="#393939"
+        android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@+id/textView32"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
@@ -72,6 +75,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
+        android:fontFamily="@font/elandfont"
+        android:textColor="#393939"
+        android:textSize="26sp"
         android:text="브레이크 타임"
         app:layout_constraintBottom_toTopOf="@+id/textView37"
         app:layout_constraintEnd_toEndOf="parent"
@@ -118,15 +124,18 @@
         app:layout_constraintTop_toBottomOf="@+id/view"
         app:layout_constraintVertical_bias="0.395" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:text="저장"
+        android:textColor="#fff"
+        android:textSize="24sp"
+        android:fontFamily="@font/elandfontbold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/breaktime_start"
-        android:backgroundTint="@color/gray_700"/>
+        android:background="@drawable/gradientbutton3"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

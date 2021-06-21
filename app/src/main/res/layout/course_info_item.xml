@@ -27,7 +27,8 @@
                 android:id="@+id/course_time"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                android:textSize="12dp"
+                android:textSize="18sp"
+                android:textColor="#393939"
                 android:text="21.55.44 33:22:33"
                 tools:ignore="NestedWeights" />
             <TextView
@@ -36,6 +37,8 @@
                 android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:gravity="center"
+               android:textSize="18sp"
+                android:textColor="#393939"
                 android:text="제목" />
             <TextView
                 android:id="@+id/course_num"
@@ -44,6 +47,8 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:layout_weight="1"
+                android:textSize="18sp"
+                android:textColor="#393939"
                 android:text="인원 : 2" />
             <TextView
                 android:id="@+id/course_with"
@@ -51,6 +56,8 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:textColor="#393939"
+                android:textSize="18sp"
                 android:layout_weight="1"
                 android:text="커플" />
         </LinearLayout>

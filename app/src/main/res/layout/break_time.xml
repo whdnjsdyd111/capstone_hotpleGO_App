@@ -9,33 +9,28 @@
         android:id="@+id/textView14"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="25dp"
         android:gravity="center"
         android:text="영업 임시 중지"
-        android:textSize="20dp"
-        android:textStyle="bold"/>
+        android:textSize="28dp"
+        android:textColor="#373737"
+        android:fontFamily="@font/elandfont"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2px"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="#8A8A8A" />
 
     <TimePicker
         android:id="@+id/time_picker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
         android:timePickerMode="spinner" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
         android:orientation="horizontal" >
@@ -118,8 +113,10 @@
             android:layout_marginLeft="40dp"
             android:layout_weight="1"
             android:gravity="center"
+            android:textColor="#393939"
+            android:fontFamily="@font/elandfont"
             android:text="영업 중지 시간"
-            android:textSize="20sp" />
+            android:textSize="23sp" />
 
         <Spinner
             android:id="@+id/spinner"
@@ -131,13 +128,15 @@
 
     </LinearLayout>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button11"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:text="Back"
-        app:backgroundTint="@drawable/custombutton"/>
+        android:textSize="24sp"
+        android:textColor="#fff"
+        android:background="@drawable/gradientbutton3"/>
 
 </LinearLayout>

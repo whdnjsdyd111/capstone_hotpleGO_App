@@ -16,13 +16,9 @@
         android:layout_marginBottom="10dp"
         android:gravity="center"
         android:text="핫플 공유"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2px"
-        android:background="#8A8A8A" />
+        android:textSize="28sp"
+        android:fontFamily="@font/elandfont"
+        android:textColor="#393939"/>
 
     <EditText
         android:id="@+id/board_search"

@@ -5,15 +5,16 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:layout_marginBottom="10dp"
-        android:background="#8A8A8A" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginRight="12dp"
+        android:background="@color/white"
+        android:elevation="5dp"
+        android:paddingBottom="15dp"
         android:orientation="horizontal">
         <TextView
             android:id="@+id/course_index"
@@ -22,15 +23,17 @@
             android:layout_marginLeft="12dp"
             android:text="1"
             android:textSize="24dp"
+            android:fontFamily="@font/elandfontbold"
             android:layout_gravity="center_vertical"
             android:gravity="center"
-            android:background="@drawable/course_index"
-            android:backgroundTint="@color/purple_200"/>
+            android:backgroundTint="#FFC8C4"
+            android:background="@drawable/course_index" />
 
         <ImageView
             android:id="@+id/course_image"
-            android:layout_width="200dp"
+            android:layout_width="120dp"
             android:layout_height="100dp"
+            android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             app:srcCompat="@drawable/board" />
@@ -46,22 +49,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:gravity="center"
+                android:fontFamily="@font/elandfont"
+                android:textSize="16sp"
                 android:text="교촌치킨 복현2호점\n북구 복현 2동 539-110"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/course_remove"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/custombutton"
+                android:minHeight="40dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/elandfontbold"
+                android:textSize="18sp"
+                android:background="@drawable/gradientbutton2"
                 android:text="@string/delete"
-                app:backgroundTint="@android:color/holo_red_light"
                 android:layout_gravity="center" />
         </LinearLayout>
 
     </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:layout_marginTop="10dp"
-        android:background="#8A8A8A" />
 </LinearLayout>
