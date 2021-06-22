@@ -171,11 +171,14 @@ public class HomeFragment extends Fragment {
 
                 Log.i("코스들", filteredCourse.toString());
                 hotples = new HotpleRecoFragment(filteredHotple);
+                courses = new CourseFragment(filteredCourse);
                 fragmentView(selected);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         });
+
+        postRun.addData("lat", String.valueOf(gpsTracker.getLatitude())).addData("lng", String.valueOf(gpsTracker.getLongitude()));
 
         if (UserSharedPreferences.user != null)
             postRun.addData("uCode", UserSharedPreferences.user.getUCode()).addData("mbti", UserSharedPreferences.user.getMbti());

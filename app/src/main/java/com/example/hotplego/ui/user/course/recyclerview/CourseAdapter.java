@@ -40,7 +40,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
             image = itemView.findViewById(R.id.course_image);
             address = itemView.findViewById(R.id.course_address);
             String kind = CourseAdapter.this.kind;
-            if (kind != null && (kind.equals("usedCourse") || kind.equals("dibs"))) {
+            if (kind != null && (kind.equals("usedCourse") || kind.equals("dibs") || kind.equals("notMine"))) {
                 itemView.findViewById(R.id.course_remove).setVisibility(View.GONE);
             }
             remove = itemView.findViewById(R.id.course_remove);
