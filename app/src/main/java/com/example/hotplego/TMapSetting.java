@@ -69,6 +69,10 @@ public class TMapSetting {
         tMapView.setSKTMapApiKey(APIKEY);
     }
 
+    public void myLocation() {
+
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public Bitmap createViewToBitmap(String index, int color) {
         DisplayMetrics displayMetrics = new DisplayMetrics();
