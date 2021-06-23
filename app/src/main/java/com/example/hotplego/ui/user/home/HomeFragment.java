@@ -93,6 +93,8 @@ public class HomeFragment extends Fragment {
 
         UserSharedPreferences.getInstance().login(this.getActivity());
 
+        if (UserSharedPreferences.user == null) binding.mbti.setVisibility(View.GONE);
+
         if (UserSharedPreferences.user == null) binding.buttonNotice.setVisibility(View.VISIBLE);
         else binding.bnLogout.setVisibility(View.VISIBLE);
 
@@ -156,7 +158,7 @@ public class HomeFragment extends Fragment {
         Log.i("lng", "" + longitude);
         Log.i("주소", getCurrentAddress(latitude, longitude));
 
-
+        initView();
 
         return binding.getRoot();
     }
@@ -168,7 +170,11 @@ public class HomeFragment extends Fragment {
                 Gson gson = new Gson();
                 List<HotpleVO> filteredHotple = gson.fromJson(postRun.obj.getString("hotples"), new TypeToken<List<HotpleVO>>() {}.getType());
                 Map<String, List<HotpleVO>> filteredCourse = gson.fromJson(postRun.obj.getString("courses"), new TypeToken<Map<String, List<HotpleVO>>>() {}.getType());
-
+                if (UserSharedPreferences.user != null) {
+                    List<HotpleVO> filteredHotpleM = gson.fromJson(postRun.obj.getString("hotplesM"), new TypeToken<List<HotpleVO>>() {}.getType());
+                    Map<String, List<HotpleVO>> filteredCourseM = gson.fromJson(postRun.obj.getString("coursesM"), new TypeToken<Map<String, List<HotpleVO>>>() {}.getType());
+                    mbti = new MbtiRecoFragment(filteredHotpleM, filteredCourseM);
+                }
                 Log.i("코스들", filteredCourse.toString());
                 hotples = new HotpleRecoFragment(filteredHotple);
                 courses = new CourseFragment(filteredCourse);
@@ -274,6 +280,7 @@ public class HomeFragment extends Fragment {
         }
 
         Address address = addresses.get(0);
+
         return address.getAdminArea() + "  " + address.getLocality() + "  " + address.getThoroughfare();
 
     }
@@ -288,7 +295,6 @@ public class HomeFragment extends Fragment {
             binding.bnLogout.setVisibility(View.GONE);
             binding.buttonNotice.setVisibility(View.VISIBLE);
         }
-        initView();
     }
 
     private void fragmentView(int fragment) {

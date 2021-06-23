@@ -1,8 +1,14 @@
 package com.example.hotplego.ui.user.course;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -16,10 +22,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.hotplego.GpsTracker;
 import com.example.hotplego.PostRun;
 import com.example.hotplego.R;
 import com.example.hotplego.TMapSetting;
@@ -43,7 +51,6 @@ import java.util.List;
 import java.util.Set;
 
 public class CourseUsingFragment extends Fragment implements CourseAdapter.InitData {
-
     private CourseUsingBinding binding;
     private CourseAdapter adapter;
     List<CourseInfoVO> infos = null;
