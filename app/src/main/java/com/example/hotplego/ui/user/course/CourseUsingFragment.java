@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,12 +34,15 @@ import com.example.hotplego.R;
 import com.example.hotplego.TMapSetting;
 import com.example.hotplego.UserSharedPreferences;
 import com.example.hotplego.databinding.CourseUsingBinding;
+import com.example.hotplego.databinding.SearchHotpleBinding;
 import com.example.hotplego.domain.CourseInfoVO;
 import com.example.hotplego.domain.CourseVO;
 import com.example.hotplego.ui.user.course.recyclerview.CourseAdapter;
+import com.example.hotplego.ui.user.home.adapter.SearchAdapter;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.skt.Tmap.TMapData;
+import com.skt.Tmap.TMapGpsManager;
 import com.skt.Tmap.TMapMarkerItem;
 import com.skt.Tmap.TMapPoint;
 import com.skt.Tmap.TMapPolyLine;
@@ -48,14 +52,16 @@ import org.json.JSONException;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
-public class CourseUsingFragment extends Fragment implements CourseAdapter.InitData {
+public class CourseUsingFragment extends Fragment implements CourseAdapter.InitData, TMapGpsManager.onLocationChangedCallback {
     private CourseUsingBinding binding;
     private CourseAdapter adapter;
     List<CourseInfoVO> infos = null;
     private TMapView tMapView = null;
     private TMapSetting tMapSetting = null;
+    TMapGpsManager gpsManager = null;
     private final Set<TMapPolyLine> lines = new HashSet<>();
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -67,6 +73,7 @@ public class CourseUsingFragment extends Fragment implements CourseAdapter.InitD
         adapter = new CourseAdapter(getActivity(), this);
         binding.courseRecyclerView.setAdapter(adapter);
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
+
         binding.courseRecyclerView.setLayoutManager(manager);
 
         binding.courseComplete.setOnClickListener(v -> {
@@ -127,7 +134,27 @@ public class CourseUsingFragment extends Fragment implements CourseAdapter.InitD
             }
         });
 
+        binding.goHotple.setOnClickListener(v -> {
+            GpsTracker gpsTracker = new GpsTracker(getContext());
+            tMapView.setTMapPoint(gpsTracker.getLatitude(), gpsTracker.getLongitude());
+            tMapView.setCompassMode(true);
+            tMapView.setSightVisible(true);
+            tMapView.setIconVisibility(true);
+            gpsManager = new TMapGpsManager(requireActivity());
+            gpsManager.setMinTime(10000);//현재 위치를 찾을 최소 시간 (밀리초)
+            gpsManager.setMinDistance(5);//현재 위치를 갱신할 최소 거리
+            gpsManager.setProvider(TMapGpsManager.NETWORK_PROVIDER);
+            gpsManager.OpenGps();
+        });
+
         return binding.getRoot();
+    }
+
+    @Override
+    public void onLocationChange(Location location) {
+        Log.i("gps", location.toString());
+        tMapView.setLocationPoint(location.getLongitude(), location.getLatitude());
+        tMapView.setCenterPoint(location.getLongitude(), location.getLatitude());
     }
 
     private void initMap() {
@@ -167,6 +194,8 @@ public class CourseUsingFragment extends Fragment implements CourseAdapter.InitD
                 if (infos.size() == 1) tMapSetting.drawPath1(infos);
                 else if (infos.size() == 2) tMapSetting.drawPath2(binding.courseDistance, infos);
                 else tMapSetting.drawPath(binding.courseDistance, infos);
+
+                binding.goHotple.setVisibility(View.VISIBLE);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
