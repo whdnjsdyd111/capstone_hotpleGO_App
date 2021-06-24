@@ -110,7 +110,7 @@ public class MenuFragment extends Fragment implements MenuAdapter.OnItemClickLis
                     DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), android.R.style.Theme_DeviceDefault_Dialog, new DatePickerDialog.OnDateSetListener() {
                         @Override
                         public void onDateSet(DatePicker view, int year, int month, int day) {
-                            date.setText(year + "-" + (month + 1) + "-" + day);
+                            date.setText(year + "-" + addZero(month + 1) + "-" + day + " 00:00:00");
                         }
                     },mYear,mMonth,mDay);
                     datePickerDialog.show();
@@ -245,5 +245,9 @@ public class MenuFragment extends Fragment implements MenuAdapter.OnItemClickLis
     @Override
     public void onDestroy() {
         super.onDestroy();
+    }
+
+    private String addZero(int num) {
+        return num < 10 ? "0" + num : String.valueOf(num);
     }
 }
