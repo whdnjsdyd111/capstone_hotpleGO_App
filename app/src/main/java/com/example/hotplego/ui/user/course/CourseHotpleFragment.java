@@ -32,9 +32,9 @@ public class CourseHotpleFragment extends Fragment {
                              @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         binding = CourseHotpleInfoBinding.inflate(inflater, container, false);
 
-        // TODO 로컬 이미지로 대체
-        if (vo.getUuid() == null) Glide.with(this).load(PostRun.DOMAIN + "/images/logo.jpg").into(binding.courseHotpleImg);
-        else Glide.with(this).load(PostRun.getImageUrl(vo.getUploadPath(), vo.getUuid(), vo.getFileName())).into(binding.courseHotpleImg);
+        if (vo.getGoImg() != null) Glide.with(this).load(vo.getGoImg()).into(binding.courseHotpleImg);
+        else if (vo.getUuid() != null) Glide.with(this).load(PostRun.getImageUrl(vo.getUploadPath(), vo.getUuid(), vo.getFileName())).into(binding.courseHotpleImg);
+        else Glide.with(this).load(PostRun.DOMAIN + "/images/logo.jpg").into(binding.courseHotpleImg);
         binding.courseIndex.setText(vo.getCiIndex() + "번");
         binding.courseHotpleAddress.setText(vo.getHtAddr());
         binding.courseHotpleTitle.setText(vo.getBusnName());

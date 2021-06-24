@@ -75,7 +75,8 @@ public class ReservationFragment extends Fragment {
 
         selected = fragment;
 
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        if (!isAdded()) return;
+        FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
 
         switch (fragment) {
             case 1:

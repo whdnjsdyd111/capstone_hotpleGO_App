@@ -49,7 +49,6 @@ public class BookmarkActivity extends AppCompatActivity implements BoardAdapter.
             System.gc();
         });
         postRun.addData("uCode", UserSharedPreferences.user.getUCode()).start();
-        // TODO 유저
     }
 
     @Override

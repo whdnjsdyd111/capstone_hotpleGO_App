@@ -1,6 +1,7 @@
 package com.example.hotplego.ui.user.course;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,6 +55,17 @@ public class CoursesFragment extends Fragment implements CourseInfoAdapter.OnIte
         binding.courseInfoRecyclerView.setAdapter(adapter);
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
         binding.courseInfoRecyclerView.setLayoutManager(manager);
+
+        if (kind.equals("myCourse")) {
+            binding.makeCourse.setVisibility(View.VISIBLE);
+        }
+
+        binding.makeCourse.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            Uri uri = Uri.parse("http://www.hotplego.p-e.kr:8000/myCourse?kind=myCourse");
+            intent.setData(uri);
+            startActivity(intent);
+        });
 
         return binding.getRoot();
     }

@@ -36,7 +36,12 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        Iamport.INSTANCE.create(getApplication());
+        try {
+            Iamport.INSTANCE.create(getApplication());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -47,7 +52,7 @@ public class MainActivity extends AppCompatActivity  {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 //        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
-//
+
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
                     && checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
@@ -73,5 +78,11 @@ public class MainActivity extends AppCompatActivity  {
             Log.d("Permission", "Permission: " + permissions[2] + "was " + grantResults[2]);
             Log.d("Permission", "Permission: " + permissions[3] + "was " + grantResults[3]);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        Iamport.INSTANCE.close();
+        super.onDestroy();
     }
 }

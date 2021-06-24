@@ -1,12 +1,15 @@
 package com.example.hotplego.ui.user.home;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -38,6 +41,7 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 
 import java.text.DecimalFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -49,6 +53,8 @@ public class MenuFragment extends Fragment implements MenuAdapter.OnItemClickLis
     private MenuAdapter adapter;
     private HotpleResAdapter resAdapter;
     private long htId;
+
+    private int mYear, mMonth, mDay;
 
     public MenuFragment() {
 
@@ -91,6 +97,25 @@ public class MenuFragment extends Fragment implements MenuAdapter.OnItemClickLis
             Button btn = layout.findViewById(R.id.reservation_btn);
             TextView require = layout.findViewById(R.id.require);
             TextView date = layout.findViewById(R.id.date);
+            ((TextView)layout.findViewById(R.id.total)).setText("총합 : " + binding.totalPrice.getText().toString());
+            date.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // 데이트피커
+                    final Calendar c = Calendar.getInstance();
+                    mYear = c.get(Calendar.DATE);
+                    mMonth = c.get(Calendar.MONTH);
+                    mDay = c.get(Calendar.YEAR);
+
+                    DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), android.R.style.Theme_DeviceDefault_Dialog, new DatePickerDialog.OnDateSetListener() {
+                        @Override
+                        public void onDateSet(DatePicker view, int year, int month, int day) {
+                            date.setText(year + "-" + (month + 1) + "-" + day);
+                        }
+                    },mYear,mMonth,mDay);
+                    datePickerDialog.show();
+                }
+            });
             TextView name = layout.findViewById(R.id.name);
             add.setOnClickListener(e -> {
                 int num = Integer.parseInt(person.getText().toString());
@@ -220,6 +245,5 @@ public class MenuFragment extends Fragment implements MenuAdapter.OnItemClickLis
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Iamport.INSTANCE.close();
     }
 }

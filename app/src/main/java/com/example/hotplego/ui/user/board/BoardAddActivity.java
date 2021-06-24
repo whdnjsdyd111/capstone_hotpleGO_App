@@ -47,7 +47,6 @@ public class BoardAddActivity extends AppCompatActivity {
                 vo = new BoardVO();
                 vo.setBdTitle(binding.boardTitle.getText().toString());
                 vo.setBdCont(Html.toHtml(binding.boardContents.getText()).replaceAll(PostRun.DOMAIN, ""));
-                // TODO 유저 정보 SharedPreferences 로 변경
                 vo.setUCode(UserSharedPreferences.user.getUCode());
                 PostRun postRun = new PostRun("insertBoard", this, PostRun.DATA);
                 postRun.addData("board", new Gson().toJson(vo));
@@ -77,7 +76,7 @@ public class BoardAddActivity extends AppCompatActivity {
                     }
                 });
                 postRun.addData("board", new Gson().toJson(vo))
-                        .addData("uCode", UserSharedPreferences.user.getUCode()) // TODO 유저 정보 SharedPreferences 로 변경
+                        .addData("uCode", UserSharedPreferences.user.getUCode())
                         .start();
             }
         });

@@ -2,6 +2,7 @@ package com.example.hotplego.ui.user.mypage.adapter;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -97,6 +98,7 @@ public class PlacePickFragment extends Fragment {
             try {
                 Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss.SSS").create();
                 picks = gson.fromJson(postRun.obj.getString("picks"), new TypeToken<List<HotpleVO>>() {}.getType());
+                Log.i("핫플", picks.toString());
                 pickAdapter = new PickAdapter(picks, this::onPlaceItemClick);
                 recyclerView.setAdapter(pickAdapter);
             } catch (JSONException e) {

@@ -134,10 +134,10 @@ public class MainActivitySign extends Activity implements View.OnClickListener{
                             try {
                                 String message = pr.obj.getString("message");
                                 if(Boolean.parseBoolean(message)) {
-                                    Toast.makeText(MainActivitySign.this, message, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MainActivitySign.this, "회원가입 완료", Toast.LENGTH_SHORT).show();
                                     finish();
                                 } else {
-                                    Toast.makeText(MainActivitySign.this, message, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MainActivitySign.this, "회원가입 실패", Toast.LENGTH_SHORT).show();
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();

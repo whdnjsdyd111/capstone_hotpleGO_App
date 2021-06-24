@@ -141,7 +141,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@string/birth"
+                android:text="1998.06.26"
                 android:autofillHints="@string/birth"
                 tools:ignore="LabelFor"
                 android:focusableInTouchMode="false"/>

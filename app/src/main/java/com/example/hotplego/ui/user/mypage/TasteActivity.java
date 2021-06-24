@@ -84,7 +84,7 @@ public class TasteActivity extends AppCompatActivity {
         // postRun 으로 해당 사용자의 취향 가져옴
         selected = new HashSet<>();
         PostRun postRun = new PostRun("getTaste", this, PostRun.DATA);
-        postRun.addData("uCode", UserSharedPreferences.user.getUCode()); // TODO 현재 로그인된 아이디 가져오기
+        postRun.addData("uCode", UserSharedPreferences.user.getUCode());
         postRun.setRunUI(() ->{
             try {
                 Log.i("result", postRun.obj.get("tastes").toString());
@@ -141,7 +141,6 @@ public class TasteActivity extends AppCompatActivity {
         binding.saveTaste.setOnClickListener(v -> {
             PostRun postRun = new PostRun("saveTaste", this);
             JSONObject jsonObject = new JSONObject();
-            // TODO 로그인된 아이디
             postRun.addData("uCode", UserSharedPreferences.user.getUCode())
                     .addJsonData("tastes", new String[] {"tastes"}, new Object[] { selected });
             postRun.setRunUI(() -> {

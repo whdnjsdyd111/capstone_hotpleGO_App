@@ -6,11 +6,20 @@
     android:orientation="vertical">
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/course_info_recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:listitem="@layout/course_info_item"/>
     </ScrollView>
+    <Button
+        android:id="@+id/make_course"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/yellow_500"
+        android:text="@string/course_add"
+        android:textColor="@color/black"
+        android:visibility="gone"/>
 </LinearLayout>

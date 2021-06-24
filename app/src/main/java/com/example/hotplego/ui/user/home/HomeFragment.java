@@ -30,6 +30,7 @@ import com.example.hotplego.databinding.LocalHotplaceBinding;
 import com.example.hotplego.domain.HotpleVO;
 import com.example.hotplego.ui.user.MainActivity;
 import com.example.hotplego.ui.user.common.MainActivityLogin;
+import com.example.hotplego.ui.user.mypage.MBTIActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -93,10 +94,12 @@ public class HomeFragment extends Fragment {
 
         UserSharedPreferences.getInstance().login(this.getActivity());
 
-        if (UserSharedPreferences.user == null) binding.mbti.setVisibility(View.GONE);
-
-        if (UserSharedPreferences.user == null) binding.buttonNotice.setVisibility(View.VISIBLE);
-        else binding.bnLogout.setVisibility(View.VISIBLE);
+        if (UserSharedPreferences.user == null) {
+            Intent intent = new Intent(getContext(), MainActivityLogin.class);
+            startActivity(intent);
+        } else {
+            if (UserSharedPreferences.user.getMbti() == null) startActivity(new Intent(getContext(), MBTIActivity.class));
+        }
 
         binding.mbti.setOnClickListener(v -> fragmentView(MBTI));
         binding.hotplace.setOnClickListener(v -> fragmentView(HOTPLE));
@@ -135,6 +138,7 @@ public class HomeFragment extends Fragment {
             if (UserSharedPreferences.user == null) {
                 binding.bnLogout.setVisibility(View.GONE);
                 binding.buttonNotice.setVisibility(View.VISIBLE);
+                startActivity(new Intent(getContext(), MainActivityLogin.class));
             }
         });
 
@@ -287,7 +291,6 @@ public class HomeFragment extends Fragment {
 
     @Override
     public void onResume() {
-        super.onResume();
         if (UserSharedPreferences.user != null) {
             binding.bnLogout.setVisibility(View.VISIBLE);
             binding.buttonNotice.setVisibility(View.GONE);
@@ -295,12 +298,13 @@ public class HomeFragment extends Fragment {
             binding.bnLogout.setVisibility(View.GONE);
             binding.buttonNotice.setVisibility(View.VISIBLE);
         }
+        super.onResume();
     }
 
     private void fragmentView(int fragment) {
 
         selected = fragment;
-
+        if (!isAdded()) return;
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
 
         switch (fragment) {

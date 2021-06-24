@@ -81,7 +81,7 @@ public class ManagementTime extends Fragment {
                     .addData("woet", binding.worktimeEnd.getText().toString())
                     .addData("wbst", binding.breaktimeStart.getText().toString())
                     .addData("wbet", binding.breaktimeEnd.getText().toString())
-                    .addData("uCode", UserSharedPreferences.user.getUCode()) // TODO
+                    .addData("uCode", UserSharedPreferences.user.getUCode())
                     .addData("kind", kind)
                     .start();
         });

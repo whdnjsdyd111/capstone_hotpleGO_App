@@ -1,5 +1,6 @@
 package com.example.hotplego.ui.user.mypage;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -44,7 +45,6 @@ public class MBTIActivity extends AppCompatActivity {
     }
 
     private void initSelected() {
-        // TODO 사용자 uCode + SharedPreferences 의 mbti 교체, DB 에서 조회 X
         PostRun postRun = new PostRun("getMbti", this, PostRun.DATA);
         postRun.addData("uCode", UserSharedPreferences.user.getUCode());
         postRun.setRunUI(() -> {
@@ -80,7 +80,6 @@ public class MBTIActivity extends AppCompatActivity {
     }
 
     private void post(String mbti) {
-        // TODO 유저 정보
         PostRun postRun = new PostRun("saveMbti", this, PostRun.DATA);
         postRun.addData("uCode", UserSharedPreferences.user.getUCode())
                 .addData("mbti", mbti);
@@ -88,7 +87,6 @@ public class MBTIActivity extends AppCompatActivity {
             try {
                 String message = postRun.obj.getString("message");
                 if (mbti.equals(message)) {
-                    // TODO SharedPreferences 갱신
                     binding.selected.setText(MBTIActivity.this.message + mbti);
                     message += "로 수정하였습니다.";
                     UserSharedPreferences.user.setMbti(mbti);
@@ -101,5 +99,11 @@ public class MBTIActivity extends AppCompatActivity {
             }
         });
         postRun.start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (UserSharedPreferences.user.getMbti() == null) startActivity(new Intent(this, MBTIActivity.class));
+        super.onDestroy();
     }
 }

@@ -57,7 +57,7 @@ public class SalesFragment extends Fragment {
         }
 
         PostRun postRun = new PostRun("sales", getActivity(), PostRun.DATA);
-        postRun.addData("uCode", UserSharedPreferences.user.getUCode()); // TODO
+        postRun.addData("uCode", UserSharedPreferences.user.getUCode());
         postRun.setRunUI(() -> {
             try {
                 Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss.S").create();

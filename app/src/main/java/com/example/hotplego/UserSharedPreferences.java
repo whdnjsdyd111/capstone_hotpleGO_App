@@ -26,6 +26,7 @@ public class UserSharedPreferences {
         preferences = activity.getSharedPreferences("user", Context.MODE_PRIVATE);
         editor = preferences.edit();
         editor.remove("user");
+        editor.remove("hotple");
         editor.apply();
         user = null;
     }

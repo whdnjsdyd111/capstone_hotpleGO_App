@@ -238,36 +238,6 @@
             android:orientation="horizontal"
             android:weightSum="1440">
 
-            <LinearLayout
-                android:gravity="center_vertical"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1140">
-
-                <TextView
-                    android:text="이용약관"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"/>
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:gravity="center"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="300">
-
-                <Button
-                    android:id="@+id/watch_btn1"
-                    android:text="보기"
-                    android:textSize="10dp"
-
-                    android:layout_width="50dp"
-                    android:layout_height="25dp" />
-
-            </LinearLayout>
-
         </LinearLayout>
 
         <LinearLayout
@@ -277,38 +247,6 @@
             android:layout_marginBottom="10dp"
             android:orientation="horizontal"
             android:weightSum="1440">
-
-            <LinearLayout
-                android:gravity="center_vertical"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1140">
-
-                <TextView
-                    android:text="개인정보정책"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"/>
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:gravity="center"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="300">
-
-                <Button
-                    android:id="@+id/watch_btn2"
-                    android:text="보기"
-                    android:textSize="10dp"
-
-                    android:layout_width="50dp"
-                    android:layout_height="25dp" />
-
-
-            </LinearLayout>
 
         </LinearLayout>
 

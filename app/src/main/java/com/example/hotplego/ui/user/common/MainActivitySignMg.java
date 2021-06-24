@@ -54,11 +54,7 @@ public class MainActivitySignMg extends Activity implements View.OnClickListener
         inform_check.setOnClickListener(this);
 
         Button joinBtn = (Button) findViewById(R.id.Joinbtn); // 회원가입
-        Button watchBtn1 = (Button) findViewById(R.id.watch_btn1); // 이용약관 보기
-        Button watchBtn2 = (Button) findViewById(R.id.watch_btn2); // 개인정보제공 보기
         joinBtn.setOnClickListener(this);
-        watchBtn1.setOnClickListener(this);
-        watchBtn2.setOnClickListener(this);
 
         List<String> data = new ArrayList<>();
         data.add("농협");
@@ -132,18 +128,8 @@ public class MainActivitySignMg extends Activity implements View.OnClickListener
                     Toast.makeText(this, "비밀번호에 공백을 사용할 수 없습니다!", Toast.LENGTH_SHORT).show();
                 }
 
-                else if(inform_check.isChecked() == false){
+                else if(!inform_check.isChecked()){
                     Toast.makeText(this, "이용약관 및 사용자 정보제공 \n동의는 필수입니다!", Toast.LENGTH_SHORT).show();
-
-                }
-
-                break;
-
-            case R.id.inform_check:
-                if(result_1 == null || result_2 == null){ // 내용 미 확인 후 동의 체크 시
-                    inform_check.setChecked(false);
-                    Toast.makeText(this, "이용약관 및 개인정보정책 내용을 \n확인해주세요!", Toast.LENGTH_SHORT).show();
-
                 }
 
                 break;

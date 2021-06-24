@@ -128,7 +128,7 @@ public class BoardDetailActivity extends AppCompatActivity {
                 }
             });
             postRun.addData("bdCode", vo.getBdCode())
-                    .addData("uCode", UserSharedPreferences.user.getUCode()) // TODO 유저 정보 SharedPreferences 로 변경
+                    .addData("uCode", UserSharedPreferences.user.getUCode())
                     .addData("comCont", Html.toHtml(binding.commWrite.getText()).replaceAll(PostRun.DOMAIN, ""))
                     .start();
         });
@@ -145,6 +145,7 @@ public class BoardDetailActivity extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void loadView() {
         PostRun postRun = new PostRun("getBoard", this, PostRun.DATA);
         postRun.setRunUI(() -> {
@@ -155,7 +156,6 @@ public class BoardDetailActivity extends AppCompatActivity {
                 binding.boardUser.setText(vo.getNick());
                 binding.boardContents.setText(vo.getBdTitle());
                 binding.boardText.setText(Html.fromHtml(vo.getBdCont(), new ImageGetterImpl(this, binding.boardText), null));
-                // TODO 유저 정보
                 if (vo.getUCode().equals(UserSharedPreferences.user.getUCode())) binding.boardMaster.setVisibility(View.VISIBLE);
                 bookmark = postRun.obj.getBoolean("bookmark");
                 bookmarkToggle(bookmark);
@@ -166,7 +166,6 @@ public class BoardDetailActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         });
-        // TODO 유저 정보 SharedPreferences 로 변경
         postRun.addData("bdCode", getIntent().getStringExtra("bdCode")).addData("uCode", UserSharedPreferences.user.getUCode());
         postRun.start();
     }

@@ -115,7 +115,7 @@ public class BoardCommentAdapter extends RecyclerView.Adapter<BoardCommentAdapte
                     }
                 });
                 postRun.addData("bdCode", vo.getBdCode())
-                        .addData("uCode", UserSharedPreferences.user.getUCode()) // TODO 유저 정보 SharedPreferences 로 변경
+                        .addData("uCode", UserSharedPreferences.user.getUCode())
                         .addData("comCont", Html.toHtml(com_reply.getText()).replaceAll(PostRun.DOMAIN, ""))
                         .addData("replyCode", vo.getReplyCode() == null ? vo.getComCode() : vo.getReplyCode())
                         .start();

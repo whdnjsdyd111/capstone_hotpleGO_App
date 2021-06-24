@@ -55,7 +55,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-public class CourseUsingFragment extends Fragment implements CourseAdapter.InitData, TMapGpsManager.onLocationChangedCallback {
+public class CourseUsingFragment extends Fragment implements CourseAdapter.InitData {
     private CourseUsingBinding binding;
     private CourseAdapter adapter;
     List<CourseInfoVO> infos = null;
@@ -64,6 +64,27 @@ public class CourseUsingFragment extends Fragment implements CourseAdapter.InitD
     TMapGpsManager gpsManager = null;
     private final Set<TMapPolyLine> lines = new HashSet<>();
 
+    private final LocationListener mLocationListener = new LocationListener() {
+        public void onLocationChanged(Location location) {
+
+            double longitude = location.getLongitude(); //경도
+            double latitude = location.getLatitude();   //위도
+
+            tMapView.setLocationPoint(longitude, latitude);
+            tMapView.setCenterPoint(longitude, latitude);
+        }
+
+        public void onProviderDisabled(String provider) {
+        }
+
+        public void onProviderEnabled(String provider) {
+        }
+
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+        }
+    };
+
+    @SuppressLint("MissingPermission")
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Nullable
     @Override
@@ -135,26 +156,17 @@ public class CourseUsingFragment extends Fragment implements CourseAdapter.InitD
         });
 
         binding.goHotple.setOnClickListener(v -> {
-            GpsTracker gpsTracker = new GpsTracker(getContext());
-            tMapView.setTMapPoint(gpsTracker.getLatitude(), gpsTracker.getLongitude());
             tMapView.setCompassMode(true);
             tMapView.setSightVisible(true);
             tMapView.setIconVisibility(true);
-            gpsManager = new TMapGpsManager(requireActivity());
-            gpsManager.setMinTime(10000);//현재 위치를 찾을 최소 시간 (밀리초)
-            gpsManager.setMinDistance(5);//현재 위치를 갱신할 최소 거리
-            gpsManager.setProvider(TMapGpsManager.NETWORK_PROVIDER);
-            gpsManager.OpenGps();
+            final LocationManager lm = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+            lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, // 등록할 위치제공자
+                    1000, // 통지사이의 최소 시간간격 (miliSecond)
+                    3, // 통지사이의 최소 변경거리 (m)
+                    mLocationListener);
         });
 
         return binding.getRoot();
-    }
-
-    @Override
-    public void onLocationChange(Location location) {
-        Log.i("gps", location.toString());
-        tMapView.setLocationPoint(location.getLongitude(), location.getLatitude());
-        tMapView.setCenterPoint(location.getLongitude(), location.getLatitude());
     }
 
     private void initMap() {
@@ -172,7 +184,7 @@ public class CourseUsingFragment extends Fragment implements CourseAdapter.InitD
         binding.courseNum.setText("");
         binding.courseDistance.setText("");
         PostRun postRun = new PostRun("myCourse", getActivity(), PostRun.DATA);
-        // TODO 유저
+
         postRun.setRunUI(() -> {
             try {
                 if (!postRun.obj.has("courses")) {

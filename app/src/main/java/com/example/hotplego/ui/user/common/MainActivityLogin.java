@@ -2,6 +2,7 @@ package com.example.hotplego.ui.user.common;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -237,6 +238,7 @@ public class MainActivityLogin extends AppCompatActivity implements View.OnClick
     protected void onDestroy() {
         super.onDestroy();
         Session.getCurrentSession().removeCallback(mSessionCallback);
+        if (UserSharedPreferences.user == null) startActivity(new Intent(this, MainActivityLogin.class));
     }
 
    /* // 해시키 값 얻어오기
@@ -289,12 +291,13 @@ public class MainActivityLogin extends AppCompatActivity implements View.OnClick
                                 String message = pr.obj.getString("message");
                                 if (Boolean.parseBoolean(message)) {
                                     JSONObject obj = new JSONObject(pr.obj.getString("user"));
+                                    HotpleVO hotple = null;
                                     UserVO user = new UserVO();
                                     user.setUCode(obj.getString("UCode"));
                                     user.setNick(obj.getString("nick"));
                                     user.setGender(obj.getString("gender").charAt(0));
                                     user.setPhone(obj.getString("phone"));
-                                    user.setMbti(obj.getString("mbti"));
+                                    if (obj.has("mbti")) user.setMbti(obj.getString("mbti"));
                                     try {
                                         user.setProfileImg(obj.getString("profileImg"));
                                     } catch (JSONException e) {
@@ -307,9 +310,10 @@ public class MainActivityLogin extends AppCompatActivity implements View.OnClick
                                         e.printStackTrace();
                                     }
 //                                    HotpleVO hotple = null;
-//                                    if (pr.obj.getString("hotple") != null)
-//                                        hotple = new Gson().fromJson(pr.obj.getString("hotple"), HotpleVO.class);
-                                    UserSharedPreferences.getInstance().login(MainActivityLogin.this, user, null);
+                                    if (pr.obj.has("hotple"))
+                                        hotple = new Gson().fromJson(pr.obj.getString("hotple"), HotpleVO.class);
+                                    Log.i("hotple", String.valueOf(hotple));
+                                    UserSharedPreferences.getInstance().login(MainActivityLogin.this, user, hotple);
                                     Toast.makeText(MainActivityLogin.this, "로그인 성공하였습니다.", Toast.LENGTH_SHORT).show();
                                     Log.i("users", user.toString());
                                     finish();
@@ -335,7 +339,9 @@ public class MainActivityLogin extends AppCompatActivity implements View.OnClick
                 break;
 
             case R.id.tvRestore: // 비밀번호 찾기 버튼
-                intent = new Intent(getApplicationContext(), MainActivitySearch.class);
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                Uri uri = Uri.parse("http://www.hotplego.p-e.kr:8000/forgotPw");
+                intent.setData(uri);
                 startActivity(intent);
                 break;
         }

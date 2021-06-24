@@ -17,6 +17,7 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.example.hotplego.PostRun;
+import com.example.hotplego.TMapSetting;
 import com.example.hotplego.databinding.HotpleInfoBinding;
 import com.example.hotplego.domain.HotpleVO;
 import com.example.hotplego.domain.OpenInfoVO;
@@ -46,11 +47,14 @@ public class InfoFragment extends Fragment {
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         binding = HotpleInfoBinding.inflate(inflater, container, false);
 
-        binding.adress.setText(vo.getHtAddr() + "\n" + vo.getHtAddrDet());
+        Log.i("ddd", vo.toString());
+
+        binding.adress.setText(vo.getHtAddr() + "\n" + (vo.getHtAddrDet() != null ? vo.getHtAddrDet() : ""));
         binding.tel.setText(toTel(vo.getHtTel()));
         binding.description.setText(vo.getHtCont());
         loadView();
         TMapView tMapView = new TMapView(getContext());
+        TMapSetting tMapSetting = new TMapSetting(tMapView, getActivity());
         tMapView.setZoomLevel(15);
         tMapView.setTMapPoint(vo.getHtLat(), vo.getHtLng());
         TMapMarkerItem marker = new TMapMarkerItem();

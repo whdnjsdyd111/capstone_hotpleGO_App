@@ -117,7 +117,7 @@ public class HotpleFragment extends Fragment {
 
         binding.hotpleUpdate.setOnClickListener(v -> {
             HotpleVO vo = new HotpleVO();
-            vo.setHtId(5L); // TODO 핫플 아이디
+            vo.setHtId(UserSharedPreferences.hotple.getHtId());
             vo.setBusnName(binding.hotpleName.getText().toString());
             vo.setBusnNum(binding.hotpleBusn.getText().toString());
             vo.setHtAddr(binding.hotpleAddress.getText().toString());

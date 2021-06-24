@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.example.hotplego.ImageGetterImpl;
 import com.example.hotplego.PostRun;
+import com.example.hotplego.UserSharedPreferences;
 import com.example.hotplego.databinding.MenuInfoBinding;
 import com.example.hotplego.domain.MenuVO;
 import com.google.gson.Gson;
@@ -52,10 +54,11 @@ public class MenuInfo extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         vo = (MenuVO) getIntent().getSerializableExtra("menu");
+        Log.i("메뉴", String.valueOf(vo));
         init();
 
         if (vo != null) {
-            postRun = new PostRun("update_menu", getParent(), PostRun.IMAGES);
+            postRun = new PostRun("update_menu", this, PostRun.IMAGES);
             menu_name.setText(vo.getMeName());
             menu_price.setText(String.valueOf(vo.getMePrice()));
             menu_cnt.setText(vo.getMeIntr());
@@ -63,7 +66,7 @@ public class MenuInfo extends AppCompatActivity {
             menu_hashtag.setText(vo.getMeHashTag());
             if (vo.getUuid() != null) Glide.with(this).load(PostRun.getImageUrl(vo.getUploadPath(), vo.getUuid(), vo.getFileName())).into(menu_img);
         } else {
-            postRun  = new PostRun("add_menu", getParent(), PostRun.IMAGES);
+            postRun  = new PostRun("add_menu", this, PostRun.IMAGES);
         }
 
         binding.menuImg.setOnClickListener(v -> {
@@ -74,8 +77,10 @@ public class MenuInfo extends AppCompatActivity {
         });
 
         binding.menuModifySave.setOnClickListener(v -> {
-            if (vo == null) vo = new MenuVO();
-            vo.setMeCode("5");  // TODO 겟쉐얼드 핫플
+            if (vo == null) {
+                vo = new MenuVO();
+                vo.setMeCode(String.valueOf(UserSharedPreferences.hotple.getHtId()));
+            }
             vo.setMeName(menu_name.getText().toString());
             vo.setMePrice(Long.parseLong(menu_price.getText().toString()));
             vo.setMeIntr(menu_cnt.getText().toString());
